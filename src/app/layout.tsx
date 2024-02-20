@@ -2,6 +2,7 @@ import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 
+import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 import { Header } from './header';
 
@@ -25,8 +26,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
           'mb-12 flex min-h-screen flex-col antialiased'
         )}
       >
-        <Header />
-        <main className="container">{children}</main>
+        <ThemeProvider
+          enableSystem
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+        >
+          <Header />
+          <main className="container">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -10,52 +10,32 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { db } from '@/server/db';
 import { DefinitionCard } from '../components/definition-card';
 
-export default function Home() {
+export default async function Home() {
+  const definition = await db.query.definitions.findFirst({
+    with: {
+      user: {
+        columns: {
+          name: true
+        }
+      }
+    }
+  });
   return (
     <div className="flex flex-col-reverse gap-4 md:flex-row">
       <div className="flex flex-1 flex-col gap-4">
-        <DefinitionCard
-          term="developer"
-          description="a person or company that creates new products, especially computer products such as software"
-          example="Bob is a software developer working at Macrohard."
-          upvotes={1293}
-          downvotes={62}
-          user={{ name: 'RandomPerson123' }}
-          badges={['Word of the day']}
-          createdAt={new Date(Date.now() - 19239123)}
-        />
-        <DefinitionCard
-          term="developer"
-          description="a person or company that creates new products, especially computer products such as software"
-          example="Bob is a software developer working at Macrohard."
-          upvotes={1293}
-          downvotes={62}
-          user={{ name: 'RandomPerson123' }}
-          badges={[]}
-          createdAt={new Date(Date.now() - 19239123)}
-        />
-        <DefinitionCard
-          term="developer"
-          description="a person or company that creates new products, especially computer products such as software"
-          example="Bob is a software developer working at Macrohard."
-          upvotes={1293}
-          downvotes={62}
-          user={{ name: 'RandomPerson123' }}
-          badges={[]}
-          createdAt={new Date(Date.now() - 19239123)}
-        />
-        <DefinitionCard
-          term="developer"
-          description="a person or company that creates new products, especially computer products such as software"
-          example="Bob is a software developer working at Macrohard."
-          upvotes={1293}
-          downvotes={62}
-          user={{ name: 'RandomPerson123' }}
-          badges={[]}
-          createdAt={new Date(Date.now() - 19239123)}
-        />
+        {definition && (
+          <>
+            <DefinitionCard
+              definition={definition}
+              badges={['Word of the day']}
+              className="border-primary"
+            />
+            <DefinitionCard definition={definition} badges={[]} />
+          </>
+        )}
       </div>
       <Card className="h-fit md:w-1/3">
         <CardHeader className="pb-4">
