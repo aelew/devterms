@@ -15,28 +15,31 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import type { Definition } from '@/types';
 
 interface DefinitionCardProps {
-  term: string;
-  description: string;
-  example: string;
-  upvotes: number;
-  downvotes: number;
-  createdAt: Date;
-  badges: string[];
-  user: { name: string };
+  definition: Definition & { user: { name: string | null } };
+  badges?: string[];
+  className?: string;
 }
 
-export function DefinitionCard(definition: DefinitionCardProps) {
+export function DefinitionCard({
+  definition,
+  badges,
+  className
+}: DefinitionCardProps) {
   return (
-    <Card className="relative">
-      <div className="absolute right-6 top-6">
-        <div className="flex gap-2">
-          {definition.badges.map((badge) => (
-            <Badge key={badge}>{badge}</Badge>
-          ))}
+    <Card className={cn('relative', className)}>
+      {badges && (
+        <div className="absolute right-6 top-6">
+          <div className="flex gap-2">
+            {badges.map((badge) => (
+              <Badge key={badge}>{badge}</Badge>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <CardHeader>
         <CardTitle className="text-3xl">{definition.term}</CardTitle>
       </CardHeader>
