@@ -8,8 +8,8 @@ if (!process.env.DATABASE_URL) {
 }
 
 export default {
-  out: 'drizzle',
   driver: 'mysql2',
+  out: 'drizzle/migrations',
   schema: 'src/server/db/schema.ts',
   dbCredentials: { uri: process.env.DATABASE_URL }
 } satisfies Config;

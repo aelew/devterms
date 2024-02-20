@@ -5,8 +5,8 @@ CREATE TABLE `definitions` (
 	`term` varchar(255) NOT NULL,
 	`description` text NOT NULL,
 	`example` text NOT NULL,
-	`upvotes` int NOT NULL,
-	`downvotes` int NOT NULL,
+	`upvotes` int unsigned NOT NULL DEFAULT 0,
+	`downvotes` int unsigned NOT NULL DEFAULT 0,
 	`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT `definitions_id` PRIMARY KEY(`id`)
 );
