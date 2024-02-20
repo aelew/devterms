@@ -69,8 +69,8 @@ export const definitions = mysqlTable('definitions', {
   term: varchar('term', { length: 255 }).notNull(),
   description: text('description').notNull(),
   example: text('example').notNull(),
-  upvotes: int('upvotes').notNull(),
-  downvotes: int('downvotes').notNull(),
+  upvotes: int('upvotes', { unsigned: true }).default(0).notNull(),
+  downvotes: int('downvotes', { unsigned: true }).default(0).notNull(),
   createdAt: timestamp('created_at')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull()
