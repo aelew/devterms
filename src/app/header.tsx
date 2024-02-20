@@ -11,7 +11,7 @@ export function Header() {
           <Link className="flex items-center gap-1" href="/">
             <h1 className="text-xl font-semibold tracking-tighter">DevTerms</h1>
             <span className="hidden text-sm tracking-tight text-muted-foreground sm:inline">
-              &mdash; The dictionary for developers
+              &mdash; The developer dictionary
             </span>
           </Link>
         </div>

@@ -11,7 +11,9 @@ export const metadata: Metadata = {
   title: {
     default: 'DevTerms',
     template: '%s | DevTerms'
-  }
+  },
+  description:
+    'A crowdsourced dictionary for developers by developers. Find definitions for all sorts of technical terms, programming jargon, and more!'
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
