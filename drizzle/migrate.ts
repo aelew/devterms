@@ -1,12 +1,15 @@
-import 'dotenv/config';
-
 import { Client } from '@planetscale/database';
+import dotenv from 'dotenv';
 import { drizzle } from 'drizzle-orm/planetscale-serverless';
 import { migrate } from 'drizzle-orm/planetscale-serverless/migrator';
 
-import { env } from '@/env';
+dotenv.config({ path: ['.env', '.env.local'] });
 
-const connection = new Client({ url: env.DATABASE_URL }).connection();
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is not set');
+}
+
+const connection = new Client({ url: process.env.DATABASE_URL }).connection();
 const db = drizzle(connection);
 
 async function main() {

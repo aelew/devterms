@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "e91652f0-19f4-417e-bf0c-5698ebac7f74",
+  "id": "145dd13d-ee51-45c4-9923-3e880f1ba12a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "definitions": {
@@ -52,17 +52,19 @@
         },
         "upvotes": {
           "name": "upvotes",
-          "type": "int",
+          "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": 0
         },
         "downvotes": {
           "name": "downvotes",
-          "type": "int",
+          "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": 0
         },
         "created_at": {
           "name": "created_at",

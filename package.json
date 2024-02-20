@@ -10,9 +10,9 @@
     "format": "prettier --write .",
     "db:studio": "drizzle-kit studio",
     "db:migrate": "tsx drizzle/migrate",
+    "db:drop": "drizzle-kit drop",
     "db:push": "drizzle-kit push:mysql",
-    "db:drop": "drizzle-kit drop --out=drizzle/migrations",
-    "db:generate": "drizzle-kit generate:mysql --out drizzle/migrations"
+    "db:generate": "drizzle-kit generate:mysql"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^9.3.0",
