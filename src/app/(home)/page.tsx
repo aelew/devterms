@@ -51,7 +51,7 @@ export default async function HomePage() {
           />
         )}
         {homeFeed
-          .filter((def) => !wotd || def.id !== wotd.id)
+          .filter((def) => !wotd || def.id !== wotd.definitionId)
           .map((def) => (
             <DefinitionCard key={def.id} definition={def} />
           ))}
