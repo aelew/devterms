@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import type { Definition } from '@/types';
+import { Date } from '../date';
 import { DefinitionReportButton } from './report-button';
 import { DefinitionShareButton } from './share-button';
 import { VoteActions } from './vote-actions';
@@ -60,7 +61,7 @@ export function DefinitionCard({
               </Link>
             </span>
             <span aria-hidden> &middot; </span>
-            <span>June 12, 2023</span>
+            <Date date={definition.createdAt} />
           </p>
         </div>
       </CardContent>

@@ -1,5 +1,6 @@
 import { relations, sql } from 'drizzle-orm';
 import {
+  boolean,
   int,
   mysqlEnum,
   mysqlTable,
@@ -67,3 +68,16 @@ export const definitionRelations = relations(definitions, ({ one }) => ({
     references: [users.id]
   })
 }));
+
+export const reports = mysqlTable('reports', {
+  id: varchar('id', { length: 20 })
+    .primaryKey()
+    .$defaultFn(() => generateId('rpt')),
+  userId: varchar('user_id', { length: 21 }).notNull(),
+  definitionId: varchar('definition_id', { length: 20 }).notNull(),
+  read: boolean('read').default(false).notNull(),
+  reason: text('reason').notNull(),
+  createdAt: timestamp('created_at')
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull()
+});

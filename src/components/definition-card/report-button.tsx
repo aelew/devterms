@@ -2,7 +2,9 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FlagIcon } from 'lucide-react';
+import { useAction } from 'next-safe-action/hooks';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -20,30 +22,37 @@ import {
   FormItem,
   FormMessage
 } from '@/components/ui/form';
+import { getActionErrorMessage } from '@/lib/utils';
 import { Textarea } from '../ui/textarea';
+import { reportDefinition } from './_actions';
+import { reportFormSchema } from './schema';
 
 interface ReportButtonProps {
   definitionId: string;
 }
 
-const formSchema = z.object({
-  reason: z
-    .string()
-    .min(4, { message: 'Reason must be at least 4 characters.' })
-});
-
 export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const { execute, status } = useAction(reportDefinition, {
+    onSuccess: (data) => {
+      form.reset();
+      toast.success(data.message);
+    },
+    onError: (result) => {
+      const message = getActionErrorMessage(result);
+      toast.error(message);
+    }
+  });
+
+  const form = useForm<z.infer<typeof reportFormSchema>>({
+    resolver: zodResolver(reportFormSchema),
     defaultValues: {
+      definitionId,
       reason: ''
     }
   });
 
-  const onReportSubmit = (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  const onReportSubmit = (values: z.infer<typeof reportFormSchema>) => {
+    execute(values);
   };
 
   return (
@@ -76,7 +85,7 @@ export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
                 </FormItem>
               )}
             />
-            <Button>Submit report</Button>
+            <Button disabled={status === 'executing'}>Submit report</Button>
           </form>
         </Form>
       </DialogContent>
