@@ -7,7 +7,7 @@ import { github, lucia } from '@/lib/auth';
 import { generateId } from '@/lib/id';
 import { db } from '@/server/db';
 import { users } from '@/server/db/schema';
-import type { GitHubUser } from '@/types';
+import type { GitHubEmailsResponse, GitHubUserResponse } from '@/types';
 
 export async function GET(req: Request): Promise<Response> {
   const url = new URL(req.url);
@@ -24,7 +24,7 @@ export async function GET(req: Request): Promise<Response> {
     const githubUserResponse = await fetch('https://api.github.com/user', {
       headers: { Authorization: `Bearer ${tokens.accessToken}` }
     });
-    const githubUser: GitHubUser = await githubUserResponse.json();
+    const githubUser: GitHubUserResponse = await githubUserResponse.json();
 
     const existingUser = await db.query.users.findFirst({
       where: eq(users.githubId, githubUser.id)
@@ -41,14 +41,38 @@ export async function GET(req: Request): Promise<Response> {
       return NextResponse.redirect(new URL('/', url));
     }
 
+    let userEmail: string | null = githubUser.email;
+
+    // Special case for GitHub accounts with private emails
+    if (!userEmail) {
+      const githubEmailsResponse = await fetch(
+        'https://api.github.com/user/emails',
+        { headers: { Authorization: `Bearer ${tokens.accessToken}` } }
+      );
+      const githubEmails: GitHubEmailsResponse =
+        await githubEmailsResponse.json();
+
+      userEmail =
+        githubEmails.find((email) => email.primary)?.email ??
+        githubEmails.find((email) => email.verified)?.email ??
+        null;
+
+      if (!userEmail) {
+        return NextResponse.json(
+          { error: 'missing_github_email' },
+          { status: 400 }
+        );
+      }
+    }
+
     const userId = generateId('user');
 
     await db.insert(users).values({
       id: userId,
+      email: userEmail,
       name: githubUser.login,
-      email: githubUser.email,
-      avatar: githubUser.avatar_url,
-      githubId: githubUser.id
+      githubId: githubUser.id,
+      avatar: githubUser.avatar_url
     });
 
     const session = await lucia.createSession(userId, {});

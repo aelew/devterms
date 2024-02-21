@@ -11,7 +11,9 @@ export function GitHubButton() {
   async function login() {
     'use server';
     const state = generateState();
-    const url = await github.createAuthorizationURL(state);
+    const url = await github.createAuthorizationURL(state, {
+      scopes: ['user:email']
+    });
 
     cookies().set('oauth_state', state, {
       secure: env.NODE_ENV === 'production',
