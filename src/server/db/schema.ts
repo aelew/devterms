@@ -8,14 +8,13 @@ import {
   varchar
 } from 'drizzle-orm/mysql-core';
 
-import { generateId } from '@/lib/id';
-
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 21 }).primaryKey(),
   name: varchar('name', { length: 32 }),
+  role: mysqlEnum('role', ['user', 'moderator']).default('user').notNull(),
   email: varchar('email', { length: 255 }).unique().notNull(),
-  image: varchar('image', { length: 255 }),
-  googleId: varchar('google_id', { length: 21 }).unique(),
+  avatar: varchar('avatar', { length: 255 }).notNull(),
+  githubId: int('github_id', { unsigned: true }).unique().notNull(),
   createdAt: timestamp('created_at')
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull()
@@ -38,24 +37,6 @@ export const sessions = mysqlTable('sessions', {
 export const sessionsRelations = relations(sessions, ({ one }) => ({
   user: one(users, {
     fields: [sessions.userId],
-    references: [users.id]
-  })
-}));
-
-export const magicTokens = mysqlTable('magic_tokens', {
-  id: varchar('id', { length: 20 })
-    .primaryKey()
-    .$defaultFn(() => generateId('mgc')),
-  userId: varchar('user_id', { length: 21 }).notNull(),
-  expiresAt: timestamp('expires_at').notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
-});
-
-export const magicTokenRelations = relations(magicTokens, ({ one }) => ({
-  user: one(users, {
-    fields: [magicTokens.userId],
     references: [users.id]
   })
 }));

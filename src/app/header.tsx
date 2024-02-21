@@ -1,13 +1,44 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { PlusIcon, SearchIcon } from 'lucide-react';
+import { ArrowRightIcon, LogOutIcon, PlusIcon, SearchIcon } from 'lucide-react';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ThemeSwitcher } from '@/components/theme-switcher';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { buttonVariants } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
+import { lucia } from '@/lib/auth';
+import { getAuthData } from '@/lib/auth/helpers';
 
-export function Header() {
+export async function Header() {
+  const { user } = await getAuthData();
+
+  async function signOut() {
+    'use server';
+    const { user, session } = await getAuthData();
+    if (!user) {
+      throw new Error('Authentication required');
+    }
+
+    await lucia.invalidateSession(session.id);
+
+    const sessionCookie = lucia.createBlankSessionCookie();
+    cookies().set(
+      sessionCookie.name,
+      sessionCookie.value,
+      sessionCookie.attributes
+    );
+  }
+
   return (
     <header className="container mb-4 flex flex-col">
       <div className="flex h-14 justify-between">
@@ -37,6 +68,42 @@ export function Header() {
             <SiGithub className="size-4" />
           </Link>
           <ThemeSwitcher />
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="rounded-full transition-opacity hover:opacity-80">
+                <Avatar>
+                  <AvatarImage src={user.avatar + '&s=64'} />
+                  <AvatarFallback>
+                    {user.name.slice(0, 2).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>
+                  <p>{user.name}</p>
+                  <p className="font-normal text-muted-foreground">
+                    {user.email}
+                  </p>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <form action={signOut}>
+                  <DropdownMenuItem asChild>
+                    <button className="w-full">
+                      <LogOutIcon className="mr-2 size-4" /> Sign out
+                    </button>
+                  </DropdownMenuItem>
+                </form>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link
+              className={buttonVariants({ className: 'group' })}
+              href="/login"
+            >
+              Sign in
+              <ArrowRightIcon className="ml-1 h-4 w-4 translate-x-0 transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
+            </Link>
+          )}
         </div>
       </div>
       <div>

@@ -1,10 +1,11 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -17,13 +18,19 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+interface SubmitDefinitionFormProps {
+  isAuthenticated: boolean;
+}
+
 export const formSchema = z.object({
   term: z.string().min(1).max(64),
   definition: z.string().min(1).max(512),
   example: z.string().min(1).max(512)
 });
 
-export function SubmitDefinitionForm() {
+export function SubmitDefinitionForm({
+  isAuthenticated
+}: SubmitDefinitionFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,7 +59,11 @@ export function SubmitDefinitionForm() {
             <FormItem>
               <FormLabel>Term</FormLabel>
               <FormControl>
-                <Input placeholder="developer" {...field} />
+                <Input
+                  placeholder="developer"
+                  disabled={!isAuthenticated}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 The word or phrase you want to define.
@@ -70,6 +81,7 @@ export function SubmitDefinitionForm() {
               <FormControl>
                 <Textarea
                   placeholder="a person or company who builds something such as an idea, a design, or a product"
+                  disabled={!isAuthenticated}
                   {...field}
                 />
               </FormControl>
@@ -89,6 +101,7 @@ export function SubmitDefinitionForm() {
               <FormControl>
                 <Textarea
                   placeholder="Bob the Builder decided to stop pursuing a developer position because the job market was too competitive."
+                  disabled={!isAuthenticated}
                   {...field}
                 />
               </FormControl>
@@ -99,7 +112,13 @@ export function SubmitDefinitionForm() {
             </FormItem>
           )}
         />
-        <Button>Submit my definition</Button>
+        {isAuthenticated ? (
+          <Button>Submit my definition</Button>
+        ) : (
+          <Link className={buttonVariants()} href="/login">
+            Sign in to submit
+          </Link>
+        )}
       </form>
     </Form>
   );
