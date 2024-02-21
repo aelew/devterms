@@ -1,5 +1,6 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { PlusIcon } from 'lucide-react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -11,7 +12,9 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { db } from '@/server/db';
-import { DefinitionCard } from '../components/definition-card';
+import { DefinitionCard } from '../../components/definition-card';
+
+export const metadata: Metadata = { title: 'The Developer Dictionary' };
 
 export default async function Home() {
   const definition = await db.query.definitions.findFirst({

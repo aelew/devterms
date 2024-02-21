@@ -1,10 +1,25 @@
+'use client';
+
 import {
+  CopyIcon,
   FlagIcon,
   ShareIcon,
   ThumbsDownIcon,
   ThumbsUpIcon
 } from 'lucide-react';
 import Link from 'next/link';
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  RedditIcon,
+  RedditShareButton,
+  TwitterShareButton,
+  XIcon
+} from 'react-share';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,6 +30,12 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
+import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { cn } from '@/lib/utils';
 import type { Definition } from '@/types';
 
@@ -29,6 +50,8 @@ export function DefinitionCard({
   badges,
   className
 }: DefinitionCardProps) {
+  const { status, copy } = useCopyToClipboard();
+  const url = `https://devterms.io/browse/${definition.term}`;
   return (
     <Card className={cn('relative', className)}>
       {badges && (
@@ -79,10 +102,37 @@ export function DefinitionCard({
           </Button>
         </div>
         <div className="flex gap-4 text-muted-foreground">
-          <button className="flex items-center hover:text-muted-foreground/80">
-            <ShareIcon className="mr-1.5 size-4" />
-            Share
-          </button>
+          <Popover>
+            <PopoverTrigger className="flex items-center hover:text-muted-foreground/80">
+              <ShareIcon className="mr-1.5 size-4" />
+              Share
+            </PopoverTrigger>
+            <PopoverContent className="flex w-full gap-2 p-2">
+              <TwitterShareButton url={url}>
+                <XIcon size={24} round />
+              </TwitterShareButton>
+              <RedditShareButton url={url}>
+                <RedditIcon size={24} round />
+              </RedditShareButton>
+              <LinkedinShareButton url={url}>
+                <LinkedinIcon size={24} round />
+              </LinkedinShareButton>
+              <FacebookShareButton url={url}>
+                <FacebookIcon size={24} round />
+              </FacebookShareButton>
+              <EmailShareButton url={url}>
+                <EmailIcon size={24} round />
+              </EmailShareButton>
+              <Button
+                onClick={() => copy(url)}
+                className="size-6 rounded-full shadow-none"
+                variant="secondary"
+                size="icon"
+              >
+                <CopyIcon size={12} />
+              </Button>
+            </PopoverContent>
+          </Popover>
           <button className="flex items-center hover:text-muted-foreground/80">
             <FlagIcon className="mr-1.5 size-4" />
             Report
