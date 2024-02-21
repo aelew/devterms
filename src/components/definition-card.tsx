@@ -31,6 +31,13 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
+import {
   Popover,
   PopoverContent,
   PopoverTrigger
@@ -51,9 +58,9 @@ export function DefinitionCard({
   className
 }: DefinitionCardProps) {
   const { status, copy } = useCopyToClipboard();
-  const url = `https://devterms.io/browse/${definition.term}`;
+  const url = `https://devterms.io/define/${definition.term}#${definition.id}`;
   return (
-    <Card className={cn('relative', className)}>
+    <Card id={definition.id} className={cn('relative', className)}>
       {badges && (
         <div className="absolute right-6 top-6">
           <div className="flex gap-2">
@@ -133,10 +140,18 @@ export function DefinitionCard({
               </Button>
             </PopoverContent>
           </Popover>
-          <button className="flex items-center text-destructive hover:text-destructive/80">
-            <FlagIcon className="mr-1.5 size-4" />
-            Report
-          </button>
+          <Dialog>
+            <DialogTrigger className="flex items-center text-destructive hover:text-destructive/80">
+              <FlagIcon className="mr-1.5 size-4" />
+              Report
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Report definition</DialogTitle>
+              </DialogHeader>
+              form
+            </DialogContent>
+          </Dialog>
         </div>
       </CardFooter>
     </Card>
