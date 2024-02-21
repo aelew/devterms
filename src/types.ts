@@ -4,7 +4,7 @@ import type { definitions } from './server/db/schema';
 
 export type Definition = InferSelectModel<typeof definitions>;
 
-export interface GitHubUser {
+export type GitHubUserResponse = {
   id: number;
   login: string;
   node_id: string;
@@ -23,4 +23,11 @@ export interface GitHubUser {
   following: number;
   created_at: string;
   updated_at: string;
-}
+};
+
+export type GitHubEmailsResponse = {
+  email: string;
+  primary: boolean;
+  verified: boolean;
+  visibility: 'public' | 'private' | null;
+}[];
