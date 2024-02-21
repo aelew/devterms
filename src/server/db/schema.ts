@@ -67,7 +67,7 @@ export const definitions = mysqlTable('definitions', {
     .default('pending')
     .notNull(),
   term: varchar('term', { length: 255 }).notNull(),
-  description: text('description').notNull(),
+  definition: text('definition').notNull(),
   example: text('example').notNull(),
   upvotes: int('upvotes', { unsigned: true }).default(0).notNull(),
   downvotes: int('downvotes', { unsigned: true }).default(0).notNull(),

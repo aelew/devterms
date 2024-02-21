@@ -67,7 +67,7 @@ export function DefinitionCard({
         <CardTitle className="text-3xl">{definition.term}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p>{definition.description}</p>
+        <p>{definition.definition}</p>
         <small className="italic text-muted-foreground">
           &ldquo;{definition.example}&rdquo;
         </small>
