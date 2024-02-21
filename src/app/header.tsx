@@ -14,7 +14,9 @@ export function Header() {
         <div className="flex items-center gap-1">
           <Link className="flex items-center gap-2" href="/">
             <Image src="/icon.png" alt="Logo" width={24} height={24} />
-            <h1 className="text-xl font-semibold tracking-tighter">DevTerms</h1>
+            <span className="text-xl font-semibold tracking-tighter">
+              DevTerms
+            </span>
           </Link>
           <span className="hidden text-sm tracking-tight text-muted-foreground sm:inline">
             &mdash; The developer dictionary
