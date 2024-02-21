@@ -40,6 +40,7 @@ export function SubmitDefinitionForm({
       toast.error(message);
     }
   });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

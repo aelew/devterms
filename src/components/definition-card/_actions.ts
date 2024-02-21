@@ -2,8 +2,10 @@
 
 import { eq, sql } from 'drizzle-orm';
 
+import { protectedAction } from '@/lib/action';
 import { db } from '@/server/db';
-import { definitions } from '@/server/db/schema';
+import { definitions, reports } from '@/server/db/schema';
+import { reportFormSchema } from './schema';
 
 export async function updateUpvoteCount(
   definitionId: string,
@@ -28,3 +30,12 @@ export async function updateDownvoteCount(
     })
     .where(eq(definitions.id, definitionId));
 }
+
+// TODO: Implement CF Turnstile captcha
+export const reportDefinition = protectedAction(
+  reportFormSchema,
+  async ({ definitionId, reason }, { user }) => {
+    await db.insert(reports).values({ userId: user.id, definitionId, reason });
+    return { message: 'Your report has been submitted!' };
+  }
+);
