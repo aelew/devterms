@@ -1,8 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useAction } from 'next-safe-action/hooks';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -17,20 +19,27 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { getActionErrorMessage } from '@/lib/utils';
+import { submitDefinition } from './_actions';
+import { formSchema } from './schema';
 
 interface SubmitDefinitionFormProps {
   isAuthenticated: boolean;
 }
 
-export const formSchema = z.object({
-  term: z.string().min(1).max(64),
-  definition: z.string().min(1).max(512),
-  example: z.string().min(1).max(512)
-});
-
 export function SubmitDefinitionForm({
   isAuthenticated
 }: SubmitDefinitionFormProps) {
+  const { execute, status } = useAction(submitDefinition, {
+    onSuccess: (data) => {
+      form.reset();
+      toast.success(data.message);
+    },
+    onError: (result) => {
+      const message = getActionErrorMessage(result);
+      toast.error(message);
+    }
+  });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,9 +50,7 @@ export function SubmitDefinitionForm({
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    execute(values);
   };
 
   return (
@@ -100,7 +107,7 @@ export function SubmitDefinitionForm({
               <FormLabel>Example</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Bob the Builder decided to stop pursuing a developer position because the job market was too competitive."
+                  placeholder="Bob the Builder decided to stop pursuing a developer position because the job market was atrociously competitive."
                   disabled={!isAuthenticated}
                   {...field}
                 />
@@ -113,7 +120,9 @@ export function SubmitDefinitionForm({
           )}
         />
         {isAuthenticated ? (
-          <Button>Submit my definition</Button>
+          <Button disabled={status === 'executing'}>
+            Submit my definition
+          </Button>
         ) : (
           <Link className={buttonVariants()} href="/login">
             Sign in to submit

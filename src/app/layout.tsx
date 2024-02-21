@@ -1,6 +1,7 @@
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
+import { toast, Toaster } from 'sonner';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         >
           <Header />
           <main className="container">{children}</main>
+          <Toaster richColors />
         </ThemeProvider>
       </body>
     </html>

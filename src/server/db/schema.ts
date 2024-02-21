@@ -8,6 +8,8 @@ import {
   varchar
 } from 'drizzle-orm/mysql-core';
 
+import { generateId } from '@/lib/id';
+
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 21 }).primaryKey(),
   name: varchar('name', { length: 32 }),
@@ -42,7 +44,9 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
 }));
 
 export const definitions = mysqlTable('definitions', {
-  id: varchar('id', { length: 255 }).primaryKey(),
+  id: varchar('id', { length: 20 })
+    .primaryKey()
+    .$defaultFn(() => generateId('def')),
   userId: varchar('user_id', { length: 21 }).notNull(),
   status: mysqlEnum('status', ['pending', 'approved', 'denied'])
     .default('pending')

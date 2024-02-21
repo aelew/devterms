@@ -1,5 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { PlusIcon, ShuffleIcon } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -13,11 +13,13 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { db } from '@/server/db';
+import { definitions } from '@/server/db/schema';
 
 export function AsideCard() {
   async function showRandomDefinition() {
     'use server';
     const definition = await db.query.definitions.findFirst({
+      where: eq(definitions.status, 'approved'),
       columns: { term: true },
       orderBy: sql`rand()`
     });
