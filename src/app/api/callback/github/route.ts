@@ -1,6 +1,7 @@
 import { OAuth2RequestError } from 'arctic';
 import { eq } from 'drizzle-orm';
 import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
 import { github, lucia } from '@/lib/auth';
 import { generateId } from '@/lib/id';
@@ -15,7 +16,7 @@ export async function GET(req: Request): Promise<Response> {
   const state = url.searchParams.get('state');
   const storedState = cookies().get('oauth_state')?.value ?? null;
   if (!code || !state || !storedState || state !== storedState) {
-    return new Response(null, { status: 400 });
+    return NextResponse.json({ error: 'invalid_parameters' }, { status: 400 });
   }
 
   try {
@@ -37,10 +38,7 @@ export async function GET(req: Request): Promise<Response> {
         sessionCookie.value,
         sessionCookie.attributes
       );
-      return new Response(null, {
-        status: 302,
-        headers: { Location: '/' }
-      });
+      return NextResponse.redirect(new URL('/', url));
     }
 
     const userId = generateId('user');
@@ -53,8 +51,6 @@ export async function GET(req: Request): Promise<Response> {
       githubId: githubUser.id
     });
 
-    console.log(githubUser);
-
     const session = await lucia.createSession(userId, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
@@ -63,16 +59,15 @@ export async function GET(req: Request): Promise<Response> {
       sessionCookie.attributes
     );
 
-    return new Response(null, {
-      status: 302,
-      headers: { Location: '/' }
-    });
+    return NextResponse.redirect(new URL('/', url));
   } catch (err) {
-    // the specific error message depends on the provider
     if (err instanceof OAuth2RequestError) {
-      // invalid code
-      return new Response(null, { status: 400 });
+      return NextResponse.json({ error: 'invalid_code' }, { status: 400 });
     }
-    return new Response(null, { status: 500 });
+    console.error('GitHub OAuth2 error:', err);
+    return NextResponse.json(
+      { error: 'internal_server_error' },
+      { status: 500 }
+    );
   }
 }
