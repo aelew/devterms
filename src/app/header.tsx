@@ -1,3 +1,4 @@
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import { PlusIcon, SearchIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +26,13 @@ export function Header() {
             href="/submit"
           >
             <PlusIcon className="size-4" />
+          </Link>
+          <Link
+            className={buttonVariants({ variant: 'outline', size: 'icon' })}
+            href="https://github.com/aelew/devterms"
+            target="_blank"
+          >
+            <SiGithub className="size-4" />
           </Link>
           <ThemeSwitcher />
         </div>

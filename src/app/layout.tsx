@@ -19,8 +19,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
+        suppressHydrationWarning
         className={cn(
           GeistSans.className,
           'mb-12 flex min-h-screen flex-col antialiased'

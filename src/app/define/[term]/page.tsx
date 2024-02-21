@@ -13,25 +13,18 @@ interface TermPageProps {
   };
 }
 
-const getDefinitions = unstable_cache(
-  async (term: string) =>
-    db.query.definitions.findMany({
-      orderBy: desc(definitions.upvotes),
-      where: and(
-        eq(definitions.term, term),
-        eq(definitions.status, 'approved')
-      ),
-      with: {
-        user: {
-          columns: {
-            name: true
-          }
+const getDefinitions = (term: string) =>
+  db.query.definitions.findMany({
+    orderBy: desc(definitions.upvotes),
+    where: and(eq(definitions.term, term), eq(definitions.status, 'approved')),
+    with: {
+      user: {
+        columns: {
+          name: true
         }
       }
-    }),
-  ['terms'],
-  { revalidate: 900 }
-);
+    }
+  });
 
 export async function generateMetadata({ params }: TermPageProps) {
   const results = await getDefinitions(params.term);

@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "drizzle-orm": "^0.29.3",
+    "framer-motion": "^11.0.5",
     "geist": "^1.2.2",
     "jiti": "^1.21.0",
     "lucide-react": "^0.335.0",
@@ -40,6 +41,7 @@
     "react-share": "^5.1.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "ts-pattern": "^5.0.8",
     "zod": "^3.22.4"
   },
   "devDependencies": {
