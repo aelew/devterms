@@ -34,7 +34,7 @@ export default async function Home() {
             <DefinitionCard
               definition={definition}
               badges={['Word of the day']}
-              className="border-primary"
+              className="border-primary shadow-lg"
             />
             <DefinitionCard definition={definition} badges={[]} />
           </>
