@@ -3,6 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAction } from 'next-safe-action/hooks';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -30,6 +32,8 @@ interface SubmitDefinitionFormProps {
 export function SubmitDefinitionForm({
   isAuthenticated
 }: SubmitDefinitionFormProps) {
+  const searchParams = useSearchParams();
+
   const { execute, status } = useAction(submitDefinition, {
     onSuccess: (data) => {
       form.reset();
@@ -53,6 +57,13 @@ export function SubmitDefinitionForm({
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     execute(values);
   };
+
+  useEffect(() => {
+    const term = searchParams.get('term');
+    if (term) {
+      form.setValue('term', term);
+    }
+  }, [form, searchParams]);
 
   return (
     <Form {...form}>

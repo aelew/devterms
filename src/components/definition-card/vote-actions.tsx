@@ -87,7 +87,7 @@ export function VoteActions({
     // remove downvote if it exists
     if (isDownvoted) toggleDownvote();
 
-    // update local storage
+    // update local storage and state
     isUpvoted ? removeUpvote() : addUpvote();
 
     const action = isUpvoted ? 'decrement' : 'increment';
@@ -106,7 +106,7 @@ export function VoteActions({
     // remove upvote if it exists
     if (isUpvoted) toggleUpvote();
 
-    // update local storage
+    // update local storage and state
     isDownvoted ? removeDownvote() : addDownvote();
 
     const action = isDownvoted ? 'decrement' : 'increment';
