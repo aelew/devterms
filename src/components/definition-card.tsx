@@ -133,7 +133,7 @@ export function DefinitionCard({
               </Button>
             </PopoverContent>
           </Popover>
-          <button className="flex items-center hover:text-muted-foreground/80">
+          <button className="flex items-center text-destructive hover:text-destructive/80">
             <FlagIcon className="mr-1.5 size-4" />
             Report
           </button>

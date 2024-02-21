@@ -1,22 +1,31 @@
-import { SearchIcon } from 'lucide-react';
+import { PlusIcon, SearchIcon } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ThemeSwitcher } from '@/components/theme-switcher';
+import { buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 export function Header() {
   return (
     <header className="container mb-4 flex flex-col">
       <div className="flex h-14 justify-between">
-        <div className="flex items-center gap-8">
-          <Link className="flex items-center gap-1" href="/">
+        <div className="flex items-center gap-1">
+          <Link className="flex items-center gap-2" href="/">
+            <Image src="/icon.png" alt="Logo" width={24} height={24} />
             <h1 className="text-xl font-semibold tracking-tighter">DevTerms</h1>
-            <span className="hidden text-sm tracking-tight text-muted-foreground sm:inline">
-              &mdash; The developer dictionary
-            </span>
           </Link>
+          <span className="hidden text-sm tracking-tight text-muted-foreground sm:inline">
+            &mdash; The developer dictionary
+          </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Link
+            className={buttonVariants({ variant: 'outline', size: 'icon' })}
+            href="/submit"
+          >
+            <PlusIcon className="size-4" />
+          </Link>
           <ThemeSwitcher />
         </div>
       </div>
