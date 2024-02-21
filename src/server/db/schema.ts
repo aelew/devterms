@@ -81,3 +81,20 @@ export const reports = mysqlTable('reports', {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull()
 });
+
+export const wotds = mysqlTable('wotds', {
+  id: varchar('id', { length: 21 })
+    .primaryKey()
+    .$defaultFn(() => generateId('wotd')),
+  definitionId: varchar('definition_id', { length: 20 }).notNull(),
+  createdAt: timestamp('created_at')
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull()
+});
+
+export const wotdRelations = relations(wotds, ({ one }) => ({
+  definition: one(definitions, {
+    fields: [wotds.definitionId],
+    references: [definitions.id]
+  })
+}));
