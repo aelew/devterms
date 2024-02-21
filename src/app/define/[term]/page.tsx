@@ -1,13 +1,11 @@
 import { and, desc, eq } from 'drizzle-orm';
-import type { Metadata } from 'next';
-import { unstable_cache } from 'next/cache';
+import { notFound } from 'next/navigation';
 
-import { AsideCard } from '@/components/aside-card';
 import { DefinitionCard } from '@/components/definition-card';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
-interface TermPageProps {
+interface DefinitionPageProps {
   params: {
     term: string;
   };
@@ -26,24 +24,26 @@ const getDefinitions = (term: string) =>
     }
   });
 
-export function generateMetadata({ params }: TermPageProps) {
-  return { title: `${params.term.toUpperCase()} Definition` };
+export function generateMetadata({ params }: DefinitionPageProps) {
+  const term = decodeURIComponent(params.term);
+  return { title: `${term.toUpperCase()} Definition` };
 }
 
-export default async function TermPage({ params }: TermPageProps) {
-  const results = await getDefinitions(params.term);
+export default async function DefinitionPage({ params }: DefinitionPageProps) {
+  const term = decodeURIComponent(params.term);
+  const results = await getDefinitions(term);
+  if (!results.length) {
+    notFound();
+  }
   return (
-    <div className="flex flex-col-reverse gap-4 md:flex-row">
-      <div className="flex flex-1 flex-col gap-4">
-        {results.map((definition) => (
-          <DefinitionCard
-            key={definition.id}
-            definition={definition}
-            badges={[]}
-          />
-        ))}
-      </div>
-      <AsideCard />
-    </div>
+    <>
+      {results.map((definition) => (
+        <DefinitionCard
+          key={definition.id}
+          definition={definition}
+          badges={[]}
+        />
+      ))}
+    </>
   );
 }
