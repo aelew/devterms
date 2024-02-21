@@ -26,10 +26,8 @@ const getDefinitions = (term: string) =>
     }
   });
 
-export async function generateMetadata({ params }: TermPageProps) {
-  const results = await getDefinitions(params.term);
-  if (!results.length) return {};
-  return { title: `Definition of ${params.term}` } satisfies Metadata;
+export function generateMetadata({ params }: TermPageProps) {
+  return { title: `${params.term.toUpperCase()} Definition` };
 }
 
 export default async function TermPage({ params }: TermPageProps) {

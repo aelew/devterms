@@ -37,7 +37,11 @@ export function DefinitionCard({
         </div>
       )}
       <CardHeader>
-        <CardTitle className="text-3xl">{definition.term}</CardTitle>
+        <Link className="w-fit" href={`/define/${definition.term}`}>
+          <CardTitle className="w-fit text-3xl hover:text-primary/80">
+            {definition.term}
+          </CardTitle>
+        </Link>
       </CardHeader>
       <CardContent>
         <p>{definition.definition}</p>

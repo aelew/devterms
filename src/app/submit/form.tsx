@@ -17,19 +17,10 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
-const formSchema = z.object({
-  term: z
-    .string()
-    .min(1)
-    .max(64, { message: 'Term must be between 1 and 64 characters.' }),
-  definition: z
-    .string()
-    .min(1)
-    .max(512, { message: 'Definition must be between 1 and 512 characters.' }),
-  example: z
-    .string()
-    .min(1)
-    .max(512, { message: 'Example must be between 1 and 512 characters.' })
+export const formSchema = z.object({
+  term: z.string().min(1).max(64),
+  definition: z.string().min(1).max(512),
+  example: z.string().min(1).max(512)
 });
 
 export function SubmitDefinitionForm() {
