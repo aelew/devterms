@@ -15,7 +15,7 @@ import { DefinitionShareButton } from './share-button';
 import { VoteActions } from './vote-actions';
 
 interface DefinitionCardProps {
-  definition: Definition & { user: { name: string | null } };
+  definition: Definition & { user?: { name: string | null } };
   badges?: string[];
   className?: string;
 }
@@ -54,9 +54,9 @@ export function DefinitionCard({
               <span aria-hidden>&mdash; </span>
               <Link
                 className="hover:underline hover:underline-offset-4"
-                href={`/u/${definition.user.name}`}
+                href={`/u/${definition.user?.name ?? 'Anonymous'}`}
               >
-                {definition.user.name}
+                {definition.user?.name ?? 'Anonymous'}
               </Link>
             </span>
             <span aria-hidden> &middot; </span>

@@ -1,6 +1,6 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { sql } from 'drizzle-orm';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, ShuffleIcon } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
@@ -51,9 +51,7 @@ export function AsideCard() {
         </Link>
         <form className="contents" action={showRandomDefinition}>
           <Button className="w-full" variant="outline">
-            <span className="mr-2" aria-hidden>
-              🍀
-            </span>{' '}
+            <ShuffleIcon className="mr-2 size-3" />
             I&apos;m feeling lucky
           </Button>
         </form>

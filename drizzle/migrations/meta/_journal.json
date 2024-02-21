@@ -15,6 +15,20 @@
       "when": 1708480725866,
       "tag": "0001_steep_praxagora",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708499454611,
+      "tag": "0002_mature_gertrude_yorkes",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1708499513541,
+      "tag": "0003_awesome_doomsday",
+      "breakpoints": true
     }
   ]
 }
