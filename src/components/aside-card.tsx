@@ -1,5 +1,4 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { eq, sql } from 'drizzle-orm';
 import { PlusIcon, ShuffleIcon } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -12,17 +11,12 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { db } from '@/server/db';
-import { definitions } from '@/server/db/schema';
+import { getRandomDefinition } from '@/lib/definitions';
 
 export function AsideCard() {
   async function showRandomDefinition() {
     'use server';
-    const definition = await db.query.definitions.findFirst({
-      where: eq(definitions.status, 'approved'),
-      columns: { term: true },
-      orderBy: sql`rand()`
-    });
+    const definition = await getRandomDefinition();
     if (!definition) {
       throw new Error('No definitions available');
     }
