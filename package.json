@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "db:studio": "drizzle-kit studio",
     "db:migrate": "tsx drizzle/migrate",
+    "db:seed": "tsx drizzle/seed",
     "db:drop": "drizzle-kit drop",
     "db:push": "drizzle-kit push:mysql",
     "db:generate": "drizzle-kit generate:mysql"
