@@ -77,7 +77,7 @@ export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
                 <FormItem>
                   <FormControl>
                     <Textarea
-                      placeholder="Why should this definition be removed?"
+                      placeholder="What's wrong with this definition?"
                       {...field}
                     />
                   </FormControl>
