@@ -1,13 +1,13 @@
 import { desc, eq, sql } from 'drizzle-orm';
-import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 
 import { AsideCard } from '@/components/aside-card/aside-card';
 import { DefinitionCard } from '@/components/definition-card';
+import { getPageMetadata } from '@/lib/seo';
 import { db } from '@/server/db';
 import { definitions, wotds } from '@/server/db/schema';
 
-export const metadata: Metadata = { title: 'The Developer Dictionary' };
+export const metadata = getPageMetadata({ title: 'The Developer Dictionary' });
 
 const getWordOfTheDay = unstable_cache(
   () =>

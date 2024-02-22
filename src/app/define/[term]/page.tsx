@@ -1,9 +1,9 @@
 import { and, desc, eq } from 'drizzle-orm';
-import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
 
 import { DefinitionCard } from '@/components/definition-card';
+import { getPageMetadata } from '@/lib/seo';
 import { slugToTerm } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
@@ -38,12 +38,12 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
   const term = slugToTerm(params.term);
   const results = await getDefinitions(term);
   if (!results.length) {
-    return { title: `${term} Definition` };
+    return getPageMetadata({ title: `${term} Definition` });
   }
-  return {
+  return getPageMetadata({
     title: `${results[0].term} Definition`,
     description: results[0].definition
-  } satisfies Metadata;
+  });
 }
 
 export default async function DefinitionPage({ params }: DefinitionPageProps) {

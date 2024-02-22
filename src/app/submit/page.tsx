@@ -1,5 +1,3 @@
-import type { Metadata } from 'next';
-
 import {
   Card,
   CardContent,
@@ -7,9 +5,14 @@ import {
   CardHeader
 } from '@/components/ui/card';
 import { getAuthData } from '@/lib/auth/helpers';
+import { getPageMetadata } from '@/lib/seo';
 import { SubmitDefinitionForm } from './form';
 
-export const metadata: Metadata = { title: 'Submit a definition' };
+export const metadata = getPageMetadata({
+  title: 'Submit a definition',
+  description:
+    'Your definition should be fit for a wide audience. Include background information if necessary. Refrain from mentioning inside jokes or individuals who are not public figures. Your definition will be reviewed before being published!'
+});
 
 export default async function SubmitDefinitionPage() {
   const { user } = await getAuthData();
@@ -24,7 +27,7 @@ export default async function SubmitDefinitionPage() {
             Your definition should be fit for a wide audience. Include
             background information if necessary. Refrain from mentioning inside
             jokes or individuals who are not public figures. Your definition
-            will be reviewed before being published.
+            will be reviewed before being published!
           </CardDescription>
         </CardHeader>
         <CardContent>
