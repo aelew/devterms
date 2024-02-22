@@ -1,5 +1,11 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { ArrowRightIcon, LogOutIcon, PlusIcon, SearchIcon } from 'lucide-react';
+import {
+  ArrowRightIcon,
+  LayoutDashboardIcon,
+  LogOutIcon,
+  PlusIcon,
+  SearchIcon
+} from 'lucide-react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -86,6 +92,12 @@ export async function Header() {
                   </p>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/definitions/me">
+                    <LayoutDashboardIcon className="mr-2 size-4" />
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
                 <form action={signOut}>
                   <DropdownMenuItem asChild>
                     <button className="w-full">
@@ -106,14 +118,12 @@ export async function Header() {
           )}
         </div>
       </div>
-      <div>
-        <div className="relative flex items-center">
-          <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
-          <Input
-            className="h-auto rounded-lg py-3 pl-10 pr-4 shadow"
-            placeholder="Search..."
-          />
-        </div>
+      <div className="relative flex items-center">
+        <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
+        <Input
+          className="h-auto rounded-lg py-3 pl-10 pr-4 shadow"
+          placeholder="Search..."
+        />
       </div>
     </header>
   );
