@@ -2,6 +2,7 @@ import { and, desc, eq } from 'drizzle-orm';
 import { notFound } from 'next/navigation';
 
 import { DefinitionCard } from '@/components/definition-card';
+import { slugToTerm } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
@@ -25,12 +26,12 @@ const getDefinitions = (term: string) =>
   });
 
 export function generateMetadata({ params }: DefinitionPageProps) {
-  const term = decodeURIComponent(params.term);
+  const term = slugToTerm(params.term);
   return { title: `${term.toUpperCase()} Definition` };
 }
 
 export default async function DefinitionPage({ params }: DefinitionPageProps) {
-  const term = decodeURIComponent(params.term);
+  const term = slugToTerm(params.term);
   const results = await getDefinitions(term);
   if (!results.length) {
     notFound();

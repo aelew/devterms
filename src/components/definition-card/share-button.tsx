@@ -24,6 +24,7 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
+import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';
 
 interface DefinitionShareButtonProps {
@@ -31,7 +32,7 @@ interface DefinitionShareButtonProps {
 }
 
 export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
-  const url = `https://devterms.io/define/${term}`;
+  const url = `https://devterms.io/define/${termToSlug(term)}`;
   const { status, copy } = useCopyToClipboard();
   const plausible = usePlausible<Events>();
 

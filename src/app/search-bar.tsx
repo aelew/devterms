@@ -14,6 +14,7 @@ import {
 } from 'react';
 
 import { env } from '@/env';
+import { termToSlug } from '@/lib/utils';
 import type { Events } from '@/types';
 import {
   CommandGroup,
@@ -64,7 +65,7 @@ export function SearchBar() {
         if (hitToSelect) {
           setSelectedHit(hitToSelect);
         } else {
-          router.push(`/define/${input.value.trim()}`);
+          router.push(`/define/${termToSlug(input.value.trim())}`);
           plausible('Search');
         }
       }
@@ -103,7 +104,7 @@ export function SearchBar() {
       // Prevents the input from being focused after the user selects an option
       inputRef?.current?.blur();
 
-      router.push(`/define/${hit.term}`);
+      router.push(`/define/${termToSlug(hit.term)}`);
       plausible('Search');
     },
     [router, selectedHit, plausible]
