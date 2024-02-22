@@ -23,6 +23,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
+    NEXT_PUBLIC_BASE_URL: z.string().url(),
     NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: z.string(),
     NEXT_PUBLIC_MEILISEARCH_HOST: z.string().url()
   },
@@ -31,6 +32,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   experimental__runtimeEnv: {
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY:
       process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
     NEXT_PUBLIC_MEILISEARCH_HOST: process.env.NEXT_PUBLIC_MEILISEARCH_HOST

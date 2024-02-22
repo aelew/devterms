@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import { getPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'My definitions' };
+export const metadata = getPageMetadata({ title: 'My definitions' });
 
 export default function MyDefinitionsPage() {
   return <>My definitions</>;

@@ -10,6 +10,7 @@ import { env } from '@/env';
 import { github, lucia } from '@/lib/auth';
 import { getRandomDefinition } from '@/lib/definitions';
 import { generateId } from '@/lib/id';
+import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { termToSlug } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions, users, wotds } from '@/server/db/schema';
@@ -22,9 +23,8 @@ const app = new Elysia({ prefix: '/api' })
       documentation: {
         info: {
           version: '1.0.0',
-          title: 'DevTerms API',
-          description:
-            'A crowdsourced dictionary for developers. Find definitions for all sorts of technical terms, programming jargon, and more!'
+          title: `${APP_NAME} API`,
+          description: APP_DESCRIPTION
         }
       },
       exclude: [
