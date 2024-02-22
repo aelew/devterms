@@ -28,6 +28,7 @@ const getHomeFeed = unstable_cache(
   () =>
     db.query.definitions.findMany({
       where: eq(definitions.status, 'approved'),
+      with: { user: true },
       orderBy: sql`rand()`,
       limit: 5
     }),

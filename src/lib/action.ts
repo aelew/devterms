@@ -27,3 +27,19 @@ export const protectedAction = createSafeActionClient({
     return data;
   }
 });
+
+export const moderatorAction = createSafeActionClient({
+  handleReturnedServerError: (e) => {
+    return e instanceof ActionError ? e.message : GENERIC_ERROR;
+  },
+  middleware: async () => {
+    const data = await getAuthData();
+    if (!data.user) {
+      throw new ActionError('Authentication required');
+    }
+    if (data.user.role !== 'moderator') {
+      throw new ActionError('Insufficient permissions');
+    }
+    return data;
+  }
+});
