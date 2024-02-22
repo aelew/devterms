@@ -4,6 +4,10 @@
     {
       "path": "/api/cron/wotd",
       "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/cron/meilisearch",
+      "schedule": "0 0 * * *"
     }
   ]
 }
