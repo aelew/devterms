@@ -24,6 +24,12 @@ import { lucia } from '@/lib/auth';
 import { getAuthData } from '@/lib/auth/helpers';
 import { SearchBar } from './search-bar';
 
+const navigation = [
+  { label: 'Home', href: '/' },
+  { label: 'Submit', href: '/submit' },
+  { label: 'API', href: '/api/docs' }
+];
+
 export async function Header() {
   const { user } = await getAuthData();
 
@@ -47,16 +53,25 @@ export async function Header() {
   return (
     <header className="container mb-4 flex flex-col">
       <div className="flex h-14 justify-between">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-4">
           <Link className="flex items-center gap-2" href="/">
             <Image src="/icon.png" alt="Logo" width={24} height={24} />
             <span className="text-xl font-semibold tracking-tighter">
               DevTerms
             </span>
           </Link>
-          <span className="hidden text-sm tracking-tight text-muted-foreground sm:inline">
-            &mdash; The developer dictionary
-          </span>
+          <ul className="hidden gap-4 text-sm text-muted-foreground sm:flex">
+            {navigation.map((item) => (
+              <li key={item.href}>
+                <Link
+                  className="hover:text-muted-foreground/80"
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="flex items-center gap-2">
           <Link

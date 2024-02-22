@@ -18,9 +18,10 @@ import type { GitHubEmailsResponse, GitHubUserResponse } from '@/types';
 const app = new Elysia({ prefix: '/api' })
   .use(
     swagger({
+      path: '/docs',
       documentation: {
         info: {
-          version: 'v1.0',
+          version: '1.0.0',
           title: 'DevTerms API',
           description:
             'A crowdsourced dictionary for developers. Find definitions for all sorts of technical terms, programming jargon, and more!'
@@ -29,7 +30,8 @@ const app = new Elysia({ prefix: '/api' })
       exclude: [
         '/api/callback/github',
         '/api/cron/meilisearch',
-        '/api/cron/wotd'
+        '/api/cron/wotd',
+        '/api/docs'
       ]
     })
   )
