@@ -38,7 +38,7 @@ const app = new Elysia({ prefix: '/api' })
       return { success: false, error: 'not_found' };
     }
   })
-  .onAfterHandle(({ set }) => {
+  .onTransform(({ set }) => {
     set.headers['content-type'] = 'application/json';
   })
   .get(
