@@ -35,4 +35,5 @@ next-env.d.ts
 # misc
 .DS_Store
 *.pem
-drizzle/definitions.json
+/drizzle/definitions.json
+/meilisearch

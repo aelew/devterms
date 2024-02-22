@@ -23,5 +23,5 @@ export async function GET(request: NextRequest) {
   await db.insert(wotds).values({ definitionId: definition.id });
   revalidateTag('wotd');
 
-  return NextResponse.json({ success: true }, { status: 200 });
+  return NextResponse.json({ success: true });
 }

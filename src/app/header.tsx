@@ -3,8 +3,7 @@ import {
   ArrowRightIcon,
   LayoutDashboardIcon,
   LogOutIcon,
-  PlusIcon,
-  SearchIcon
+  PlusIcon
 } from 'lucide-react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
@@ -21,9 +20,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
 import { lucia } from '@/lib/auth';
 import { getAuthData } from '@/lib/auth/helpers';
+import { SearchBar } from './search-bar';
 
 export async function Header() {
   const { user } = await getAuthData();
@@ -118,13 +117,7 @@ export async function Header() {
           )}
         </div>
       </div>
-      <div className="relative flex items-center">
-        <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
-        <Input
-          className="h-auto rounded-lg py-3 pl-10 pr-4 shadow"
-          placeholder="Search..."
-        />
-      </div>
+      <SearchBar />
     </header>
   );
 }

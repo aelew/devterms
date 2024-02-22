@@ -29,7 +29,7 @@ export function DefinitionCard({
   return (
     <Card id={definition.id} className={cn('relative', className)}>
       {badges && (
-        <div className="absolute right-6 top-6">
+        <div className="absolute right-6 top-8">
           <div className="flex gap-2">
             {badges.map((badge) => (
               <Badge key={badge}>{badge}</Badge>
