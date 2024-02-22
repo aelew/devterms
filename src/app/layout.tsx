@@ -33,14 +33,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html suppressHydrationWarning lang="en">
       <head>
         <PlausibleProvider
-          // enabled={env.NODE_ENV === 'production'}
-          enabled
           customDomain="https://s.aelew.dev"
-          domain="test.com"
+          domain="devterms.io"
           trackOutboundLinks
           taggedEvents
           selfHosted
-          trackLocalhost
         />
       </head>
       <body
