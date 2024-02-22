@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { cn, termToSlug } from '@/lib/utils';
 import type { Definition } from '@/types';
 import { Time } from '../time';
 import { DefinitionReportButton } from './report-button';
@@ -38,7 +38,7 @@ export function DefinitionCard({
         </div>
       )}
       <CardHeader>
-        <Link className="w-fit" href={`/define/${definition.term}`}>
+        <Link className="w-fit" href={`/define/${termToSlug(definition.term)}`}>
           <CardTitle className="w-fit text-3xl hover:text-primary/80">
             {definition.term}
           </CardTitle>

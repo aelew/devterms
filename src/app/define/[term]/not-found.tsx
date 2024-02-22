@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { slugToTerm, termToSlug } from '@/lib/utils';
 
 export default function NotFound() {
   const params = useParams();
-  const term = decodeURIComponent(params.term as string);
+  const term = slugToTerm(params.term as string);
   return (
     <Card>
       <CardHeader>
@@ -21,8 +22,8 @@ export default function NotFound() {
         <p>
           Know what it means?{' '}
           <Link
+            href={`/submit?term=${termToSlug(term)}`}
             className="underline underline-offset-4"
-            href={`/submit?term=${params.term}`}
           >
             Submit a definition here!
           </Link>

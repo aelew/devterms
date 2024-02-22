@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { getActionErrorMessage } from '@/lib/utils';
+import { getActionErrorMessage, slugToTerm } from '@/lib/utils';
 import type { Events } from '@/types';
 import { submitDefinition } from './_actions';
 import { formSchema } from './schema';
@@ -63,9 +63,9 @@ export function SubmitDefinitionForm({
   };
 
   useEffect(() => {
-    const term = searchParams.get('term');
-    if (term) {
-      form.setValue('term', term);
+    const termSlugParam = searchParams.get('term');
+    if (termSlugParam) {
+      form.setValue('term', slugToTerm(termSlugParam));
     }
   }, [form, searchParams]);
 

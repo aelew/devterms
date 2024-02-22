@@ -9,9 +9,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getActionErrorMessage = (
+export function getActionErrorMessage(
   result: Omit<HookResult<Schema, unknown>, 'data'>
-) => {
+) {
   if (result.serverError) {
     return result.serverError;
   }
@@ -20,4 +20,14 @@ export const getActionErrorMessage = (
     return validationErrors[0]!.toString();
   }
   return GENERIC_ERROR;
-};
+}
+
+export function termToSlug(term: string) {
+  return encodeURIComponent(
+    term.replaceAll('-', '--').replaceAll(' ', '-').toLowerCase()
+  );
+}
+
+export function slugToTerm(slug: string) {
+  return decodeURIComponent(slug).replaceAll('-', ' ').replaceAll('  ', '-');
+}
