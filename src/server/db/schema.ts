@@ -49,7 +49,7 @@ export const definitions = mysqlTable('definitions', {
     .primaryKey()
     .$defaultFn(() => generateId('def')),
   userId: varchar('user_id', { length: 21 }).notNull(),
-  status: mysqlEnum('status', ['pending', 'approved', 'denied'])
+  status: mysqlEnum('status', ['pending', 'approved', 'rejected'])
     .default('pending')
     .notNull(),
   term: varchar('term', { length: 255 }).notNull(),

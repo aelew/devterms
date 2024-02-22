@@ -13,8 +13,8 @@ interface DefinitionPageProps {
 
 const getDefinitions = (term: string) =>
   db.query.definitions.findMany({
-    orderBy: desc(definitions.upvotes),
     where: and(eq(definitions.term, term), eq(definitions.status, 'approved')),
+    orderBy: desc(definitions.upvotes),
     with: {
       user: {
         columns: {
