@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import { AsideCard } from '@/components/aside-card';
+import { AsideCard } from '@/components/aside-card/aside-card';
 
 export default function DefinitionLayout({ children }: PropsWithChildren) {
   return (

@@ -3,6 +3,7 @@
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
 import { Command as CommandPrimitive } from 'cmdk';
 import { CheckIcon, SearchIcon } from 'lucide-react';
+import { usePlausible } from 'next-plausible';
 import { useRouter } from 'next/navigation';
 import {
   useCallback,
@@ -13,6 +14,7 @@ import {
 } from 'react';
 
 import { env } from '@/env';
+import type { Events } from '@/types';
 import {
   CommandGroup,
   CommandItem,
@@ -42,6 +44,7 @@ export function SearchBar() {
   const [hits, setHits] = useState<Hit[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const plausible = usePlausible<Events>();
   const router = useRouter();
 
   const handleKeyDown = useCallback(
@@ -62,6 +65,7 @@ export function SearchBar() {
           setSelectedHit(hitToSelect);
         } else {
           router.push(`/define/${input.value.trim()}`);
+          plausible('Search');
         }
       }
 
@@ -69,7 +73,7 @@ export function SearchBar() {
         input.blur();
       }
     },
-    [router, hits, open]
+    [router, hits, open, plausible]
   );
 
   const handleBlur = useCallback(() => {
@@ -100,8 +104,9 @@ export function SearchBar() {
       inputRef?.current?.blur();
 
       router.push(`/define/${hit.term}`);
+      plausible('Search');
     },
-    [router, selectedHit]
+    [router, selectedHit, plausible]
   );
 
   useEffect(() => {

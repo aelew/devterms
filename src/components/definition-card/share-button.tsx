@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckIcon, CopyIcon, ShareIcon } from 'lucide-react';
+import { usePlausible } from 'next-plausible';
 import {
   EmailIcon,
   EmailShareButton,
@@ -23,6 +24,7 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
+import type { Events, ShareMedium } from '@/types';
 
 interface DefinitionShareButtonProps {
   term: string;
@@ -31,6 +33,7 @@ interface DefinitionShareButtonProps {
 export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
   const url = `https://devterms.io/define/${term}`;
   const { status, copy } = useCopyToClipboard();
+  const plausible = usePlausible<Events>();
 
   const CopyShareIcon = match(status)
     .with('copied', () => motion(CheckIcon))
@@ -42,6 +45,10 @@ export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
     .with('error', () => 'text-red-500')
     .otherwise(() => 'text-muted-foreground');
 
+  const log = (medium: ShareMedium) => {
+    plausible('Share', { props: { Medium: medium } });
+  };
+
   return (
     <Popover>
       <PopoverTrigger className="flex items-center text-muted-foreground hover:text-muted-foreground/80">
@@ -49,26 +56,29 @@ export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
         Share
       </PopoverTrigger>
       <PopoverContent className="flex w-full gap-2 p-2">
-        <TwitterShareButton url={url}>
+        <TwitterShareButton onClick={() => log('X')} url={url}>
           <XIcon size={24} round />
         </TwitterShareButton>
-        <RedditShareButton url={url}>
+        <RedditShareButton onClick={() => log('Reddit')} url={url}>
           <RedditIcon size={24} round />
         </RedditShareButton>
-        <LinkedinShareButton url={url}>
+        <LinkedinShareButton onClick={() => log('LinkedIn')} url={url}>
           <LinkedinIcon size={24} round />
         </LinkedinShareButton>
-        <FacebookShareButton url={url}>
+        <FacebookShareButton onClick={() => log('Facebook')} url={url}>
           <FacebookIcon size={24} round />
         </FacebookShareButton>
-        <EmailShareButton url={url}>
+        <EmailShareButton onClick={() => log('Email')} url={url}>
           <EmailIcon size={24} round />
         </EmailShareButton>
         <Button
           className="size-6 rounded-full shadow-none"
-          onClick={() => copy(url)}
           variant="secondary"
           size="icon"
+          onClick={() => {
+            copy(url);
+            log('Direct');
+          }}
         >
           <AnimatePresence mode="popLayout" initial={false}>
             <CopyShareIcon

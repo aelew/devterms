@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FlagIcon } from 'lucide-react';
+import { usePlausible } from 'next-plausible';
 import { useAction } from 'next-safe-action/hooks';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -23,6 +24,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { getActionErrorMessage } from '@/lib/utils';
+import type { Events } from '@/types';
 import { Textarea } from '../ui/textarea';
 import { reportDefinition } from './_actions';
 import { reportFormSchema } from './schema';
@@ -32,10 +34,13 @@ interface ReportButtonProps {
 }
 
 export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
+  const plausible = usePlausible<Events>();
+
   const { execute, status } = useAction(reportDefinition, {
     onSuccess: (data) => {
       form.reset();
       toast.success(data.message);
+      plausible('Report', { props: { 'Definition ID': definitionId } });
     },
     onError: (result) => {
       const message = getActionErrorMessage(result);

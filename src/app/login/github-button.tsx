@@ -1,33 +1,21 @@
+'use client';
+
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { generateState } from 'arctic';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { usePlausible } from 'next-plausible';
 
 import { Button } from '@/components/ui/button';
-import { env } from '@/env';
-import { github } from '@/lib/auth';
+import type { Events } from '@/types';
+import { login } from './_actions';
 
 export function GitHubButton() {
-  async function login() {
-    'use server';
-    const state = generateState();
-    const url = await github.createAuthorizationURL(state, {
-      scopes: ['user:email']
-    });
-
-    cookies().set('oauth_state', state, {
-      secure: env.NODE_ENV === 'production',
-      maxAge: 60 * 10,
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/'
-    });
-
-    redirect(url.toString());
-  }
+  const plausible = usePlausible<Events>();
   return (
     <form action={login}>
-      <Button className="relative w-full" variant="outline">
+      <Button
+        onClick={() => plausible('Login')}
+        className="relative w-full"
+        variant="outline"
+      >
         <SiGithub className="absolute left-[0.875rem] size-4" />
         <span>Continue with GitHub</span>
       </Button>
