@@ -1,5 +1,6 @@
 import { GeistSans } from 'geist/font/sans';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import PlausibleProvider from 'next-plausible';
 import type { PropsWithChildren } from 'react';
 import { toast, Toaster } from 'sonner';
 
@@ -8,6 +9,8 @@ import { cn } from '@/lib/utils';
 import { Header } from './header';
 
 import './globals.css';
+
+import { env } from '@/env';
 
 export const metadata: Metadata = {
   title: {
@@ -18,9 +21,28 @@ export const metadata: Metadata = {
     'A crowdsourced dictionary for developers by developers. Find definitions for all sorts of technical terms, programming jargon, and more!'
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
+};
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html suppressHydrationWarning lang="en">
+      <head>
+        <PlausibleProvider
+          // enabled={env.NODE_ENV === 'production'}
+          enabled
+          customDomain="https://s.aelew.dev"
+          domain="test.com"
+          trackOutboundLinks
+          taggedEvents
+          selfHosted
+          trackLocalhost
+        />
+      </head>
       <body
         suppressHydrationWarning
         className={cn(

@@ -2,7 +2,7 @@ import { desc, eq, sql } from 'drizzle-orm';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 
-import { AsideCard } from '@/components/aside-card';
+import { AsideCard } from '@/components/aside-card/aside-card';
 import { DefinitionCard } from '@/components/definition-card';
 import { db } from '@/server/db';
 import { definitions, wotds } from '@/server/db/schema';

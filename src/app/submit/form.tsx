@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { usePlausible } from 'next-plausible';
 import { useAction } from 'next-safe-action/hooks';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -22,6 +23,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { getActionErrorMessage } from '@/lib/utils';
+import type { Events } from '@/types';
 import { submitDefinition } from './_actions';
 import { formSchema } from './schema';
 
@@ -32,12 +34,14 @@ interface SubmitDefinitionFormProps {
 export function SubmitDefinitionForm({
   isAuthenticated
 }: SubmitDefinitionFormProps) {
+  const plausible = usePlausible<Events>();
   const searchParams = useSearchParams();
 
   const { execute, status } = useAction(submitDefinition, {
     onSuccess: (data) => {
       form.reset();
       toast.success(data.message);
+      plausible('Submit definition');
     },
     onError: (result) => {
       const message = getActionErrorMessage(result);

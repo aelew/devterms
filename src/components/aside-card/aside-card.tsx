@@ -1,7 +1,9 @@
+'use client';
+
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { PlusIcon, ShuffleIcon } from 'lucide-react';
+import { usePlausible } from 'next-plausible';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 import { Button, buttonVariants } from '@/components/ui/button';
 import {
@@ -11,17 +13,11 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { getRandomDefinition } from '@/lib/definitions';
+import type { Events } from '@/types';
+import { showRandomDefinition } from './_actions';
 
 export function AsideCard() {
-  async function showRandomDefinition() {
-    'use server';
-    const definition = await getRandomDefinition();
-    if (!definition) {
-      throw new Error('No definitions available');
-    }
-    redirect(`/define/${definition.term}`);
-  }
+  const plausible = usePlausible<Events>();
   return (
     <Card className="h-fit md:w-1/3">
       <CardHeader className="pb-4">
@@ -46,7 +42,11 @@ export function AsideCard() {
           Submit a definition
         </Link>
         <form className="contents" action={showRandomDefinition}>
-          <Button className="w-full" variant="outline">
+          <Button
+            onClick={() => plausible("I'm feeling lucky")}
+            className="w-full"
+            variant="outline"
+          >
             <ShuffleIcon className="mr-2 size-3" />
             I&apos;m feeling lucky
           </Button>
