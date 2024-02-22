@@ -55,16 +55,20 @@ export function DefinitionCard({
         </div>
         <div className="flex items-center text-sm">
           <p>
-            <span className="font-semibold">
-              <span aria-hidden>&mdash; </span>
-              <Link
-                className="hover:underline hover:underline-offset-4"
-                href={`/u/${definition.user?.name ?? 'Anonymous'}`}
-              >
-                {definition.user?.name ?? 'Anonymous'}
-              </Link>
-            </span>
-            <span aria-hidden> &middot; </span>
+            <span aria-hidden>&mdash; </span>
+            {definition.user?.name && (
+              <>
+                <span className="font-semibold">
+                  <Link
+                    className="hover:underline hover:underline-offset-4"
+                    href={`/u/${definition.user.name}`}
+                  >
+                    {definition.user.name}
+                  </Link>
+                </span>
+                <span aria-hidden> &middot; </span>
+              </>
+            )}
             <Time date={definition.createdAt} />
           </p>
         </div>

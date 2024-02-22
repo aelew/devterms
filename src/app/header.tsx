@@ -61,6 +61,7 @@ export async function Header() {
         <div className="flex items-center gap-2">
           <Link
             className={buttonVariants({ variant: 'outline', size: 'icon' })}
+            aria-label="Submit a definition"
             href="/submit"
           >
             <PlusIcon className="size-4" />
@@ -68,6 +69,7 @@ export async function Header() {
           <Link
             className={buttonVariants({ variant: 'outline', size: 'icon' })}
             href="https://github.com/aelew/devterms"
+            aria-label="GitHub"
             target="_blank"
           >
             <SiGithub className="size-4" />

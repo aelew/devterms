@@ -126,6 +126,7 @@ export function VoteActions({
       <Button
         variant="outline"
         formAction={toggleUpvote}
+        aria-label="Upvote definition"
         className="gap-2 rounded-full rounded-r-none border-r-0"
       >
         {isUpvoted ? <SolidThumbsUpIcon /> : <RegularThumbsUpIcon />}
@@ -134,6 +135,7 @@ export function VoteActions({
       <Button
         variant="outline"
         formAction={toggleDownvote}
+        aria-label="Downvote definition"
         className="gap-2 rounded-full rounded-l-none"
       >
         {isDownvoted ? <SolidThumbsDownIcon /> : <RegularThumbsDownIcon />}

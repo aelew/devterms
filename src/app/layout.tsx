@@ -2,15 +2,13 @@ import { GeistSans } from 'geist/font/sans';
 import type { Metadata, Viewport } from 'next';
 import PlausibleProvider from 'next-plausible';
 import type { PropsWithChildren } from 'react';
-import { toast, Toaster } from 'sonner';
+import { Toaster } from 'sonner';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 import { Header } from './header';
 
 import './globals.css';
-
-import { env } from '@/env';
 
 export const metadata: Metadata = {
   title: {
