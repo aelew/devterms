@@ -44,12 +44,16 @@ export function DefinitionCard({
           </CardTitle>
         </Link>
       </CardHeader>
-      <CardContent>
-        <p>{definition.definition}</p>
-        <small className="italic text-muted-foreground">
-          &ldquo;{definition.example}&rdquo;
-        </small>
-        <div className="mt-6 flex items-center text-sm">
+      <CardContent className="space-y-6">
+        <div className="space-y-2">
+          <p className="leading-5">{definition.definition}</p>
+          <p className="text-sm italic leading-4 text-muted-foreground">
+            &quot;
+            {definition.example}
+            &quot;
+          </p>
+        </div>
+        <div className="flex items-center text-sm">
           <p>
             <span className="font-semibold">
               <span aria-hidden>&mdash; </span>
