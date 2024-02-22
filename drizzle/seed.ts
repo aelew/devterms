@@ -17,7 +17,7 @@ if (!process.env.DATABASE_URL) {
 const connection = new Client({ url: process.env.DATABASE_URL }).connection();
 const db = drizzle(connection, { schema });
 
-const AUTHOR_ID = 'user_ZTNAoqAH3NiASs7y';
+const AUTHOR_ID = 'user_sys';
 
 interface SeedDefinition {
   term: string;
@@ -37,6 +37,7 @@ async function main() {
       await db.insert(schema.definitions).values({
         userId: AUTHOR_ID,
         status: 'approved',
+        upvotes: 1,
         ...def
       });
     }
