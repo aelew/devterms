@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-3xl">{term}</CardTitle>
+        <CardTitle className="text-gradient text-3xl">{term}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <p>

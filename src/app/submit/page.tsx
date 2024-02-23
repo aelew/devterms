@@ -20,7 +20,7 @@ export default async function SubmitDefinitionPage() {
     <div className="mx-auto mt-2 max-w-md">
       <Card>
         <CardHeader className="text-center">
-          <h1 className="text-3xl font-semibold tracking-tight">
+          <h1 className="text-gradient text-3xl font-semibold tracking-tight">
             Submit a definition
           </h1>
           <CardDescription className="text-balance text-xs">

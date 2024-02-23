@@ -65,7 +65,7 @@ export async function Header() {
             {navigation.map((item) => (
               <li key={item.href}>
                 <Link
-                  className="hover:text-muted-foreground/80"
+                  className="block transition-color-transform hover:text-muted-foreground/80 active:scale-95"
                   href={item.href}
                 >
                   {item.label}
