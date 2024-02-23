@@ -1,7 +1,7 @@
 import { desc, eq, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 
-import { AsideCard } from '@/components/aside-card/aside-card';
+import { Aside } from '@/components/aside';
 import { DefinitionCard } from '@/components/definition-card';
 import { getPageMetadata } from '@/lib/seo';
 import { db } from '@/server/db';
@@ -58,7 +58,7 @@ export default async function HomePage() {
             <DefinitionCard key={def.id} definition={def} />
           ))}
       </div>
-      <AsideCard />
+      <Aside />
     </div>
   );
 }
