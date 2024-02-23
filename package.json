@@ -51,6 +51,7 @@
     "next-plausible": "^3.12.0",
     "next-safe-action": "^6.1.0",
     "next-themes": "^0.2.1",
+    "nextjs-toploader": "^1.6.6",
     "oslo": "^1.1.2",
     "react": "^18",
     "react-dom": "^18",

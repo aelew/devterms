@@ -1,6 +1,7 @@
 import { GeistSans } from 'geist/font/sans';
 import type { Viewport } from 'next';
 import PlausibleProvider from 'next-plausible';
+import NextTopLoader from 'nextjs-toploader';
 import type { PropsWithChildren } from 'react';
 import { Toaster } from 'sonner';
 
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           defaultTheme="system"
           disableTransitionOnChange
         >
+          <NextTopLoader showSpinner={false} />
           <Header />
           <main className="container">{children}</main>
           <Toaster richColors />
