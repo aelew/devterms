@@ -1,9 +1,10 @@
 import { GeistSans } from 'geist/font/sans';
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import PlausibleProvider from 'next-plausible';
 import type { PropsWithChildren } from 'react';
 import { Toaster } from 'sonner';
 
+import { Spotlight } from '@/components/spotlight';
 import { ThemeProvider } from '@/components/theme-provider';
 import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         suppressHydrationWarning
         className={cn(
           GeistSans.className,
-          'mb-8 flex min-h-screen flex-col antialiased'
+          'relative mb-8 flex min-h-screen flex-col antialiased'
         )}
       >
         <ThemeProvider
@@ -52,6 +53,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Header />
           <main className="container">{children}</main>
           <Toaster richColors />
+          <Spotlight
+            ellipseClassName="fill-sky-200/50 dark:fill-white/15"
+            className="-top-40 left-0 md:-top-20 md:left-60"
+          />
         </ThemeProvider>
       </body>
     </html>
