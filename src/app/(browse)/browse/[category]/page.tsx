@@ -1,46 +1,16 @@
-import { and, desc, eq, like } from 'drizzle-orm';
-import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
-import { DefinitionCard } from '@/components/definition-card';
+import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { CATEGORIES } from '@/lib/utils';
-import { db } from '@/server/db';
-import { definitions } from '@/server/db/schema';
+import { CategoryResultCards } from './_components/result-cards';
 
 interface BrowseCategoryPageProps {
   params: {
     category: string;
   };
 }
-
-const getCategoryDefinitions = unstable_cache(
-  (category: string) =>
-    db.query.definitions.findMany({
-      ...(category === 'new'
-        ? {
-            orderBy: desc(definitions.createdAt),
-            where: and(eq(definitions.status, 'approved')),
-            limit: 10
-          }
-        : {
-            orderBy: desc(definitions.term),
-            where: and(
-              eq(definitions.status, 'approved'),
-              like(definitions.term, category + '%')
-            )
-          }),
-      with: {
-        user: {
-          columns: {
-            name: true
-          }
-        }
-      }
-    }),
-  ['category_definitions'],
-  { revalidate: 1800 }
-);
 
 export function generateMetadata({ params }: BrowseCategoryPageProps) {
   return getPageMetadata({
@@ -55,16 +25,19 @@ export default async function BrowseCategoryPage({
   if (!CATEGORIES.includes(category)) {
     notFound();
   }
-  const results = await getCategoryDefinitions(category);
   return (
-    <>
-      {results.map((definition) => (
-        <DefinitionCard
-          key={definition.id}
-          definition={definition}
-          badges={[]}
-        />
-      ))}
-    </>
+    <Suspense
+      fallback={
+        <>
+          <SkeletonDefinitionCard />
+          <SkeletonDefinitionCard />
+          <SkeletonDefinitionCard />
+          <SkeletonDefinitionCard />
+          <SkeletonDefinitionCard />
+        </>
+      }
+    >
+      <CategoryResultCards category={category} />
+    </Suspense>
   );
 }

@@ -1,62 +1,33 @@
-import { desc, eq, sql } from 'drizzle-orm';
-import { unstable_cache } from 'next/cache';
+import { Suspense } from 'react';
 
 import { Aside } from '@/components/aside';
-import { DefinitionCard } from '@/components/definition-card';
+import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
-import { db } from '@/server/db';
-import { definitions, wotds } from '@/server/db/schema';
+import { HomeFeed } from './_components/home-feed';
+import { WordOfTheDayCard } from './_components/word-of-the-day-card';
 
 export const metadata = getPageMetadata({ title: 'The Developer Dictionary' });
 
-const getWordOfTheDay = unstable_cache(
-  () =>
-    db.query.wotds.findFirst({
-      orderBy: desc(wotds.createdAt),
-      with: {
-        definition: {
-          with: {
-            user: true
-          }
-        }
-      }
-    }),
-  ['wotd'],
-  { revalidate: 900 }
-);
-
-const getHomeFeed = unstable_cache(
-  () =>
-    db.query.definitions.findMany({
-      where: eq(definitions.status, 'approved'),
-      with: { user: true },
-      orderBy: sql`rand()`,
-      limit: 5
-    }),
-  ['home_feed'],
-  { revalidate: 900 }
-);
-
-export default async function HomePage() {
-  const [wotd, homeFeed] = await Promise.all([
-    getWordOfTheDay(),
-    getHomeFeed()
-  ]);
+export default function HomePage() {
   return (
     <div className="flex flex-col-reverse gap-4 md:flex-row">
       <div className="flex flex-1 flex-col gap-4">
-        {wotd && (
-          <DefinitionCard
-            definition={wotd.definition}
-            badges={['Word of the day']}
-            className="border-muted-foreground shadow-lg"
-          />
-        )}
-        {homeFeed
-          .filter((def) => !wotd || def.id !== wotd.definitionId)
-          .map((def) => (
-            <DefinitionCard key={def.id} definition={def} />
-          ))}
+        <Suspense fallback={<SkeletonDefinitionCard />}>
+          <WordOfTheDayCard />
+        </Suspense>
+        <Suspense
+          fallback={
+            <>
+              <SkeletonDefinitionCard />
+              <SkeletonDefinitionCard />
+              <SkeletonDefinitionCard />
+              <SkeletonDefinitionCard />
+              <SkeletonDefinitionCard />
+            </>
+          }
+        >
+          <HomeFeed />
+        </Suspense>
       </div>
       <Aside />
     </div>
