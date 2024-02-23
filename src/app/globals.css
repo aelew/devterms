@@ -74,3 +74,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .dark .text-gradient {
+    background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: unset;
+  }
+  .dark .text-gradient::selection {
+    @apply bg-blue-400/40 text-foreground;
+  }
+}
+
+.react-share__ShareButton {
+  @apply transition-color-transform hover:opacity-80 active:scale-90;
+}

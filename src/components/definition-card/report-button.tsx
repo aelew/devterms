@@ -62,7 +62,7 @@ export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
 
   return (
     <Dialog>
-      <DialogTrigger className="flex items-center text-destructive hover:text-destructive/80">
+      <DialogTrigger className="flex items-center text-destructive transition-color-transform hover:text-destructive/80 active:scale-95">
         <FlagIcon className="mr-1.5 size-4" />
         Report
       </DialogTrigger>

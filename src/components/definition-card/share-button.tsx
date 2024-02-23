@@ -52,7 +52,7 @@ export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
 
   return (
     <Popover>
-      <PopoverTrigger className="flex items-center text-muted-foreground hover:text-muted-foreground/80">
+      <PopoverTrigger className="flex items-center text-muted-foreground transition-color-transform hover:text-muted-foreground/80 active:scale-95">
         <ShareIcon className="mr-1.5 size-4" />
         Share
       </PopoverTrigger>
