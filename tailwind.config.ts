@@ -1,5 +1,12 @@
 import type { Config } from 'tailwindcss';
 
+const svgToDataUri = require('mini-svg-data-uri');
+
+const colors = require('tailwindcss/colors');
+const {
+  default: flattenColorPalette
+} = require('tailwindcss/lib/util/flattenColorPalette');
+
 const config = {
   darkMode: ['class'],
   content: ['./src/app/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
@@ -73,7 +80,22 @@ const config = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [
+    require('tailwindcss-animate'),
+    function ({ matchUtilities, theme }: unknown) {
+      matchUtilities(
+        {
+          'bg-grid': (value: string) => {
+            const dataUri = svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="${value}"><path d="M0 .5H31.5V32" /></svg>`
+            );
+            return { backgroundImage: `url("${dataUri}")` };
+          }
+        },
+        { values: flattenColorPalette(theme('backgroundColor')), type: 'color' }
+      );
+    }
+  ]
 } satisfies Config;
 
 export default config;
