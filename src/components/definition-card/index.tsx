@@ -17,14 +17,14 @@ import { VoteActions } from './vote-actions';
 
 interface DefinitionCardProps {
   definition: Definition & { user?: { name: string | null } };
-  badges?: string[];
   className?: string;
+  badges?: string[];
 }
 
 export function DefinitionCard({
   definition,
-  badges,
-  className
+  className,
+  badges
 }: DefinitionCardProps) {
   return (
     <Card id={definition.id} className={cn('relative', className)}>
