@@ -26,14 +26,7 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
 export default function DefinitionPage({ params }: DefinitionPageProps) {
   const term = slugToTerm(params.term);
   return (
-    <Suspense
-      fallback={
-        <>
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
-        </>
-      }
-    >
+    <Suspense fallback={<SkeletonDefinitionCard />}>
       <DefineResultCards term={term} />
     </Suspense>
   );
