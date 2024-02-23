@@ -133,7 +133,7 @@ export function SearchBar() {
       <div className="relative flex items-center">
         <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
         <Input
-          className="h-auto rounded-lg py-3 pl-10 pr-4 shadow"
+          className="h-auto rounded-lg bg-background py-3 pl-10 pr-4 shadow"
           placeholder="Search..."
           asChild
         >
