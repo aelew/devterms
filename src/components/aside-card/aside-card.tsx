@@ -2,10 +2,16 @@
 
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { GeistMono } from 'geist/font/mono';
-import { PlusIcon, ShuffleIcon } from 'lucide-react';
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  PlusIcon,
+  ShuffleIcon
+} from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 import { Button, buttonVariants } from '@/components/ui/button';
 import {
@@ -17,9 +23,15 @@ import {
 } from '@/components/ui/card';
 import { CATEGORIES, cn } from '@/lib/utils';
 import type { Events } from '@/types';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from '../ui/collapsible';
 import { showRandomDefinition } from './_actions';
 
 export function AsideCard() {
+  const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const plausible = usePlausible<Events>();
   const pathname = usePathname();
   return (
@@ -70,30 +82,50 @@ export function AsideCard() {
         </CardFooter>
       </Card>
       {pathname !== '/browse' && (
-        <Card className="hidden sm:block">
-          <CardHeader>
-            <CardTitle>Browse definitions</CardTitle>
-          </CardHeader>
-          <CardContent
-            className={cn(
-              'grid grid-cols-4 gap-2 md:grid-cols-6',
-              GeistMono.className
-            )}
-          >
-            {CATEGORIES.map((category) => (
-              <Link
-                key={category}
-                href={`/browse/${category}`}
-                className={buttonVariants({
-                  className: 'border border-input',
-                  variant: 'secondary'
-                })}
+        <Collapsible open={collapsibleOpen} onOpenChange={setCollapsibleOpen}>
+          <Card>
+            <CardHeader>
+              <CollapsibleTrigger>
+                <div className="flex items-center justify-between">
+                  <CardTitle>Browse definitions</CardTitle>
+                  <Button
+                    className="size-5"
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                  >
+                    {collapsibleOpen ? (
+                      <ChevronUpIcon className="size-4" />
+                    ) : (
+                      <ChevronDownIcon className="size-4" />
+                    )}
+                  </Button>
+                </div>
+              </CollapsibleTrigger>
+            </CardHeader>
+            <CollapsibleContent>
+              <CardContent
+                className={cn(
+                  'grid grid-cols-4 gap-2 md:grid-cols-6',
+                  GeistMono.className
+                )}
               >
-                {category}
-              </Link>
-            ))}
-          </CardContent>
-        </Card>
+                {CATEGORIES.map((category) => (
+                  <Link
+                    key={category}
+                    href={`/browse/${category}`}
+                    className={buttonVariants({
+                      className: 'border border-input',
+                      variant: 'secondary'
+                    })}
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </CardContent>
+            </CollapsibleContent>
+          </Card>
+        </Collapsible>
       )}
     </aside>
   );
