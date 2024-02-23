@@ -3,8 +3,6 @@ import type { HookResult } from 'next-safe-action/hooks';
 import { twMerge } from 'tailwind-merge';
 import type { Schema } from 'zod';
 
-export const GENERIC_ERROR = 'Uh oh! An unexpected error occurred.';
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -31,3 +29,35 @@ export function termToSlug(term: string) {
 export function slugToTerm(slug: string) {
   return decodeURIComponent(slug).replaceAll('-', ' ').replaceAll('  ', '-');
 }
+
+export const GENERIC_ERROR = 'Uh oh! An unexpected error occurred.';
+
+export const CATEGORIES = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  'new'
+];
