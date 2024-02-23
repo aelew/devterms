@@ -262,7 +262,7 @@ const app = new Elysia({ prefix: '/api' })
               await twitter.v2.tweet(
                 `Today's #developer word of the day is ${definition.term}! 💡\n\n` +
                   `${definition.term}: ${definition.definition}\n\n` +
-                  `🔗 ${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
+                  `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
               );
             } catch (err) {
               set.status = 500;
