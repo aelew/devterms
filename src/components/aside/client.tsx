@@ -54,7 +54,7 @@ export function ClientAside({ children }: PropsWithChildren) {
             <PlusIcon className="mr-2 size-4" />
             Submit a definition
           </Link>
-          <form className="contents" action={showRandomDefinition}>
+          <form action={showRandomDefinition} className="contents">
             <Button
               onClick={() => plausible("I'm feeling lucky")}
               className="w-full"
