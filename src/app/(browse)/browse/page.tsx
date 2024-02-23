@@ -3,13 +3,12 @@ import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CATEGORIES } from '@/lib/definitions';
 import { getPageMetadata } from '@/lib/seo';
-import { cn } from '@/lib/utils';
+import { CATEGORIES, cn } from '@/lib/utils';
 
 export const metadata = getPageMetadata({ title: 'Browse definitions' });
 
-export default async function BrowsePage() {
+export default function BrowsePage() {
   return (
     <Card>
       <CardHeader>

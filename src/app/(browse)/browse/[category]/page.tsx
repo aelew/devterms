@@ -3,8 +3,8 @@ import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
 
 import { DefinitionCard } from '@/components/definition-card';
-import { CATEGORIES } from '@/lib/definitions';
 import { getPageMetadata } from '@/lib/seo';
+import { CATEGORIES } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
