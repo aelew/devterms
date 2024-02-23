@@ -13,15 +13,15 @@ import {
   type KeyboardEvent
 } from 'react';
 
-import { env } from '@/env';
-import { termToSlug } from '@/lib/utils';
-import type { Events } from '@/types';
 import {
   CommandGroup,
   CommandItem,
   CommandList
-} from '../components/ui/command';
-import { Input } from '../components/ui/input';
+} from '@/components/ui/command';
+import { Input } from '@/components/ui/input';
+import { env } from '@/env';
+import { termToSlug } from '@/lib/utils';
+import type { Events } from '@/types';
 
 const { searchClient } = instantMeiliSearch(
   env.NEXT_PUBLIC_MEILISEARCH_HOST,
@@ -99,11 +99,7 @@ export function SearchBar() {
       setSelectedHit(selectedHit);
       setInputValue('');
       setOpen(false);
-
-      // We can call this hack: "The next tick"
-      // Prevents the input from being focused after the user selects an option
-      inputRef?.current?.blur();
-
+      inputRef.current?.blur();
       router.push(`/define/${termToSlug(hit.term)}`);
       plausible('Search');
     },
