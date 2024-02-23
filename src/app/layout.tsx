@@ -9,9 +9,9 @@ import { Spotlight } from '@/components/spotlight';
 import { ThemeProvider } from '@/components/theme-provider';
 import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
-import { Canonical } from './canonical';
-import { Header } from './header';
-import { MetaTags } from './metatags';
+import { Canonical } from './_components/canonical';
+import { Header } from './_components/header';
+import { MetaTags } from './_components/metatags';
 
 import './globals.css';
 
