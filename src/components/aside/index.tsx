@@ -31,18 +31,36 @@ import {
 } from '../ui/collapsible';
 import { showRandomDefinition } from './_actions';
 
-export function AsideCard() {
+export function Aside() {
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const plausible = usePlausible<Events>();
   const pathname = usePathname();
+
+  const stats = [
+    { label: 'Definitions', value: '250' },
+    { label: 'Users', value: '3' }
+  ];
+
   return (
     <aside className="h-fit space-y-[15px] md:w-1/3">
       <Card>
-        <CardHeader className="pb-4">
+        <CardHeader className="space-y-4 pb-4">
           <CardTitle>{APP_NAME}</CardTitle>
+          <p className="text-sm text-muted-foreground">{APP_DESCRIPTION}</p>
         </CardHeader>
         <CardContent className="pb-4">
-          <p className="text-sm text-muted-foreground">{APP_DESCRIPTION}</p>
+          <dl className="grid grid-cols-2 divide-x text-center">
+            {stats.map(({ label, value }) => (
+              <div key={label}>
+                <dt className="text-xs font-semibold uppercase text-muted-foreground">
+                  {label}
+                </dt>
+                <dd className="text-gradient order-first text-3xl font-semibold tracking-tight">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
           <Link
