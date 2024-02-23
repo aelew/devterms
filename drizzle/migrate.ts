@@ -9,8 +9,8 @@ if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not set');
 }
 
-const connection = new Client({ url: process.env.DATABASE_URL }).connection();
-const db = drizzle(connection);
+const client = new Client({ url: process.env.DATABASE_URL });
+const db = drizzle(client);
 
 async function main() {
   try {

@@ -14,8 +14,8 @@ if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not set');
 }
 
-const connection = new Client({ url: process.env.DATABASE_URL }).connection();
-const db = drizzle(connection, { schema });
+const client = new Client({ url: process.env.DATABASE_URL });
+const db = drizzle(client, { schema });
 
 const AUTHOR_ID = 'user_sys';
 
