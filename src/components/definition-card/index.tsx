@@ -39,7 +39,7 @@ export function DefinitionCard({
       )}
       <CardHeader>
         <Link
-          className="w-fit transition-color-transform active:scale-[0.98]"
+          className="w-fit max-w-[79%] transition-color-transform active:scale-[0.98]"
           href={`/define/${termToSlug(definition.term)}`}
         >
           <CardTitle className="text-gradient w-fit text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
