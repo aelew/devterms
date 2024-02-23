@@ -1,18 +1,18 @@
 # 📚 DevTerms
 
-An open-source, crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more!
+An open-source, crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more! DevTerms also [has an X (Twitter) account](https://twitter.com/devtermsio), where you can follow for news and word-of-the-day alerts!
 
 Check out [DevTerms in action](https://devterms.io)!
 
 ## Built with
 
-- [🌟 Next.js](https://nextjs.org): The React framework for the web
-- [🛠 Elysia](https://elysiajs.com): Full-featured, typesafe API framework
-- [💨 Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework
-- [🎨 shadcn/ui](https://ui.shadcn.com): Beautifully designed components
-- [🔎 Meilisearch](https://www.meilisearch.com): Lightning-fast website search engine
-- [🌧️ Drizzle ORM](https://orm.drizzle.team): Lightweight, relational TypeScript ORM
-- [🔒 Lucia](https://lucia-auth.com/): Simple, flexible session authentication
+- 🌟 [Next.js](https://nextjs.org): The React framework for the web
+- 🛠 [Elysia](https://elysiajs.com): Full-featured, typesafe API framework
+- 💨 [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework
+- 🎨 [shadcn/ui](https://ui.shadcn.com): Beautifully designed components
+- 🔎 [Meilisearch](https://www.meilisearch.com): Lightning-fast website search engine
+- 🌧️ [Drizzle ORM](https://orm.drizzle.team): Lightweight, relational TypeScript ORM
+- 🔒 [Lucia](https://lucia-auth.com/): Simple, flexible session authentication
 
 ## Development
 
