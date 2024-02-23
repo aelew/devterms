@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -60,6 +60,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "ts-pattern": "^5.0.8",
+    "twitter-api-v2": "^1.16.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
