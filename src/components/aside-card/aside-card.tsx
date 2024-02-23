@@ -21,6 +21,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { CATEGORIES, cn } from '@/lib/utils';
 import type { Events } from '@/types';
 import {
@@ -38,14 +39,10 @@ export function AsideCard() {
     <aside className="h-fit space-y-[15px] md:w-1/3">
       <Card>
         <CardHeader className="pb-4">
-          <CardTitle>DevTerms</CardTitle>
+          <CardTitle>{APP_NAME}</CardTitle>
         </CardHeader>
         <CardContent className="pb-4">
-          <p className="text-sm text-muted-foreground">
-            A crowdsourced dictionary for developers by developers. Find
-            definitions for all sorts of technical terms, programming jargon,
-            and more!
-          </p>
+          <p className="text-sm text-muted-foreground">{APP_DESCRIPTION}</p>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
           <Link
