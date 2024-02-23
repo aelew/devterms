@@ -21,7 +21,8 @@ const getWordOfTheDay = unstable_cache(
         }
       }
     }),
-  ['wotd']
+  ['wotd'],
+  { revalidate: 900 }
 );
 
 const getHomeFeed = unstable_cache(
