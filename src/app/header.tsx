@@ -26,6 +26,7 @@ import { SearchBar } from './search-bar';
 
 const navigation = [
   { label: 'Home', href: '/' },
+  { label: 'Browse', href: '/browse' },
   { label: 'Submit', href: '/submit' },
   { label: 'API', href: '/api/docs' }
 ];
