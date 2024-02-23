@@ -13,6 +13,10 @@ export const env = createEnv({
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
     MEILISEARCH_MASTER_KEY: z.string(),
+    TWITTER_CONSUMER_KEY: z.string().optional(),
+    TWITTER_CONSUMER_SECRET: z.string().optional(),
+    TWITTER_ACCESS_TOKEN: z.string().optional(),
+    TWITTER_ACCESS_TOKEN_SECRET: z.string().optional(),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development')

@@ -9,6 +9,7 @@ import { github } from '@/lib/auth';
 
 export async function login() {
   'use server';
+
   const state = generateState();
   const url = await github.createAuthorizationURL(state, {
     scopes: ['user:email']

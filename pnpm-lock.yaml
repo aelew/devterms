@@ -134,6 +134,9 @@ dependencies:
   ts-pattern:
     specifier: ^5.0.8
     version: 5.0.8
+  twitter-api-v2:
+    specifier: ^1.16.0
+    version: 1.16.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -6046,6 +6049,10 @@ packages:
   /tunnel@0.0.6:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
+    dev: false
+
+  /twitter-api-v2@1.16.0:
+    resolution: {integrity: sha512-e7wzWqx5oQZ9IUc2xt8JiJ84ioVGlmjmca1h0NwCKx2AFfKXDePmQa42gcBDe0qau9YaHsIpzO9z5SX1fmb+IQ==}
     dev: false
 
   /type-check@0.4.0:
