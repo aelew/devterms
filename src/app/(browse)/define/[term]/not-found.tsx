@@ -16,8 +16,7 @@ export default function NotFound() {
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <p>
-          There are no definitions for{' '}
-          <strong className="font-semibold">{term}</strong> yet.
+          There are no definitions for <strong>{term}</strong> yet.
         </p>
         <p>
           Know what it means?{' '}

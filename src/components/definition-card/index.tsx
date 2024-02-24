@@ -69,7 +69,7 @@ export function DefinitionCard({
                     className="hover:underline hover:underline-offset-4"
                     href={`/u/${definition.user.name}`}
                   >
-                    {definition.user.name}
+                    @{definition.user.name}
                   </Link>
                 </span>
                 <span aria-hidden> &middot; </span>

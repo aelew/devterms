@@ -3,7 +3,8 @@ import {
   ArrowRightIcon,
   LayoutDashboardIcon,
   LogOutIcon,
-  PlusIcon
+  PlusIcon,
+  UserIcon
 } from 'lucide-react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
@@ -109,6 +110,12 @@ export async function Header() {
                   </p>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href={`/u/${user.name}`}>
+                    <UserIcon className="mr-2 size-4" />
+                    View profile
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/definitions/me">
                     <LayoutDashboardIcon className="mr-2 size-4" />
