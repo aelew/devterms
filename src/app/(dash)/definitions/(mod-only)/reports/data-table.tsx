@@ -8,7 +8,7 @@ import {
   type ColumnDef,
   type SortingState
 } from '@tanstack/react-table';
-import { CheckIcon, CircleEllipsisIcon, XIcon } from 'lucide-react';
+import { CheckIcon, CircleEllipsisIcon } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -27,8 +27,8 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { updatePendingDefinition } from './_actions';
-import type { Definition } from './columns';
+import { acknowledgeReport } from './_actions';
+import type { Report } from './columns';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -73,54 +73,16 @@ export function DataTable<TData, TValue>({
                 .getFilteredSelectedRowModel()
                 .rows.filter((row) => !hiddenRowIndices.includes(row.index))
                 .forEach((row) => {
-                  updatePendingDefinition({
-                    definitionId: (row.original as Definition).id,
-                    action: 'approve'
+                  acknowledgeReport({
+                    reportId: (row.original as Report).id
                   });
                   // @ts-expect-error removeRow
                   table.options.meta.removeRow(row.index);
                 });
-              toast.success('Definitions approved!');
+              toast.success('Reports acknowledged!');
             }}
           >
-            <CheckIcon className="mr-2 size-4" /> Approve selected
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            className="text-destructive focus:text-destructive/80"
-            onClick={() => {
-              table
-                .getFilteredSelectedRowModel()
-                .rows.filter((row) => !hiddenRowIndices.includes(row.index))
-                .forEach((row) => {
-                  updatePendingDefinition({
-                    definitionId: (row.original as Definition).id,
-                    action: 'reject'
-                  });
-                  // @ts-expect-error removeRow
-                  table.options.meta.removeRow(row.index);
-                });
-              toast.success('Definitions rejected!');
-            }}
-          >
-            <XIcon className="mr-2 size-4" /> Reject selected
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              table
-                .getFilteredSelectedRowModel()
-                .rows.filter((row) => !hiddenRowIndices.includes(row.index))
-                .forEach((row) => {
-                  updatePendingDefinition({
-                    definitionId: (row.original as Definition).id,
-                    action: 'delete'
-                  });
-                  // @ts-expect-error removeRow
-                  table.options.meta.removeRow(row.index);
-                });
-              toast.success('Definitions deleted!');
-            }}
-          >
-            <CheckIcon className="mr-2 size-4" /> Trash selected
+            <CheckIcon className="mr-2 size-4" /> Acknowledge selected
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
