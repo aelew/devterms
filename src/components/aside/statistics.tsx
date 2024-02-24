@@ -7,7 +7,7 @@ import { definitions, users } from '@/server/db/schema';
 const getCachedDefinitionCount = unstable_cache(
   async () => {
     const result = await db.select({ rows: count() }).from(definitions);
-    return result[0].rows;
+    return result[0]?.rows ?? 0;
   },
   ['definition_count'],
   { revalidate: 900 }
@@ -16,7 +16,7 @@ const getCachedDefinitionCount = unstable_cache(
 const getCachedUserCount = unstable_cache(
   async () => {
     const result = await db.select({ rows: count() }).from(users);
-    return result[0].rows;
+    return result[0]?.rows ?? 0;
   },
   ['user_count'],
   { revalidate: 900 }
