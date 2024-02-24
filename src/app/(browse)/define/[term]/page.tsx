@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
     return getPageMetadata({ title: `${term} Definition` });
   }
   return getPageMetadata({
-    title: `${results[0].term} Definition`,
-    description: results[0].definition
+    title: `${results[0]!.term} Definition`,
+    description: results[0]!.definition
   });
 }
 
