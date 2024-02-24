@@ -9,7 +9,7 @@ export default async function DashboardLayout({ children }: PropsWithChildren) {
   if (!user) {
     redirect('/login');
   }
-  const isModerator = user.role === 'moderator';
+  const isModerator = user.role === 'moderator' || user.role === 'owner';
   return (
     <div className="relative space-y-2">
       <DashboardNavigation isModerator={isModerator} />

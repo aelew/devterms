@@ -37,7 +37,7 @@ export const moderatorAction = createSafeActionClient({
     if (!data.user) {
       throw new ActionError('Authentication required');
     }
-    if (data.user.role !== 'moderator') {
+    if (data.user.role !== 'moderator' && data.user.role !== 'owner') {
       throw new ActionError('Insufficient permissions');
     }
     return data;

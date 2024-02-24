@@ -10,7 +10,7 @@ export default async function ModOnlyDashboardLayout({
   if (!user) {
     redirect('/login');
   }
-  if (user.role !== 'moderator') {
+  if (user.role !== 'moderator' && user.role !== 'owner') {
     notFound();
   }
   return <>{children}</>;
