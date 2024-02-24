@@ -91,7 +91,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
             <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext href={`/?page=${page + 1}`} />
+            <PaginationNext href={`/?page=${(page || 1) + 1}`} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
