@@ -82,6 +82,17 @@ export const reports = mysqlTable('reports', {
     .notNull()
 });
 
+export const reportRelations = relations(reports, ({ one }) => ({
+  user: one(users, {
+    fields: [reports.userId],
+    references: [users.id]
+  }),
+  definition: one(definitions, {
+    fields: [reports.definitionId],
+    references: [definitions.id]
+  })
+}));
+
 export const wotds = mysqlTable('wotds', {
   id: varchar('id', { length: 21 })
     .primaryKey()
