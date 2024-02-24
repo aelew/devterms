@@ -42,7 +42,7 @@ declare module 'lucia' {
   }
   interface DatabaseUserAttributes {
     name: string;
-    role: 'user' | 'moderator';
+    role: 'user' | 'bot' | 'moderator' | 'owner';
     email: string;
     avatar: string;
     githubId: number;

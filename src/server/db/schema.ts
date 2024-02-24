@@ -14,7 +14,9 @@ import { generateId } from '@/lib/id';
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 21 }).primaryKey(),
   name: varchar('name', { length: 32 }),
-  role: mysqlEnum('role', ['user', 'moderator']).default('user').notNull(),
+  role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner'])
+    .default('user')
+    .notNull(),
   email: varchar('email', { length: 255 }).unique().notNull(),
   avatar: varchar('avatar', { length: 255 }).notNull(),
   githubId: int('github_id', { unsigned: true }).unique().notNull(),
