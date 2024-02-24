@@ -243,7 +243,7 @@ const app = new Elysia({ prefix: '/api' })
           }
 
           await db.insert(wotds).values({ definitionId: definition.id });
-          revalidateTag('wotd');
+          revalidateTag('home_feed');
 
           // Post on X (Twitter)
           if (

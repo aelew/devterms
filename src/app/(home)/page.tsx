@@ -4,17 +4,20 @@ import { Aside } from '@/components/aside';
 import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { HomeFeed } from './_components/home-feed';
-import { WordOfTheDayCard } from './_components/word-of-the-day-card';
+
+interface HomePageProps {
+  searchParams: {
+    page?: string;
+  };
+}
 
 export const metadata = getPageMetadata({ title: 'The Developer Dictionary' });
 
-export default function HomePage() {
+export default function HomePage({ searchParams }: HomePageProps) {
+  const page = Number(searchParams.page) < 1 ? 1 : Number(searchParams.page);
   return (
     <div className="flex flex-col-reverse gap-4 md:flex-row">
       <div className="flex flex-1 flex-col gap-4">
-        <Suspense fallback={<SkeletonDefinitionCard />}>
-          <WordOfTheDayCard />
-        </Suspense>
         <Suspense
           fallback={
             <>
@@ -26,7 +29,7 @@ export default function HomePage() {
             </>
           }
         >
-          <HomeFeed />
+          <HomeFeed page={page} />
         </Suspense>
       </div>
       <Aside />
