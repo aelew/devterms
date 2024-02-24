@@ -14,7 +14,7 @@ import {
   PaginationPrevious
 } from '@/components/ui/pagination';
 import { db } from '@/server/db';
-import { definitions, wotds } from '@/server/db/schema';
+import { definitions, users, wotds } from '@/server/db/schema';
 
 interface HomeFeedProps {
   page: number;
@@ -29,10 +29,14 @@ function withPagination<T extends MySqlSelect>(qb: T, pageIndex: number) {
 const getHomeFeed = unstable_cache(
   (page: number) => {
     const query = db
-      .select({ definition: definitions })
+      .select({
+        definition: definitions,
+        user: { name: users.name }
+      })
       .from(wotds)
       .orderBy(desc(wotds.createdAt))
-      .leftJoin(definitions, eq(definitions.id, wotds.definitionId));
+      .leftJoin(definitions, eq(definitions.id, wotds.definitionId))
+      .leftJoin(users, eq(users.id, definitions.userId));
     const dynamicQuery = query.$dynamic();
     return withPagination(dynamicQuery, page - 1);
   },
@@ -49,21 +53,22 @@ export async function HomeFeed({ page }: HomeFeedProps) {
           if (!wotd.definition) {
             return null;
           }
+          const definition = {
+            ...wotd.definition,
+            user: { name: wotd.user?.name ?? null }
+          };
           if (i === 0) {
             return (
               <DefinitionCard
                 className="border-muted-foreground shadow-lg"
                 badges={['Word of the day']}
-                definition={wotd.definition}
                 key={wotd.definition.id}
+                definition={definition}
               />
             );
           }
           return (
-            <DefinitionCard
-              key={wotd.definition.id}
-              definition={wotd.definition}
-            />
+            <DefinitionCard key={wotd.definition.id} definition={definition} />
           );
         })
       ) : (
