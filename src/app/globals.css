@@ -73,6 +73,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  strong {
+    @apply font-semibold;
+  }
 }
 
 @layer components {
