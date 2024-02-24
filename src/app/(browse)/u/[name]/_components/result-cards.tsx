@@ -57,7 +57,7 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
           />
           <div className="space-y-1">
             <div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <h1 className="text-gradient text-3xl font-semibold tracking-tight">
                   {user.name}
                 </h1>
