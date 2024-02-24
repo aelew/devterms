@@ -42,16 +42,16 @@ export const columns: ColumnDef<Definition>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'term',
-    header: 'Term'
+    header: 'Term',
+    accessorKey: 'term'
   },
   {
-    accessorKey: 'definition',
-    header: 'Definition'
+    header: 'Definition',
+    accessorKey: 'definition'
   },
   {
-    accessorKey: 'example',
-    header: 'Example'
+    header: 'Example',
+    accessorKey: 'example'
   },
   {
     accessorKey: 'createdAt',
