@@ -83,12 +83,11 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
       </Card>
       {user.definitions.map((definition) => (
         <DefinitionCard
+          key={definition.id}
           definition={{
             ...definition,
             user: { name: user.name }
           }}
-          key={definition.id}
-          badges={[]}
         />
       ))}
     </>
