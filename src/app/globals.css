@@ -84,6 +84,7 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    display: inline;
     color: unset;
   }
   .dark .text-gradient::selection {
