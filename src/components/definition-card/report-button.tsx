@@ -9,8 +9,20 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage
+} from '@/components/ui/form';
 import { getActionErrorMessage } from '@/lib/utils';
 import type { Events } from '@/types';
 import { Textarea } from '../ui/textarea';
@@ -59,14 +71,20 @@ export function DefinitionReportButton({ definitionId }: ReportButtonProps) {
           <DialogTitle>Report definition</DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onReportSubmit)} className="flex flex-col gap-4">
+          <form
+            onSubmit={form.handleSubmit(onReportSubmit)}
+            className="flex flex-col gap-4"
+          >
             <FormField
               name="reason"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea placeholder="What's wrong with this definition?" {...field} />
+                    <Textarea
+                      placeholder="What's wrong with this definition?"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

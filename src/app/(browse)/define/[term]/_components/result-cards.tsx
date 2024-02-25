@@ -14,7 +14,10 @@ export const getDefinitions = unstable_cache(
   (term: string) =>
     db.query.definitions.findMany({
       orderBy: desc(definitions.upvotes),
-      where: and(eq(definitions.status, 'approved'), eq(definitions.term, term)),
+      where: and(
+        eq(definitions.status, 'approved'),
+        eq(definitions.term, term)
+      ),
       with: {
         user: {
           columns: {
@@ -35,7 +38,11 @@ export async function DefineResultCards({ term }: DefineResultCardsProps) {
   return (
     <>
       {results.map((definition) => (
-        <DefinitionCard definition={definition} key={definition.id} badges={[]} />
+        <DefinitionCard
+          definition={definition}
+          key={definition.id}
+          badges={[]}
+        />
       ))}
     </>
   );

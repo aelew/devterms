@@ -58,7 +58,9 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
           <div className="space-y-1">
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-gradient text-3xl font-semibold tracking-tight">{user.name}</h1>
+                <h1 className="text-gradient text-3xl font-semibold tracking-tight">
+                  {user.name}
+                </h1>
                 <Badge className="-mb-1">{user.role}</Badge>
               </div>
               <CardDescription>
@@ -80,7 +82,11 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
         </div>
       </Card>
       {user.definitions.map((definition) => (
-        <DefinitionCard definition={definition} key={definition.id} badges={[]} />
+        <DefinitionCard
+          definition={definition}
+          key={definition.id}
+          badges={[]}
+        />
       ))}
     </>
   );

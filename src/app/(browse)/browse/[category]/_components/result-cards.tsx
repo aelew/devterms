@@ -20,7 +20,10 @@ const getCategoryDefinitions = unstable_cache(
           }
         : {
             orderBy: desc(definitions.term),
-            where: and(eq(definitions.status, 'approved'), like(definitions.term, category + '%'))
+            where: and(
+              eq(definitions.status, 'approved'),
+              like(definitions.term, category + '%')
+            )
           }),
       with: {
         user: {
@@ -34,7 +37,9 @@ const getCategoryDefinitions = unstable_cache(
   { revalidate: 1800 }
 );
 
-export async function CategoryResultCards({ category }: CategoryResultCardsProps) {
+export async function CategoryResultCards({
+  category
+}: CategoryResultCardsProps) {
   const results = await getCategoryDefinitions(category);
   if (!results.length) {
     return <p>No definitions in this category</p>;
@@ -42,7 +47,11 @@ export async function CategoryResultCards({ category }: CategoryResultCardsProps
   return (
     <>
       {results.map((definition) => (
-        <DefinitionCard definition={definition} key={definition.id} badges={[]} />
+        <DefinitionCard
+          definition={definition}
+          key={definition.id}
+          badges={[]}
+        />
       ))}
     </>
   );
