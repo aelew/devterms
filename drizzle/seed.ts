@@ -17,7 +17,7 @@ if (!process.env.DATABASE_URL) {
 const client = new Client({ url: process.env.DATABASE_URL });
 const db = drizzle(client, { schema });
 
-const AUTHOR_ID = 'user_sys';
+const AUTHOR_ID = 'user_0y3hmvftKAtzgtFp';
 
 interface SeedDefinition {
   term: string;
@@ -29,17 +29,23 @@ async function main() {
   try {
     const filePath = __dirname + '/definitions.json';
     const fileContent = await readFile(filePath, 'utf-8');
-    const data = JSON.parse(fileContent) as SeedDefinition[];
+    const seedDefinitionArray = JSON.parse(fileContent) as SeedDefinition[];
 
-    console.log('Seeding database with', data.length, 'definitions');
+    console.log(
+      'Seeding database with',
+      seedDefinitionArray.length,
+      'definitions'
+    );
 
-    for (const def of data) {
+    for (let i = 0; i < seedDefinitionArray.length; i++) {
+      const definition = seedDefinitionArray[i]!;
       await db.insert(schema.definitions).values({
         userId: AUTHOR_ID,
         status: 'approved',
         upvotes: 1,
-        ...def
+        ...definition
       });
+      console.log('Seed progress:', `${(i + 1)}/${seedDefinitionArray.length}`, '|', definition.term);
     }
 
     console.log('Database seeded!');
