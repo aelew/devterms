@@ -29,7 +29,7 @@ export function DefinitionCard({
   return (
     <Card id={definition.id} className={className}>
       <CardHeader>
-        {badges && (
+        {badges?.length && (
           <div className="mb-2 flex gap-2">
             {badges.map((badge) => (
               <Badge key={badge}>{badge}</Badge>
