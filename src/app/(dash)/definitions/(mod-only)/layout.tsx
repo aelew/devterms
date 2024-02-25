@@ -3,9 +3,7 @@ import type { PropsWithChildren } from 'react';
 
 import { getAuthData } from '@/lib/auth/helpers';
 
-export default async function ModOnlyDashboardLayout({
-  children
-}: PropsWithChildren) {
+export default async function ModOnlyDashboardLayout({ children }: PropsWithChildren) {
   const { user } = await getAuthData();
   if (!user) {
     redirect('/login');

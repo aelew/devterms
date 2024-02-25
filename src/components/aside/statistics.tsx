@@ -23,10 +23,7 @@ const getCachedUserCount = unstable_cache(
 );
 
 export async function Statistics() {
-  const [definitionCount, userCount] = await Promise.all([
-    getCachedDefinitionCount(),
-    getCachedUserCount()
-  ]);
+  const [definitionCount, userCount] = await Promise.all([getCachedDefinitionCount(), getCachedUserCount()]);
   const stats = [
     { label: 'Definitions', value: definitionCount },
     { label: 'Users', value: userCount }
@@ -35,12 +32,8 @@ export async function Statistics() {
     <dl className="grid grid-cols-2 divide-x text-center">
       {stats.map(({ label, value }) => (
         <div key={label}>
-          <dt className="text-xs font-semibold uppercase text-muted-foreground">
-            {label}
-          </dt>
-          <dd className="text-gradient order-first text-3xl font-semibold tracking-tight">
-            {value}
-          </dd>
+          <dt className="text-xs font-semibold uppercase text-muted-foreground">{label}</dt>
+          <dd className="text-gradient order-first text-3xl font-semibold tracking-tight">{value}</dd>
         </div>
       ))}
     </dl>

@@ -2,33 +2,18 @@
 
 import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 import { GeistMono } from 'geist/font/mono';
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  PlusIcon,
-  ShuffleIcon
-} from 'lucide-react';
+import { ChevronDownIcon, ChevronUpIcon, PlusIcon, ShuffleIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, type PropsWithChildren } from 'react';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { CATEGORIES, cn } from '@/lib/utils';
 import type { Events } from '@/types';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from '../ui/collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 import { showRandomDefinition } from './_actions';
 
 export function ClientAside({ children }: PropsWithChildren) {
@@ -55,11 +40,7 @@ export function ClientAside({ children }: PropsWithChildren) {
             Submit a definition
           </Link>
           <form action={showRandomDefinition} className="contents">
-            <Button
-              onClick={() => plausible("I'm feeling lucky")}
-              className="w-full"
-              variant="outline"
-            >
+            <Button onClick={() => plausible("I'm feeling lucky")} className="w-full" variant="outline">
               <ShuffleIcon className="mr-2 size-3" />
               I&apos;m feeling lucky
             </Button>
@@ -95,28 +76,14 @@ export function ClientAside({ children }: PropsWithChildren) {
               <CollapsibleTrigger>
                 <div className="flex items-center justify-between">
                   <CardTitle>Browse definitions</CardTitle>
-                  <Button
-                    className="size-5"
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                  >
-                    {collapsibleOpen ? (
-                      <ChevronUpIcon className="size-4" />
-                    ) : (
-                      <ChevronDownIcon className="size-4" />
-                    )}
+                  <Button className="size-5" variant="ghost" size="icon" asChild>
+                    {collapsibleOpen ? <ChevronUpIcon className="size-4" /> : <ChevronDownIcon className="size-4" />}
                   </Button>
                 </div>
               </CollapsibleTrigger>
             </CardHeader>
             <CollapsibleContent>
-              <CardContent
-                className={cn(
-                  'grid grid-cols-4 gap-2 md:grid-cols-6',
-                  GeistMono.className
-                )}
-              >
+              <CardContent className={cn('grid grid-cols-4 gap-2 md:grid-cols-6', GeistMono.className)}>
                 {CATEGORIES.map((category) => (
                   <Link
                     key={category}
@@ -135,10 +102,7 @@ export function ClientAside({ children }: PropsWithChildren) {
         </Collapsible>
       )}
       <div className="hidden justify-center gap-4 text-center text-sm text-muted-foreground md:flex">
-        <Link
-          className="hover:underline hover:underline-offset-4"
-          href="/about"
-        >
+        <Link className="hover:underline hover:underline-offset-4" href="/about">
           About
         </Link>
         <Link

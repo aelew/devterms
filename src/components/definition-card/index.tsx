@@ -1,13 +1,7 @@
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn, termToSlug } from '@/lib/utils';
 import type { Definition } from '@/types';
 import { Time } from '../time';
@@ -21,11 +15,7 @@ interface DefinitionCardProps {
   badges?: string[];
 }
 
-export function DefinitionCard({
-  definition,
-  className,
-  badges
-}: DefinitionCardProps) {
+export function DefinitionCard({ definition, className, badges }: DefinitionCardProps) {
   return (
     <Card id={definition.id} className={cn('relative', className)}>
       {badges && (
@@ -40,10 +30,7 @@ export function DefinitionCard({
       <CardHeader>
         <Link
           href={`/define/${termToSlug(definition.term)}`}
-          className={cn(
-            'w-fit transition-color-transform active:scale-[0.98]',
-            badges?.length && 'max-w-[79%]'
-          )}
+          className={cn('w-fit transition-color-transform active:scale-[0.98]', badges?.length && 'max-w-[79%]')}
         >
           <CardTitle className="text-gradient w-fit text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
             {definition.term}
@@ -65,10 +52,7 @@ export function DefinitionCard({
             {definition.user?.name && (
               <>
                 <span className="font-semibold">
-                  <Link
-                    className="hover:underline hover:underline-offset-4"
-                    href={`/u/${definition.user.name}`}
-                  >
+                  <Link className="hover:underline hover:underline-offset-4" href={`/u/${definition.user.name}`}>
                     @{definition.user.name}
                   </Link>
                 </span>
@@ -80,11 +64,7 @@ export function DefinitionCard({
         </div>
       </CardContent>
       <CardFooter className="justify-between gap-4 text-sm">
-        <VoteActions
-          definitionId={definition.id}
-          upvotes={definition.upvotes}
-          downvotes={definition.downvotes}
-        />
+        <VoteActions definitionId={definition.id} upvotes={definition.upvotes} downvotes={definition.downvotes} />
         <div className="flex gap-4">
           <DefinitionShareButton term={definition.term} />
           <DefinitionReportButton definitionId={definition.id} />

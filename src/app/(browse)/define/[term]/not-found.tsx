@@ -20,10 +20,7 @@ export default function NotFound() {
         </p>
         <p>
           Know what it means?{' '}
-          <Link
-            href={`/submit?term=${termToSlug(term)}`}
-            className="underline underline-offset-4"
-          >
+          <Link href={`/submit?term=${termToSlug(term)}`} className="underline underline-offset-4">
             Submit a definition here!
           </Link>
         </p>

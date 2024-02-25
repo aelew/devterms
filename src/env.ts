@@ -17,9 +17,7 @@ export const env = createEnv({
     TWITTER_CONSUMER_SECRET: z.string().optional(),
     TWITTER_ACCESS_TOKEN: z.string().optional(),
     TWITTER_ACCESS_TOKEN_SECRET: z.string().optional(),
-    NODE_ENV: z
-      .enum(['development', 'test', 'production'])
-      .default('development')
+    NODE_ENV: z.enum(['development', 'test', 'production']).default('development')
   },
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -37,8 +35,7 @@ export const env = createEnv({
    */
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-    NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY:
-      process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
+    NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
     NEXT_PUBLIC_MEILISEARCH_HOST: process.env.NEXT_PUBLIC_MEILISEARCH_HOST
   },
   /**

@@ -7,9 +7,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getActionErrorMessage(
-  result: Omit<HookResult<Schema, unknown>, 'data'>
-) {
+export function getActionErrorMessage(result: Omit<HookResult<Schema, unknown>, 'data'>) {
   if (result.serverError) {
     return result.serverError;
   }
@@ -21,9 +19,7 @@ export function getActionErrorMessage(
 }
 
 export function termToSlug(term: string) {
-  return encodeURIComponent(
-    term.replaceAll('-', '--').replaceAll(' ', '-').toLowerCase()
-  );
+  return encodeURIComponent(term.replaceAll('-', '--').replaceAll(' ', '-').toLowerCase());
 }
 
 export function slugToTerm(slug: string) {
