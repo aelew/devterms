@@ -18,7 +18,9 @@ export function generateMetadata({ params }: BrowseCategoryPageProps) {
   });
 }
 
-export default async function BrowseCategoryPage({ params }: BrowseCategoryPageProps) {
+export default async function BrowseCategoryPage({
+  params
+}: BrowseCategoryPageProps) {
   const category = decodeURIComponent(params.category);
   if (!CATEGORIES.includes(category)) {
     notFound();

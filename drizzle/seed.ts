@@ -45,7 +45,12 @@ async function main() {
         upvotes: 1,
         ...definition
       });
-      console.log('Seed progress:', `${(i + 1)}/${seedDefinitionArray.length}`, '|', definition.term);
+      console.log(
+        'Seed progress:',
+        `${i + 1}/${seedDefinitionArray.length}`,
+        '|',
+        definition.term
+      );
     }
 
     console.log('Database seeded!');

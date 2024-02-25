@@ -3,7 +3,9 @@ import type { Config } from 'tailwindcss';
 const svgToDataUri = require('mini-svg-data-uri');
 
 const colors = require('tailwindcss/colors');
-const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette');
+const {
+  default: flattenColorPalette
+} = require('tailwindcss/lib/util/flattenColorPalette');
 
 const config = {
   darkMode: ['class'],
@@ -73,7 +75,8 @@ const config = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       transitionProperty: {
-        'color-transform': 'color, background-color, border-color, text-decoration-color, fill, stroke, transform'
+        'color-transform':
+          'color, background-color, border-color, text-decoration-color, fill, stroke, transform'
       }
     }
   },

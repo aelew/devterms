@@ -18,7 +18,11 @@ import {
 import { match } from 'ts-pattern';
 
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';

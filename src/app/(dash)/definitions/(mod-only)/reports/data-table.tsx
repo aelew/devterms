@@ -19,7 +19,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
 import { acknowledgeReport } from './_actions';
 import type { Report } from './columns';
 
@@ -28,7 +35,10 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({
+  columns,
+  data
+}: DataTableProps<TData, TValue>) {
   const [hiddenRowIndices, setHiddenRowIndices] = useState<number[]>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState({});
@@ -84,7 +94,12 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
                   );
                 })}
@@ -97,15 +112,27 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                 .getRowModel()
                 .rows.filter((_, i) => !hiddenRowIndices.includes(i))
                 .map((row) => (
-                  <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'} className="text-xs">
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && 'selected'}
+                    className="text-xs"
+                  >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
                     ))}
                   </TableRow>
                 ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No data to display.
                 </TableCell>
               </TableRow>
@@ -114,9 +141,18 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
         </Table>
       </div>
       <div className="text-right text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.filter((row) => !hiddenRowIndices.includes(row.index)).length} of{' '}
-        {table.getFilteredRowModel().rows.filter((row) => !hiddenRowIndices.includes(row.index)).length} row(s)
-        selected.
+        {
+          table
+            .getFilteredSelectedRowModel()
+            .rows.filter((row) => !hiddenRowIndices.includes(row.index)).length
+        }{' '}
+        of{' '}
+        {
+          table
+            .getFilteredRowModel()
+            .rows.filter((row) => !hiddenRowIndices.includes(row.index)).length
+        }{' '}
+        row(s) selected.
       </div>
     </div>
   );
