@@ -71,7 +71,7 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
               </CardDescription>
             </div>
             <Link
-              className="flex items-center text-sm font-medium text-muted-foreground hover:underline"
+              className="flex items-center text-sm font-medium text-muted-foreground hover:underline hover:underline-offset-4"
               href={`https://github.com/${user.name}`}
               target="_blank"
             >
