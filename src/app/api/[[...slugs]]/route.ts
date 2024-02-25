@@ -94,7 +94,9 @@ const app = new Elysia({ prefix: '/api' })
             accessSecret: cookie.internal_twitter_oauth_token_secret.get()
           });
           try {
-            const { accessToken, accessSecret } = await twitter.login(query.oauth_verifier);
+            const { accessToken, accessSecret } = await twitter.login(
+              query.oauth_verifier
+            );
             return { accessToken, accessSecret };
           } catch (err) {
             set.status = 500;
@@ -123,10 +125,12 @@ const app = new Elysia({ prefix: '/api' })
 
           try {
             const tokens = await github.validateAuthorizationCode(query.code);
-            const githubUserResponse = await fetch('https://api.github.com/user', {
-              headers: { Authorization: `Bearer ${tokens.accessToken}` }
-            });
-            const githubUser: GitHubUserResponse = await githubUserResponse.json();
+            const githubUserResponse = await fetch(
+              'https://api.github.com/user',
+              { headers: { Authorization: `Bearer ${tokens.accessToken}` } }
+            );
+            const githubUser: GitHubUserResponse =
+              await githubUserResponse.json();
 
             const existingUser = await db.query.users.findFirst({
               where: eq(users.githubId, githubUser.id)
@@ -135,7 +139,11 @@ const app = new Elysia({ prefix: '/api' })
             if (existingUser) {
               const session = await lucia.createSession(existingUser.id, {});
               const sessionCookie = lucia.createSessionCookie(session.id);
-              cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+              cookies().set(
+                sessionCookie.name,
+                sessionCookie.value,
+                sessionCookie.attributes
+              );
               set.redirect = '/';
               return;
             }
@@ -144,10 +152,14 @@ const app = new Elysia({ prefix: '/api' })
 
             // Special case for GitHub accounts with private emails
             if (!userEmail) {
-              const githubEmailsResponse = await fetch('https://api.github.com/user/emails', {
-                headers: { Authorization: `Bearer ${tokens.accessToken}` }
-              });
-              const githubEmails: GitHubEmailsResponse = await githubEmailsResponse.json();
+              const githubEmailsResponse = await fetch(
+                'https://api.github.com/user/emails',
+                {
+                  headers: { Authorization: `Bearer ${tokens.accessToken}` }
+                }
+              );
+              const githubEmails: GitHubEmailsResponse =
+                await githubEmailsResponse.json();
 
               userEmail =
                 githubEmails.find((email) => email.primary)?.email ??
@@ -172,7 +184,11 @@ const app = new Elysia({ prefix: '/api' })
 
             const session = await lucia.createSession(userId, {});
             const sessionCookie = lucia.createSessionCookie(session.id);
-            cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+            cookies().set(
+              sessionCookie.name,
+              sessionCookie.value,
+              sessionCookie.attributes
+            );
 
             set.redirect = '/';
           } catch (err) {
@@ -246,9 +262,10 @@ const app = new Elysia({ prefix: '/api' })
             });
             try {
               await twitter.v2.tweet(
-                `Today's #developer word of the day is ${definition.term}! 💡\n\n` +
+                `Today's word of the day is ${definition.term}! 💡\n\n` +
                   `${definition.term}: ${definition.definition}\n\n` +
-                  `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
+                  `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}\n\n` +
+                  '#buildinpublic #indiehackers #developers'
               );
             } catch (err) {
               set.status = 500;
@@ -284,7 +301,10 @@ const app = new Elysia({ prefix: '/api' })
         async ({ query }) => {
           const results = await db.query.definitions.findMany({
             orderBy: desc(definitions.upvotes),
-            where: and(eq(definitions.status, 'approved'), eq(definitions.term, query.term)),
+            where: and(
+              eq(definitions.status, 'approved'),
+              eq(definitions.term, query.term)
+            ),
             columns: {
               id: true,
               term: true,
