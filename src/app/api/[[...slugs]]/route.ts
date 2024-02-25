@@ -3,7 +3,7 @@ import { OAuth2RequestError } from 'arctic';
 import { and, desc, eq } from 'drizzle-orm';
 import { Elysia, t } from 'elysia';
 import MeiliSearch from 'meilisearch';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { TwitterApi } from 'twitter-api-v2';
 
@@ -244,6 +244,7 @@ const app = new Elysia({ prefix: '/api' })
 
           await db.insert(wotds).values({ definitionId: definition.id });
           revalidateTag('home_feed');
+          revalidatePath('/');
 
           // Post on X (Twitter)
           if (
