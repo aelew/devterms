@@ -26,7 +26,7 @@ export async function Statistics() {
   const [definitionCount, userCount] = await Promise.all([getCachedDefinitionCount(), getCachedUserCount()]);
   const stats = [
     { label: 'Definitions', value: definitionCount },
-    { label: 'Users', value: userCount }
+    { label: 'Posters', value: userCount }
   ];
   return (
     <dl className="grid grid-cols-2 divide-x text-center">
