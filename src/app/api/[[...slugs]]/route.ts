@@ -154,9 +154,7 @@ const app = new Elysia({ prefix: '/api' })
             if (!userEmail) {
               const githubEmailsResponse = await fetch(
                 'https://api.github.com/user/emails',
-                {
-                  headers: { Authorization: `Bearer ${tokens.accessToken}` }
-                }
+                { headers: { Authorization: `Bearer ${tokens.accessToken}` } }
               );
               const githubEmails: GitHubEmailsResponse =
                 await githubEmailsResponse.json();
