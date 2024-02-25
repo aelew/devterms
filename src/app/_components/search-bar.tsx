@@ -100,6 +100,7 @@ export function SearchBar() {
           params: {
             hitsPerPage: 4,
             synonyms: true,
+            distinct: true,
             attributesToHighlight: [],
             attributesToRetrieve: ['id', 'term', 'definition']
           }
@@ -117,7 +118,6 @@ export function SearchBar() {
       if (value.trim() === '') {
         setHits([]);
       } else {
-        console.log('y', value);
         updateSearchResults(value);
       }
     },
