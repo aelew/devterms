@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { cn, termToSlug } from '@/lib/utils';
+import { termToSlug } from '@/lib/utils';
 import type { Definition } from '@/types';
 import { Time } from '../time';
 import { DefinitionReportButton } from './report-button';
@@ -27,23 +27,18 @@ export function DefinitionCard({
   badges
 }: DefinitionCardProps) {
   return (
-    <Card id={definition.id} className={cn('relative', className)}>
-      {badges && (
-        <div className="absolute right-6 top-8">
-          <div className="flex gap-2">
+    <Card id={definition.id} className={className}>
+      <CardHeader>
+        {badges && (
+          <div className="mb-2 flex gap-2">
             {badges.map((badge) => (
               <Badge key={badge}>{badge}</Badge>
             ))}
           </div>
-        </div>
-      )}
-      <CardHeader>
+        )}
         <Link
+          className="w-fit transition-color-transform active:scale-[0.98]"
           href={`/define/${termToSlug(definition.term)}`}
-          className={cn(
-            'w-fit transition-color-transform active:scale-[0.98]',
-            badges?.length && 'max-w-[79%]'
-          )}
         >
           <CardTitle className="text-gradient w-fit text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
             {definition.term}
