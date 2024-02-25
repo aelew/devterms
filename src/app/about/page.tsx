@@ -5,7 +5,7 @@ import { getPageMetadata } from '@/lib/seo';
 
 export const metadata = getPageMetadata({ title: 'About' });
 
-export default async function SubmitDefinitionPage() {
+export default function AboutPage() {
   return (
     <div className="mt-2">
       <Card>
