@@ -1,6 +1,6 @@
 'use client';
 
-import { SiGithub } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 import { GeistMono } from 'geist/font/mono';
 import {
   ChevronDownIcon,
@@ -73,7 +73,18 @@ export function ClientAside({ children }: PropsWithChildren) {
             })}
           >
             <SiGithub className="mr-2 size-4" />
-            GitHub
+            Star on GitHub
+          </Link>
+          <Link
+            target="_blank"
+            href="https://twitter.com/devtermsio"
+            className={buttonVariants({
+              className: 'w-full',
+              variant: 'outline'
+            })}
+          >
+            <SiX className="mr-2 size-4" />
+            Follow on X
           </Link>
         </CardFooter>
       </Card>
@@ -123,6 +134,28 @@ export function ClientAside({ children }: PropsWithChildren) {
           </Card>
         </Collapsible>
       )}
+      <div className="hidden justify-center gap-4 text-center text-sm text-muted-foreground md:flex">
+        <Link
+          className="hover:underline hover:underline-offset-4"
+          href="/about"
+        >
+          About
+        </Link>
+        <Link
+          className="hover:underline hover:underline-offset-4"
+          href="https://twitter.com/devtermsio"
+          target="_blank"
+        >
+          X
+        </Link>
+        <Link
+          className="hover:underline hover:underline-offset-4"
+          href="https://github.com/aelew/devterms"
+          target="_blank"
+        >
+          GitHub
+        </Link>
+      </div>
     </aside>
   );
 }
