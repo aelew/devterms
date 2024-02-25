@@ -116,6 +116,9 @@ dependencies:
   oslo:
     specifier: ^1.1.2
     version: 1.1.2
+  p-debounce:
+    specifier: ^4.0.0
+    version: 4.0.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -5473,6 +5476,11 @@ packages:
       '@node-rs/argon2': 1.7.0
       '@node-rs/bcrypt': 1.9.0
       auri: 1.0.2
+    dev: false
+
+  /p-debounce@4.0.0:
+    resolution: {integrity: sha512-4Ispi9I9qYGO4lueiLDhe4q4iK5ERK8reLsuzH6BPaXn53EGaua8H66PXIFGrW897hwjXp+pVLrm/DLxN0RF0A==}
+    engines: {node: '>=12'}
     dev: false
 
   /p-limit@3.1.0:
