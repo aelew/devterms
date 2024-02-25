@@ -1,5 +1,4 @@
 import { GeistSans } from 'geist/font/sans';
-import type { Viewport } from 'next';
 import PlausibleProvider from 'next-plausible';
 import NextTopLoader from 'nextjs-toploader';
 import type { PropsWithChildren } from 'react';
@@ -16,12 +15,6 @@ import { MetaTags } from './_components/metatags';
 import './globals.css';
 
 export const metadata = baseMetadata;
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1
-};
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
