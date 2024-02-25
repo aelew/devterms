@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
   const term = slugToTerm(params.term);
   const results = await getDefinitions(term);
   if (!results.length) {
-    return getPageMetadata({ title: `${term} Definition` });
+    return getPageMetadata({ title: `What is ${term}?` });
   }
   return getPageMetadata({
-    title: `${results[0]!.term} Definition`,
+    title: `What is ${results[0]!.term}?`,
     description: results[0]!.definition
   });
 }
