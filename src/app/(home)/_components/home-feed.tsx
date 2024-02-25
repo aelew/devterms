@@ -41,7 +41,7 @@ const getHomeFeed = unstable_cache(
     return withPagination(dynamicQuery, page - 1);
   },
   ['home_feed'],
-  { revalidate: 900 }
+  { tags: ['home_feed'], revalidate: 900 }
 );
 
 export async function HomeFeed({ page }: HomeFeedProps) {
