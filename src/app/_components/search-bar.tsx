@@ -3,30 +3,47 @@
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
 import { Command as CommandPrimitive } from 'cmdk';
 import { CheckIcon, SearchIcon } from 'lucide-react';
+import type { SearchResponse } from 'meilisearch';
 import { usePlausible } from 'next-plausible';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import pDebounce from 'p-debounce';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent
+} from 'react';
 
-import { CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
+import {
+  CommandGroup,
+  CommandItem,
+  CommandList
+} from '@/components/ui/command';
 import { Input } from '@/components/ui/input';
 import { env } from '@/env';
 import { termToSlug } from '@/lib/utils';
 import type { Events } from '@/types';
 
-const { searchClient } = instantMeiliSearch(env.NEXT_PUBLIC_MEILISEARCH_HOST, env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY, {
-  placeholderSearch: false
-});
+const { searchClient } = instantMeiliSearch(
+  env.NEXT_PUBLIC_MEILISEARCH_HOST,
+  env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
+  {
+    placeholderSearch: false,
+    meiliSearchParams: {
+      attributesToSearchOn: ['term', 'definition', 'example']
+    }
+  }
+);
 
 type Hit = {
   id: string;
   term: string;
   definition: string;
-  example: string;
 };
 
 export function SearchBar() {
   const [selectedHit, setSelectedHit] = useState<Hit | null>(null);
-  const [debouncedValue, setDebouncedValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [open, setOpen] = useState(false);
 
@@ -34,6 +51,7 @@ export function SearchBar() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const plausible = usePlausible<Events>();
+  const pathname = usePathname();
   const router = useRouter();
 
   const handleKeyDown = useCallback(
@@ -49,7 +67,8 @@ export function SearchBar() {
       }
 
       if (event.key === 'Enter' && input.value.trim() !== '') {
-        const hitToSelect = hits.find((hit) => hit.term === input.value.trim());
+        const hitToSelect =
+          selectedHit || hits.find((hit) => hit.term === input.value.trim());
         if (hitToSelect) {
           setSelectedHit(hitToSelect);
         } else {
@@ -62,7 +81,7 @@ export function SearchBar() {
         input.blur();
       }
     },
-    [router, hits, open, plausible]
+    [router, hits, open, selectedHit, plausible]
   );
 
   const handleBlur = useCallback(() => {
@@ -72,55 +91,64 @@ export function SearchBar() {
     }
   }, [selectedHit]);
 
+  const updateSearchResults = pDebounce(
+    async (query: string) => {
+      const { results } = await searchClient.search<Hit>([
+        {
+          query,
+          indexName: 'definitions',
+          params: {
+            hitsPerPage: 4,
+            synonyms: true,
+            attributesToHighlight: [],
+            attributesToRetrieve: ['id', 'term', 'definition']
+          }
+        }
+      ]);
+      setHits((results[0] as unknown as SearchResponse<Hit>).hits);
+    },
+    -1,
+    { before: true }
+  );
+
   const handleValueChange = useCallback(
-    (value: string) => {
+    async (value: string) => {
       setInputValue(value);
       if (value.trim() === '') {
         setHits([]);
+      } else {
+        console.log('y', value);
+        updateSearchResults(value);
       }
     },
-    [setInputValue]
+    [setInputValue, updateSearchResults]
   );
 
   const handleHitSelect = useCallback(
     (hit: Hit) => {
-      setSelectedHit(selectedHit);
+      setSelectedHit(hit);
       setInputValue('');
       setOpen(false);
       inputRef.current?.blur();
       router.push(`/define/${termToSlug(hit.term)}`);
       plausible('Search');
     },
-    [router, selectedHit, plausible]
+    [router, plausible]
   );
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebouncedValue(inputValue);
-    }, 150);
-    return () => clearTimeout(timeoutId);
-  }, [inputValue]);
-
-  useEffect(() => {
-    if (debouncedValue !== '') {
-      searchClient
-        .search<Hit>([
-          {
-            indexName: 'definitions',
-            params: { hitsPerPage: 4 },
-            query: debouncedValue
-          }
-        ])
-        // @ts-expect-error SearchResponse
-        .then(({ results }) => setHits(results[0].hits));
-    }
-  }, [debouncedValue]);
+    setInputValue('');
+  }, [pathname]);
 
   return (
-    <CommandPrimitive onKeyDown={handleKeyDown}>
+    <CommandPrimitive onKeyDown={handleKeyDown} filter={() => 1}>
       <div className="relative flex items-center">
         <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
-        <Input className="h-auto rounded-lg bg-background py-3 pl-10 pr-4 shadow" placeholder="Search..." asChild>
+        <Input
+          className="h-auto rounded-lg bg-background py-3 pl-10 pr-4 shadow"
+          placeholder="Search..."
+          asChild
+        >
           <CommandPrimitive.Input
             ref={inputRef}
             value={inputValue}
@@ -153,7 +181,9 @@ export function SearchBar() {
                       <SearchIcon className="size-4 shrink-0" />
                     )}
                     <p className="whitespace-nowrap">{hit.term}</p>
-                    <p className="truncate text-[0.8rem] text-muted-foreground">{hit.definition}</p>
+                    <p className="truncate text-[0.8rem] text-muted-foreground">
+                      {hit.definition}
+                    </p>
                   </CommandItem>
                 );
               })}
