@@ -10,7 +10,7 @@ const getCachedDefinitionCount = unstable_cache(
     return result[0]?.rows ?? 0;
   },
   ['definition_count'],
-  { revalidate: 900 }
+  { revalidate: 1800 }
 );
 
 const getCachedUserCount = unstable_cache(
@@ -19,7 +19,7 @@ const getCachedUserCount = unstable_cache(
     return result[0]?.rows ?? 0;
   },
   ['user_count'],
-  { revalidate: 900 }
+  { revalidate: 1800 }
 );
 
 export async function Statistics() {
