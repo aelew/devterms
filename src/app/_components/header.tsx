@@ -1,11 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import {
-  ArrowRightIcon,
-  LayoutDashboardIcon,
-  LogOutIcon,
-  PlusIcon,
-  UserIcon
-} from 'lucide-react';
+import { ArrowRightIcon, LayoutDashboardIcon, LogOutIcon, PlusIcon, UserIcon } from 'lucide-react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,11 +39,7 @@ export async function Header() {
     await lucia.invalidateSession(session.id);
 
     const sessionCookie = lucia.createBlankSessionCookie();
-    cookies().set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes
-    );
+    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   }
 
   return (
@@ -58,9 +48,7 @@ export async function Header() {
         <div className="flex items-center gap-4">
           <Link className="flex items-center gap-2" href="/">
             <Image src="/icon.png" alt="Logo" width={24} height={24} />
-            <span className="text-xl font-semibold tracking-tighter">
-              DevTerms
-            </span>
+            <span className="text-xl font-semibold tracking-tighter">DevTerms</span>
           </Link>
           <ul className="hidden gap-4 text-sm text-muted-foreground sm:flex">
             {navigation.map((item) => (
@@ -97,17 +85,13 @@ export async function Header() {
               <DropdownMenuTrigger className="rounded-full transition-opacity hover:opacity-80">
                 <Avatar>
                   <AvatarImage src={user.avatar + '&s=64'} />
-                  <AvatarFallback>
-                    {user.name.slice(0, 2).toUpperCase()}
-                  </AvatarFallback>
+                  <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
                   <p>{user.name}</p>
-                  <p className="font-normal text-muted-foreground">
-                    {user.email}
-                  </p>
+                  <p className="font-normal text-muted-foreground">{user.email}</p>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
@@ -132,10 +116,7 @@ export async function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Link
-              className={buttonVariants({ className: 'group' })}
-              href="/login"
-            >
+            <Link className={buttonVariants({ className: 'group' })} href="/login">
               Sign in
               <ArrowRightIcon className="ml-1 h-4 w-4 translate-x-0 transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
             </Link>

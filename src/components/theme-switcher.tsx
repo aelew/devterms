@@ -15,9 +15,7 @@ import {
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
 
-  const ActiveIcon = (
-    <span className="absolute right-3 size-1.5 rounded-full bg-green-600" />
-  );
+  const ActiveIcon = <span className="absolute right-3 size-1.5 rounded-full bg-green-600" />;
 
   return (
     <DropdownMenu>

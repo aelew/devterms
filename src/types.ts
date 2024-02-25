@@ -4,13 +4,7 @@ import type { definitions } from './server/db/schema';
 
 export type Definition = InferSelectModel<typeof definitions>;
 
-export type ShareMedium =
-  | 'X'
-  | 'Reddit'
-  | 'LinkedIn'
-  | 'Facebook'
-  | 'Email'
-  | 'Direct';
+export type ShareMedium = 'X' | 'Reddit' | 'LinkedIn' | 'Facebook' | 'Email' | 'Direct';
 
 export type Events = {
   Login: never;

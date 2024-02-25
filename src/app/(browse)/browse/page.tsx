@@ -12,16 +12,9 @@ export default function BrowsePage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-gradient text-3xl">
-          Browse definitions
-        </CardTitle>
+        <CardTitle className="text-gradient text-3xl">Browse definitions</CardTitle>
       </CardHeader>
-      <CardContent
-        className={cn(
-          'grid grid-cols-4 gap-2 sm:grid-cols-6',
-          GeistMono.className
-        )}
-      >
+      <CardContent className={cn('grid grid-cols-4 gap-2 sm:grid-cols-6', GeistMono.className)}>
         {CATEGORIES.map((category) => (
           <Link
             key={category}

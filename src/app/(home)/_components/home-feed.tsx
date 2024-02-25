@@ -67,16 +67,12 @@ export async function HomeFeed({ page }: HomeFeedProps) {
               />
             );
           }
-          return (
-            <DefinitionCard key={wotd.definition.id} definition={definition} />
-          );
+          return <DefinitionCard key={wotd.definition.id} definition={definition} />;
         })
       ) : (
         <Card>
           <CardHeader className="text-center">
-            <CardTitle className="font-medium">
-              There&apos;s nothing here yet. Check back later!
-            </CardTitle>
+            <CardTitle className="font-medium">There&apos;s nothing here yet. Check back later!</CardTitle>
           </CardHeader>
         </Card>
       )}

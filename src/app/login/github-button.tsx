@@ -11,11 +11,7 @@ export function GitHubButton() {
   const plausible = usePlausible<Events>();
   return (
     <form action={login}>
-      <Button
-        onClick={() => plausible('Login')}
-        className="relative w-full"
-        variant="outline"
-      >
+      <Button onClick={() => plausible('Login')} className="relative w-full" variant="outline">
         <SiGithub className="absolute left-[0.875rem] size-4" />
         <span>Continue with GitHub</span>
       </Button>

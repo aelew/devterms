@@ -1,22 +1,12 @@
 import { relations, sql } from 'drizzle-orm';
-import {
-  boolean,
-  int,
-  mysqlEnum,
-  mysqlTable,
-  text,
-  timestamp,
-  varchar
-} from 'drizzle-orm/mysql-core';
+import { boolean, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from 'drizzle-orm/mysql-core';
 
 import { generateId } from '@/lib/id';
 
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 21 }).primaryKey(),
   name: varchar('name', { length: 32 }),
-  role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner'])
-    .default('user')
-    .notNull(),
+  role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner']).default('user').notNull(),
   email: varchar('email', { length: 255 }).unique().notNull(),
   avatar: varchar('avatar', { length: 255 }).notNull(),
   githubId: int('github_id', { unsigned: true }).unique().notNull(),
@@ -51,9 +41,7 @@ export const definitions = mysqlTable('definitions', {
     .primaryKey()
     .$defaultFn(() => generateId('def')),
   userId: varchar('user_id', { length: 21 }).notNull(),
-  status: mysqlEnum('status', ['pending', 'approved', 'rejected'])
-    .default('pending')
-    .notNull(),
+  status: mysqlEnum('status', ['pending', 'approved', 'rejected']).default('pending').notNull(),
   term: varchar('term', { length: 255 }).notNull(),
   definition: text('definition').notNull(),
   example: text('example').notNull(),

@@ -25,10 +25,7 @@ export const columns: ColumnDef<Definition>[] = [
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
         className="mr-2"
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && 'indeterminate')
-        }
+        checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')}
       />
     ),
     cell: ({ row }) => (
@@ -55,15 +52,10 @@ export const columns: ColumnDef<Definition>[] = [
   },
   {
     accessorKey: 'createdAt',
-    sortingFn: (a, b) =>
-      b.original.createdAt.getTime() - a.original.createdAt.getTime(),
+    sortingFn: (a, b) => b.original.createdAt.getTime() - a.original.createdAt.getTime(),
     header: ({ column }) => {
       return (
-        <Button
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          className="-ml-4"
-          variant="ghost"
-        >
+        <Button onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')} className="-ml-4" variant="ghost">
           Created
           <ArrowUpDownIcon className="ml-2 h-4 w-4" />
         </Button>

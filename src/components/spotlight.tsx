@@ -38,12 +38,7 @@ export function Spotlight({ ellipseClassName, className }: SpotlightProps) {
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           {/* <feGaussianBlur
             stdDeviation="5"
             result="effect1_foregroundBlur_1065_8"

@@ -9,10 +9,7 @@ import { sessions, users } from '@/server/db/schema';
 
 const adapter = new DrizzleMySQLAdapter(db, sessions, users);
 
-export const github = new GitHub(
-  env.GITHUB_CLIENT_ID,
-  env.GITHUB_CLIENT_SECRET
-);
+export const github = new GitHub(env.GITHUB_CLIENT_ID, env.GITHUB_CLIENT_SECRET);
 
 export const lucia = new Lucia(adapter, {
   sessionCookie: {

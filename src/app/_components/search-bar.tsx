@@ -5,29 +5,17 @@ import { Command as CommandPrimitive } from 'cmdk';
 import { CheckIcon, SearchIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { useRouter } from 'next/navigation';
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type KeyboardEvent
-} from 'react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 
-import {
-  CommandGroup,
-  CommandItem,
-  CommandList
-} from '@/components/ui/command';
+import { CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
 import { Input } from '@/components/ui/input';
 import { env } from '@/env';
 import { termToSlug } from '@/lib/utils';
 import type { Events } from '@/types';
 
-const { searchClient } = instantMeiliSearch(
-  env.NEXT_PUBLIC_MEILISEARCH_HOST,
-  env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
-  { placeholderSearch: false }
-);
+const { searchClient } = instantMeiliSearch(env.NEXT_PUBLIC_MEILISEARCH_HOST, env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY, {
+  placeholderSearch: false
+});
 
 type Hit = {
   id: string;
@@ -132,11 +120,7 @@ export function SearchBar() {
     <CommandPrimitive onKeyDown={handleKeyDown}>
       <div className="relative flex items-center">
         <SearchIcon className="absolute ml-4 size-4 text-muted-foreground" />
-        <Input
-          className="h-auto rounded-lg bg-background py-3 pl-10 pr-4 shadow"
-          placeholder="Search..."
-          asChild
-        >
+        <Input className="h-auto rounded-lg bg-background py-3 pl-10 pr-4 shadow" placeholder="Search..." asChild>
           <CommandPrimitive.Input
             ref={inputRef}
             value={inputValue}
@@ -169,9 +153,7 @@ export function SearchBar() {
                       <SearchIcon className="size-4 shrink-0" />
                     )}
                     <p className="whitespace-nowrap">{hit.term}</p>
-                    <p className="truncate text-[0.8rem] text-muted-foreground">
-                      {hit.definition}
-                    </p>
+                    <p className="truncate text-[0.8rem] text-muted-foreground">{hit.definition}</p>
                   </CommandItem>
                 );
               })}

@@ -11,11 +11,10 @@ export async function updateUpvoteCount(
   definitionId: string,
   action: 'increment' | 'decrement'
 ) {
+  const n = action === 'increment' ? 1 : -1;
   await db
     .update(definitions)
-    .set({
-      upvotes: sql`${definitions.upvotes} + ${action === 'increment' ? 1 : -1}`
-    })
+    .set({ upvotes: sql`${definitions.upvotes} + ${n}` })
     .where(eq(definitions.id, definitionId));
 }
 
@@ -23,11 +22,10 @@ export async function updateDownvoteCount(
   definitionId: string,
   action: 'increment' | 'decrement'
 ) {
+  const n = action === 'increment' ? 1 : -1;
   await db
     .update(definitions)
-    .set({
-      downvotes: sql`${definitions.downvotes} + ${action === 'increment' ? 1 : -1}`
-    })
+    .set({ downvotes: sql`${definitions.downvotes} + ${n}` })
     .where(eq(definitions.id, definitionId));
 }
 

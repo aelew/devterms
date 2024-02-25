@@ -11,15 +11,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { getActionErrorMessage, slugToTerm } from '@/lib/utils';
@@ -31,9 +23,7 @@ interface SubmitDefinitionFormProps {
   isAuthenticated: boolean;
 }
 
-export function SubmitDefinitionForm({
-  isAuthenticated
-}: SubmitDefinitionFormProps) {
+export function SubmitDefinitionForm({ isAuthenticated }: SubmitDefinitionFormProps) {
   const plausible = usePlausible<Events>();
   const searchParams = useSearchParams();
 
@@ -71,10 +61,7 @@ export function SubmitDefinitionForm({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <FormField
           name="term"
           control={form.control}
@@ -82,15 +69,9 @@ export function SubmitDefinitionForm({
             <FormItem>
               <FormLabel>Term</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="developer"
-                  disabled={!isAuthenticated}
-                  {...field}
-                />
+                <Input placeholder="developer" disabled={!isAuthenticated} {...field} />
               </FormControl>
-              <FormDescription>
-                The word or phrase you want to define.
-              </FormDescription>
+              <FormDescription>The word or phrase you want to define.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -108,9 +89,7 @@ export function SubmitDefinitionForm({
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Your definition should be clear to everyone, no inside jokes!
-              </FormDescription>
+              <FormDescription>Your definition should be clear to everyone, no inside jokes!</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -128,17 +107,13 @@ export function SubmitDefinitionForm({
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                How would you use this term in a sentence?
-              </FormDescription>
+              <FormDescription>How would you use this term in a sentence?</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         {isAuthenticated ? (
-          <Button disabled={status === 'executing'}>
-            Submit my definition
-          </Button>
+          <Button disabled={status === 'executing'}>Submit my definition</Button>
         ) : (
           <Link className={buttonVariants()} href="/login">
             Sign in to submit
