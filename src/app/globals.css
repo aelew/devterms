@@ -94,3 +94,11 @@
 .react-share__ShareButton {
   @apply transition-color-transform hover:opacity-80 active:scale-90;
 }
+
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
