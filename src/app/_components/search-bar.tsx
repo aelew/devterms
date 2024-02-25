@@ -153,14 +153,14 @@ export function SearchBar() {
             ref={inputRef}
             value={inputValue}
             onBlur={handleBlur}
-            onValueChange={handleValueChange}
             onFocus={() => setOpen(true)}
+            onValueChange={handleValueChange}
           />
         </Input>
       </div>
-      {open && hits.length > 0 && (
-        <div className="relative">
-          <CommandList>
+      <div className="relative">
+        <CommandList>
+          {open && hits.length > 0 && (
             <CommandGroup className="absolute z-10 mt-2 w-full rounded-md border bg-popover p-1 shadow outline-none animate-in fade-in-0">
               {hits.map((hit) => {
                 const isSelected = selectedHit?.id === hit.id;
@@ -188,9 +188,9 @@ export function SearchBar() {
                 );
               })}
             </CommandGroup>
-          </CommandList>
-        </div>
-      )}
+          )}
+        </CommandList>
+      </div>
     </CommandPrimitive>
   );
 }
