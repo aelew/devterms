@@ -67,6 +67,7 @@ export async function Header() {
               <li key={item.href}>
                 <Link
                   className="block transition-color-transform hover:text-muted-foreground/80 active:scale-95"
+                  prefetch={item.href !== '/api/docs'}
                   href={item.href}
                 >
                   {item.label}
