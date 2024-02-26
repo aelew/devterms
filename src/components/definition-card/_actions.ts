@@ -1,18 +1,24 @@
 'use server';
 
 import { and, eq, gte, sql } from 'drizzle-orm';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 
 import { protectedAction } from '@/lib/action';
+import { termToSlug } from '@/lib/utils';
 import { db } from '@/server/db';
-import { definitions, reports } from '@/server/db/schema';
+import { definitions, reports, wotds } from '@/server/db/schema';
 import { reportFormSchema } from './schema';
 
 export type VoteAction = 'increment' | 'decrement';
 
+const getTermFromId = (id: string) =>
+  db.query.definitions.findFirst({
+    where: eq(definitions.id, id),
+    columns: { term: true }
+  });
+
 export async function updateUpvoteCount(
   definitionId: string,
-  pathname: string,
   action: VoteAction
 ) {
   const n = action === 'increment' ? 1 : -1;
@@ -25,12 +31,26 @@ export async function updateUpvoteCount(
         gte(definitions.upvotes, n === -1 ? 1 : 0)
       )
     );
-  revalidatePath(pathname);
+
+  const termResult = await getTermFromId(definitionId);
+  if (!termResult) {
+    throw new Error('Term not found');
+  }
+
+  revalidateTag(`definitions:${termToSlug(termResult.term)}`);
+
+  // revalidate the home feed if the definition is a WOTD
+  const wotdEntry = await db.query.wotds.findFirst({
+    where: eq(wotds.definitionId, definitionId),
+    columns: { id: true }
+  });
+  if (wotdEntry) {
+    revalidateTag('home_feed');
+  }
 }
 
 export async function updateDownvoteCount(
   definitionId: string,
-  pathname: string,
   action: VoteAction
 ) {
   const n = action === 'increment' ? 1 : -1;
@@ -43,7 +63,21 @@ export async function updateDownvoteCount(
         gte(definitions.downvotes, n === -1 ? 1 : 0)
       )
     );
-  revalidatePath(pathname);
+  const termResult = await getTermFromId(definitionId);
+  if (!termResult) {
+    throw new Error('Term not found');
+  }
+
+  revalidateTag(`definitions:${termToSlug(termResult.term)}`);
+
+  // revalidate the home feed if the definition is a WOTD
+  const wotdEntry = await db.query.wotds.findFirst({
+    where: eq(wotds.definitionId, definitionId),
+    columns: { id: true }
+  });
+  if (wotdEntry) {
+    revalidateTag('home_feed');
+  }
 }
 
 // TODO: Implement CF Turnstile captcha
