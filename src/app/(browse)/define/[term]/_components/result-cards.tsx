@@ -1,6 +1,7 @@
 import { and, desc, eq } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 
 import { DefinitionCard } from '@/components/definition-card';
 import { termToSlug } from '@/lib/utils';
@@ -11,7 +12,7 @@ interface DefineResultCardsProps {
   term: string;
 }
 
-export const getDefinitions = (term: string) =>
+export const getDefinitions = cache((term: string) =>
   unstable_cache(
     (term: string) =>
       db.query.definitions.findMany({
@@ -30,7 +31,8 @@ export const getDefinitions = (term: string) =>
       }),
     ['definitions'],
     { tags: [`definitions:${termToSlug(term)}`], revalidate: 1800 }
-  )(term);
+  )(term)
+);
 
 export async function DefineResultCards({ term }: DefineResultCardsProps) {
   const results = await getDefinitions(term);
