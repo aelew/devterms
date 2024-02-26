@@ -2,11 +2,13 @@
 
 import type { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDownIcon } from 'lucide-react';
+import Link from 'next/link';
 import { match } from 'ts-pattern';
 
 import { Time } from '@/components/time';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { termToSlug } from '@/lib/utils';
 
 export type Definition = {
   id: string;
@@ -20,11 +22,19 @@ export type Definition = {
 export const columns: ColumnDef<Definition>[] = [
   {
     header: 'Term',
-    accessorKey: 'term'
+    cell: ({ row }) => {
+      return (
+        <Link
+          className="font-medium hover:underline hover:underline-offset-4"
+          href={`/define/${termToSlug(row.original.term)}#${row.original.id}`}
+        >
+          {row.original.term}
+        </Link>
+      );
+    }
   },
   {
     header: 'Status',
-    accessorKey: 'status',
     cell: ({ row }) => {
       const status = row.original.status;
       return (
