@@ -67,7 +67,7 @@ export function DefinitionShareButton({
   definitionId,
   term
 }: DefinitionShareButtonProps) {
-  const url = `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(term)}#${definitionId}`;
+  const url = `${env.NEXT_PUBLIC_BASE_URL}/d/${definitionId.slice(4)}`;
 
   const { status, copy } = useCopyToClipboard();
   const plausible = usePlausible<Events>();
