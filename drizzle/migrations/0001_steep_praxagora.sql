@@ -1,1 +1,0 @@
-ALTER TABLE `definitions` RENAME COLUMN `description` TO `definition`;
