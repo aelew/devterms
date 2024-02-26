@@ -36,14 +36,16 @@ export function DefinitionCard({
             ))}
           </div>
         )}
-        <Link
-          className="w-fit transition-color-transform active:scale-[0.98]"
-          href={`/define/${termToSlug(definition.term)}#${definition.id}`}
-        >
-          <CardTitle className="text-gradient w-fit text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
-            {definition.term}
-          </CardTitle>
-        </Link>
+        <div>
+          <Link
+            className="contents transition-color-transform active:scale-[0.98]"
+            href={`/define/${termToSlug(definition.term)}#${definition.id}`}
+          >
+            <CardTitle className="text-gradient text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
+              {definition.term}
+            </CardTitle>
+          </Link>
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-3">
