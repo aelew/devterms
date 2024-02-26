@@ -15,6 +15,13 @@
       "when": 1708922981818,
       "tag": "0001_spotty_speed",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708932452135,
+      "tag": "0002_tiresome_toad_men",
+      "breakpoints": true
     }
   ]
 }

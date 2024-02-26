@@ -79,6 +79,7 @@ export const definitions = mysqlTable(
     return {
       status: index('status_idx').on(table.status),
       term: index('term_idx').on(table.term),
+      upvotes: index('upvotes_idx').on(table.upvotes),
       createdAt: index('created_at_idx').on(table.createdAt)
     };
   }
