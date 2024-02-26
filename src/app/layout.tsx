@@ -34,7 +34,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         suppressHydrationWarning
         className={cn(
           GeistSans.className,
-          'relative mb-8 flex min-h-screen flex-col antialiased'
+          'relative flex min-h-screen flex-col pb-8 antialiased'
         )}
       >
         <ThemeProvider
