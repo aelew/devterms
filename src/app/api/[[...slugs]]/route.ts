@@ -243,6 +243,8 @@ const app = new Elysia({ prefix: '/api' })
           }
 
           await db.insert(wotds).values({ definitionId: definition.id });
+
+          revalidateTag(`definitions:${termToSlug(definition.term)}`);
           revalidateTag('home_feed');
           revalidatePath('/');
 

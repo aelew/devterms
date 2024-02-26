@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: ProfilePageProps) {
   }
   return getPageMetadata({
     title: `@${user.name}'s Profile`,
-    description: `${user.name} has defined ${user.definitions.length} developer terms. Check out their definitions on DevTerms!`
+    description: `Check out ${user.name}'s definitions on DevTerms!`
   });
 }
 

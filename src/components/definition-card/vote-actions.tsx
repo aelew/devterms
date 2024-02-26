@@ -1,6 +1,5 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import pDebounce from 'p-debounce';
 import { useEffect, useOptimistic, useState } from 'react';
 
@@ -22,8 +21,6 @@ export function VoteActions({
   upvotes,
   downvotes
 }: VoteActionsProps) {
-  const pathname = usePathname();
-
   const [optimisticUpvotes, updateOptimisticUpvotes] = useOptimistic(
     upvotes,
     (count, action: VoteAction) => count + (action === 'increment' ? 1 : -1)
@@ -100,7 +97,7 @@ export function VoteActions({
     updateOptimisticUpvotes(action);
 
     // update the upvote count on the server
-    await updateUpvoteCount(definitionId, pathname, action);
+    await updateUpvoteCount(definitionId, action);
   }
 
   async function toggleDownvote() {
@@ -116,7 +113,7 @@ export function VoteActions({
     updateOptimisticDownvotes(action);
 
     // update the downvote count on the server
-    await updateDownvoteCount(definitionId, pathname, action);
+    await updateDownvoteCount(definitionId, action);
   }
 
   return (
