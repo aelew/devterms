@@ -120,6 +120,7 @@ export function ClientAside({ children }: PropsWithChildren) {
                 {CATEGORIES.map((category) => (
                   <Link
                     key={category}
+                    prefetch={false}
                     href={`/browse/${category}`}
                     className={buttonVariants({
                       className: 'border border-input',
