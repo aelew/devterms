@@ -1,8 +1,9 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { CheckIcon, CopyIcon, ShareIcon } from 'lucide-react';
+import { CheckIcon, CopyIcon, QrCodeIcon, ShareIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
+import QRCode from 'react-qr-code';
 import {
   EmailIcon,
   EmailShareButton,
@@ -18,11 +19,13 @@ import {
 import { match } from 'ts-pattern';
 
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
+import { env } from '@/env';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';
@@ -32,11 +35,40 @@ interface DefinitionShareButtonProps {
   term: string;
 }
 
+const socialMedia = [
+  {
+    medium: 'X',
+    icon: XIcon,
+    shareButton: TwitterShareButton
+  },
+  {
+    medium: 'Reddit',
+    icon: RedditIcon,
+    shareButton: RedditShareButton
+  },
+  {
+    medium: 'LinkedIn',
+    icon: LinkedinIcon,
+    shareButton: LinkedinShareButton
+  },
+  {
+    medium: 'Facebook',
+    icon: FacebookIcon,
+    shareButton: FacebookShareButton
+  },
+  {
+    medium: 'Email',
+    icon: EmailIcon,
+    shareButton: EmailShareButton
+  }
+] as const;
+
 export function DefinitionShareButton({
   definitionId,
   term
 }: DefinitionShareButtonProps) {
-  const url = `https://devterms.io/define/${termToSlug(term)}#${definitionId}`;
+  const url = `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(term)}#${definitionId}`;
+
   const { status, copy } = useCopyToClipboard();
   const plausible = usePlausible<Events>();
 
@@ -51,7 +83,11 @@ export function DefinitionShareButton({
     .otherwise(() => 'text-muted-foreground');
 
   const log = (medium: ShareMedium) => {
-    plausible('Share', { props: { Medium: medium } });
+    plausible('Share', {
+      props: {
+        Medium: medium
+      }
+    });
   };
 
   return (
@@ -60,25 +96,36 @@ export function DefinitionShareButton({
         <ShareIcon className="mr-1.5 size-4" />
         Share
       </PopoverTrigger>
-      <PopoverContent className="flex w-full gap-2 p-2">
-        <TwitterShareButton onClick={() => log('X')} url={url}>
-          <XIcon size={24} round />
-        </TwitterShareButton>
-        <RedditShareButton onClick={() => log('Reddit')} url={url}>
-          <RedditIcon size={24} round />
-        </RedditShareButton>
-        <LinkedinShareButton onClick={() => log('LinkedIn')} url={url}>
-          <LinkedinIcon size={24} round />
-        </LinkedinShareButton>
-        <FacebookShareButton onClick={() => log('Facebook')} url={url}>
-          <FacebookIcon size={24} round />
-        </FacebookShareButton>
-        <EmailShareButton onClick={() => log('Email')} url={url}>
-          <EmailIcon size={24} round />
-        </EmailShareButton>
+      <PopoverContent className="flex w-full gap-2 p-2 transition-opacity">
+        {socialMedia.map(
+          ({ medium, icon: ShareIcon, shareButton: ShareButton }) => (
+            <ShareButton onClick={() => log(medium)} key={medium} url={url}>
+              <ShareIcon size={24} round />
+            </ShareButton>
+          )
+        )}
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              className="size-6 rounded-full shadow-none"
+              onClick={() => log('QR Code')}
+              variant="secondary"
+              size="icon"
+            >
+              <QrCodeIcon size={12} />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-fit p-10">
+            <QRCode
+              className="rounded-lg border bg-white p-4 shadow"
+              value={url}
+              size={256}
+            />
+          </DialogContent>
+        </Dialog>
         <Button
           className="size-6 rounded-full shadow-none"
-          variant="secondary"
+          variant="outline"
           size="icon"
           onClick={() => {
             copy(url);

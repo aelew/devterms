@@ -10,6 +10,7 @@ export type ShareMedium =
   | 'LinkedIn'
   | 'Facebook'
   | 'Email'
+  | 'QR Code'
   | 'Direct';
 
 export type Events = {
