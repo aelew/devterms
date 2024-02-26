@@ -38,7 +38,7 @@ export function DefinitionCard({
         )}
         <Link
           className="w-fit transition-color-transform active:scale-[0.98]"
-          href={`/define/${termToSlug(definition.term)}`}
+          href={`/define/${termToSlug(definition.term)}#${definition.id}`}
         >
           <CardTitle className="text-gradient w-fit text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
             {definition.term}
