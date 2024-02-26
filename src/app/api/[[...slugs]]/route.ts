@@ -231,8 +231,10 @@ const app = new Elysia({ prefix: '/api' })
           });
 
           const index = meili.index('definitions');
-          index.updateSortableAttributes(['term']);
+
+          await index.updateSortableAttributes(['term']);
           await index.updateDocuments(data, { primaryKey: 'id' });
+
           return { success: true };
         })
         .get('/wotd', async ({ set }) => {
@@ -291,9 +293,6 @@ const app = new Elysia({ prefix: '/api' })
           id: definition.id,
           term: definition.term,
           definition: definition.definition,
-          upvotes: definition.upvotes,
-          downvotes: definition.downvotes,
-          createdAt: definition.createdAt,
           url: `https://devterms.io/define/${termToSlug(definition.term)}`
         };
       })
