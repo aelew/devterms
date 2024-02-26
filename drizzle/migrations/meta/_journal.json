@@ -1,1 +1,20 @@
-{"version":"5","dialect":"mysql","entries":[]}
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708922951356,
+      "tag": "0000_busy_switch",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708922981818,
+      "tag": "0001_spotty_speed",
+      "breakpoints": true
+    }
+  ]
+}
