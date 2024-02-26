@@ -39,7 +39,7 @@ export async function Statistics() {
             {label}
           </dt>
           <dd className="text-gradient order-first text-3xl font-semibold tracking-tight">
-            {value}
+            {value.toLocaleString()}
           </dd>
         </div>
       ))}
