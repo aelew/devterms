@@ -1,6 +1,7 @@
 import { relations, sql } from 'drizzle-orm';
 import {
   boolean,
+  index,
   int,
   mysqlEnum,
   mysqlTable,
@@ -11,19 +12,28 @@ import {
 
 import { generateId } from '@/lib/id';
 
-export const users = mysqlTable('users', {
-  id: varchar('id', { length: 21 }).primaryKey(),
-  name: varchar('name', { length: 32 }),
-  role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner'])
-    .default('user')
-    .notNull(),
-  email: varchar('email', { length: 255 }).unique().notNull(),
-  avatar: varchar('avatar', { length: 255 }).notNull(),
-  githubId: int('github_id', { unsigned: true }).unique().notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
-});
+export const users = mysqlTable(
+  'users',
+  {
+    id: varchar('id', { length: 21 }).primaryKey(),
+    name: varchar('name', { length: 32 }),
+    role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner'])
+      .default('user')
+      .notNull(),
+    email: varchar('email', { length: 255 }).unique().notNull(),
+    avatar: varchar('avatar', { length: 255 }).notNull(),
+    githubId: int('github_id', { unsigned: true }).unique().notNull(),
+    createdAt: timestamp('created_at')
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull()
+  },
+  (table) => {
+    return {
+      nameIdx: index('name_idx').on(table.name),
+      roleIdx: index('role_idx').on(table.role)
+    };
+  }
+);
 
 export const usersRelations = relations(users, ({ many }) => ({
   sessions: many(sessions),
@@ -46,23 +56,33 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
   })
 }));
 
-export const definitions = mysqlTable('definitions', {
-  id: varchar('id', { length: 20 })
-    .primaryKey()
-    .$defaultFn(() => generateId('def')),
-  userId: varchar('user_id', { length: 21 }).notNull(),
-  status: mysqlEnum('status', ['pending', 'approved', 'rejected'])
-    .default('pending')
-    .notNull(),
-  term: varchar('term', { length: 255 }).notNull(),
-  definition: text('definition').notNull(),
-  example: text('example').notNull(),
-  upvotes: int('upvotes', { unsigned: true }).default(0).notNull(),
-  downvotes: int('downvotes', { unsigned: true }).default(0).notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
-});
+export const definitions = mysqlTable(
+  'definitions',
+  {
+    id: varchar('id', { length: 20 })
+      .primaryKey()
+      .$defaultFn(() => generateId('def')),
+    userId: varchar('user_id', { length: 21 }).notNull(),
+    status: mysqlEnum('status', ['pending', 'approved', 'rejected'])
+      .default('pending')
+      .notNull(),
+    term: varchar('term', { length: 255 }).notNull(),
+    definition: text('definition').notNull(),
+    example: text('example').notNull(),
+    upvotes: int('upvotes', { unsigned: true }).default(0).notNull(),
+    downvotes: int('downvotes', { unsigned: true }).default(0).notNull(),
+    createdAt: timestamp('created_at')
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull()
+  },
+  (table) => {
+    return {
+      status: index('status_idx').on(table.status),
+      term: index('term_idx').on(table.term),
+      createdAt: index('created_at_idx').on(table.createdAt)
+    };
+  }
+);
 
 export const definitionRelations = relations(definitions, ({ one }) => ({
   user: one(users, {
@@ -71,18 +91,27 @@ export const definitionRelations = relations(definitions, ({ one }) => ({
   })
 }));
 
-export const reports = mysqlTable('reports', {
-  id: varchar('id', { length: 20 })
-    .primaryKey()
-    .$defaultFn(() => generateId('rpt')),
-  userId: varchar('user_id', { length: 21 }).notNull(),
-  definitionId: varchar('definition_id', { length: 20 }).notNull(),
-  read: boolean('read').default(false).notNull(),
-  reason: text('reason').notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
-});
+export const reports = mysqlTable(
+  'reports',
+  {
+    id: varchar('id', { length: 20 })
+      .primaryKey()
+      .$defaultFn(() => generateId('rpt')),
+    userId: varchar('user_id', { length: 21 }).notNull(),
+    definitionId: varchar('definition_id', { length: 20 }).notNull(),
+    read: boolean('read').default(false).notNull(),
+    reason: text('reason').notNull(),
+    createdAt: timestamp('created_at')
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull()
+  },
+  (table) => {
+    return {
+      read: index('read_idx').on(table.read),
+      createdAt: index('created_at_idx').on(table.createdAt)
+    };
+  }
+);
 
 export const reportRelations = relations(reports, ({ one }) => ({
   user: one(users, {
@@ -95,15 +124,23 @@ export const reportRelations = relations(reports, ({ one }) => ({
   })
 }));
 
-export const wotds = mysqlTable('wotds', {
-  id: varchar('id', { length: 21 })
-    .primaryKey()
-    .$defaultFn(() => generateId('wotd')),
-  definitionId: varchar('definition_id', { length: 20 }).notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
-});
+export const wotds = mysqlTable(
+  'wotds',
+  {
+    id: varchar('id', { length: 21 })
+      .primaryKey()
+      .$defaultFn(() => generateId('wotd')),
+    definitionId: varchar('definition_id', { length: 20 }).notNull(),
+    createdAt: timestamp('created_at')
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull()
+  },
+  (table) => {
+    return {
+      createdAt: index('created_at_idx').on(table.createdAt)
+    };
+  }
+);
 
 export const wotdRelations = relations(wotds, ({ one }) => ({
   definition: one(definitions, {
