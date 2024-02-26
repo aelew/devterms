@@ -59,6 +59,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
+    "react-qr-code": "^2.0.12",
     "react-share": "^5.1.0",
     "sonner": "^1.4.1",
     "tailwind-merge": "^2.2.1",
