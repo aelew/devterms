@@ -9,6 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
+    "db": "drizzle-kit",
     "db:studio": "drizzle-kit studio",
     "db:migrate": "tsx drizzle/migrate",
     "db:seed": "tsx drizzle/seed",
