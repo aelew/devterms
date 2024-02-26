@@ -83,7 +83,10 @@ export function DefinitionCard({
           downvotes={definition.downvotes}
         />
         <div className="flex gap-4">
-          <DefinitionShareButton term={definition.term} />
+          <DefinitionShareButton
+            definitionId={definition.id}
+            term={definition.term}
+          />
           <DefinitionReportButton definitionId={definition.id} />
         </div>
       </CardFooter>

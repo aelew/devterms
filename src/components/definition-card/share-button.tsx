@@ -28,11 +28,15 @@ import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';
 
 interface DefinitionShareButtonProps {
+  definitionId: string;
   term: string;
 }
 
-export function DefinitionShareButton({ term }: DefinitionShareButtonProps) {
-  const url = `https://devterms.io/define/${termToSlug(term)}`;
+export function DefinitionShareButton({
+  definitionId,
+  term
+}: DefinitionShareButtonProps) {
+  const url = `https://devterms.io/define/${termToSlug(term)}#${definitionId}`;
   const { status, copy } = useCopyToClipboard();
   const plausible = usePlausible<Events>();
 
