@@ -4,6 +4,7 @@ import { unstable_cache } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 
 import { DefinitionCard } from '@/components/definition-card';
 import { Time } from '@/components/time';
@@ -16,26 +17,28 @@ interface UserResultCardsProps {
   name: string;
 }
 
-export const getUser = unstable_cache(
-  (userName: string) =>
-    db.query.users.findFirst({
-      where: eq(users.name, userName),
-      columns: {
-        name: true,
-        role: true,
-        avatar: true,
-        createdAt: true
-      },
-      with: {
-        definitions: {
-          where: eq(definitions.status, 'approved'),
-          orderBy: desc(definitions.createdAt),
-          limit: 5
+export const getUser = cache(
+  unstable_cache(
+    (userName: string) =>
+      db.query.users.findFirst({
+        where: eq(users.name, userName),
+        columns: {
+          name: true,
+          role: true,
+          avatar: true,
+          createdAt: true
+        },
+        with: {
+          definitions: {
+            where: eq(definitions.status, 'approved'),
+            orderBy: desc(definitions.createdAt),
+            limit: 5
+          }
         }
-      }
-    }),
-  ['user_definitions'],
-  { revalidate: 1800 }
+      }),
+    ['user_definitions'],
+    { revalidate: 1800 }
+  )
 );
 
 export async function UserResultCards({ name }: UserResultCardsProps) {
