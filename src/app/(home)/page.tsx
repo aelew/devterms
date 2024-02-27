@@ -14,7 +14,7 @@ interface HomePageProps {
 export const metadata = getPageMetadata({ title: 'The Developer Dictionary' });
 
 export default function HomePage({ searchParams }: HomePageProps) {
-  const page = Number(searchParams.page) < 1 ? 1 : Number(searchParams.page);
+  const page = Number(searchParams.page) > 1 ? Number(searchParams.page) : 1;
   return (
     <div className="flex flex-col-reverse gap-4 md:flex-row">
       <div className="flex flex-1 flex-col gap-4">
