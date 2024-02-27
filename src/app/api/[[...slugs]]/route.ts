@@ -293,7 +293,7 @@ const app = new Elysia({ prefix: '/api' })
           id: definition.id,
           term: definition.term,
           definition: definition.definition,
-          url: `https://devterms.io/define/${termToSlug(definition.term)}`
+          url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
         };
       })
       .get(
@@ -317,7 +317,7 @@ const app = new Elysia({ prefix: '/api' })
           return {
             results: results.map((result) => ({
               ...result,
-              url: `https://devterms.io/define/${termToSlug(result.term)}`
+              url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(result.term)}`
             }))
           };
         },

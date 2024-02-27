@@ -31,7 +31,8 @@ export const lucia = new Lucia(adapter, {
     role: attributes.role,
     email: attributes.email,
     avatar: attributes.avatar,
-    githubId: attributes.githubId
+    githubId: attributes.githubId,
+    createdAt: attributes.createdAt
   })
 });
 
@@ -46,6 +47,7 @@ declare module 'lucia' {
     email: string;
     avatar: string;
     githubId: number;
+    createdAt: Date;
   }
 }
 
