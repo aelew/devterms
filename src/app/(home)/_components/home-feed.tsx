@@ -57,7 +57,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
             ...wotd.definition,
             user: { name: wotd.user?.name ?? null }
           };
-          if (i === 0) {
+          if (i === 0 && page === 1) {
             return (
               <DefinitionCard
                 className="border-muted-foreground shadow-lg"
