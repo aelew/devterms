@@ -57,6 +57,7 @@
     "oslo": "^1.1.2",
     "p-debounce": "^4.0.0",
     "react": "^18.2.0",
+    "react-canny": "^0.0.6",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
     "react-qr-code": "^2.0.12",

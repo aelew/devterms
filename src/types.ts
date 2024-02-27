@@ -13,6 +13,12 @@ export type ShareMedium =
   | 'QR Code'
   | 'Direct';
 
+declare global {
+  interface Window {
+    Canny: (action: string, options?: Record<string, any>) => void;
+  }
+}
+
 export type Events = {
   Login: never;
   Search: never;

@@ -3,7 +3,6 @@ import {
   ArrowRightIcon,
   LayoutDashboardIcon,
   LogOutIcon,
-  PlusIcon,
   UserIcon
 } from 'lucide-react';
 import { cookies } from 'next/headers';
@@ -23,17 +22,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { lucia } from '@/lib/auth';
 import { getAuthData } from '@/lib/auth/helpers';
+import { ChangelogButton } from './changelog-button';
 import { SearchBar } from './search-bar';
-
-const navigation = [
-  { label: 'Home', href: '/' },
-  { label: 'Browse', href: '/browse' },
-  { label: 'Submit', href: '/submit' },
-  { label: 'API', href: '/api/docs' }
-];
 
 export async function Header() {
   const { user } = await getAuthData();
+
+  const navLinkClassName =
+    'block transition-color-transform hover:text-muted-foreground/80 active:scale-95';
 
   async function signOut() {
     'use server';
@@ -63,27 +59,41 @@ export async function Header() {
             </span>
           </Link>
           <ul className="hidden gap-4 text-sm text-muted-foreground sm:flex">
-            {navigation.map((item) => (
+            {[
+              { label: 'Home', href: '/' },
+              { label: 'Browse', href: '/browse' },
+              { label: 'Submit', href: '/submit' }
+            ].map((item) => (
               <li key={item.href}>
-                <Link
-                  className="block transition-color-transform hover:text-muted-foreground/80 active:scale-95"
-                  prefetch={item.href !== '/api/docs'}
-                  href={item.href}
-                >
+                <Link className={navLinkClassName} href={item.href}>
                   {item.label}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="https://devterms.canny.io"
+                className={navLinkClassName}
+                prefetch={false}
+                data-canny-links
+              >
+                Feedback
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={navLinkClassName}
+                prefetch={false}
+                href="/api/docs"
+                target="_blank"
+              >
+                API Docs
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex items-center gap-2">
-          <Link
-            className={buttonVariants({ variant: 'outline', size: 'icon' })}
-            aria-label="Submit a definition"
-            href="/submit"
-          >
-            <PlusIcon className="size-4" />
-          </Link>
+          <ChangelogButton />
           <Link
             className={buttonVariants({ variant: 'outline', size: 'icon' })}
             href="https://github.com/aelew/devterms"
