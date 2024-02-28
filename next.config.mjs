@@ -5,8 +5,16 @@ jiti('./src/env');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true }
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  experimental: {
+    useDeploymentId: true,
+    useDeploymentIdServerActions: true
+  }
 };
 
 export default nextConfig;
