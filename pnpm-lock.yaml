@@ -90,8 +90,8 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1
   lucide-react:
-    specifier: ^0.341.0
-    version: 0.341.0(react@18.2.0)
+    specifier: ^0.343.0
+    version: 0.343.0(react@18.2.0)
   meilisearch:
     specifier: ^0.37.0
     version: 0.37.0
@@ -5016,8 +5016,8 @@ packages:
       oslo: 1.0.1
     dev: false
 
-  /lucide-react@0.341.0(react@18.2.0):
-    resolution: {integrity: sha512-fqI0TLU/VbzC3p90MHP3kdCRRUMTRT5qBfxwaXlllkZieYfRrMVd/RORXytqJUC2GBrvZdWYs6yvJIrqdsOmDQ==}
+  /lucide-react@0.343.0(react@18.2.0):
+    resolution: {integrity: sha512-zDjzr5OlS86DJZNSy5igMx18T423LfEyZ6lxo82KpjCi8m5DPddl/OPLRDHyfs/TqZPh7C1ySPw4D6matfm6bQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
