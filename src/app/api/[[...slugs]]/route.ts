@@ -12,7 +12,7 @@ import { github, lucia } from '@/lib/auth';
 import { getRandomDefinition } from '@/lib/definitions';
 import { generateId } from '@/lib/id';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
-import { termToSlug } from '@/lib/utils';
+import { termToSlug, truncateString } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions, users, wotds } from '@/server/db/schema';
 import type { GitHubEmailsResponse, GitHubUserResponse } from '@/types';
@@ -263,13 +263,29 @@ const app = new Elysia({ prefix: '/api' })
               accessToken: env.TWITTER_ACCESS_TOKEN,
               accessSecret: env.TWITTER_ACCESS_TOKEN_SECRET
             });
+
+            const placeholder = '%TERM_DEFINITION%';
+
+            const statusTemplate =
+              `Today's word of the day is ${definition.term}! 💡\n\n` +
+              `${definition.term}: ${placeholder}\n\n` +
+              `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}\n\n` +
+              '#buildinpublic #developers';
+
+            const CHARACTER_LIMIT = 280;
+
+            const truncatedDefinition = truncateString(
+              definition.definition,
+              CHARACTER_LIMIT - statusTemplate.length - placeholder.length
+            );
+
+            const status = statusTemplate.replace(
+              placeholder,
+              truncatedDefinition
+            );
+
             try {
-              await twitter.v2.tweet(
-                `Today's word of the day is ${definition.term}! 💡\n\n` +
-                  `${definition.term}: ${definition.definition}\n\n` +
-                  `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}\n\n` +
-                  '#buildinpublic #indiehackers #developers'
-              );
+              await twitter.v2.tweet(status);
             } catch (err) {
               set.status = 500;
               console.error('Twitter error:', err);

@@ -30,6 +30,10 @@ export function slugToTerm(slug: string) {
   return decodeURIComponent(slug).replaceAll('-', ' ').replaceAll('  ', '-');
 }
 
+export function truncateString(text: string, maxLength: number) {
+  return text.length > maxLength ? text.substring(0, maxLength) + '…' : text;
+}
+
 export const GENERIC_ERROR = 'Uh oh! An unexpected error occurred.';
 
 export const CATEGORIES = [
