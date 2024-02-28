@@ -26,6 +26,15 @@ function withPagination<T extends MySqlSelect>(qb: T, pageIndex: number) {
   return qb.limit(PAGE_SIZE).offset(pageIndex * PAGE_SIZE);
 }
 
+const getTotalPages = unstable_cache(
+  async () => {
+    const totalRecords = await db.select().from(wotds).count();
+    return Math.ceil(totalRecords / PAGE_SIZE);
+  },
+  ['total_pages'],
+  { tags: ['total_pages'], revalidate: 1800 }
+);
+
 const getHomeFeed = unstable_cache(
   (page: number) => {
     const query = db
@@ -46,6 +55,7 @@ const getHomeFeed = unstable_cache(
 
 export async function HomeFeed({ page }: HomeFeedProps) {
   const homeFeed = await getHomeFeed(page);
+  const totalPages = await getTotalPages();
   return (
     <>
       {homeFeed.length ? (
@@ -57,6 +67,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
             ...wotd.definition,
             user: { name: wotd.user?.name ?? null }
           };
+
           if (i === 0 && page === 1) {
             return (
               <DefinitionCard
@@ -87,7 +98,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
               <PaginationPrevious href={`/?page=${page - 1}`} />
             </PaginationItem>
           )}
-          {[...Array(5)].map((_, i) => (
+          {[...Array(totalPages)].map((_, i) => (
             <PaginationItem key={i}>
               <PaginationLink href={`/?page=${i + 1}`}>{i + 1}</PaginationLink>
             </PaginationItem>
