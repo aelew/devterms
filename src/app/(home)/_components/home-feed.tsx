@@ -1,4 +1,4 @@
-import { desc, eq } from 'drizzle-orm';
+import { count, desc, eq } from 'drizzle-orm';
 import type { MySqlSelect } from 'drizzle-orm/mysql-core';
 import { unstable_cache } from 'next/cache';
 
@@ -28,8 +28,8 @@ function withPagination<T extends MySqlSelect>(qb: T, pageIndex: number) {
 
 const getTotalPages = unstable_cache(
   async () => {
-    const result=await db.select({ rows: count() }).from(wotds);
-    const wotdCount=result[0]?.rows ?? 0;
+    const result = await db.select({ rows: count() }).from(wotds);
+    const wotdCount = result[0]?.rows ?? 0;
     return Math.ceil(wotdCount / PAGE_SIZE);
   },
   ['total_pages'],
