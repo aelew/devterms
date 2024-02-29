@@ -1,4 +1,4 @@
-import { desc, eq } from 'drizzle-orm';
+import { count, desc, eq } from 'drizzle-orm';
 import type { MySqlSelect } from 'drizzle-orm/mysql-core';
 import { unstable_cache } from 'next/cache';
 
@@ -44,8 +44,21 @@ const getHomeFeed = unstable_cache(
   { tags: ['home_feed'], revalidate: 1800 }
 );
 
+const getTotalPages = unstable_cache(
+  async () => {
+    const result = await db.select({ rows: count() }).from(wotds);
+    const wotdCount = result[0]?.rows ?? 0;
+    return Math.ceil(wotdCount / PAGE_SIZE);
+  },
+  ['total_pages'],
+  { tags: ['total_pages'], revalidate: 1800 }
+);
+
 export async function HomeFeed({ page }: HomeFeedProps) {
-  const homeFeed = await getHomeFeed(page);
+  const [homeFeed, totalPages] = await Promise.all([
+    getHomeFeed(page),
+    getTotalPages()
+  ]);
   return (
     <>
       {homeFeed.length ? (
@@ -57,6 +70,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
             ...wotd.definition,
             user: { name: wotd.user?.name ?? null }
           };
+
           if (i === 0 && page === 1) {
             return (
               <DefinitionCard
@@ -87,7 +101,7 @@ export async function HomeFeed({ page }: HomeFeedProps) {
               <PaginationPrevious href={`/?page=${page - 1}`} />
             </PaginationItem>
           )}
-          {[...Array(5)].map((_, i) => (
+          {[...Array(Math.min(totalPages, 4))].map((_, i) => (
             <PaginationItem key={i}>
               <PaginationLink href={`/?page=${i + 1}`}>{i + 1}</PaginationLink>
             </PaginationItem>
