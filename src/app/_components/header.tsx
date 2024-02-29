@@ -72,16 +72,6 @@ export async function Header() {
             ))}
             <li>
               <Link
-                href="https://devterms.canny.io"
-                className={navLinkClassName}
-                prefetch={false}
-                data-canny-links
-              >
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link
                 className={navLinkClassName}
                 prefetch={false}
                 href="/api/docs"
