@@ -1,30 +1,8 @@
 'use client';
 
-import type { User } from 'lucia';
 import Script from 'next/script';
-import { useEffect } from 'react';
 
-import { env } from '@/env';
-
-interface CannyProps {
-  user: User | null;
-}
-
-export function Canny({ user }: CannyProps) {
-  useEffect(() => {
-    if (user) {
-      window.Canny('identify', {
-        appID: env.NEXT_PUBLIC_CANNY_APP_ID,
-        user: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          avatarURL: user.avatar,
-          created: user.createdAt.toISOString()
-        }
-      });
-    }
-  }, [user]);
+export function Canny() {
   return (
     <Script
       async

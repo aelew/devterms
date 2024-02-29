@@ -7,7 +7,6 @@ import { Toaster } from 'sonner';
 import { Canny } from '@/components/canny';
 import { Spotlight } from '@/components/spotlight';
 import { ThemeProvider } from '@/components/theme-provider';
-import { getAuthData } from '@/lib/auth/helpers';
 import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 import { Canonical } from './_components/canonical';
@@ -18,14 +17,13 @@ import './globals.css';
 
 export const metadata = baseMetadata;
 
-export default async function RootLayout({ children }: PropsWithChildren) {
-  const { user } = await getAuthData();
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html suppressHydrationWarning lang="en">
       <head>
         <MetaTags />
         <Canonical />
-        <Canny user={user} />
+        <Canny />
         <PlausibleProvider
           customDomain="https://s.aelew.dev"
           domain="devterms.io"
