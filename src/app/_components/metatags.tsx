@@ -1,7 +1,9 @@
 'use client';
 
 export function MetaTags() {
-  const isSafari = /.*Version.*Safari.*/.test(window.navigator.userAgent);
+  const isSafari =
+    typeof navigator !== 'undefined' &&
+    /.*Version.*Safari.*/.test(navigator.userAgent);
   return (
     <>
       <link
