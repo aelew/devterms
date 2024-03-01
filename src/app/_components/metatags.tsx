@@ -1,4 +1,7 @@
+'use client';
+
 export function MetaTags() {
+  const isSafari = /.*Version.*Safari.*/.test(window.navigator.userAgent);
   return (
     <>
       <link
@@ -23,7 +26,22 @@ export function MetaTags() {
       <meta name="apple-mobile-web-app-title" content="DevTerms" />
       <meta name="application-name" content="DevTerms" />
       <meta name="msapplication-TileColor" content="#b7f1ff" />
-      <meta name="theme-color" content="#b7f1ff" />
+      {isSafari ? (
+        <>
+          <meta
+            name="theme-color"
+            media="(prefers-color-scheme: light)"
+            content="white"
+          />
+          <meta
+            name="theme-color"
+            media="(prefers-color-scheme: dark)"
+            content="black"
+          />
+        </>
+      ) : (
+        <meta name="theme-color" content="#b7f1ff" />
+      )}
     </>
   );
 }
