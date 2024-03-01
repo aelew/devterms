@@ -2,6 +2,7 @@
 
 import pDebounce from 'p-debounce';
 import { useEffect, useOptimistic, useState } from 'react';
+import { toast } from 'sonner';
 
 import { Button } from '../ui/button';
 import {
@@ -97,7 +98,12 @@ export function VoteActions({
     updateOptimisticUpvotes(action);
 
     // update the upvote count on the server
-    await updateUpvoteCount(definitionId, action);
+    const error = await updateUpvoteCount(definitionId, action);
+    if (error) {
+      toast.error(error.message);
+      // revert local storage update
+      isUpvoted ? addUpvote() : removeUpvote();
+    }
   }
 
   async function toggleDownvote() {
@@ -113,7 +119,12 @@ export function VoteActions({
     updateOptimisticDownvotes(action);
 
     // update the downvote count on the server
-    await updateDownvoteCount(definitionId, action);
+    const error = await updateDownvoteCount(definitionId, action);
+    if (error) {
+      toast.error(error.message);
+      // revert local storage update
+      isUpvoted ? addDownvote() : removeDownvote();
+    }
   }
 
   return (
