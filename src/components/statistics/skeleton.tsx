@@ -1,6 +1,6 @@
 import { Skeleton } from '../ui/skeleton';
 
-export function SkeletonStatistics() {
+export function StatisticsSkeleton() {
   return (
     <dl className="grid grid-cols-2 divide-x text-center">
       {['Definitions', 'Posters'].map((label, i) => (

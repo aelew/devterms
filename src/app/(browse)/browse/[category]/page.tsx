@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
+import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { CATEGORIES } from '@/lib/utils';
 import { CategoryResultCards } from './_components/result-cards';
@@ -29,11 +29,11 @@ export default async function BrowseCategoryPage({
     <Suspense
       fallback={
         <>
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
+          <DefinitionCardSkeleton />
+          <DefinitionCardSkeleton />
+          <DefinitionCardSkeleton />
+          <DefinitionCardSkeleton />
+          <DefinitionCardSkeleton />
         </>
       }
     >

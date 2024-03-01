@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/card';
 import { Skeleton } from '../ui/skeleton';
 
-export function SkeletonDefinitionCard() {
+export function DefinitionCardSkeleton() {
   return (
     <Card>
       <CardHeader>
