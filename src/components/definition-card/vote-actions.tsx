@@ -98,12 +98,9 @@ export function VoteActions({
     updateOptimisticUpvotes(action);
 
     // update the upvote count on the server
-    try {
-      await updateUpvoteCount(definitionId, action);
-    } catch (err) {
-      if (err instanceof Error) {
-        toast.error(err.message);
-      }
+    const error = await updateUpvoteCount(definitionId, action);
+    if (error) {
+      toast.error(error.message);
     }
   }
 
@@ -120,12 +117,9 @@ export function VoteActions({
     updateOptimisticDownvotes(action);
 
     // update the downvote count on the server
-    try {
-      await updateDownvoteCount(definitionId, action);
-    } catch (err) {
-      if (err instanceof Error) {
-        toast.error(err.message);
-      }
+    const error = await updateDownvoteCount(definitionId, action);
+    if (error) {
+      toast.error(error.message);
     }
   }
 

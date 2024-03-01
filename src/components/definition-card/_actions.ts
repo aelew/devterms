@@ -33,7 +33,7 @@ const enforceRateLimit = async () => {
   const ip = getClientIp();
   const { success } = await ratelimit.limit(`${ip}:votes`);
   if (!success) {
-    throw new Error('Whoa! Slow down a little, will ya?');
+    return { message: 'Whoa! Slow down a little, will ya?' };
   }
 };
 
@@ -46,7 +46,8 @@ export async function updateUpvoteCount(
   definitionId: string,
   action: VoteAction
 ) {
-  await enforceRateLimit();
+  const error = await enforceRateLimit();
+  if (error) return error;
 
   const n = action === 'increment' ? 1 : -1;
   await db
@@ -61,7 +62,7 @@ export async function updateUpvoteCount(
 
   const termResult = await getTermFromId(definitionId);
   if (!termResult) {
-    throw new Error('Term not found');
+    return { message: 'Term not found' };
   }
 
   revalidateTag(`definitions:${termToSlug(termResult.term)}`);
@@ -80,7 +81,8 @@ export async function updateDownvoteCount(
   definitionId: string,
   action: VoteAction
 ) {
-  await enforceRateLimit();
+  const error = await enforceRateLimit();
+  if (error) return error;
 
   const n = action === 'increment' ? 1 : -1;
   await db
@@ -94,7 +96,7 @@ export async function updateDownvoteCount(
     );
   const termResult = await getTermFromId(definitionId);
   if (!termResult) {
-    throw new Error('Term not found');
+    return { message: 'Term not found' };
   }
 
   revalidateTag(`definitions:${termToSlug(termResult.term)}`);
