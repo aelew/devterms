@@ -1,5 +1,6 @@
 import { and, desc, eq } from 'drizzle-orm';
 import { Elysia, t } from 'elysia';
+import MeiliSearch from 'meilisearch';
 
 import { env } from '@/env';
 import { getRandomDefinition } from '@/lib/definitions';
@@ -22,6 +23,31 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
     };
   })
+  .get(
+    '/search',
+    async ({ query: { q: query, page: rawPage } }) => {
+      const page = rawPage ? parseInt(rawPage) : 1;
+
+      const meili = new MeiliSearch({
+        host: env.NEXT_PUBLIC_MEILISEARCH_HOST,
+        apiKey: env.MEILISEARCH_MASTER_KEY
+      });
+
+      const index = meili.index('definitions');
+
+      return index.search(query, {
+        attributesToSearchOn: ['term', 'definition', 'example'],
+        hitsPerPage: 4,
+        page
+      });
+    },
+    {
+      query: t.Object({
+        q: t.String(),
+        page: t.Optional(t.RegExp(/^([1-9][0-9]*)$/))
+      })
+    }
+  )
   .get(
     '/define',
     async ({ query }) => {
