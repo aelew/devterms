@@ -1,7 +1,10 @@
 'use server';
 
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 import { and, eq, gte, sql } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
+import { headers } from 'next/headers';
 
 import { protectedAction } from '@/lib/action';
 import { termToSlug } from '@/lib/utils';
@@ -17,10 +20,34 @@ const getTermFromId = (id: string) =>
     columns: { term: true }
   });
 
+const getClientIp = () => {
+  const headersList = headers();
+  return (
+    headersList.get('cf-connecting-ip') ??
+    headersList.get('x-forwarded-for') ??
+    '127.0.0.1'
+  );
+};
+
+const enforceRateLimit = async () => {
+  const ip = getClientIp();
+  const { success } = await ratelimit.limit(`${ip}:votes`);
+  if (!success) {
+    throw new Error('Whoa! Slow down a little, will ya?');
+  }
+};
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, '10s')
+});
+
 export async function updateUpvoteCount(
   definitionId: string,
   action: VoteAction
 ) {
+  await enforceRateLimit();
+
   const n = action === 'increment' ? 1 : -1;
   await db
     .update(definitions)
@@ -53,6 +80,8 @@ export async function updateDownvoteCount(
   definitionId: string,
   action: VoteAction
 ) {
+  await enforceRateLimit();
+
   const n = action === 'increment' ? 1 : -1;
   await db
     .update(definitions)
