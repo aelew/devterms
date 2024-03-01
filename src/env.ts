@@ -13,6 +13,8 @@ export const env = createEnv({
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
     MEILISEARCH_MASTER_KEY: z.string(),
+    UPSTASH_REDIS_REST_URL: z.string().url(),
+    UPSTASH_REDIS_REST_TOKEN: z.string(),
     TWITTER_CONSUMER_KEY: z.string().optional(),
     TWITTER_CONSUMER_SECRET: z.string().optional(),
     TWITTER_ACCESS_TOKEN: z.string().optional(),
