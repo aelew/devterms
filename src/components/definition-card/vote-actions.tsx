@@ -101,6 +101,8 @@ export function VoteActions({
     const error = await updateUpvoteCount(definitionId, action);
     if (error) {
       toast.error(error.message);
+      // revert local storage update
+      isUpvoted ? addUpvote() : removeUpvote();
     }
   }
 
@@ -120,6 +122,8 @@ export function VoteActions({
     const error = await updateDownvoteCount(definitionId, action);
     if (error) {
       toast.error(error.message);
+      // revert local storage update
+      isUpvoted ? addDownvote() : removeDownvote();
     }
   }
 
