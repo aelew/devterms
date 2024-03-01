@@ -8,6 +8,7 @@ import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
 export const publicRoutes = new Elysia({ prefix: '/v1' })
+  .get('/health', () => ({ status: 'ok' }))
   .get('/random', async ({ set }) => {
     const definition = await getRandomDefinition();
     if (!definition) {
