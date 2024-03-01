@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
+import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { getUser, UserResultCards } from './_components/result-cards';
 
@@ -26,8 +26,8 @@ export default function ProfilePage({ params }: ProfilePageProps) {
     <Suspense
       fallback={
         <>
-          <SkeletonDefinitionCard />
-          <SkeletonDefinitionCard />
+          <DefinitionCardSkeleton />
+          <DefinitionCardSkeleton />
         </>
       }
     >

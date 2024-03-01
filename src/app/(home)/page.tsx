@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { Aside } from '@/components/aside';
-import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
+import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { HomeFeed } from './_components/home-feed';
 
@@ -21,11 +21,11 @@ export default function HomePage({ searchParams }: HomePageProps) {
         <Suspense
           fallback={
             <>
-              <SkeletonDefinitionCard />
-              <SkeletonDefinitionCard />
-              <SkeletonDefinitionCard />
-              <SkeletonDefinitionCard />
-              <SkeletonDefinitionCard />
+              <DefinitionCardSkeleton />
+              <DefinitionCardSkeleton />
+              <DefinitionCardSkeleton />
+              <DefinitionCardSkeleton />
+              <DefinitionCardSkeleton />
             </>
           }
         >

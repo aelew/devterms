@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { SkeletonDefinitionCard } from '@/components/definition-card/skeleton';
+import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { getPageMetadata } from '@/lib/seo';
 import { slugToTerm } from '@/lib/utils';
 import { DefineResultCards, getDefinitions } from './_components/result-cards';
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
 export default function DefinitionPage({ params }: DefinitionPageProps) {
   const term = slugToTerm(params.term);
   return (
-    <Suspense fallback={<SkeletonDefinitionCard />}>
+    <Suspense fallback={<DefinitionCardSkeleton />}>
       <DefineResultCards term={term} />
     </Suspense>
   );
