@@ -81,7 +81,7 @@
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.20.14",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "14.1.1",
     "instantsearch.js": "^4.65.0",
     "mysql2": "^3.9.1",
     "postcss": "^8.4.35",
