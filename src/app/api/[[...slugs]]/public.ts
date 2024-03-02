@@ -34,12 +34,19 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       });
 
       const index = meili.index('definitions');
-
-      return index.search(query, {
+      const response = await index.search(query, {
         attributesToSearchOn: ['term', 'definition', 'example'],
         hitsPerPage: 4,
         page
       });
+
+      return {
+        ...response,
+        hits: response.hits.map((hit) => ({
+          ...hit,
+          url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(hit.term)}`
+        }))
+      };
     },
     {
       query: t.Object({
