@@ -77,7 +77,7 @@ export async function Header() {
                 href="/api/docs"
                 target="_blank"
               >
-                API Docs
+                API
               </Link>
             </li>
           </ul>
