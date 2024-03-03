@@ -34,8 +34,8 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       const index = meili.index('definitions');
       const response = await index.search(query, {
         attributesToSearchOn: ['term', 'definition', 'example'],
-        page: page ? Math.max(1, page) : 1,
-        hitsPerPage: 4
+        hitsPerPage: 4,
+        page
       });
 
       return {
@@ -49,7 +49,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     {
       query: t.Object({
         q: t.String(),
-        page: t.Optional(t.Numeric())
+        page: t.Optional(t.Numeric({ minimum: 1 }))
       })
     }
   )
