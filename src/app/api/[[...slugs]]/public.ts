@@ -25,9 +25,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
   })
   .get(
     '/search',
-    async ({ query: { q: query, page: rawPage } }) => {
-      const page = rawPage ? parseInt(rawPage) : 1;
-
+    async ({ query: { q: query, page } }) => {
       const meili = new MeiliSearch({
         host: env.NEXT_PUBLIC_MEILISEARCH_HOST,
         apiKey: env.MEILISEARCH_MASTER_KEY
@@ -36,8 +34,8 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       const index = meili.index('definitions');
       const response = await index.search(query, {
         attributesToSearchOn: ['term', 'definition', 'example'],
-        hitsPerPage: 4,
-        page
+        page: page ? Math.max(1, page) : 1,
+        hitsPerPage: 4
       });
 
       return {
@@ -51,7 +49,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     {
       query: t.Object({
         q: t.String(),
-        page: t.Optional(t.RegExp(/^([1-9][0-9]*)$/))
+        page: t.Optional(t.Numeric())
       })
     }
   )
