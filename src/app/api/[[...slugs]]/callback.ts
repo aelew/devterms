@@ -17,7 +17,7 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
     async ({ query, cookie, set }) => {
       if (!env.TWITTER_CONSUMER_KEY || !env.TWITTER_CONSUMER_SECRET) {
         set.status = 500;
-        return { error: 'twitter_consumer_keys_missing' };
+        throw new Error('Twitter consumer keys missing');
       }
 
       const twitter = new TwitterApi({
@@ -34,7 +34,7 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
       } catch (err) {
         set.status = 500;
         console.error('Twitter OAuth error:', err);
-        return { error: 'internal_server_error' };
+        throw new Error('Internal server error');
       }
     },
     {
@@ -53,7 +53,7 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
     async ({ query, cookie, set }) => {
       if (query.state !== cookie.oauth_state.get()) {
         set.status = 400;
-        return { error: 'invalid_parameters' };
+        throw new Error('Invalid parameters');
       }
 
       try {
@@ -97,7 +97,7 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
 
           if (!userEmail) {
             set.status = 400;
-            return { error: 'github_email_missing' };
+            throw new Error('GitHub email missing');
           }
         }
 
@@ -123,11 +123,12 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
       } catch (err) {
         if (err instanceof OAuth2RequestError) {
           set.status = 400;
-          return { error: 'invalid_code' };
+          throw new Error('Invalid code');
         }
+
         set.status = 500;
         console.error('GitHub OAuth2 error:', err);
-        return { error: 'internal_server_error' };
+        return new Error('Internal server error');
       }
     },
     {
