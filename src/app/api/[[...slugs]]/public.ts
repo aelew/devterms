@@ -55,12 +55,19 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
   )
   .get(
     '/define',
-    async ({ query }) => {
+    async ({ query, set }) => {
+      if (!query.id && !query.term) {
+        set.status = 400;
+        throw new Error('Please specify a term or definition ID');
+      }
+
       const results = await db.query.definitions.findMany({
         orderBy: desc(definitions.upvotes),
         where: and(
           eq(definitions.status, 'approved'),
-          eq(definitions.term, query.term)
+          query.id
+            ? eq(definitions.id, query.id)
+            : eq(definitions.term, query.term!)
         ),
         columns: {
           id: true,
@@ -71,6 +78,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
           createdAt: true
         }
       });
+
       return {
         results: results.map((result) => ({
           ...result,
@@ -78,5 +86,12 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
         }))
       };
     },
-    { query: t.Object({ term: t.String() }) }
+    {
+      query: t.Partial(
+        t.Object({
+          id: t.String(),
+          term: t.String()
+        })
+      )
+    }
   );
