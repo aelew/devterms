@@ -17,7 +17,7 @@ export const cronRoutes = new Elysia({ prefix: '/cron' }).guard(
       .onBeforeHandle(({ set, headers: { authorization } }) => {
         if (authorization !== `Bearer ${env.CRON_SECRET}`) {
           set.status = 401;
-          return { error: 'unauthorized' };
+          throw new Error('Unauthorized');
         }
       })
       .get('/meilisearch', async () => {
@@ -47,7 +47,7 @@ export const cronRoutes = new Elysia({ prefix: '/cron' }).guard(
         const definition = await getRandomDefinition();
         if (!definition) {
           set.status = 500;
-          return { error: 'no_definitions_available' };
+          throw new Error('No definitions available');
         }
 
         await db.insert(wotds).values({ definitionId: definition.id });
@@ -95,7 +95,7 @@ export const cronRoutes = new Elysia({ prefix: '/cron' }).guard(
           } catch (err) {
             set.status = 500;
             console.error('Twitter error:', err);
-            return { error: 'internal_server_error' };
+            throw new Error('Internal server error');
           }
         }
 

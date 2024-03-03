@@ -9,13 +9,13 @@ export const devRoutes = new Elysia()
   .onBeforeHandle(({ set }) => {
     if (env.NODE_ENV !== 'development') {
       set.status = 403;
-      return { error: 'development_only' };
+      throw new Error('Only available in development');
     }
   })
   .get('/internal-twitter-login', async ({ set }) => {
     if (!env.TWITTER_CONSUMER_KEY || !env.TWITTER_CONSUMER_SECRET) {
       set.status = 500;
-      return { error: 'twitter_consumer_keys_missing' };
+      throw new Error('Twitter consumer keys missing');
     }
 
     const twitter = new TwitterApi({

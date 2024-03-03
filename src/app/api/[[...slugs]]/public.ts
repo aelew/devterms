@@ -14,7 +14,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     const definition = await getRandomDefinition();
     if (!definition) {
       set.status = 500;
-      return { error: 'no_definitions_available' };
+      throw new Error('No definitions available');
     }
     return {
       id: definition.id,
