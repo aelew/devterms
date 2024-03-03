@@ -9,20 +9,33 @@ import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
 export const publicRoutes = new Elysia({ prefix: '/v1' })
-  .get('/health', () => ({ status: 'ok' }))
-  .get('/random', async ({ set }) => {
-    const definition = await getRandomDefinition();
-    if (!definition) {
-      set.status = 500;
-      throw new Error('No definitions available');
+  .get('/health', () => ({ status: 'ok' }), {
+    detail: {
+      description:
+        'Simple health check endpoint for uptime monitoring services.'
     }
-    return {
-      id: definition.id,
-      term: definition.term,
-      definition: definition.definition,
-      url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
-    };
   })
+  .get(
+    '/random',
+    async ({ set }) => {
+      const definition = await getRandomDefinition();
+      if (!definition) {
+        set.status = 500;
+        throw new Error('No definitions available');
+      }
+      return {
+        id: definition.id,
+        term: definition.term,
+        definition: definition.definition,
+        url: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`
+      };
+    },
+    {
+      detail: {
+        description: 'Returns a random definition from on DevTerms.'
+      }
+    }
+  )
   .get(
     '/search',
     async ({ query: { q: query, page } }) => {
@@ -47,6 +60,10 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       };
     },
     {
+      detail: {
+        description:
+          'Utilizes fuzzy string matching to search for definitions. This should produce equivalent results to the search bar on the website. Returns a list of hits and other metadata.'
+      },
       query: t.Object({
         q: t.String(),
         page: t.Optional(t.Numeric({ minimum: 1 }))
@@ -87,6 +104,10 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
       };
     },
     {
+      detail: {
+        description:
+          "Returns a single definition by it's ID or definition(s) by exact term. Use the search endpoint if you're looking for fuzzy query matching."
+      },
       query: t.Partial(
         t.Object({
           id: t.String(),
