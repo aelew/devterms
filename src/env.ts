@@ -10,6 +10,7 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
     CRON_SECRET: z.string(),
+    OG_HMAC_SECRET: z.string(),
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
     MEILISEARCH_MASTER_KEY: z.string(),

@@ -3,6 +3,7 @@ import { and, desc, eq } from 'drizzle-orm';
 import { ImageResponse } from 'next/og';
 import { NextResponse, type NextRequest } from 'next/server';
 
+import { env } from '@/env';
 import { slugToTerm } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
@@ -15,7 +16,7 @@ export const runtime = 'edge';
 
 const key = crypto.subtle.importKey(
   'raw',
-  new TextEncoder().encode('my_secret'),
+  new TextEncoder().encode(env.OG_HMAC_SECRET),
   { name: 'HMAC', hash: { name: 'SHA-256' } },
   false,
   ['sign']

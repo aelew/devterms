@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 
 import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { env } from '@/env';
-import { APP_NAME, getPageMetadata } from '@/lib/seo';
-import { slugToTerm, termToSlug } from '@/lib/utils';
+import { getPageMetadata } from '@/lib/seo';
+import { slugToTerm } from '@/lib/utils';
 import { DefineResultCards, getDefinitions } from './_components/result-cards';
 
 interface DefinitionPageProps {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
   }
   const firstResult = results[0]!;
 
-  const hmac = createHmac('sha256', 'my_secret');
+  const hmac = createHmac('sha256', env.OG_HMAC_SECRET);
   hmac.update(JSON.stringify({ slug: params.term }));
 
   const ogToken = hmac.digest('hex');
