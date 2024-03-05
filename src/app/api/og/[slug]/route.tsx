@@ -112,7 +112,7 @@ export const GET = async (
           alt=""
         />
         <h1
-          tw="text-6xl text-transparent tracking-tight mb-0"
+          tw="text-6xl text-transparent tracking-tight -mb-2 pb-2"
           style={{
             background: 'linear-gradient(to bottom, #fff 30%, #a5a5a5)',
             backgroundClip: 'text'
