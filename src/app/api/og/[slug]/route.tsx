@@ -121,7 +121,7 @@ export const GET = async (
           {result.term}
         </h1>
         <p tw="text-xl max-w-2xl mb-0 text-zinc-300">{result.definition}</p>
-        <p tw="text-sm max-w-lg text-zinc-400 mb-0">
+        <p tw="text-sm max-w-md text-zinc-400 mb-0">
           &quot;{result.example}&quot;
         </p>
         <p tw="text-sm mb-0 text-[rgb(225,225,225)]">
