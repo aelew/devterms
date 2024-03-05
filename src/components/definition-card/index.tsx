@@ -50,7 +50,7 @@ export function DefinitionCard({
       <CardContent className="space-y-6">
         <div className="space-y-3">
           <p className="leading-5">{definition.definition}</p>
-          <p className="text-sm italic leading-4 text-muted-foreground">
+          <p className="text-sm leading-4 text-muted-foreground">
             &quot;
             {definition.example}
             &quot;
