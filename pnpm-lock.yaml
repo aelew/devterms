@@ -13,7 +13,7 @@ dependencies:
     version: 3.3.4(react-hook-form@7.51.0)
   '@icons-pack/react-simple-icons':
     specifier: ^9.3.0
-    version: 9.3.0(react@18.2.0)
+    version: 9.4.0(react@18.2.0)
   '@lucia-auth/adapter-drizzle':
     specifier: ^1.0.2
     version: 1.0.2(lucia@3.0.1)
@@ -1143,8 +1143,8 @@ packages:
       - supports-color
     dev: true
 
-  /@icons-pack/react-simple-icons@9.3.0(react@18.2.0):
-    resolution: {integrity: sha512-e2VRDFrhI9rCkEdkuAUhf/Ool0cwusWnwKqMACbIRMLHXxnHp1SdnGlRaEEjDeF4R0pQaEkmVNs2x2vn1sl+7A==}
+  /@icons-pack/react-simple-icons@9.4.0(react@18.2.0):
+    resolution: {integrity: sha512-fZtC4Zv53hE+IQE2dJlFt3EB6UOifwTrUNMuEu4hSXemtqMahd05Dpvj2K0j2ewVc+j/ibavud3xjfaMB2Nj7g==}
     peerDependencies:
       react: ^16.13 || ^17 || ^18
     dependencies:
