@@ -16,7 +16,7 @@ dependencies:
     version: 9.3.0(react@18.2.0)
   '@lucia-auth/adapter-drizzle':
     specifier: ^1.0.2
-    version: 1.0.2(lucia@3.0.1)
+    version: 1.0.2(lucia@3.1.1)
   '@meilisearch/instant-meilisearch':
     specifier: ^0.16.0
     version: 0.16.0
@@ -94,7 +94,7 @@ dependencies:
     version: 1.21.0
   lucia:
     specifier: ^3.0.1
-    version: 3.0.1
+    version: 3.1.1
   lucide-react:
     specifier: ^0.352.0
     version: 0.352.0(react@18.2.0)
@@ -1187,12 +1187,12 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@lucia-auth/adapter-drizzle@1.0.2(lucia@3.0.1):
+  /@lucia-auth/adapter-drizzle@1.0.2(lucia@3.1.1):
     resolution: {integrity: sha512-GT2Mp0NaUZ5O4OAvzoNcX9bGotoxBfADo6mTzIEKKJ+uar3HgtQVn/m5Ogj3I2iMv0YBHWgMmlnkUHXN5xFNow==}
     peerDependencies:
       lucia: 3.x
     dependencies:
-      lucia: 3.0.1
+      lucia: 3.1.1
     dev: false
 
   /@meilisearch/instant-meilisearch@0.16.0:
@@ -5065,8 +5065,8 @@ packages:
       es5-ext: 0.10.64
     dev: true
 
-  /lucia@3.0.1:
-    resolution: {integrity: sha512-srwUkTCGgr6N4mFpaKZVZy5kwiRZdsrbIDv9Wrjar+xyw1MjojYQQ7oRbegjRWOZ3yI8xOOclK3sz/rga2J7/w==}
+  /lucia@3.1.1:
+    resolution: {integrity: sha512-Ygvgnqq7Ha7lYVaZATPwkPD2s2Qlsm71Z2o0byx/abNBfFldCRow5sNii6RqMsuMpK957RAI3Gw4/aWoagkc7A==}
     dependencies:
       oslo: 1.0.1
     dev: false
