@@ -166,7 +166,7 @@ export function SearchBar() {
                 const isSelected = selectedHit?.id === hit.id;
                 return (
                   <CommandItem
-                    className="flex w-full items-center gap-2"
+                    className="flex w-full items-center gap-2 data-[disabled]:pointer-events-auto data-[disabled]:opacity-100"
                     onSelect={() => handleHitSelect(hit)}
                     value={hit.term}
                     key={hit.id}
