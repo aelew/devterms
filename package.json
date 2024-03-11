@@ -41,7 +41,7 @@
     "arctic": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "cmdk": "^0.2.1",
+    "cmdk": "^1.0.0",
     "drizzle-orm": "^0.30.1",
     "elysia": "^0.8.17",
     "framer-motion": "^11.0.8",
