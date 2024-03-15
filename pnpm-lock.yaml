@@ -16,7 +16,7 @@ dependencies:
     version: 9.4.0(react@18.2.0)
   '@lucia-auth/adapter-drizzle':
     specifier: ^1.0.3
-    version: 1.0.3(lucia@3.1.1)
+    version: 1.0.4(lucia@3.1.1)
   '@meilisearch/instant-meilisearch':
     specifier: ^0.16.0
     version: 0.16.0
@@ -1187,8 +1187,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@lucia-auth/adapter-drizzle@1.0.3(lucia@3.1.1):
-    resolution: {integrity: sha512-5C3O5PGV9IpGTM8cr5trE9+Pr3FM8LXOUPusQWD3svGW/S7vNebQit7uEfDUxFAuUhutoLoXTr7SQ1jZWjaBoA==}
+  /@lucia-auth/adapter-drizzle@1.0.4(lucia@3.1.1):
+    resolution: {integrity: sha512-eF0DyebhgG8SLBpEG0BiDLm9DLCCYJj3EFN4TvU/oaJ7expEuY5nPZj4mvUpxX8I9DYwC7ROhMWC9WyjY1pQ9Q==}
     peerDependencies:
       lucia: 3.x
     dependencies:
