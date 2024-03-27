@@ -1,12 +1,12 @@
 import { GeistSans } from 'geist/font/sans';
 import PlausibleProvider from 'next-plausible';
+import { ThemeProvider } from 'next-themes';
 import NextTopLoader from 'nextjs-toploader';
 import type { PropsWithChildren } from 'react';
 import { Toaster } from 'sonner';
 
 import { Canny } from '@/components/canny';
 import { Spotlight } from '@/components/spotlight';
-import { ThemeProvider } from '@/components/theme-provider';
 import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 import { Canonical } from './_components/canonical';
