@@ -99,8 +99,8 @@ dependencies:
     specifier: ^0.363.0
     version: 0.363.0(react@18.2.0)
   meilisearch:
-    specifier: ^0.37.0
-    version: 0.37.0
+    specifier: ^0.38.0
+    version: 0.38.0
   mini-svg-data-uri:
     specifier: ^1.4.4
     version: 1.4.4
@@ -4949,6 +4949,14 @@ packages:
 
   /meilisearch@0.37.0:
     resolution: {integrity: sha512-LdbK6JmRghCawrmWKJSEQF0OiE82md+YqJGE/U2JcCD8ROwlhTx0KM6NX4rQt0u0VpV0QZVG9umYiu3CSSIJAQ==}
+    dependencies:
+      cross-fetch: 3.1.8
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /meilisearch@0.38.0:
+    resolution: {integrity: sha512-bHaq8nYxSKw9/Qslq1Zes5g9tHgFkxy/I9o8942wv2PqlNOT0CzptIkh/x98N52GikoSZOXSQkgt6oMjtf5uZw==}
     dependencies:
       cross-fetch: 3.1.8
     transitivePeerDependencies:
