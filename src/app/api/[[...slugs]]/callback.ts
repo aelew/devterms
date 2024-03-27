@@ -23,8 +23,8 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
       const twitter = new TwitterApi({
         appKey: env.TWITTER_CONSUMER_KEY,
         appSecret: env.TWITTER_CONSUMER_SECRET,
-        accessToken: cookie.internal_twitter_oauth_token.get(),
-        accessSecret: cookie.internal_twitter_oauth_token_secret.get()
+        accessToken: cookie.internal_twitter_oauth_token.value,
+        accessSecret: cookie.internal_twitter_oauth_token_secret.value
       });
       try {
         const { accessToken, accessSecret } = await twitter.login(
@@ -51,7 +51,7 @@ export const callbackRoutes = new Elysia({ prefix: '/callback' })
   .get(
     '/github',
     async ({ query, cookie, set }) => {
-      if (query.state !== cookie.oauth_state.get()) {
+      if (query.state !== cookie.oauth_state.value) {
         set.status = 400;
         throw new Error('Invalid parameters');
       }
