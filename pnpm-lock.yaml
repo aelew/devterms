@@ -79,7 +79,7 @@ dependencies:
     version: 1.0.0(@types/react-dom@18.2.22)(@types/react@18.2.72)(react-dom@18.2.0)(react@18.2.0)
   drizzle-orm:
     specifier: ^0.30.4
-    version: 0.30.4(@planetscale/database@1.16.0)(@types/react@18.2.72)(mysql2@3.9.3)(react@18.2.0)
+    version: 0.30.5(@planetscale/database@1.16.0)(@types/react@18.2.72)(mysql2@3.9.3)(react@18.2.0)
   elysia:
     specifier: ^1.0.9
     version: 1.0.9(@sinclair/typebox@0.32.20)(typescript@5.4.3)
@@ -3472,8 +3472,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.2.72)(mysql2@3.9.3)(react@18.2.0):
-    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
+  /drizzle-orm@0.30.5(@planetscale/database@1.16.0)(@types/react@18.2.72)(mysql2@3.9.3)(react@18.2.0):
+    resolution: {integrity: sha512-oImmwGpe1jTWvhPkpsnramZA8m/lE8krTj7Ws7KHSFCMshMXmcZWX2g2Ki793PQOBmwI50KYzWJ9yNKKhWYLyA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
