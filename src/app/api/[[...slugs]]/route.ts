@@ -32,7 +32,8 @@ const app = new Elysia({ prefix: '/api' })
   .use(publicRoutes)
   .use(callbackRoutes)
   .use(cronRoutes)
-  .use(devRoutes);
+  .use(devRoutes)
+  .compile();
 
 const handle = app.handle;
 
