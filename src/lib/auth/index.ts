@@ -1,4 +1,4 @@
-import { DrizzleMySQLAdapter } from '@lucia-auth/adapter-drizzle';
+import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { GitHub } from 'arctic';
 import { Lucia } from 'lucia';
 import type { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
@@ -7,7 +7,7 @@ import { env } from '@/env';
 import { db } from '@/server/db';
 import { sessions, users } from '@/server/db/schema';
 
-const adapter = new DrizzleMySQLAdapter(db, sessions, users);
+const adapter = new DrizzleSQLiteAdapter(db, sessions, users);
 
 export const github = new GitHub(
   env.GITHUB_CLIENT_ID,

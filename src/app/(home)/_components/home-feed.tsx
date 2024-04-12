@@ -1,5 +1,5 @@
 import { count, desc, eq } from 'drizzle-orm';
-import type { MySqlSelect } from 'drizzle-orm/mysql-core';
+import type { SQLiteSelect } from 'drizzle-orm/sqlite-core';
 import { unstable_cache } from 'next/cache';
 
 import { DefinitionCard } from '@/components/definition-card';
@@ -22,7 +22,7 @@ interface HomeFeedProps {
 
 const PAGE_SIZE = 5;
 
-function withPagination<T extends MySqlSelect>(qb: T, pageIndex: number) {
+function withPagination<T extends SQLiteSelect>(qb: T, pageIndex: number) {
   return qb.limit(PAGE_SIZE).offset(pageIndex * PAGE_SIZE);
 }
 

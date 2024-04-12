@@ -1,15 +1,19 @@
-import { Client } from '@planetscale/database';
+import { createClient } from '@libsql/client/web';
 import dotenv from 'dotenv';
-import { drizzle } from 'drizzle-orm/planetscale-serverless';
-import { migrate } from 'drizzle-orm/planetscale-serverless/migrator';
+import { drizzle } from 'drizzle-orm/libsql';
+import { migrate } from 'drizzle-orm/libsql/migrator';
 
 dotenv.config({ path: ['.env', '.env.local'] });
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not set');
+if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+  throw new Error('Turso environment variables are not set');
 }
 
-const client = new Client({ url: process.env.DATABASE_URL });
+const client = createClient({
+  url: process.env.TURSO_DATABASE_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN
+});
+
 const db = drizzle(client);
 
 async function main() {
@@ -18,7 +22,7 @@ async function main() {
     console.log('Tables migrated!');
     process.exit(0);
   } catch (err) {
-    console.error('Failed to perform migration:', err);
+    console.error('Migration failed:', err);
     process.exit(1);
   }
 }

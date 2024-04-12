@@ -1,317 +1,342 @@
 {
-  "id": "00000000-0000-0000-0000-000000000000",
-  "prevId": "",
   "version": "5",
-  "dialect": "mysql",
+  "dialect": "sqlite",
+  "id": "36b57127-b6b3-4055-848d-0cae6591081d",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "definitions": {
       "name": "definitions",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
+          "type": "text(20)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
         "user_id": {
-          "autoincrement": false,
           "name": "user_id",
-          "type": "varchar(21)",
+          "type": "text(21)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "status": {
-          "default": "'pending'",
-          "autoincrement": false,
           "name": "status",
-          "type": "enum('pending','approved','rejected')",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'pending'"
         },
         "term": {
-          "autoincrement": false,
           "name": "term",
-          "type": "varchar(255)",
+          "type": "text(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "definition": {
-          "autoincrement": false,
           "name": "definition",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "example": {
-          "autoincrement": false,
           "name": "example",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "upvotes": {
-          "default": 0,
-          "autoincrement": false,
           "name": "upvotes",
-          "type": "int unsigned",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
         },
         "downvotes": {
-          "default": 0,
-          "autoincrement": false,
           "name": "downvotes",
-          "type": "int unsigned",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
         },
         "created_at": {
-          "default": "CURRENT_TIMESTAMP",
-          "autoincrement": false,
           "name": "created_at",
-          "type": "timestamp",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
-      "compositePrimaryKeys": {
-        "definitions_id": {
-          "name": "definitions_id",
+      "indexes": {
+        "definitions_status_idx": {
+          "name": "definitions_status_idx",
           "columns": [
-            "id"
-          ]
+            "status"
+          ],
+          "isUnique": false
+        },
+        "definitions_term_idx": {
+          "name": "definitions_term_idx",
+          "columns": [
+            "term"
+          ],
+          "isUnique": false
+        },
+        "definitions_upvotes_idx": {
+          "name": "definitions_upvotes_idx",
+          "columns": [
+            "upvotes"
+          ],
+          "isUnique": false
+        },
+        "definitions_created_at_idx": {
+          "name": "definitions_created_at_idx",
+          "columns": [
+            "created_at"
+          ],
+          "isUnique": false
         }
       },
-      "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "reports": {
       "name": "reports",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
+          "type": "text(20)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
         "user_id": {
-          "autoincrement": false,
           "name": "user_id",
-          "type": "varchar(21)",
+          "type": "text(21)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "definition_id": {
-          "autoincrement": false,
           "name": "definition_id",
-          "type": "varchar(20)",
+          "type": "text(20)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "read": {
-          "default": 0,
-          "autoincrement": false,
           "name": "read",
-          "type": "tinyint",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
         },
         "reason": {
-          "autoincrement": false,
           "name": "reason",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "created_at": {
-          "default": "CURRENT_TIMESTAMP",
-          "autoincrement": false,
           "name": "created_at",
-          "type": "timestamp",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
-      "compositePrimaryKeys": {
-        "reports_id": {
-          "name": "reports_id",
+      "indexes": {
+        "reports_read_idx": {
+          "name": "reports_read_idx",
           "columns": [
-            "id"
-          ]
+            "read"
+          ],
+          "isUnique": false
+        },
+        "reports_created_at_idx": {
+          "name": "reports_created_at_idx",
+          "columns": [
+            "created_at"
+          ],
+          "isUnique": false
         }
       },
-      "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "sessions": {
       "name": "sessions",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
+          "type": "text(255)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
         "user_id": {
-          "autoincrement": false,
           "name": "user_id",
-          "type": "varchar(21)",
+          "type": "text(21)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "expires_at": {
-          "autoincrement": false,
           "name": "expires_at",
-          "type": "timestamp",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "default": "CURRENT_TIMESTAMP",
-          "autoincrement": false,
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "sessions_id": {
-          "name": "sessions_id",
-          "columns": [
-            "id"
-          ]
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "users": {
       "name": "users",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
-          "type": "varchar(21)",
-          "primaryKey": false,
-          "notNull": true
+          "type": "text(21)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
         "name": {
-          "autoincrement": false,
           "name": "name",
-          "type": "varchar(32)",
+          "type": "text(32)",
           "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "autoincrement": false,
-          "name": "email",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "default": "CURRENT_TIMESTAMP",
-          "autoincrement": false,
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
+          "notNull": false,
+          "autoincrement": false
         },
         "role": {
-          "default": "'user'",
-          "autoincrement": false,
           "name": "role",
-          "type": "enum('user','bot','moderator','owner')",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'user'"
+        },
+        "email": {
+          "name": "email",
+          "type": "text(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "avatar": {
-          "autoincrement": false,
           "name": "avatar",
-          "type": "varchar(255)",
+          "type": "text(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "github_id": {
-          "autoincrement": false,
           "name": "github_id",
-          "type": "int unsigned",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
-      "compositePrimaryKeys": {
-        "users_id": {
-          "name": "users_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {
+      "indexes": {
         "users_email_unique": {
           "name": "users_email_unique",
           "columns": [
             "email"
-          ]
+          ],
+          "isUnique": true
         },
         "users_github_id_unique": {
           "name": "users_github_id_unique",
           "columns": [
             "github_id"
-          ]
+          ],
+          "isUnique": true
+        },
+        "users_name_idx": {
+          "name": "users_name_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        },
+        "users_role_idx": {
+          "name": "users_role_idx",
+          "columns": [
+            "role"
+          ],
+          "isUnique": false
         }
-      }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     },
     "wotds": {
       "name": "wotds",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
-          "type": "varchar(21)",
-          "primaryKey": false,
-          "notNull": true
+          "type": "text(21)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
         "definition_id": {
-          "autoincrement": false,
           "name": "definition_id",
-          "type": "varchar(20)",
+          "type": "text(20)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "created_at": {
-          "default": "CURRENT_TIMESTAMP",
-          "autoincrement": false,
           "name": "created_at",
-          "type": "timestamp",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
-      "compositePrimaryKeys": {
-        "wotds_id": {
-          "name": "wotds_id",
+      "indexes": {
+        "wotds_created_at_idx": {
+          "name": "wotds_created_at_idx",
           "columns": [
-            "id"
-          ]
+            "created_at"
+          ],
+          "isUnique": false
         }
       },
-      "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
   },
-  "schemas": {},
+  "enums": {},
   "_meta": {
     "schemas": {},
     "tables": {},
