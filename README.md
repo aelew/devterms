@@ -13,8 +13,8 @@ Check out [DevTerms in action](https://devterms.io)!
 - 🎨 [shadcn/ui](https://ui.shadcn.com): Beautifully designed components
 - 🔎 [Meilisearch](https://www.meilisearch.com): Lightning-fast website search engine
 - 🌧️ [Drizzle ORM](https://orm.drizzle.team): Lightweight, relational TypeScript ORM
-- 💾 [PlanetScale](https://planetscale.com/): Fully-managed MySQL database platform
-- 🔒 [Lucia Auth](https://lucia-auth.com/): Simple, flexible session authentication
+- 💾 [Turso](https://turso.tech): Fully-managed SQLite database platform
+- 🔒 [Lucia Auth](https://lucia-auth.com): Simple, flexible session authentication
 
 ## Development
 
