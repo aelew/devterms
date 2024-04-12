@@ -1,36 +1,27 @@
 import { relations, sql } from 'drizzle-orm';
-import {
-  boolean,
-  index,
-  int,
-  mysqlEnum,
-  mysqlTable,
-  text,
-  timestamp,
-  varchar
-} from 'drizzle-orm/mysql-core';
+import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 import { generateId } from '@/lib/id';
 
-export const users = mysqlTable(
+export const users = sqliteTable(
   'users',
   {
-    id: varchar('id', { length: 21 }).primaryKey(),
-    name: varchar('name', { length: 32 }),
-    role: mysqlEnum('role', ['user', 'bot', 'moderator', 'owner'])
+    id: text('id', { length: 21 }).primaryKey(),
+    name: text('name', { length: 32 }),
+    role: text('role', { enum: ['user', 'bot', 'moderator', 'owner'] })
       .default('user')
       .notNull(),
-    email: varchar('email', { length: 255 }).unique().notNull(),
-    avatar: varchar('avatar', { length: 255 }).notNull(),
-    githubId: int('github_id', { unsigned: true }).unique().notNull(),
-    createdAt: timestamp('created_at')
+    email: text('email', { length: 255 }).unique().notNull(),
+    avatar: text('avatar', { length: 255 }).notNull(),
+    githubId: integer('github_id').unique().notNull(),
+    createdAt: integer('created_at', { mode: 'timestamp' })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
   (table) => {
     return {
-      nameIdx: index('name_idx').on(table.name),
-      roleIdx: index('role_idx').on(table.role)
+      nameIdx: index('users_name_idx').on(table.name),
+      roleIdx: index('users_role_idx').on(table.role)
     };
   }
 );
@@ -40,13 +31,10 @@ export const usersRelations = relations(users, ({ many }) => ({
   definitions: many(definitions)
 }));
 
-export const sessions = mysqlTable('sessions', {
-  id: varchar('id', { length: 255 }).primaryKey(),
-  userId: varchar('user_id', { length: 21 }).notNull(),
-  expiresAt: timestamp('expires_at').notNull(),
-  createdAt: timestamp('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull()
+export const sessions = sqliteTable('sessions', {
+  id: text('id', { length: 255 }).primaryKey(),
+  userId: text('user_id', { length: 21 }).notNull(),
+  expiresAt: integer('expires_at').notNull()
 });
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
@@ -56,31 +44,31 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
   })
 }));
 
-export const definitions = mysqlTable(
+export const definitions = sqliteTable(
   'definitions',
   {
-    id: varchar('id', { length: 20 })
+    id: text('id', { length: 20 })
       .primaryKey()
       .$defaultFn(() => generateId('def')),
-    userId: varchar('user_id', { length: 21 }).notNull(),
-    status: mysqlEnum('status', ['pending', 'approved', 'rejected'])
+    userId: text('user_id', { length: 21 }).notNull(),
+    status: text('status', { enum: ['pending', 'approved', 'rejected'] })
       .default('pending')
       .notNull(),
-    term: varchar('term', { length: 255 }).notNull(),
+    term: text('term', { length: 255 }).notNull(),
     definition: text('definition').notNull(),
     example: text('example').notNull(),
-    upvotes: int('upvotes', { unsigned: true }).default(0).notNull(),
-    downvotes: int('downvotes', { unsigned: true }).default(0).notNull(),
-    createdAt: timestamp('created_at')
+    upvotes: integer('upvotes').default(0).notNull(),
+    downvotes: integer('downvotes').default(0).notNull(),
+    createdAt: integer('created_at', { mode: 'timestamp' })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
   (table) => {
     return {
-      status: index('status_idx').on(table.status),
-      term: index('term_idx').on(table.term),
-      upvotes: index('upvotes_idx').on(table.upvotes),
-      createdAt: index('created_at_idx').on(table.createdAt)
+      status: index('definitions_status_idx').on(table.status),
+      term: index('definitions_term_idx').on(table.term),
+      upvotes: index('definitions_upvotes_idx').on(table.upvotes),
+      createdAt: index('definitions_created_at_idx').on(table.createdAt)
     };
   }
 );
@@ -92,24 +80,24 @@ export const definitionRelations = relations(definitions, ({ one }) => ({
   })
 }));
 
-export const reports = mysqlTable(
+export const reports = sqliteTable(
   'reports',
   {
-    id: varchar('id', { length: 20 })
+    id: text('id', { length: 20 })
       .primaryKey()
       .$defaultFn(() => generateId('rpt')),
-    userId: varchar('user_id', { length: 21 }).notNull(),
-    definitionId: varchar('definition_id', { length: 20 }).notNull(),
-    read: boolean('read').default(false).notNull(),
+    userId: text('user_id', { length: 21 }).notNull(),
+    definitionId: text('definition_id', { length: 20 }).notNull(),
+    read: integer('read', { mode: 'boolean' }).default(false).notNull(),
     reason: text('reason').notNull(),
-    createdAt: timestamp('created_at')
+    createdAt: integer('created_at', { mode: 'timestamp' })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
   (table) => {
     return {
-      read: index('read_idx').on(table.read),
-      createdAt: index('created_at_idx').on(table.createdAt)
+      read: index('reports_read_idx').on(table.read),
+      createdAt: index('reports_created_at_idx').on(table.createdAt)
     };
   }
 );
@@ -125,20 +113,20 @@ export const reportRelations = relations(reports, ({ one }) => ({
   })
 }));
 
-export const wotds = mysqlTable(
+export const wotds = sqliteTable(
   'wotds',
   {
-    id: varchar('id', { length: 21 })
+    id: text('id', { length: 21 })
       .primaryKey()
       .$defaultFn(() => generateId('wotd')),
-    definitionId: varchar('definition_id', { length: 20 }).notNull(),
-    createdAt: timestamp('created_at')
+    definitionId: text('definition_id', { length: 20 }).notNull(),
+    createdAt: integer('created_at', { mode: 'timestamp' })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
   (table) => {
     return {
-      createdAt: index('created_at_idx').on(table.createdAt)
+      createdAt: index('wotds_created_at_idx').on(table.createdAt)
     };
   }
 );

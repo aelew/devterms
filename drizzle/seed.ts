@@ -1,23 +1,24 @@
 import { readFile } from 'fs/promises';
-import { webcrypto } from 'node:crypto';
-import { Client } from '@planetscale/database';
+import { createClient } from '@libsql/client/web';
 import dotenv from 'dotenv';
-import { drizzle } from 'drizzle-orm/planetscale-serverless';
+import { drizzle } from 'drizzle-orm/libsql';
 
 import * as schema from '@/server/db/schema';
 
-globalThis.crypto = webcrypto as Crypto;
-
 dotenv.config({ path: ['.env', '.env.local'] });
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not set');
+if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+  throw new Error('Turso environment variables are not set');
 }
 
-const client = new Client({ url: process.env.DATABASE_URL });
+const client = createClient({
+  url: process.env.TURSO_DATABASE_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN
+});
+
 const db = drizzle(client, { schema });
 
-const AUTHOR_ID = 'user_0y3hmvftKAtzgtFp';
+const AUTHOR_ID = 'user_SvltYFQtlIZvYJKo';
 
 interface SeedDefinition {
   term: string;
@@ -29,16 +30,12 @@ async function main() {
   try {
     const filePath = __dirname + '/definitions.json';
     const fileContent = await readFile(filePath, 'utf-8');
-    const seedDefinitionArray = JSON.parse(fileContent) as SeedDefinition[];
+    const seedDefinitions = JSON.parse(fileContent) as SeedDefinition[];
 
-    console.log(
-      'Seeding database with',
-      seedDefinitionArray.length,
-      'definitions'
-    );
+    console.log(`Seeding database with ${seedDefinitions.length} definitions`);
 
-    for (let i = 0; i < seedDefinitionArray.length; i++) {
-      const definition = seedDefinitionArray[i]!;
+    for (let i = 0; i < seedDefinitions.length; i++) {
+      const definition = seedDefinitions[i]!;
       await db.insert(schema.definitions).values({
         userId: AUTHOR_ID,
         status: 'approved',
@@ -46,17 +43,14 @@ async function main() {
         ...definition
       });
       console.log(
-        'Seed progress:',
-        `${i + 1}/${seedDefinitionArray.length}`,
-        '|',
-        definition.term
+        `Seed progress: ${i + 1}/${seedDefinitions.length} | ${definition.term}`
       );
     }
 
     console.log('Database seeded!');
     process.exit(0);
   } catch (err) {
-    console.error('Failed to seed:', err);
+    console.error('Seed failed:', err);
     process.exit(1);
   }
 }

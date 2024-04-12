@@ -3,13 +3,16 @@ import type { Config } from 'drizzle-kit';
 
 dotenv.config({ path: ['.env', '.env.local'] });
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not set');
+if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+  throw new Error('Turso environment variables are not set');
 }
 
 export default {
-  driver: 'mysql2',
+  driver: 'turso',
   out: 'drizzle/migrations',
-  schema: 'src/server/db/schema.ts',
-  dbCredentials: { uri: process.env.DATABASE_URL }
+  schema: './src/server/db/schema.ts',
+  dbCredentials: {
+    url: process.env.TURSO_DATABASE_URL,
+    authToken: process.env.TURSO_AUTH_TOKEN
+  }
 } satisfies Config;
