@@ -1,4 +1,4 @@
-import { and, desc, eq } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
@@ -19,7 +19,7 @@ export const getDefinitions = cache((term: string) =>
         orderBy: desc(definitions.upvotes),
         where: and(
           eq(definitions.status, 'approved'),
-          eq(definitions.term, term)
+          eq(definitions.term, sql`${term} COLLATE NOCASE`)
         ),
         with: {
           user: {

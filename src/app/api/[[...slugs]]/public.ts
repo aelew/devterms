@@ -1,4 +1,4 @@
-import { and, desc, eq } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 import { Elysia, t } from 'elysia';
 import MeiliSearch from 'meilisearch';
 
@@ -84,7 +84,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
           eq(definitions.status, 'approved'),
           query.id
             ? eq(definitions.id, query.id)
-            : eq(definitions.term, query.term!)
+            : eq(definitions.term, sql`${query.term} COLLATE NOCASE`)
         ),
         columns: {
           id: true,
