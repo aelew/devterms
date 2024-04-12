@@ -1,5 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
-import { desc, eq } from 'drizzle-orm';
+import { desc, eq, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,9 +19,9 @@ interface UserResultCardsProps {
 
 export const getUser = cache(
   unstable_cache(
-    (userName: string) =>
+    (name: string) =>
       db.query.users.findFirst({
-        where: eq(users.name, userName),
+        where: eq(users.name, sql`${name} COLLATE NOCASE`),
         columns: {
           name: true,
           role: true,

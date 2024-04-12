@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { and, desc, eq } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 import { ImageResponse } from 'next/og';
 import { NextResponse, type NextRequest } from 'next/server';
 
@@ -56,7 +56,10 @@ export const GET = async (
   // locate definition
   const result = await db.query.definitions.findFirst({
     orderBy: desc(definitions.upvotes),
-    where: and(eq(definitions.status, 'approved'), eq(definitions.term, term)),
+    where: and(
+      eq(definitions.status, 'approved'),
+      eq(definitions.term, sql`${term} COLLATE NOCASE`)
+    ),
     with: {
       user: {
         columns: {

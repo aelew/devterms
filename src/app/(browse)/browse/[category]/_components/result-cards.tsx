@@ -22,7 +22,7 @@ const getCategoryDefinitions = unstable_cache(
             orderBy: desc(definitions.term),
             where: and(
               eq(definitions.status, 'approved'),
-              like(definitions.term, category + '%')
+              like(definitions.term, `${category}%`)
             )
           }),
       with: {
