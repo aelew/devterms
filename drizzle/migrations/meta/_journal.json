@@ -1,26 +1,12 @@
 {
   "version": "5",
-  "dialect": "mysql",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1708922951356,
-      "tag": "0000_busy_switch",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1708922981818,
-      "tag": "0001_spotty_speed",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1708932452135,
-      "tag": "0002_tiresome_toad_men",
+      "when": 1712885037184,
+      "tag": "0000_past_lady_deathstrike",
       "breakpoints": true
     }
   ]
