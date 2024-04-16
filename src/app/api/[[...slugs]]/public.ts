@@ -20,7 +20,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     async ({ set }) => {
       const definition = await getRandomDefinition();
       if (!definition) {
-        set.status = 500;
+        set.status = 404;
         throw new Error('No definitions available');
       }
       return {
