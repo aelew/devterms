@@ -32,7 +32,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     },
     {
       detail: {
-        description: 'Returns a random definition from on DevTerms.'
+        description: 'Returns a random definition from DevTerms.'
       }
     }
   )
