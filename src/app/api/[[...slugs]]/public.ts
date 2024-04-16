@@ -106,7 +106,7 @@ export const publicRoutes = new Elysia({ prefix: '/v1' })
     {
       detail: {
         description:
-          "Returns a single definition by it's ID or definition(s) by exact term. Use the search endpoint if you're looking for fuzzy query matching."
+          "Returns a single definition by its ID or definition(s) by exact term. Use the search endpoint if you're looking for fuzzy query matching."
       },
       query: t.Partial(
         t.Object({
