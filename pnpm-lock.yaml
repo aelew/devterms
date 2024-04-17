@@ -79,7 +79,7 @@ dependencies:
     version: 1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.77)(react-dom@18.2.0)(react@18.2.0)
   drizzle-orm:
     specifier: ^0.30.8
-    version: 0.30.8(@libsql/client@0.6.0)(@types/react@18.2.77)(mysql2@3.9.4)(react@18.2.0)
+    version: 0.30.8(@libsql/client@0.6.0)(@types/react@18.2.77)(mysql2@3.9.5)(react@18.2.0)
   elysia:
     specifier: ^0.8.17
     version: 0.8.17(@sinclair/typebox@0.32.20)(typescript@5.4.5)
@@ -198,7 +198,7 @@ devDependencies:
     version: 4.66.1(algoliasearch@4.23.3)
   mysql2:
     specifier: ^3.9.4
-    version: 3.9.4
+    version: 3.9.5
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -3591,7 +3591,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.8(@libsql/client@0.6.0)(@types/react@18.2.77)(mysql2@3.9.4)(react@18.2.0):
+  /drizzle-orm@0.30.8(@libsql/client@0.6.0)(@types/react@18.2.77)(mysql2@3.9.5)(react@18.2.0):
     resolution: {integrity: sha512-9pBJA0IjnpPpzZ6s9jlS1CQAbKoBmbn2GJesPhXaVblAA/joOJ4AWWevYcqvLGj9SvThBAl7WscN8Zwgg5mnTw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -3673,7 +3673,7 @@ packages:
     dependencies:
       '@libsql/client': 0.6.0
       '@types/react': 18.2.77
-      mysql2: 3.9.4
+      mysql2: 3.9.5
       react: 18.2.0
     dev: false
 
@@ -5235,8 +5235,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /mysql2@3.9.4:
-    resolution: {integrity: sha512-OEESQuwxMza803knC1YSt7NMuc1BrK9j7gZhCSs2WAyxr1vfiI7QLaLOKTh5c9SWGz98qVyQUbK8/WckevNQhg==}
+  /mysql2@3.9.5:
+    resolution: {integrity: sha512-idfCjWgJEIU2zToiAsy1UO9RQ+VvCrbfB9458LrComY7mJmAIvjdD+/58VmNLFUeQpKE4xZZqD+yZe3tlu62NQ==}
     engines: {node: '>= 8.0'}
     dependencies:
       denque: 2.1.0
