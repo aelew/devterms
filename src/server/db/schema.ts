@@ -14,7 +14,7 @@ export const users = sqliteTable(
     email: text('email', { length: 255 }).unique().notNull(),
     avatar: text('avatar', { length: 255 }).notNull(),
     githubId: integer('github_id').unique().notNull(),
-    createdAt: integer('created_at', { mode: 'timestamp' })
+    createdAt: integer('created_at')
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -59,7 +59,7 @@ export const definitions = sqliteTable(
     example: text('example').notNull(),
     upvotes: integer('upvotes').default(0).notNull(),
     downvotes: integer('downvotes').default(0).notNull(),
-    createdAt: integer('created_at', { mode: 'timestamp' })
+    createdAt: integer('created_at')
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -90,7 +90,7 @@ export const reports = sqliteTable(
     definitionId: text('definition_id', { length: 20 }).notNull(),
     read: integer('read', { mode: 'boolean' }).default(false).notNull(),
     reason: text('reason').notNull(),
-    createdAt: integer('created_at', { mode: 'timestamp' })
+    createdAt: integer('created_at')
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -120,7 +120,7 @@ export const wotds = sqliteTable(
       .primaryKey()
       .$defaultFn(() => generateId('wotd')),
     definitionId: text('definition_id', { length: 20 }).notNull(),
-    createdAt: integer('created_at', { mode: 'timestamp' })
+    createdAt: integer('created_at')
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
