@@ -72,7 +72,7 @@ export function DefinitionCard({
                 <span aria-hidden> &middot; </span>
               </>
             )}
-            <Time date={definition.createdAt} />
+            <Time timestamp={definition.createdAt} />
           </p>
         </div>
       </CardContent>

@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import { Time } from '@/components/time';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import type { Timestamp } from '@/types';
 import { acknowledgeReport } from './_actions';
 
 export type Report = {
@@ -20,7 +21,7 @@ export type Report = {
     definition: string;
     example: string;
   };
-  createdAt: Date;
+  createdAt: Timestamp;
 };
 
 export const columns: ColumnDef<Report>[] = [
@@ -70,7 +71,8 @@ export const columns: ColumnDef<Report>[] = [
   {
     accessorKey: 'createdAt',
     sortingFn: (a, b) =>
-      b.original.createdAt.getTime() - a.original.createdAt.getTime(),
+      new Date(b.original.createdAt).getTime() -
+      new Date(a.original.createdAt).getTime(),
     header: ({ column }) => {
       return (
         <Button
@@ -79,13 +81,13 @@ export const columns: ColumnDef<Report>[] = [
           variant="ghost"
         >
           Created
-          <ArrowUpDownIcon className="ml-2 h-4 w-4" />
+          <ArrowUpDownIcon className="ml-2 size-4" />
         </Button>
       );
     },
     cell: ({ getValue }) => (
       <div className="whitespace-nowrap">
-        <Time mode="short" date={getValue() as Date} />
+        <Time mode="short" timestamp={getValue() as Timestamp} />
       </div>
     )
   },

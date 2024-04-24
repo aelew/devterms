@@ -69,7 +69,7 @@ export async function UserResultCards({ name }: UserResultCardsProps) {
               <CardDescription>
                 User since{' '}
                 <strong>
-                  <Time date={user.createdAt} />
+                  <Time timestamp={user.createdAt} />
                 </strong>
               </CardDescription>
             </div>

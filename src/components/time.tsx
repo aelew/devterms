@@ -1,12 +1,14 @@
 'use client';
 
-interface DateProps {
-  date: Date | string;
+import type { Timestamp } from '@/types';
+
+interface TimeProps {
+  timestamp: Timestamp;
   mode?: 'short' | 'long';
 }
 
-export function Time({ date, mode = 'long' }: DateProps) {
-  const dateObj = new Date(date);
+export function Time({ timestamp, mode = 'long' }: TimeProps) {
+  const dateObj = new Date(timestamp);
   return (
     <time dateTime={dateObj.toISOString()} className="tabular-nums">
       {dateObj.toLocaleDateString(

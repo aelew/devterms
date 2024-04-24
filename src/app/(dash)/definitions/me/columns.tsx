@@ -9,6 +9,7 @@ import { Time } from '@/components/time';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { termToSlug } from '@/lib/utils';
+import type { Timestamp } from '@/types';
 
 export type Definition = {
   id: string;
@@ -16,7 +17,7 @@ export type Definition = {
   term: string;
   upvotes: number;
   downvotes: number;
-  createdAt: Date;
+  createdAt: Timestamp;
 };
 
 export const columns: ColumnDef<Definition>[] = [
@@ -61,7 +62,8 @@ export const columns: ColumnDef<Definition>[] = [
   {
     accessorKey: 'createdAt',
     sortingFn: (a, b) =>
-      b.original.createdAt.getTime() - a.original.createdAt.getTime(),
+      new Date(b.original.createdAt).getTime() -
+      new Date(a.original.createdAt).getTime(),
     header: ({ column }) => {
       return (
         <Button
@@ -70,14 +72,16 @@ export const columns: ColumnDef<Definition>[] = [
           variant="ghost"
         >
           Created
-          <ArrowUpDownIcon className="ml-2 h-4 w-4" />
+          <ArrowUpDownIcon className="ml-2 size-4" />
         </Button>
       );
     },
-    cell: ({ getValue }) => (
-      <div className="whitespace-nowrap">
-        <Time date={getValue() as Date} />
-      </div>
-    )
+    cell: ({ getValue }) => {
+      return (
+        <div className="whitespace-nowrap">
+          <Time timestamp={getValue() as Timestamp} />
+        </div>
+      );
+    }
   }
 ];
