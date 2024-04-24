@@ -131,7 +131,7 @@ export const GET = async (
           — <span tw="font-semibold ml-1 mr-0.5">@{result.user.name}</span>{' '}
           &middot;
           {' ' +
-            result.createdAt.toLocaleDateString(undefined, {
+            new Date(result.createdAt).toLocaleDateString(undefined, {
               year: 'numeric',
               month: 'long',
               day: 'numeric'

@@ -2,6 +2,8 @@ import type { InferSelectModel } from 'drizzle-orm';
 
 import type { definitions } from './server/db/schema';
 
+export type Timestamp = Date | number | string;
+
 export type Definition = InferSelectModel<typeof definitions>;
 
 export type ShareMedium =
