@@ -2,12 +2,12 @@
 
 import type { Timestamp } from '@/types';
 
-interface DateProps {
+interface TimeProps {
   timestamp: Timestamp;
   mode?: 'short' | 'long';
 }
 
-export function Time({ timestamp, mode = 'long' }: DateProps) {
+export function Time({ timestamp, mode = 'long' }: TimeProps) {
   const dateObj = new Date(timestamp);
   return (
     <time dateTime={dateObj.toISOString()} className="tabular-nums">
