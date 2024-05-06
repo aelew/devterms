@@ -60,5 +60,5 @@ export const env = createEnv({
   /**
    * Use the Vercel preset to automatically add Vercel's environment variables.
    */
-  extends: [vercel]
+  extends: [vercel()]
 });
