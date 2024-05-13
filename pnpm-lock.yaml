@@ -142,7 +142,7 @@ importers:
         version: 7.51.4(react@18.3.1)
       react-qr-code:
         specifier: ^2.0.12
-        version: 2.0.12(react@18.3.1)
+        version: 2.0.13(react@18.3.1)
       react-share:
         specifier: ^5.1.0
         version: 5.1.0(react@18.3.1)
@@ -3273,10 +3273,10 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-qr-code@2.0.12:
-    resolution: {integrity: sha512-k+pzP5CKLEGBRwZsDPp98/CAJeXlsYRHM2iZn1Sd5Th/HnKhIZCSg27PXO58zk8z02RaEryg+60xa4vyywMJwg==}
+  react-qr-code@2.0.13:
+    resolution: {integrity: sha512-mq2fpTSlYLwnLsbSjJRwxggFcxzmksfm7pCMe3cnzRinJSaR8Iy9/lzhsfaLEQL7UlRbucl9KZgKTOdzM5QY0w==}
     peerDependencies:
-      react: ^16.x || ^17.x || ^18.x
+      react: ^16.x || ^17.x || ^18.x || ^19.x
       react-native-svg: '*'
     peerDependenciesMeta:
       react-native-svg:
@@ -6736,7 +6736,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-qr-code@2.0.12(react@18.3.1):
+  react-qr-code@2.0.13(react@18.3.1):
     dependencies:
       prop-types: 15.8.1
       qr.js: 0.0.0
