@@ -9,6 +9,7 @@ if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
 
 export default {
   driver: 'turso',
+  dialect: 'sqlite',
   out: 'drizzle/migrations',
   schema: './src/server/db/schema.ts',
   dbCredentials: {
