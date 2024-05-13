@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@elysiajs/swagger':
         specifier: ^1.0.5
-        version: 1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))
+        version: 1.0.5(elysia@1.0.18(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.4(react@18.3.1))
@@ -84,8 +84,8 @@ importers:
         specifier: ^0.30.10
         version: 0.30.10(@libsql/client@0.6.0)(@types/react@18.3.2)(react@18.3.1)
       elysia:
-        specifier: ^0.8.17
-        version: 0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
+        specifier: ^1.0.18
+        version: 1.0.18(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
       framer-motion:
         specifier: ^11.1.9
         version: 11.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2158,15 +2158,13 @@ packages:
   electron-to-chromium@1.4.763:
     resolution: {integrity: sha512-k4J8NrtJ9QrvHLRo8Q18OncqBCB7tIUyqxRcJnlonQ0ioHKYB988GcDFF3ZePmnb8eHEopDs/wPHR/iGAFgoUQ==}
 
-  elysia@0.8.17:
-    resolution: {integrity: sha512-hqKHKUxbvlDHnobudtna5nBoGiZ4oa0xdnhynLAJF3+6gTYHAcQ/8/IyxUx5Az5Uy0zTuNiv7m2bIFu7xeMiWg==}
+  elysia@1.0.18:
+    resolution: {integrity: sha512-jhf9RUTIr/8TvMKzHe66pNHM2T/rkdchvuAnPO3Rthe2dl9XLMCxawkCgoKRh+ecUoZ+zhXceUYhkWw4BzNVkg==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
       typescript: '>= 5.0.0'
     peerDependenciesMeta:
-      '@sinclair/typebox':
-        optional: true
       openapi-types:
         optional: true
       typescript:
@@ -2870,9 +2868,6 @@ packages:
   memfs@3.5.3:
     resolution: {integrity: sha512-UERzLsxzllchadvbPs5aolHh65ISpKpM+ccLbOJ8/vvpBKmAWf+la7dXFy7Mr0ySHbdHrFv5kGFCUHHe6GFEmw==}
     engines: {node: '>= 4.0.0'}
-
-  memoirist@0.1.10:
-    resolution: {integrity: sha512-k2ARHDrSzqeQAWrgvE2NgNj7p5c1LkeFI1VizklJWDXAOTgq7m8mtl0v6W1mVawFNe3DH0hb4BdA91y3vwbqvw==}
 
   memoizee@0.4.15:
     resolution: {integrity: sha512-UBWmJpLZd5STPm7PMUlOw/TSy972M+z8gcyQ5veOnSDRREz/0bmpyTfKt3/51DhEBqCZQn1udM/5flcSPYhkdQ==}
@@ -3948,9 +3943,9 @@ snapshots:
       ajv: 8.13.0
       zod: 3.23.8
 
-  '@elysiajs/swagger@1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))':
+  '@elysiajs/swagger@1.0.5(elysia@1.0.18(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))':
     dependencies:
-      elysia: 0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
+      elysia: 1.0.18(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
       lodash.clonedeep: 4.5.0
       openapi-types: 12.1.3
 
@@ -5436,15 +5431,14 @@ snapshots:
 
   electron-to-chromium@1.4.763: {}
 
-  elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5):
+  elysia@1.0.18(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5):
     dependencies:
+      '@sinclair/typebox': 0.32.30
       cookie: 0.6.0
       eventemitter3: 5.0.1
       fast-decode-uri-component: 1.0.1
       fast-querystring: 1.1.2
-      memoirist: 0.1.10
     optionalDependencies:
-      '@sinclair/typebox': 0.32.30
       openapi-types: 12.1.3
       typescript: 5.4.5
 
@@ -6391,8 +6385,6 @@ snapshots:
     dependencies:
       fs-monkey: 1.0.6
     optional: true
-
-  memoirist@0.1.10: {}
 
   memoizee@0.4.15:
     dependencies:
