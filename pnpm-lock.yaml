@@ -25,7 +25,7 @@ importers:
         version: 1.0.7(lucia@3.2.0)
       '@meilisearch/instant-meilisearch':
         specifier: ^0.18.0
-        version: 0.18.0
+        version: 0.18.1
       '@radix-ui/react-avatar':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -985,8 +985,8 @@ packages:
     peerDependencies:
       lucia: 3.x
 
-  '@meilisearch/instant-meilisearch@0.18.0':
-    resolution: {integrity: sha512-sBJkqZrJHm6cfIZbfzp0aAg/6hE5vBnNdOpCSCo1WFXGNmSSuU5n9oA4B5ZrxNDAcz4B2FwDMq8r5lSh3J8T9A==}
+  '@meilisearch/instant-meilisearch@0.18.1':
+    resolution: {integrity: sha512-KxBoEaI1+CQQaSbSZZEllIUwsNofALH0RG+/bFMkNhavuzJn982zOTC7xYtYmXC6nsj32MmAe+rDBtazycDJQQ==}
 
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
@@ -2864,6 +2864,9 @@ packages:
   meilisearch@0.39.0:
     resolution: {integrity: sha512-nNf/HOqQ/wSxaSYKyIsE8thMPciLyIpEDIp0ZbJxkOZ/tETDNfaBNbY+Eq/wbTR9O769QSiQFf5OhssfGyOzbA==}
 
+  meilisearch@0.40.0:
+    resolution: {integrity: sha512-BoRhQMr2mBFLEeCfsvPluksGb01IaOiWvV3Deu3iEY+yYJ4jdGTu+IQi5FCjKlNQ7/TMWSN2XUToSgvH1tj0BQ==}
+
   memfs-browser@3.5.10302:
     resolution: {integrity: sha512-JJTc/nh3ig05O0gBBGZjTCPOyydaTxNF0uHYBrcc1gHNnO+KIHIvo0Y1FKCJsaei6FCl8C6xfQomXqu+cuzkIw==}
 
@@ -4335,9 +4338,9 @@ snapshots:
     dependencies:
       lucia: 3.2.0
 
-  '@meilisearch/instant-meilisearch@0.18.0':
+  '@meilisearch/instant-meilisearch@0.18.1':
     dependencies:
-      meilisearch: 0.39.0
+      meilisearch: 0.40.0
     transitivePeerDependencies:
       - encoding
 
@@ -6377,6 +6380,12 @@ snapshots:
       react: 18.3.1
 
   meilisearch@0.39.0:
+    dependencies:
+      cross-fetch: 3.1.8
+    transitivePeerDependencies:
+      - encoding
+
+  meilisearch@0.40.0:
     dependencies:
       cross-fetch: 3.1.8
     transitivePeerDependencies:
