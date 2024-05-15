@@ -67,7 +67,7 @@ importers:
         version: 1.1.3
       '@upstash/redis':
         specifier: ^1.30.1
-        version: 1.30.1
+        version: 1.31.1
       arctic:
         specifier: ^1.8.1
         version: 1.8.1
@@ -1705,8 +1705,8 @@ packages:
   '@upstash/ratelimit@1.1.3':
     resolution: {integrity: sha512-rl+GMvPdZJ9xPDIvIrqRl/g0nzAEaH75hwR5lXAKW8zPPplD/AeliDCHwuwcFCPIjg49FKyA1oc5H473WkVFrQ==}
 
-  '@upstash/redis@1.30.1':
-    resolution: {integrity: sha512-Cmk2cvm1AcD6mKLg/UFhQDzM+H1HsX/k5ufvNL4Kii8DsMTKmadMJ1rRZEGQ/SM7H51EeOL/YSa6K2EPc1SYPA==}
+  '@upstash/redis@1.31.1':
+    resolution: {integrity: sha512-lAsOo+kYjD5lpP+lH/nxHfzFYeCkWBwwKsyZZmh0AoOumBA9ZpS52Gorm7c2bmNu3UFijpPiLSFdW/nRdjbRpQ==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -5002,13 +5002,13 @@ snapshots:
 
   '@upstash/core-analytics@0.0.8':
     dependencies:
-      '@upstash/redis': 1.30.1
+      '@upstash/redis': 1.31.1
 
   '@upstash/ratelimit@1.1.3':
     dependencies:
       '@upstash/core-analytics': 0.0.8
 
-  '@upstash/redis@1.30.1':
+  '@upstash/redis@1.31.1':
     dependencies:
       crypto-js: 4.2.0
 
