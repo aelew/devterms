@@ -19,7 +19,7 @@ importers:
         version: 9.5.0(react@18.3.1)
       '@libsql/client':
         specifier: ^0.6.0
-        version: 0.6.0
+        version: 0.6.1
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
         version: 1.0.7(lucia@3.2.0)
@@ -82,7 +82,7 @@ importers:
         version: 1.0.0(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       drizzle-orm:
         specifier: ^0.30.10
-        version: 0.30.10(@libsql/client@0.6.0)(@types/react@18.3.2)(react@18.3.1)
+        version: 0.30.10(@libsql/client@0.6.1)(@types/react@18.3.2)(react@18.3.1)
       elysia:
         specifier: ^0.8.17
         version: 0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
@@ -930,11 +930,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@libsql/client@0.6.0':
-    resolution: {integrity: sha512-qhQzTG/y2IEVbL3+9PULDvlQFWJ/RnjFXECr/Nc3nRngGiiMysDaOV5VUzYk7DulUX98EA4wi+z3FspKrUplUA==}
+  '@libsql/client@0.6.1':
+    resolution: {integrity: sha512-j32pZMzsuKJ8bWi0rtlszrexXV7mXSxoSA/2C6DfIL7kelI7SHsFgscrQD3wHBJVguitwMklWBe2EuMMRW0img==}
 
-  '@libsql/core@0.6.0':
-    resolution: {integrity: sha512-affAB8vSqQwqI9NBDJ5uJCVaHoOAS2pOpbv1kWConh1SBbmJBnHHd4KG73RAJ2sgd2+NbT9WA+XJBqxgp28YSw==}
+  '@libsql/core@0.6.1':
+    resolution: {integrity: sha512-xVV7w4iQcWgkhvmcJ6RZQdImlNvJGIW4Tlx1KJVWh6+l1sdAAz8hNXEXO04rYGAg6oeIXZF1j1E/AW1mwomO1g==}
 
   '@libsql/darwin-arm64@0.3.18':
     resolution: {integrity: sha512-Zt49dt+cwhPCkuoWgvjbQd4ckNfCJR5xzIAyhgHl3CBZqZaEuaXTOGKLNQT7bnFRPuQcdLt5PBT1cenKu2N6pA==}
@@ -2515,10 +2515,12 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -2602,6 +2604,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3364,6 +3367,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   run-parallel@1.2.0:
@@ -4276,9 +4280,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@libsql/client@0.6.0':
+  '@libsql/client@0.6.1':
     dependencies:
-      '@libsql/core': 0.6.0
+      '@libsql/core': 0.6.1
       '@libsql/hrana-client': 0.6.0
       js-base64: 3.7.7
       libsql: 0.3.18
@@ -4286,7 +4290,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/core@0.6.0':
+  '@libsql/core@0.6.1':
     dependencies:
       js-base64: 3.7.7
 
@@ -5426,9 +5430,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.30.10(@libsql/client@0.6.0)(@types/react@18.3.2)(react@18.3.1):
+  drizzle-orm@0.30.10(@libsql/client@0.6.1)(@types/react@18.3.2)(react@18.3.1):
     optionalDependencies:
-      '@libsql/client': 0.6.0
+      '@libsql/client': 0.6.1
       '@types/react': 18.3.2
       react: 18.3.1
 
