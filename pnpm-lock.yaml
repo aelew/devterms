@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@elysiajs/swagger':
         specifier: ^1.0.5
-        version: 1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))
+        version: 1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.34)(openapi-types@12.1.3)(typescript@5.4.5))
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.4(react@18.3.1))
@@ -55,7 +55,7 @@ importers:
         version: 1.0.2(@types/react@18.3.2)(react@18.3.1)
       '@sinclair/typebox':
         specifier: ^0.32.30
-        version: 0.32.30
+        version: 0.32.34
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.8)
@@ -85,7 +85,7 @@ importers:
         version: 0.30.10(@libsql/client@0.6.0)(@types/react@18.3.2)(react@18.3.1)
       elysia:
         specifier: ^0.8.17
-        version: 0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
+        version: 0.8.17(@sinclair/typebox@0.32.34)(openapi-types@12.1.3)(typescript@5.4.5)
       framer-motion:
         specifier: ^11.1.9
         version: 11.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -115,7 +115,7 @@ importers:
         version: 3.12.0(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-safe-action:
         specifier: ^6.2.0
-        version: 6.2.0(@sinclair/typebox@0.32.30)(ajv@8.13.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 6.2.0(@sinclair/typebox@0.32.34)(ajv@8.13.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -886,6 +886,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -893,6 +894,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@ianvs/prettier-plugin-sort-imports@4.2.1':
     resolution: {integrity: sha512-NKN1LVFWUDGDGr3vt+6Ey3qPeN/163uR1pOPAlkWpgvAqgxQ6kSdUf1F0it8aHUtKRUzEGcK38Wxd07O61d7+Q==}
@@ -1593,8 +1595,8 @@ packages:
   '@rushstack/eslint-patch@1.10.2':
     resolution: {integrity: sha512-hw437iINopmQuxWPSUEvqE56NCPsiU8N4AYtfHmJFckclktzK9YQJieD3XkDCDH4OjL+C7zgPUh73R/nrcHrqw==}
 
-  '@sinclair/typebox@0.32.30':
-    resolution: {integrity: sha512-IYK1H0k2sHVB2GjzBK2DXBErhex45GoLuPdgn8lNw5t0+5elIuhpixOMPobFyq6kE0AGIBa4+76Ph4enco0q2Q==}
+  '@sinclair/typebox@0.32.34':
+    resolution: {integrity: sha512-a3Z3ytYl6R/+7ldxx04PO1semkwWlX/8pTqxsPw4quIcIXDFPZhOc1Wx8azWmkU26ccK3mHwcWenn0avNgAKQg==}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -2515,10 +2517,12 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -2602,6 +2606,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3364,6 +3369,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   run-parallel@1.2.0:
@@ -3942,15 +3948,15 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
 
-  '@decs/typeschema@0.12.2(@sinclair/typebox@0.32.30)(ajv@8.13.0)(zod@3.23.8)':
+  '@decs/typeschema@0.12.2(@sinclair/typebox@0.32.34)(ajv@8.13.0)(zod@3.23.8)':
     optionalDependencies:
-      '@sinclair/typebox': 0.32.30
+      '@sinclair/typebox': 0.32.34
       ajv: 8.13.0
       zod: 3.23.8
 
-  '@elysiajs/swagger@1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5))':
+  '@elysiajs/swagger@1.0.5(elysia@0.8.17(@sinclair/typebox@0.32.34)(openapi-types@12.1.3)(typescript@5.4.5))':
     dependencies:
-      elysia: 0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5)
+      elysia: 0.8.17(@sinclair/typebox@0.32.34)(openapi-types@12.1.3)(typescript@5.4.5)
       lodash.clonedeep: 4.5.0
       openapi-types: 12.1.3
 
@@ -4894,7 +4900,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.2': {}
 
-  '@sinclair/typebox@0.32.30': {}
+  '@sinclair/typebox@0.32.34': {}
 
   '@swc/counter@0.1.3': {}
 
@@ -5436,7 +5442,7 @@ snapshots:
 
   electron-to-chromium@1.4.763: {}
 
-  elysia@0.8.17(@sinclair/typebox@0.32.30)(openapi-types@12.1.3)(typescript@5.4.5):
+  elysia@0.8.17(@sinclair/typebox@0.32.34)(openapi-types@12.1.3)(typescript@5.4.5):
     dependencies:
       cookie: 0.6.0
       eventemitter3: 5.0.1
@@ -5444,7 +5450,7 @@ snapshots:
       fast-querystring: 1.1.2
       memoirist: 0.1.10
     optionalDependencies:
-      '@sinclair/typebox': 0.32.30
+      '@sinclair/typebox': 0.32.34
       openapi-types: 12.1.3
       typescript: 5.4.5
 
@@ -6458,9 +6464,9 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next-safe-action@6.2.0(@sinclair/typebox@0.32.30)(ajv@8.13.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  next-safe-action@6.2.0(@sinclair/typebox@0.32.34)(ajv@8.13.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.32.30)(ajv@8.13.0)(zod@3.23.8)
+      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.32.34)(ajv@8.13.0)(zod@3.23.8)
       next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
