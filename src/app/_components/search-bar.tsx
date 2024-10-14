@@ -95,9 +95,9 @@ export function SearchBar() {
     async (query: string) => {
       const { results } = await searchClient.search<Hit>([
         {
-          query,
           indexName: 'definitions',
           params: {
+            query,
             hitsPerPage: 4,
             synonyms: true,
             distinct: true,
