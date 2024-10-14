@@ -12,7 +12,7 @@ export function ChangelogButton() {
 
   useEffect(() => {
     window.Canny('initChangelog', {
-      theme: theme === 'system' ? 'auto' : theme ?? 'light',
+      theme: theme === 'system' ? 'auto' : (theme ?? 'light'),
       appID: env.NEXT_PUBLIC_CANNY_APP_ID,
       omitNonEssentialCookies: true,
       position: 'bottom',
