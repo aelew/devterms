@@ -6,15 +6,15 @@ import { generateId } from '@/lib/id';
 export const users = sqliteTable(
   'users',
   {
-    id: text('id', { length: 21 }).primaryKey(),
-    name: text('name', { length: 32 }),
-    role: text('role', { enum: ['user', 'bot', 'moderator', 'owner'] })
+    id: text({ length: 21 }).primaryKey(),
+    name: text({ length: 32 }),
+    role: text({ enum: ['user', 'bot', 'moderator', 'owner'] })
       .default('user')
       .notNull(),
-    email: text('email', { length: 255 }).unique().notNull(),
-    avatar: text('avatar', { length: 255 }).notNull(),
-    githubId: integer('github_id').unique().notNull(),
-    createdAt: integer('created_at')
+    email: text({ length: 255 }).unique().notNull(),
+    avatar: text({ length: 255 }).notNull(),
+    githubId: integer().unique().notNull(),
+    createdAt: integer()
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -32,9 +32,9 @@ export const usersRelations = relations(users, ({ many }) => ({
 }));
 
 export const sessions = sqliteTable('sessions', {
-  id: text('id', { length: 255 }).primaryKey(),
-  userId: text('user_id', { length: 21 }).notNull(),
-  expiresAt: integer('expires_at').notNull()
+  id: text({ length: 255 }).primaryKey(),
+  userId: text({ length: 21 }).notNull(),
+  expiresAt: integer().notNull()
 });
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
@@ -50,16 +50,16 @@ export const definitions = sqliteTable(
     id: text('id', { length: 20 })
       .primaryKey()
       .$defaultFn(() => generateId('def')),
-    userId: text('user_id', { length: 21 }).notNull(),
-    status: text('status', { enum: ['pending', 'approved', 'rejected'] })
+    userId: text({ length: 21 }).notNull(),
+    status: text({ enum: ['pending', 'approved', 'rejected'] })
       .default('pending')
       .notNull(),
-    term: text('term', { length: 255 }).notNull(),
-    definition: text('definition').notNull(),
-    example: text('example').notNull(),
-    upvotes: integer('upvotes').default(0).notNull(),
-    downvotes: integer('downvotes').default(0).notNull(),
-    createdAt: integer('created_at')
+    term: text({ length: 255 }).notNull(),
+    definition: text().notNull(),
+    example: text().notNull(),
+    upvotes: integer().default(0).notNull(),
+    downvotes: integer().default(0).notNull(),
+    createdAt: integer()
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -86,11 +86,11 @@ export const reports = sqliteTable(
     id: text('id', { length: 20 })
       .primaryKey()
       .$defaultFn(() => generateId('rpt')),
-    userId: text('user_id', { length: 21 }).notNull(),
-    definitionId: text('definition_id', { length: 20 }).notNull(),
-    read: integer('read', { mode: 'boolean' }).default(false).notNull(),
-    reason: text('reason').notNull(),
-    createdAt: integer('created_at')
+    userId: text({ length: 21 }).notNull(),
+    definitionId: text({ length: 20 }).notNull(),
+    read: integer({ mode: 'boolean' }).default(false).notNull(),
+    reason: text().notNull(),
+    createdAt: integer()
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
@@ -116,11 +116,11 @@ export const reportRelations = relations(reports, ({ one }) => ({
 export const wotds = sqliteTable(
   'wotds',
   {
-    id: text('id', { length: 21 })
+    id: text({ length: 21 })
       .primaryKey()
       .$defaultFn(() => generateId('wotd')),
-    definitionId: text('definition_id', { length: 20 }).notNull(),
-    createdAt: integer('created_at')
+    definitionId: text({ length: 20 }).notNull(),
+    createdAt: integer()
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull()
   },
