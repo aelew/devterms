@@ -73,9 +73,10 @@ export function DefinitionShareButton({
   const plausible = usePlausible<Events>();
 
   const CopyShareIcon = match(status)
-    .with('copied', () => motion(CheckIcon))
-    .with('error', () => motion(XIcon))
-    .otherwise(() => motion(CopyIcon));
+    // @ts-ignore
+    .with('error', () => motion.create(XIcon))
+    .with('copied', () => motion.create(CheckIcon))
+    .otherwise(() => motion.create(CopyIcon));
 
   const copyIconColor = match(status)
     .with('copied', () => 'text-green-500')
