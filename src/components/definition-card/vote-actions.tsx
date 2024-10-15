@@ -1,5 +1,6 @@
 'use client';
 
+import NumberFlow from '@number-flow/react';
 import pDebounce from 'p-debounce';
 import { useEffect, useOptimistic, useState } from 'react';
 import { toast } from 'sonner';
@@ -136,7 +137,7 @@ export function VoteActions({
         formAction={pDebounce(toggleUpvote, 100)}
       >
         {isUpvoted ? <SolidThumbsUpIcon /> : <RegularThumbsUpIcon />}
-        <span>{optimisticUpvotes}</span>
+        <NumberFlow value={optimisticUpvotes} className="mt-0.5" />
       </Button>
       <Button
         variant="outline"
@@ -145,7 +146,7 @@ export function VoteActions({
         formAction={pDebounce(toggleDownvote, 100)}
       >
         {isDownvoted ? <SolidThumbsDownIcon /> : <RegularThumbsDownIcon />}
-        {optimisticDownvotes}
+        <NumberFlow value={optimisticDownvotes} className="mt-0.5" />
       </Button>
     </form>
   );
