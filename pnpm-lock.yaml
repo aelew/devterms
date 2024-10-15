@@ -117,8 +117,8 @@ importers:
         specifier: ^3.12.2
         version: 3.12.2(next@14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-safe-action:
-        specifier: ^6.2.0
-        version: 6.2.0(@sinclair/typebox@0.33.16)(ajv@8.17.1)(next@14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^7.0.0
+        version: 7.9.4(@sinclair/typebox@0.33.16)(next@14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.23.8)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -352,60 +352,6 @@ packages:
   '@babel/types@7.25.8':
     resolution: {integrity: sha512-JWtuCu8VQsMladxVz/P4HzHUGCAwpuqacmowgXFs5XjxIgKuNjnLokQzuVjlTvIzODaDmpjT3oxcC48vyk9EWg==}
     engines: {node: '>=6.9.0'}
-
-  '@decs/typeschema@0.12.2':
-    resolution: {integrity: sha512-PA8uAH/Xfsa5X2UNNSnb5i6vB8qWZywp4+d2U8kNMCO7qwirYRPbFCHwIfWBJyURh4rULn3Ey+VBADLcK2xxaQ==}
-    deprecated: TypeSchema has been restructured. Install @typeschema/main or @typeschema/all instead.
-    peerDependencies:
-      '@deepkit/type': ^1.0.1-alpha.113
-      '@effect/schema': ^0.60.6
-      '@sinclair/typebox': ^0.32.11
-      ajv: ^8.12.0
-      arktype: ^1.0.29-alpha
-      effect: ^2.1.2
-      fp-ts: ^2.16.2
-      io-ts: ^2.2.21
-      joi: ^17.12.0
-      ow: ^0.28.2
-      runtypes: ^6.7.0
-      superstruct: ^1.0.3
-      valibot: ^0.26.0
-      vite: ^5.0.12
-      yup: ^1.3.3
-      zod: ^3.22.4
-    peerDependenciesMeta:
-      '@deepkit/type':
-        optional: true
-      '@effect/schema':
-        optional: true
-      '@sinclair/typebox':
-        optional: true
-      ajv:
-        optional: true
-      arktype:
-        optional: true
-      effect:
-        optional: true
-      fp-ts:
-        optional: true
-      io-ts:
-        optional: true
-      joi:
-        optional: true
-      ow:
-        optional: true
-      runtypes:
-        optional: true
-      superstruct:
-        optional: true
-      valibot:
-        optional: true
-      vite:
-        optional: true
-      yup:
-        optional: true
-      zod:
-        optional: true
 
   '@drizzle-team/brocli@0.10.1':
     resolution: {integrity: sha512-AHy0vjc+n/4w/8Mif+w86qpppHuF3AyXbcWW+R/W7GNA3F5/p2nuhlkCJaTXSLZheB4l1rtHzOfr9A7NwoR/Zg==}
@@ -3003,6 +2949,7 @@ packages:
 
   libsql@0.4.6:
     resolution: {integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3114,12 +3061,26 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  next-safe-action@6.2.0:
-    resolution: {integrity: sha512-gssUs3OLoNjLXZalrQaly38s/mUtXsIcKWGIK3jFkW8GHl0/Xhq+3G8yEEyObET2YlYqUj79K+mH3iTNBLDcMw==}
+  next-safe-action@7.9.4:
+    resolution: {integrity: sha512-ZQtkLzaSaf+3vMAHS5G7U1nG/Nw1o++25br52J1dHiAGU0RbyE8erhoie7A5HsypmjbdTNMZotTvWLYt1PGeDA==}
     engines: {node: '>=18.17'}
     peerDependencies:
+      '@sinclair/typebox': '>= 0.33.3'
       next: '>= 14.0.0'
       react: '>= 18.2.0'
+      react-dom: '>= 18.2.0'
+      valibot: '>= 0.36.0'
+      yup: '>= 1.0.0'
+      zod: '>= 3.0.0'
+    peerDependenciesMeta:
+      '@sinclair/typebox':
+        optional: true
+      valibot:
+        optional: true
+      yup:
+        optional: true
+      zod:
+        optional: true
 
   next-themes@0.3.0:
     resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
@@ -4110,12 +4071,6 @@ snapshots:
       '@babel/helper-string-parser': 7.25.7
       '@babel/helper-validator-identifier': 7.25.7
       to-fast-properties: 2.0.0
-
-  '@decs/typeschema@0.12.2(@sinclair/typebox@0.33.16)(ajv@8.17.1)(zod@3.23.8)':
-    optionalDependencies:
-      '@sinclair/typebox': 0.33.16
-      ajv: 8.17.1
-      zod: 3.23.8
 
   '@drizzle-team/brocli@0.10.1': {}
 
@@ -6743,29 +6698,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next-safe-action@6.2.0(@sinclair/typebox@0.33.16)(ajv@8.17.1)(next@14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  next-safe-action@7.9.4(@sinclair/typebox@0.33.16)(next@14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.23.8):
     dependencies:
-      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.33.16)(ajv@8.17.1)(zod@3.23.8)
       next: 14.2.15(@babel/core@7.25.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
+      '@sinclair/typebox': 0.33.16
       zod: 3.23.8
-    transitivePeerDependencies:
-      - '@deepkit/type'
-      - '@effect/schema'
-      - '@sinclair/typebox'
-      - ajv
-      - arktype
-      - effect
-      - fp-ts
-      - io-ts
-      - joi
-      - ow
-      - runtypes
-      - superstruct
-      - valibot
-      - vite
-      - yup
 
   next-themes@0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
