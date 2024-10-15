@@ -197,7 +197,7 @@ importers:
         version: 14.2.15(eslint@8.57.1)(typescript@5.6.3)
       instantsearch.js:
         specifier: ^4.75.0
-        version: 4.75.0(algoliasearch@4.23.3)
+        version: 4.75.1(algoliasearch@4.23.3)
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
@@ -2777,8 +2777,8 @@ packages:
   instantsearch-ui-components@0.9.0:
     resolution: {integrity: sha512-ugQ+XdPx3i3Sxu+woRo6tPE0Fz/kWd4KblTUfZD1TZZBsm/8qFvcbg5dVBDvXX9v7ntoyugXCzC/XCZMzrSkig==}
 
-  instantsearch.js@4.75.0:
-    resolution: {integrity: sha512-sP2bCNORXb2Bu7IPZdUXmvSOA7JMzZ3iRl1sFsaBu0qP+vs7SclKs9GjkRBxHmJ8GeMfJGGjHuFEIAaiTwEVOA==}
+  instantsearch.js@4.75.1:
+    resolution: {integrity: sha512-jqefF4z2bAjjcpNwKGgfGnH4ejs5P7MpdzOLyzzzAwtPIUPuBllVqAI2Kgfvx86yzaRzTPtt6KIPm3TLTdcSRg==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 6'
 
@@ -3332,8 +3332,8 @@ packages:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  preact@10.24.2:
-    resolution: {integrity: sha512-1cSoF0aCC8uaARATfrlz4VCBqE8LwZwRfLgkxJOQwAlQt6ayTmi0D9OF7nXid1POI5SZidFuG9CnlXbDfLqY/Q==}
+  preact@10.24.3:
+    resolution: {integrity: sha512-Z2dPnBnMUfyQfSQ+GBdsGa16hz35YmLmtTLhM169uW944hYL6xzTYkJjC07j+Wosz733pMWx0fgON3JNw1jJQA==}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -6393,7 +6393,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.25.7
 
-  instantsearch.js@4.75.0(algoliasearch@4.23.3):
+  instantsearch.js@4.75.1(algoliasearch@4.23.3):
     dependencies:
       '@algolia/events': 4.0.1
       '@types/dom-speech-recognition': 0.0.1
@@ -6405,7 +6405,7 @@ snapshots:
       hogan.js: 3.0.2
       htm: 3.1.1
       instantsearch-ui-components: 0.9.0
-      preact: 10.24.2
+      preact: 10.24.3
       qs: 6.9.7
       search-insights: 2.17.2
 
@@ -6953,7 +6953,7 @@ snapshots:
       picocolors: 1.1.0
       source-map-js: 1.2.1
 
-  preact@10.24.2: {}
+  preact@10.24.3: {}
 
   prelude-ls@1.2.1: {}
 
