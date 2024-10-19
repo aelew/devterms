@@ -18,7 +18,7 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
-    "@elysiajs/swagger": "1.0.5",
+    "@elysiajs/swagger": "1.1.5",
     "@hookform/resolvers": "^3.9.0",
     "@icons-pack/react-simple-icons": "^10.0.0",
     "@libsql/client": "^0.14.0",
