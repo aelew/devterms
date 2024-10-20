@@ -22,7 +22,7 @@ importers:
         version: 0.14.0
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.1.0
-        version: 1.1.0(drizzle-orm@0.34.1(@libsql/client@0.14.0)(@types/react@18.3.11)(react@18.3.1))(lucia@3.2.1)
+        version: 1.1.0(drizzle-orm@0.34.1(@libsql/client@0.14.0)(@types/react@18.3.11)(react@18.3.1))(lucia@3.2.2)
       '@meilisearch/instant-meilisearch':
         specifier: ^0.18.1
         version: 0.18.1
@@ -100,7 +100,7 @@ importers:
         version: 2.3.3
       lucia:
         specifier: ^3.2.1
-        version: 3.2.1
+        version: 3.2.2
       lucide-react:
         specifier: ^0.453.0
         version: 0.453.0(react@18.3.1)
@@ -3035,8 +3035,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucia@3.2.1:
-    resolution: {integrity: sha512-yIVBS/wU3R+8cLClh2ksBNxqHkAd0VUcjvib53azkSdRT1cPkKuFglkxFsghuspaioX+AHhmIECEkdOz/vIJsQ==}
+  lucia@3.2.2:
+    resolution: {integrity: sha512-P1FlFBGCMPMXu+EGdVD9W4Mjm0DqsusmKgO7Xc33mI5X1bklmsQb0hfzPhXomQr9waWIBDsiOjvr1e6BTaUqpA==}
 
   lucide-react@0.453.0:
     resolution: {integrity: sha512-kL+RGZCcJi9BvJtzg2kshO192Ddy9hv3ij+cPrVPWSRzgCWCVazoQJxOjAwgK53NomL07HB7GPHW120FimjNhQ==}
@@ -4505,10 +4505,10 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.6':
     optional: true
 
-  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.34.1(@libsql/client@0.14.0)(@types/react@18.3.11)(react@18.3.1))(lucia@3.2.1)':
+  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.34.1(@libsql/client@0.14.0)(@types/react@18.3.11)(react@18.3.1))(lucia@3.2.2)':
     dependencies:
       drizzle-orm: 0.34.1(@libsql/client@0.14.0)(@types/react@18.3.11)(react@18.3.1)
-      lucia: 3.2.1
+      lucia: 3.2.2
 
   '@meilisearch/instant-meilisearch@0.18.1':
     dependencies:
@@ -6668,7 +6668,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucia@3.2.1:
+  lucia@3.2.2:
     dependencies:
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
