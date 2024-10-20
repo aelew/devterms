@@ -28,7 +28,7 @@ importers:
         version: 0.18.1
       '@number-flow/react':
         specifier: ^0.2.1
-        version: 0.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-avatar':
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1243,8 +1243,8 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@number-flow/react@0.2.1':
-    resolution: {integrity: sha512-gU1jIy6ORk7YhNiyrvOsiyfgewzw+a0X8xZRIn8b5Q3sJXRWZqxV3XkAoKh/XOuAASKo7I+i3LS6mOiM/LT3bg==}
+  '@number-flow/react@0.2.2':
+    resolution: {integrity: sha512-jLSWyoVC5nKtGKQ/xBqZbrmT1ew0BWw//gAsgBfE9GnZKZJoDI2TU6qI14rzJzWaN5QcvVrcNBJwZjEY0M2KHQ==}
     peerDependencies:
       react: ^18 || ^19.0.0-rc-915b914b3a-20240515
       react-dom: ^18
@@ -3186,8 +3186,8 @@ packages:
   nprogress@0.2.0:
     resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
 
-  number-flow@0.3.0:
-    resolution: {integrity: sha512-Aog+XsC2App/t/nM8mICf5z+dHXAVUaBfWAb7YgPQX5XHxBc5O5ho6dZsvGEn6nfcI3Ty+NUCpqfQ9zDQ/5+rA==}
+  number-flow@0.3.1:
+    resolution: {integrity: sha512-GkSIJy3DTEraMfc54Sd4YR0UFqKEEobCrVILtLm/baeIicnQgbRcPLZE7ZAtB/EWHxhBpvV7Vu1v5tSyq5IE3A==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -4693,10 +4693,10 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@number-flow/react@0.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@number-flow/react@0.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       esm-env: 1.0.0
-      number-flow: 0.3.0
+      number-flow: 0.3.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -6826,7 +6826,7 @@ snapshots:
 
   nprogress@0.2.0: {}
 
-  number-flow@0.3.0:
+  number-flow@0.3.1:
     dependencies:
       esm-env: 1.0.0
 
