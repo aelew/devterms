@@ -8,7 +8,7 @@ Check out [DevTerms in action](https://devterms.io)!
 
 - 🌎 [Vercel](https://vercel.com): Frontend cloud platform
 - 🌟 [Next.js](https://nextjs.org): The React framework for the web
-- 🛠 [Elysia](https://elysiajs.com): Full-featured, typesafe API framework
+- 🔥 [Hono](https://hono.dev): Fast web framework built on Web Standards
 - 💨 [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework
 - 🎨 [shadcn/ui](https://ui.shadcn.com): Beautifully designed components
 - 🔎 [Meilisearch](https://www.meilisearch.com): Lightning-fast website search engine

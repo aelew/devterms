@@ -1,6 +1,7 @@
 import MeiliSearch from 'meilisearch';
 
 import { env } from '@/env';
+import type { DefinitionHit } from '@/types';
 
 export async function getRandomDefinition() {
   const meili = new MeiliSearch({
@@ -8,7 +9,7 @@ export async function getRandomDefinition() {
     apiKey: env.MEILISEARCH_MASTER_KEY
   });
 
-  const index = meili.index('definitions');
+  const index = meili.index<DefinitionHit>('definitions');
 
   const { numberOfDocuments } = await index.getStats();
 
@@ -16,12 +17,7 @@ export async function getRandomDefinition() {
   const maxOffset = Math.min(numberOfDocuments, 1000);
   const randomDocumentIdx = Math.floor(Math.random() * maxOffset);
 
-  const searchResponse = await index.search<{
-    id: string;
-    term: string;
-    definition: string;
-    example: string;
-  }>(null, {
+  const searchResponse = await index.search(null, {
     offset: randomDocumentIdx,
     limit: 1
   });

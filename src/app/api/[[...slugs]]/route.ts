@@ -1,40 +1,46 @@
-import { swagger } from '@elysiajs/swagger';
-import { Elysia } from 'elysia';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { apiReference } from '@scalar/hono-api-reference';
+import { handle } from 'hono/vercel';
 
+import { env } from '@/env';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { callbackRoutes } from './callback';
 import { cronRoutes } from './cron';
 import { devRoutes } from './dev';
 import { publicRoutes } from './public';
 
-const app = new Elysia({ prefix: '/api' })
-  .use(
-    swagger({
-      path: '/docs',
-      exclude: /internal|callback|cron|docs/,
-      documentation: {
-        info: {
-          version: '1.0.0',
-          title: `${APP_NAME} API`,
-          description: APP_DESCRIPTION
-        }
-      }
-    })
-  )
-  .onError(({ code }) => {
-    if (code === 'NOT_FOUND') {
-      return { success: false, error: 'not_found' };
+const app = new OpenAPIHono().basePath('/api');
+const runtime = 'edge';
+
+app.notFound((c) => c.json({ success: false, error: 'not_found' }, 404));
+
+app.route('/cron', cronRoutes);
+app.route('/callback', callbackRoutes);
+
+if (env.NODE_ENV === 'development') {
+  app.route('/dev', devRoutes);
+}
+
+app
+  .route('/v1', publicRoutes)
+  .doc('/v1/openapi.json', {
+    openapi: '3.1.0',
+    info: {
+      version: '1.1.0',
+      title: `${APP_NAME} API`,
+      description: APP_DESCRIPTION
     }
   })
-  .onTransform(({ set }) => {
-    set.headers['content-type'] = 'application/json';
-  })
-  .use(publicRoutes)
-  .use(callbackRoutes)
-  .use(cronRoutes)
-  .use(devRoutes)
-  .compile();
+  .get(
+    '/docs',
+    apiReference({
+      theme: 'deepSpace',
+      favicon: '/icon.png',
+      spec: { url: '/api/v1/openapi.json' },
+      customCss: '.download-button { opacity: 0.75; }'
+    })
+  );
 
-const handle = app.handle;
+const handler = handle(app);
 
-export { handle as GET, handle as POST };
+export { app, runtime, handler as GET, handler as POST };
