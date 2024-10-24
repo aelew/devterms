@@ -24,7 +24,7 @@
     "@icons-pack/react-simple-icons": "^10.1.0",
     "@libsql/client": "^0.14.0",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
-    "@meilisearch/instant-meilisearch": "^0.18.1",
+    "@meilisearch/instant-meilisearch": "^0.21.0",
     "@number-flow/react": "^0.2.5",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.2",
