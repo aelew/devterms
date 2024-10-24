@@ -56,7 +56,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "next": "^14.2.16",
     "next-plausible": "^3.12.2",
-    "next-safe-action": "^6.2.0",
+    "next-safe-action": "^7.0.0",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^3.7.15",
     "oslo": "^1.2.1",
