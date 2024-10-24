@@ -57,3 +57,10 @@ export type GitHubEmailsResponse = {
   verified: boolean;
   visibility: 'public' | 'private' | null;
 }[];
+
+export type DefinitionHit = {
+  id: string;
+  term: string;
+  definition: string;
+  example: string;
+};

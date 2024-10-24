@@ -1,50 +1,105 @@
-import { Elysia } from 'elysia';
+import { env } from 'process';
+import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
+import { setCookie } from 'hono/cookie';
+import type { CookieOptions } from 'hono/utils/cookie';
 import { TwitterApi } from 'twitter-api-v2';
+import { z } from 'zod';
 
-import { env } from '@/env';
-
-const TWITTER_CALLBACK_URL = `${env.NEXT_PUBLIC_BASE_URL}/api/callback/twitter`;
-
-export const devRoutes = new Elysia()
-  .onBeforeHandle(({ set }) => {
-    if (env.NODE_ENV !== 'development') {
-      set.status = 403;
-      throw new Error('Only available in development');
-    }
-  })
-  .get('/internal-twitter-login', async ({ set }) => {
+const twitterRoutes = new Hono()
+  .use(async (c, next) => {
     if (!env.TWITTER_CONSUMER_KEY || !env.TWITTER_CONSUMER_SECRET) {
-      set.status = 500;
-      throw new Error('Twitter consumer keys missing');
+      return c.json(
+        {
+          success: false,
+          error: 'missing_credentials'
+        },
+        500
+      );
     }
-
+    await next();
+  })
+  .get('/login', async (c) => {
     const twitter = new TwitterApi({
-      appKey: env.TWITTER_CONSUMER_KEY,
-      appSecret: env.TWITTER_CONSUMER_SECRET
+      appKey: env.TWITTER_CONSUMER_KEY!,
+      appSecret: env.TWITTER_CONSUMER_SECRET!
     });
 
-    const authLink = await twitter.generateAuthLink(TWITTER_CALLBACK_URL, {
-      linkMode: 'authorize'
-    });
+    const authLink = await twitter.generateAuthLink(
+      `${env.NEXT_PUBLIC_BASE_URL}/api/dev/twitter/collect`,
+      { linkMode: 'authorize' }
+    );
 
-    const options = {
-      secure: env.NODE_ENV === 'production',
-      maxAge: 60 * 10,
-      httpOnly: true,
+    const opts = {
       sameSite: 'lax',
+      httpOnly: true,
+      secure: false,
+      maxAge: 600,
       path: '/'
-    } as const;
+    } satisfies CookieOptions;
 
-    set.cookie = {
-      internal_twitter_oauth_token: {
-        ...options,
-        value: authLink.oauth_token
-      },
-      internal_twitter_oauth_token_secret: {
-        ...options,
-        value: authLink.oauth_token_secret
+    setCookie(c, 'dev__twitter_oauth_token', authLink.oauth_token, opts);
+    setCookie(c, 'dev__twitter_oauth_token_secret', authLink.oauth_token, opts);
+
+    return c.redirect(authLink.url);
+  })
+  .get(
+    '/collect',
+    zValidator(
+      'query',
+      z.object({
+        oauth_token: z.string(),
+        oauth_verifier: z.string()
+      })
+    ),
+    zValidator(
+      'cookie',
+      z.object({
+        dev__twitter_oauth_token: z.string(),
+        dev__twitter_oauth_token_secret: z.string()
+      })
+    ),
+    async (c) => {
+      const query = c.req.valid('query');
+      const cookie = c.req.valid('cookie');
+
+      const twitter = new TwitterApi({
+        appKey: env.TWITTER_CONSUMER_KEY!,
+        appSecret: env.TWITTER_CONSUMER_SECRET!,
+        accessToken: cookie.dev__twitter_oauth_token,
+        accessSecret: cookie.dev__twitter_oauth_token_secret
+      });
+      try {
+        const { accessToken, accessSecret } = await twitter.login(
+          query.oauth_verifier
+        );
+
+        return c.json({ accessToken, accessSecret });
+      } catch (err) {
+        console.error('Twitter OAuth2 error:', err);
+
+        return c.json(
+          {
+            success: false,
+            error: 'internal_server_error'
+          },
+          500
+        );
       }
-    };
+    }
+  );
 
-    set.redirect = authLink.url;
-  });
+export const devRoutes = new Hono()
+  .use(async (c, next) => {
+    if (env.NODE_ENV !== 'development') {
+      return c.json(
+        {
+          success: false,
+          error: 'restricted_endpoint'
+        },
+        403
+      );
+    }
+    await next();
+  })
+  .route('/twitter', twitterRoutes);
