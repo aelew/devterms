@@ -7,7 +7,7 @@ import { TwitterApi } from 'twitter-api-v2';
 import { z } from 'zod';
 
 const twitterRoutes = new Hono()
-  .use(async (c) => {
+  .use(async (c, next) => {
     if (!env.TWITTER_CONSUMER_KEY || !env.TWITTER_CONSUMER_SECRET) {
       return c.json(
         {
@@ -17,6 +17,7 @@ const twitterRoutes = new Hono()
         500
       );
     }
+    await next();
   })
   .get('/login', async (c) => {
     const twitter = new TwitterApi({
@@ -25,7 +26,7 @@ const twitterRoutes = new Hono()
     });
 
     const authLink = await twitter.generateAuthLink(
-      `${env.NEXT_PUBLIC_BASE_URL}/api/development/twitter`,
+      `${env.NEXT_PUBLIC_BASE_URL}/api/development/twitter/collect`,
       { linkMode: 'authorize' }
     );
 
@@ -89,7 +90,7 @@ const twitterRoutes = new Hono()
   );
 
 export const developmentRoutes = new Hono()
-  .use(async (c) => {
+  .use(async (c, next) => {
     if (env.NODE_ENV !== 'development') {
       return c.json(
         {
@@ -99,5 +100,6 @@ export const developmentRoutes = new Hono()
         403
       );
     }
+    await next();
   })
   .route('/twitter', twitterRoutes);

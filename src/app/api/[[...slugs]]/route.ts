@@ -2,8 +2,10 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { apiReference } from '@scalar/hono-api-reference';
 import { handle } from 'hono/vercel';
 
+import { env } from '@/env';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { callbackRoutes } from './callback';
+import { cronRoutes } from './cron';
 import { developmentRoutes } from './dev';
 import { publicRoutes } from './public';
 
@@ -12,8 +14,12 @@ const runtime = 'edge';
 
 app.notFound((c) => c.json({ success: false, error: 'not_found' }, 404));
 
+app.route('/cron', cronRoutes);
 app.route('/callback', callbackRoutes);
-app.route('/development', developmentRoutes);
+
+if (env.NODE_ENV === 'development') {
+  app.route('/development', developmentRoutes);
+}
 
 app
   .route('/v1', publicRoutes)

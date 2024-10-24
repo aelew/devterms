@@ -11,7 +11,7 @@ import { db } from '@/server/db';
 import { definitions, wotds } from '@/server/db/schema';
 
 export const cronRoutes = new Hono()
-  .use(async (c) => {
+  .use(async (c, next) => {
     const authorizationHeader = c.req.header('Authorization');
     if (authorizationHeader !== `Bearer ${env.CRON_SECRET}`) {
       return c.json(
@@ -22,6 +22,7 @@ export const cronRoutes = new Hono()
         401
       );
     }
+    await next();
   })
   .get('/meilisearch', async (c) => {
     const meili = new MeiliSearch({
