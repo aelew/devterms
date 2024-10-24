@@ -6,7 +6,7 @@ import { env } from '@/env';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { callbackRoutes } from './callback';
 import { cronRoutes } from './cron';
-import { developmentRoutes } from './dev';
+import { devRoutes } from './dev';
 import { publicRoutes } from './public';
 
 const app = new OpenAPIHono().basePath('/api');
@@ -18,7 +18,7 @@ app.route('/cron', cronRoutes);
 app.route('/callback', callbackRoutes);
 
 if (env.NODE_ENV === 'development') {
-  app.route('/development', developmentRoutes);
+  app.route('/dev', devRoutes);
 }
 
 app

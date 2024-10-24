@@ -26,7 +26,7 @@ const twitterRoutes = new Hono()
     });
 
     const authLink = await twitter.generateAuthLink(
-      `${env.NEXT_PUBLIC_BASE_URL}/api/development/twitter/collect`,
+      `${env.NEXT_PUBLIC_BASE_URL}/api/dev/twitter/collect`,
       { linkMode: 'authorize' }
     );
 
@@ -89,7 +89,7 @@ const twitterRoutes = new Hono()
     }
   );
 
-export const developmentRoutes = new Hono()
+export const devRoutes = new Hono()
   .use(async (c, next) => {
     if (env.NODE_ENV !== 'development') {
       return c.json(
