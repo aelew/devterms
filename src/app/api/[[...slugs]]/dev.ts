@@ -12,7 +12,7 @@ const twitterRoutes = new Hono()
       return c.json(
         {
           success: false,
-          error: 'Twitter consumer credentials missing'
+          error: 'missing_credentials'
         },
         500
       );
@@ -81,7 +81,7 @@ const twitterRoutes = new Hono()
         return c.json(
           {
             success: false,
-            error: 'Internal server error'
+            error: 'internal_server_error'
           },
           500
         );
@@ -95,7 +95,7 @@ export const devRoutes = new Hono()
       return c.json(
         {
           success: false,
-          error: 'This endpoint is only available in development environments.'
+          error: 'restricted_endpoint'
         },
         403
       );

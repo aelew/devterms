@@ -23,7 +23,7 @@ export const callbackRoutes = new Hono().get(
       return c.json(
         {
           success: false,
-          error: 'Invalid parameters.'
+          error: 'bad_request'
         },
         400
       );
@@ -82,7 +82,7 @@ export const callbackRoutes = new Hono().get(
           return c.json(
             {
               success: false,
-              error: 'GitHub account email missing'
+              error: 'missing_github_email'
             },
             400
           );
@@ -114,7 +114,7 @@ export const callbackRoutes = new Hono().get(
         return c.json(
           {
             success: false,
-            error: 'Invalid code'
+            error: 'invalid_code'
           },
           400
         );
@@ -125,7 +125,7 @@ export const callbackRoutes = new Hono().get(
       return c.json(
         {
           success: false,
-          error: 'Internal server error'
+          error: 'internal_server_error'
         },
         500
       );

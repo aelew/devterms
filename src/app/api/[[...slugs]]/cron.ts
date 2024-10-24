@@ -17,7 +17,7 @@ export const cronRoutes = new Hono()
       return c.json(
         {
           success: false,
-          error: 'Unauthorized'
+          error: 'unauthorized'
         },
         401
       );
@@ -53,9 +53,9 @@ export const cronRoutes = new Hono()
       return c.json(
         {
           success: false,
-          error: 'No definitions available'
+          error: 'no_definitions_available'
         },
-        500
+        404
       );
     }
 
@@ -107,7 +107,7 @@ export const cronRoutes = new Hono()
         return c.json(
           {
             success: false,
-            error: 'Internal server error'
+            error: 'internal_server_error'
           },
           500
         );

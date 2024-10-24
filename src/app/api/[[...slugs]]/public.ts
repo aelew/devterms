@@ -69,7 +69,7 @@ export const publicRoutes = new OpenAPIHono()
         return c.json(
           {
             success: false,
-            error: 'No definitions available'
+            error: 'no_definitions_available'
           } as const,
           404
         );
@@ -199,7 +199,7 @@ export const publicRoutes = new OpenAPIHono()
         return c.json(
           {
             success: false,
-            error: 'Please specify a term or definition ID'
+            error: 'invalid_query'
           } as const,
           400
         );
