@@ -2,7 +2,6 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { apiReference } from '@scalar/hono-api-reference';
 import { handle } from 'hono/vercel';
 
-import { env } from '@/env';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { callbackRoutes } from './callback';
 import { developmentRoutes } from './dev';
@@ -32,7 +31,7 @@ app
       theme: 'deepSpace',
       favicon: '/icon.png',
       spec: { url: '/api/v1/openapi.json' },
-      baseServerURL: `${env.NEXT_PUBLIC_BASE_URL}/api/v1`
+      customCss: '.download-button { opacity: 0.75; }'
     })
   );
 
