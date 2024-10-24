@@ -82,7 +82,7 @@
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.25.0",
+    "drizzle-kit": "^0.26.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.16",
     "instantsearch.js": "^4.75.2",
