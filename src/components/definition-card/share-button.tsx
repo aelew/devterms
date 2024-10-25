@@ -1,5 +1,6 @@
 'use client';
 
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckIcon, CopyIcon, QrCodeIcon, ShareIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
@@ -19,7 +20,12 @@ import {
 import { match } from 'ts-pattern';
 
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
 import {
   Popover,
   PopoverContent,
@@ -115,7 +121,13 @@ export function DefinitionShareButton({
               <QrCodeIcon size={12} />
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-fit p-10">
+          <DialogContent
+            aria-describedby={undefined}
+            className="max-w-fit p-10"
+          >
+            <VisuallyHidden asChild>
+              <DialogTitle />
+            </VisuallyHidden>
             <QRCodeSVG
               className="rounded-lg border bg-white p-4 shadow"
               value={url}
