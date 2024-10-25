@@ -29,6 +29,8 @@ export const callbackRoutes = new Hono().get(
       );
     }
 
+    const cookieStore = await cookies();
+
     try {
       const tokens = await github.validateAuthorizationCode(query.code);
 
@@ -48,7 +50,7 @@ export const callbackRoutes = new Hono().get(
         const session = await lucia.createSession(existingUser.id, {});
         const sessionCookie = lucia.createSessionCookie(session.id);
 
-        cookies().set(
+        cookieStore.set(
           sessionCookie.name,
           sessionCookie.value,
           sessionCookie.attributes
@@ -102,7 +104,7 @@ export const callbackRoutes = new Hono().get(
       const session = await lucia.createSession(userId, {});
       const sessionCookie = lucia.createSessionCookie(session.id);
 
-      cookies().set(
+      cookieStore.set(
         sessionCookie.name,
         sessionCookie.value,
         sessionCookie.attributes

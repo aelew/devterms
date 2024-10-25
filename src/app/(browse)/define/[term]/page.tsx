@@ -8,17 +8,18 @@ import { slugToTerm } from '@/lib/utils';
 import { DefineResultCards, getDefinitions } from './_components/result-cards';
 
 interface DefinitionPageProps {
-  params: {
-    term: string;
-  };
+  params: Promise<{ term: string }>;
 }
 
-export async function generateMetadata({ params }: DefinitionPageProps) {
+export async function generateMetadata(props: DefinitionPageProps) {
+  const params = await props.params;
   const term = slugToTerm(params.term);
+
   const results = await getDefinitions(term);
   if (!results.length) {
     return getPageMetadata({ title: `What is ${term}?` });
   }
+
   const firstResult = results[0]!;
 
   const hmac = createHmac('sha256', env.OG_HMAC_SECRET);
@@ -44,7 +45,8 @@ export async function generateMetadata({ params }: DefinitionPageProps) {
   });
 }
 
-export default function DefinitionPage({ params }: DefinitionPageProps) {
+export default async function DefinitionPage(props: DefinitionPageProps) {
+  const params = await props.params;
   const term = slugToTerm(params.term);
   return (
     <Suspense fallback={<DefinitionCardSkeleton />}>

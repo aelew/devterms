@@ -9,7 +9,7 @@ import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
 interface OpenGraphDefinitionProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const runtime = 'edge';
@@ -28,14 +28,12 @@ function toHex(arrayBuffer: ArrayBuffer) {
     .join('');
 }
 
-export const GET = async (
-  req: NextRequest,
-  { params }: OpenGraphDefinitionProps
-) => {
+export async function GET(req: NextRequest, props: OpenGraphDefinitionProps) {
+  const params = await props.params;
+
   const term = slugToTerm(params.slug);
 
-  // verify og token
-  const { searchParams } = new URL(req.url);
+  const searchParams = req.nextUrl.searchParams;
   const token = searchParams.get('t');
 
   const verifyToken = toHex(
@@ -47,6 +45,7 @@ export const GET = async (
   );
 
   if (token !== verifyToken) {
+    console.log('invalid token', { token, verifyToken });
     return NextResponse.json(
       { success: false, error: 'invalid_token' },
       { status: 401 }
@@ -158,4 +157,4 @@ export const GET = async (
       ]
     }
   );
-};
+}

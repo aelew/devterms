@@ -1,9 +1,10 @@
 'use client';
 
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckIcon, CopyIcon, QrCodeIcon, ShareIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
-import QRCode from 'react-qr-code';
+import { QRCodeSVG } from 'qrcode.react';
 import {
   EmailIcon,
   EmailShareButton,
@@ -19,7 +20,12 @@ import {
 import { match } from 'ts-pattern';
 
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
 import {
   Popover,
   PopoverContent,
@@ -27,7 +33,6 @@ import {
 } from '@/components/ui/popover';
 import { env } from '@/env';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';
 
 interface DefinitionShareButtonProps {
@@ -116,8 +121,14 @@ export function DefinitionShareButton({
               <QrCodeIcon size={12} />
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-fit p-10">
-            <QRCode
+          <DialogContent
+            aria-describedby={undefined}
+            className="max-w-fit p-10"
+          >
+            <VisuallyHidden asChild>
+              <DialogTitle />
+            </VisuallyHidden>
+            <QRCodeSVG
               className="rounded-lg border bg-white p-4 shadow"
               value={url}
               size={256}

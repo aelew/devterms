@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -35,6 +35,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-popover": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-visually-hidden": "^1.1.0",
     "@scalar/hono-api-reference": "^0.5.156",
     "@sinclair/typebox": "^0.33.17",
     "@t3-oss/env-nextjs": "^0.11.1",
@@ -54,18 +55,18 @@
     "lucide-react": "^0.453.0",
     "meilisearch": "^0.44.1",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^14.2.16",
+    "next": "15.0.1",
     "next-plausible": "^3.12.2",
     "next-safe-action": "^6.2.0",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^3.7.15",
     "oslo": "^1.2.1",
     "p-debounce": "^4.0.0",
-    "react": "^18.3.1",
+    "qrcode.react": "^4.1.0",
+    "react": "19.0.0-rc-69d4b800-20241021",
     "react-canny": "^0.0.7",
-    "react-dom": "^18.3.1",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "react-hook-form": "^7.53.1",
-    "react-qr-code": "^2.0.15",
     "react-share": "^5.1.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4",
@@ -77,14 +78,14 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@types/node": "^20.17.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.25.0",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.16",
+    "eslint-config-next": "15.0.1",
     "instantsearch.js": "^4.75.2",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
@@ -93,5 +94,10 @@
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   },
-  "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    }
+  }
 }

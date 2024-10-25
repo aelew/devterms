@@ -6,15 +6,15 @@ import { getPageMetadata } from '@/lib/seo';
 import { HomeFeed } from './_components/home-feed';
 
 interface HomePageProps {
-  searchParams: {
-    page?: string;
-  };
+  searchParams: Promise<{ page?: string }>;
 }
 
 export const metadata = getPageMetadata({ title: 'The Developer Dictionary' });
 
-export default function HomePage({ searchParams }: HomePageProps) {
+export default async function HomePage(props: HomePageProps) {
+  const searchParams = await props.searchParams;
   const page = Number(searchParams.page) > 1 ? Number(searchParams.page) : 1;
+
   return (
     <div className="flex flex-col-reverse gap-4 md:flex-row">
       <div className="flex flex-1 flex-col gap-4">
