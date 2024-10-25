@@ -43,4 +43,4 @@ app
 
 const handler = handle(app);
 
-export { app, runtime, handler as GET, handler as POST };
+export { runtime, handler as GET, handler as POST };
