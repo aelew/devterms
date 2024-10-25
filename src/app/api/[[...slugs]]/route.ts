@@ -10,7 +10,6 @@ import { devRoutes } from './dev';
 import { publicRoutes } from './public';
 
 const app = new OpenAPIHono().basePath('/api');
-const runtime = 'edge';
 
 app.notFound((c) => c.json({ success: false, error: 'not_found' }, 404));
 
@@ -43,4 +42,4 @@ app
 
 const handler = handle(app);
 
-export { runtime, handler as GET, handler as POST };
+export { handler as GET, handler as POST };
