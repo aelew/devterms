@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckIcon, CopyIcon, QrCodeIcon, ShareIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
-import QRCode from 'react-qr-code';
+import { QRCodeSVG } from 'qrcode.react';
 import {
   EmailIcon,
   EmailShareButton,
@@ -27,7 +27,6 @@ import {
 } from '@/components/ui/popover';
 import { env } from '@/env';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import { termToSlug } from '@/lib/utils';
 import type { Events, ShareMedium } from '@/types';
 
 interface DefinitionShareButtonProps {
@@ -117,7 +116,7 @@ export function DefinitionShareButton({
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-fit p-10">
-            <QRCode
+            <QRCodeSVG
               className="rounded-lg border bg-white p-4 shadow"
               value={url}
               size={256}
