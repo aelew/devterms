@@ -1,6 +1,6 @@
 # 📚 DevTerms
 
-An open-source, crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more! DevTerms also [has an X (Twitter) account](https://twitter.com/devtermsio), where you can follow for news and word-of-the-day alerts!
+A crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more! DevTerms also [has an X (Twitter) account](https://twitter.com/devtermsio), where you can follow for news and word-of-the-day alerts!
 
 Check out [DevTerms in action](https://devterms.io)!
 
@@ -15,6 +15,7 @@ Check out [DevTerms in action](https://devterms.io)!
 - 🌧️ [Drizzle ORM](https://orm.drizzle.team): Lightweight, relational TypeScript ORM
 - 💾 [Turso](https://turso.tech): Fully-managed SQLite database platform
 - 🔒 [Lucia Auth](https://lucia-auth.com): Simple, flexible session authentication
+- 🌀 [Upstash](https://upstash.com): Serverless Redis database and rate limiting
 
 ## Development
 
