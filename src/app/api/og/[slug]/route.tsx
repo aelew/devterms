@@ -9,7 +9,7 @@ import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
 
 interface OpenGraphDefinitionProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const runtime = 'edge';
@@ -30,8 +30,9 @@ function toHex(arrayBuffer: ArrayBuffer) {
 
 export const GET = async (
   req: NextRequest,
-  { params }: OpenGraphDefinitionProps
+  props: OpenGraphDefinitionProps
 ) => {
+  const params = await props.params;
   const term = slugToTerm(params.slug);
 
   // verify og token

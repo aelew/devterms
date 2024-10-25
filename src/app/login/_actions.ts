@@ -15,7 +15,7 @@ export async function login() {
     scopes: ['user:email']
   });
 
-  cookies().set('oauth_state', state, {
+  (await cookies()).set('oauth_state', state, {
     secure: env.NODE_ENV === 'production',
     maxAge: 60 * 10,
     httpOnly: true,

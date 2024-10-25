@@ -4,7 +4,7 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { and, eq, gte, sql } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
-import { headers } from 'next/headers';
+import { headers, type UnsafeUnwrappedHeaders } from 'next/headers';
 
 import { protectedAction } from '@/lib/action';
 import { termToSlug } from '@/lib/utils';
@@ -21,7 +21,7 @@ const getTermFromId = (id: string) =>
   });
 
 const getClientIp = () => {
-  const headersList = headers();
+  const headersList = headers() as unknown as UnsafeUnwrappedHeaders;
   return (
     headersList.get('cf-connecting-ip') ??
     headersList.get('x-forwarded-for') ??

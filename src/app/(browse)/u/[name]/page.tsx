@@ -5,12 +5,13 @@ import { getPageMetadata } from '@/lib/seo';
 import { getUser, UserResultCards } from './_components/result-cards';
 
 interface ProfilePageProps {
-  params: {
+  params: Promise<{
     name: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: ProfilePageProps) {
+export async function generateMetadata(props: ProfilePageProps) {
+  const params = await props.params;
   const user = await getUser(params.name);
   if (!user) {
     return getPageMetadata({ title: `@${params.name}'s Profile` });
@@ -21,7 +22,8 @@ export async function generateMetadata({ params }: ProfilePageProps) {
   });
 }
 
-export default function ProfilePage({ params }: ProfilePageProps) {
+export default async function ProfilePage(props: ProfilePageProps) {
+  const params = await props.params;
   return (
     <Suspense
       fallback={
