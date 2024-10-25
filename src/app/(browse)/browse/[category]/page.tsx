@@ -7,24 +7,26 @@ import { CATEGORIES } from '@/lib/utils';
 import { CategoryResultCards } from './_components/result-cards';
 
 interface BrowseCategoryPageProps {
-  params: {
-    category: string;
-  };
+  params: Promise<{ category: string }>;
 }
 
-export function generateMetadata({ params }: BrowseCategoryPageProps) {
+export async function generateMetadata(props: BrowseCategoryPageProps) {
+  const params = await props.params;
   return getPageMetadata({
     title: `Browse ${decodeURIComponent(params.category).toUpperCase()} definitions`
   });
 }
 
-export default async function BrowseCategoryPage({
-  params
-}: BrowseCategoryPageProps) {
+export default async function BrowseCategoryPage(
+  props: BrowseCategoryPageProps
+) {
+  const params = await props.params;
+
   const category = decodeURIComponent(params.category);
   if (!CATEGORIES.includes(category)) {
     notFound();
   }
+
   return (
     <Suspense
       fallback={

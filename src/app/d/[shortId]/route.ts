@@ -9,7 +9,11 @@ interface Params {
   shortId: string;
 }
 
-export async function GET(req: NextRequest, { params }: { params: Params }) {
+export async function GET(
+  req: NextRequest,
+  props: { params: Promise<Params> }
+) {
+  const params = await props.params;
   const definition = await db.query.definitions.findFirst({
     columns: { id: true, term: true },
     where: and(
