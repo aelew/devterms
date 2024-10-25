@@ -4,7 +4,7 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { and, eq, gte, sql } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
-import { headers, type UnsafeUnwrappedHeaders } from 'next/headers';
+import { headers } from 'next/headers';
 
 import { protectedAction } from '@/lib/action';
 import { termToSlug } from '@/lib/utils';
@@ -20,8 +20,8 @@ const getTermFromId = (id: string) =>
     columns: { term: true }
   });
 
-const getClientIp = () => {
-  const headersList = headers() as unknown as UnsafeUnwrappedHeaders;
+const getClientIP = async () => {
+  const headersList = await headers();
   return (
     headersList.get('cf-connecting-ip') ??
     headersList.get('x-forwarded-for') ??
@@ -30,7 +30,7 @@ const getClientIp = () => {
 };
 
 const enforceRateLimit = async () => {
-  const ip = getClientIp();
+  const ip = getClientIP();
   const { success } = await ratelimit.limit(`${ip}:votes`);
   if (!success) {
     return { message: 'Whoa! Slow down a little, will ya?' };

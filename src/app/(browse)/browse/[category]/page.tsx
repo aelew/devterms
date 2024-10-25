@@ -7,9 +7,7 @@ import { CATEGORIES } from '@/lib/utils';
 import { CategoryResultCards } from './_components/result-cards';
 
 interface BrowseCategoryPageProps {
-  params: Promise<{
-    category: string;
-  }>;
+  params: Promise<{ category: string }>;
 }
 
 export async function generateMetadata(props: BrowseCategoryPageProps) {
@@ -23,10 +21,12 @@ export default async function BrowseCategoryPage(
   props: BrowseCategoryPageProps
 ) {
   const params = await props.params;
+
   const category = decodeURIComponent(params.category);
   if (!CATEGORIES.includes(category)) {
     notFound();
   }
+
   return (
     <Suspense
       fallback={

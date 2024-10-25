@@ -5,16 +5,16 @@ import { getPageMetadata } from '@/lib/seo';
 import { getUser, UserResultCards } from './_components/result-cards';
 
 interface ProfilePageProps {
-  params: Promise<{
-    name: string;
-  }>;
+  params: Promise<{ name: string }>;
 }
 
 export async function generateMetadata(props: ProfilePageProps) {
   const params = await props.params;
   const user = await getUser(params.name);
   if (!user) {
-    return getPageMetadata({ title: `@${params.name}'s Profile` });
+    return getPageMetadata({
+      title: `@${params.name}'s Profile`
+    });
   }
   return getPageMetadata({
     title: `@${user.name}'s Profile`,
