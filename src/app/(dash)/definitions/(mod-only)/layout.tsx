@@ -1,12 +1,12 @@
 import { notFound, redirect } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 
-import { getAuthData } from '@/lib/auth/helpers';
+import { getCurrentSession } from '@/lib/auth';
 
 export default async function ModOnlyDashboardLayout({
   children
 }: PropsWithChildren) {
-  const { user } = await getAuthData();
+  const { user } = await getCurrentSession();
   if (!user) {
     redirect('/login');
   }

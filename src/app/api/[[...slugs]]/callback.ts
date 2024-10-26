@@ -2,14 +2,18 @@ import { zValidator } from '@hono/zod-validator';
 import { OAuth2RequestError } from 'arctic';
 import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
-import { cookies } from 'next/headers';
 import { z } from 'zod';
 
-import { github, lucia } from '@/lib/auth';
+import {
+  createSession,
+  generateSessionToken,
+  github,
+  setSessionCookie
+} from '@/lib/auth';
 import { generateId } from '@/lib/id';
 import { db } from '@/server/db';
 import { users } from '@/server/db/schema';
-import type { GitHubEmailsResponse, GitHubUserResponse } from '@/types';
+import type { GitHubEmailListResponse, GitHubUserResponse } from '@/types';
 
 export const callbackRoutes = new Hono().get(
   '/github',
@@ -29,14 +33,12 @@ export const callbackRoutes = new Hono().get(
       );
     }
 
-    const cookieStore = await cookies();
-
     try {
       const tokens = await github.validateAuthorizationCode(query.code);
 
       const githubUserResponse = await fetch('https://api.github.com/user', {
         headers: {
-          Authorization: `Bearer ${tokens.accessToken}`
+          Authorization: `Bearer ${tokens.accessToken()}`
         }
       });
 
@@ -47,14 +49,10 @@ export const callbackRoutes = new Hono().get(
       });
 
       if (existingUser) {
-        const session = await lucia.createSession(existingUser.id, {});
-        const sessionCookie = lucia.createSessionCookie(session.id);
+        const token = generateSessionToken();
 
-        cookieStore.set(
-          sessionCookie.name,
-          sessionCookie.value,
-          sessionCookie.attributes
-        );
+        const session = await createSession(token, existingUser.id);
+        await setSessionCookie(token, session.expiresAt);
 
         return c.redirect('/');
       }
@@ -63,7 +61,7 @@ export const callbackRoutes = new Hono().get(
 
       // Special case for GitHub accounts with private emails
       if (!userEmail) {
-        const githubEmailsResponse = await fetch(
+        const githubEmailListResponse = await fetch(
           'https://api.github.com/user/emails',
           {
             headers: {
@@ -72,8 +70,18 @@ export const callbackRoutes = new Hono().get(
           }
         );
 
-        const githubEmails: GitHubEmailsResponse =
-          await githubEmailsResponse.json();
+        const githubEmails: GitHubEmailListResponse =
+          await githubEmailListResponse.json();
+
+        if (!Array.isArray(githubEmails) || githubEmails.length < 1) {
+          return c.json(
+            {
+              success: false,
+              error: 'invalid_github_email_list_response'
+            },
+            500
+          );
+        }
 
         userEmail =
           githubEmails.find((email) => email.primary)?.email ??
@@ -84,7 +92,7 @@ export const callbackRoutes = new Hono().get(
           return c.json(
             {
               success: false,
-              error: 'missing_github_email'
+              error: 'missing_verified_github_email'
             },
             400
           );
@@ -101,14 +109,10 @@ export const callbackRoutes = new Hono().get(
         avatar: githubUser.avatar_url
       });
 
-      const session = await lucia.createSession(userId, {});
-      const sessionCookie = lucia.createSessionCookie(session.id);
+      const token = generateSessionToken();
 
-      cookieStore.set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
+      const session = await createSession(token, userId);
+      await setSessionCookie(token, session.expiresAt);
 
       return c.redirect('/');
     } catch (err) {

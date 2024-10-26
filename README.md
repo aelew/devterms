@@ -11,11 +11,11 @@ Check out [DevTerms in action](https://devterms.io)!
 - 🔥 [Hono](https://hono.dev): Fast web framework built on Web Standards
 - 💨 [Tailwind CSS](https://tailwindcss.com): A utility-first CSS framework
 - 🎨 [shadcn/ui](https://ui.shadcn.com): Beautifully designed components
+- 💾 [Turso](https://turso.tech): Fully-managed SQLite database platform
+- 🌀 [Upstash](https://upstash.com): Serverless Redis database and rate limiting
 - 🔎 [Meilisearch](https://www.meilisearch.com): Lightning-fast website search engine
 - 🌧️ [Drizzle ORM](https://orm.drizzle.team): Lightweight, relational TypeScript ORM
-- 💾 [Turso](https://turso.tech): Fully-managed SQLite database platform
-- 🔒 [Lucia Auth](https://lucia-auth.com): Simple, flexible session authentication
-- 🌀 [Upstash](https://upstash.com): Serverless Redis database and rate limiting
+- 🔒 [Lucia](https://lucia-auth.com): Guide for implementing authentication from scratch
 
 ## Development
 

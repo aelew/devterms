@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader
 } from '@/components/ui/card';
-import { getAuthData } from '@/lib/auth/helpers';
+import { getCurrentSession } from '@/lib/auth';
 import { getPageMetadata } from '@/lib/seo';
 import { SubmitDefinitionForm } from './form';
 
@@ -15,7 +15,7 @@ export const metadata = getPageMetadata({
 });
 
 export default async function SubmitDefinitionPage() {
-  const { user } = await getAuthData();
+  const { user } = await getCurrentSession();
   return (
     <div className="mx-auto mt-2 max-w-md">
       <Card>
