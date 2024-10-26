@@ -5,7 +5,6 @@ import {
   LogOutIcon,
   UserIcon
 } from 'lucide-react';
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -20,34 +19,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { lucia } from '@/lib/auth';
-import { getAuthData } from '@/lib/auth/helpers';
+import {
+  deleteSessionCookie,
+  getCurrentSession,
+  invalidateSession
+} from '@/lib/auth';
 import { ChangelogButton } from './changelog-button';
 import { SearchBar } from './search-bar';
 
 export async function Header() {
-  const { user } = await getAuthData();
+  const { user } = await getCurrentSession();
 
   const navLinkClassName =
     'block transition-color-transform hover:text-muted-foreground/80 active:scale-95';
 
   async function signOut() {
     'use server';
-    const { user, session } = await getAuthData();
+
+    const { user, session } = await getCurrentSession();
     if (!user) {
       throw new Error('Authentication required');
     }
 
-    await lucia.invalidateSession(session.id);
-
-    const sessionCookie = lucia.createBlankSessionCookie();
-    const cookieStore = await cookies();
-
-    cookieStore.set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes
-    );
+    await invalidateSession(session.id);
+    await deleteSessionCookie();
   }
 
   return (

@@ -1,6 +1,6 @@
 import { createSafeActionClient } from 'next-safe-action';
 
-import { getAuthData } from './auth/helpers';
+import { getCurrentSession } from './auth';
 import { GENERIC_ERROR } from './utils';
 
 export class ActionError extends Error {
@@ -20,7 +20,7 @@ export const protectedAction = createSafeActionClient({
     return e instanceof ActionError ? e.message : GENERIC_ERROR;
   },
   middleware: async () => {
-    const data = await getAuthData();
+    const data = await getCurrentSession();
     if (!data.user) {
       throw new ActionError('Authentication required');
     }
@@ -33,7 +33,7 @@ export const moderatorAction = createSafeActionClient({
     return e instanceof ActionError ? e.message : GENERIC_ERROR;
   },
   middleware: async () => {
-    const data = await getAuthData();
+    const data = await getCurrentSession();
     if (!data.user) {
       throw new ActionError('Authentication required');
     }

@@ -1,37 +1,17 @@
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 
-import { getSessionId, lucia } from '.';
+import { getSessionToken, validateSessionToken } from '.';
 
-export const getAuthData = cache(async () => {
+// This is in a separate file so we can wrap it with React's cache() without issues
+export const getCurrentSession = cache(async () => {
   const cookieStore = await cookies();
 
-  const sessionId = getSessionId(cookieStore);
-  if (!sessionId) {
+  const token = getSessionToken(cookieStore);
+  if (!token) {
     return { user: null, session: null };
   }
 
-  const result = await lucia.validateSession(sessionId);
-
-  // Next.js throws an error when you attempt to set a cookie when rendering a page
-  try {
-    if (result.session && result.session.fresh) {
-      const sessionCookie = lucia.createSessionCookie(result.session.id);
-      cookieStore.set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
-    }
-    if (!result.session) {
-      const sessionCookie = lucia.createBlankSessionCookie();
-      cookieStore.set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
-    }
-  } catch {}
-
-  return result;
+  const validationResult = await validateSessionToken(token);
+  return validationResult;
 });

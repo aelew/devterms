@@ -11,11 +11,10 @@ export async function login() {
   'use server';
 
   const state = generateState();
-  const url = await github.createAuthorizationURL(state, {
-    scopes: ['user:email']
-  });
+  const url = await github.createAuthorizationURL(state, ['user:email']);
 
   const cookieStore = await cookies();
+
   cookieStore.set('oauth_state', state, {
     secure: env.NODE_ENV === 'production',
     maxAge: 60 * 10,

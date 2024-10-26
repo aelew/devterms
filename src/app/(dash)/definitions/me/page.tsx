@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { notFound } from 'next/navigation';
 
-import { getAuthData } from '@/lib/auth/helpers';
+import { getCurrentSession } from '@/lib/auth';
 import { getPageMetadata } from '@/lib/seo';
 import { db } from '@/server/db';
 import { definitions } from '@/server/db/schema';
@@ -11,7 +11,7 @@ import { DataTable } from './data-table';
 export const metadata = getPageMetadata({ title: 'My definitions' });
 
 export default async function MyDefinitionsPage() {
-  const { user } = await getAuthData();
+  const { user } = await getCurrentSession();
   if (!user) {
     notFound();
   }
