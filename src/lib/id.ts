@@ -1,5 +1,15 @@
-import { alphabet, generateRandomString } from 'oslo/crypto';
+import { generateRandomString, type RandomReader } from '@oslojs/crypto/random';
+
+const ID_ALPHABET =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 export function generateId(prefix: string) {
-  return `${prefix}_${generateRandomString(16, alphabet('a-z', 'A-Z', '0-9'))}`;
+  const random: RandomReader = {
+    read(bytes) {
+      crypto.getRandomValues(bytes);
+    }
+  };
+
+  const randomId = generateRandomString(random, ID_ALPHABET, 16);
+  return `${prefix}_${randomId}`;
 }

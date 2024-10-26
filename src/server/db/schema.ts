@@ -1,4 +1,5 @@
 import { relations, sql } from 'drizzle-orm';
+import type { InferSelectModel } from 'drizzle-orm';
 import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 import { generateId } from '@/lib/id';
@@ -7,7 +8,7 @@ export const users = sqliteTable(
   'users',
   {
     id: text({ length: 21 }).primaryKey(),
-    name: text({ length: 32 }),
+    name: text({ length: 32 }).notNull(),
     role: text({ enum: ['user', 'bot', 'moderator', 'owner'] })
       .default('user')
       .notNull(),
@@ -31,6 +32,8 @@ export const usersRelations = relations(users, ({ many }) => ({
   definitions: many(definitions)
 }));
 
+export type User = InferSelectModel<typeof users>;
+
 export const sessions = sqliteTable('sessions', {
   id: text({ length: 255 }).primaryKey(),
   userId: text({ length: 21 }).notNull(),
@@ -43,6 +46,8 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
     references: [users.id]
   })
 }));
+
+export type Session = InferSelectModel<typeof sessions>;
 
 export const definitions = sqliteTable(
   'definitions',

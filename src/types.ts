@@ -2,6 +2,12 @@ import type { InferSelectModel } from 'drizzle-orm';
 
 import type { definitions } from './server/db/schema';
 
+declare global {
+  interface Window {
+    Canny: (action: string, options?: Record<string, any>) => void;
+  }
+}
+
 export type Timestamp = Date | number | string;
 
 export type Definition = InferSelectModel<typeof definitions>;
@@ -15,11 +21,14 @@ export type ShareMedium =
   | 'QR Code'
   | 'Direct';
 
-declare global {
-  interface Window {
-    Canny: (action: string, options?: Record<string, any>) => void;
-  }
-}
+export type User = {
+  name: string;
+  role: 'user' | 'bot' | 'moderator' | 'owner';
+  email: string;
+  avatar: string;
+  githubId: number;
+  createdAt: Date;
+};
 
 export type Events = {
   Login: never;
@@ -51,7 +60,7 @@ export type GitHubUserResponse = {
   updated_at: string;
 };
 
-export type GitHubEmailsResponse = {
+export type GitHubEmailListResponse = {
   email: string;
   primary: boolean;
   verified: boolean;

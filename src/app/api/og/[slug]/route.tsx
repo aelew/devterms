@@ -45,7 +45,6 @@ export async function GET(req: NextRequest, props: OpenGraphDefinitionProps) {
   );
 
   if (token !== verifyToken) {
-    console.log('invalid token', { token, verifyToken });
     return NextResponse.json(
       { success: false, error: 'invalid_token' },
       { status: 401 }
