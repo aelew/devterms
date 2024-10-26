@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ['twitter-api-v2'],
   eslint: {
     ignoreDuringBuilds: true
-  },
-  typescript: {
-    // https://github.com/honojs/hono/issues/3548
-    ignoreBuildErrors: true
   }
 };
 
