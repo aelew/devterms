@@ -21,15 +21,6 @@ export type ShareMedium =
   | 'QR Code'
   | 'Direct';
 
-export type User = {
-  name: string;
-  role: 'user' | 'bot' | 'moderator' | 'owner';
-  email: string;
-  avatar: string;
-  githubId: number;
-  createdAt: Date;
-};
-
 export type Events = {
   Login: never;
   Search: never;
