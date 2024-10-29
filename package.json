@@ -24,7 +24,7 @@
     "@icons-pack/react-simple-icons": "^10.1.0",
     "@libsql/client": "^0.14.0",
     "@meilisearch/instant-meilisearch": "^0.18.1",
-    "@number-flow/react": "^0.2.6",
+    "@number-flow/react": "^0.3.0",
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
     "@radix-ui/react-avatar": "^1.1.1",

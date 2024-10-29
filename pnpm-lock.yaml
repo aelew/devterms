@@ -31,8 +31,8 @@ importers:
         specifier: ^0.18.1
         version: 0.18.1
       '@number-flow/react':
-        specifier: ^0.2.6
-        version: 0.2.6(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
       '@oslojs/crypto':
         specifier: ^1.0.1
         version: 1.0.1
@@ -1180,8 +1180,8 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@number-flow/react@0.2.6':
-    resolution: {integrity: sha512-vTqltcq9Hf76AL8UWwN8M1j6U0ZRdiw/HbudFsQMfQBv+VWJ7snGIQ1V3aXMK4HgKWJeB5mzSaaRonE72CoL9A==}
+  '@number-flow/react@0.3.0':
+    resolution: {integrity: sha512-UExgUckxyeR1R36NfoD1An/6ZKe3VuzSxiVZgEYQmnjfeg/BVFjITi5MohnNzNt6RNAEKjDbQBpmSYUA/LO2lw==}
     peerDependencies:
       react: ^18 || ^19.0.0-rc-915b914b3a-20240515
       react-dom: ^18
@@ -3085,8 +3085,8 @@ packages:
   nprogress@0.2.0:
     resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
 
-  number-flow@0.3.4:
-    resolution: {integrity: sha512-gk17YJEdnD2qqanZCANz4RKOrcZpQqKUkOMzQqzFb44i0fBHqy2F1+N4pWNKG/GEexwrC5JZu1UC+lDB5f+P/A==}
+  number-flow@0.3.5:
+    resolution: {integrity: sha512-PJ5SNbPcMmtIRZpV7Qbp2VjJ4ekT54QFo7sheTmAaJfz+t6T+rcNNEzVJaNtb87+AqkZu+SndXJ6AnnJqWnOeQ==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -4519,9 +4519,9 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@number-flow/react@0.2.6(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)':
+  '@number-flow/react@0.3.0(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)':
     dependencies:
-      number-flow: 0.3.4
+      number-flow: 0.3.5
       react: 19.0.0-rc-0bc30748-20241028
       react-dom: 19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028)
 
@@ -6577,7 +6577,7 @@ snapshots:
 
   nprogress@0.2.0: {}
 
-  number-flow@0.3.4: {}
+  number-flow@0.3.5: {}
 
   object-assign@4.1.1: {}
 
