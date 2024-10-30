@@ -89,7 +89,7 @@ importers:
         version: 1.34.3
       arctic:
         specifier: ^2.0.1
-        version: 2.0.1
+        version: 2.1.0
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -1943,8 +1943,8 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  arctic@2.0.1:
-    resolution: {integrity: sha512-2UxVMEGtBkWf5GkriStLuJ+YnkBQZ5V/PapL6nCUOySxxUPgaXt8VSauzrzQZpaoP0kEHV5lk5CsdzX4/eqnZg==}
+  arctic@2.1.0:
+    resolution: {integrity: sha512-zanoPUj1dDjSfo1vg2iF/fjRsCKHu8Oi324kUNLyUsMJNV+J0ParsaxpTUo6aBifJSUuTNbR3H0pJw3hrI/2yQ==}
 
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
@@ -5278,7 +5278,7 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  arctic@2.0.1:
+  arctic@2.1.0:
     dependencies:
       '@oslojs/crypto': 1.0.1
       '@oslojs/encoding': 1.1.0
