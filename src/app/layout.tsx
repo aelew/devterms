@@ -25,7 +25,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Canonical />
         <Canny />
         <PlausibleProvider
-          customDomain="https://s.aelew.dev"
+          customDomain="https://nom.aelew.dev"
           domain="devterms.io"
           trackOutboundLinks
           taggedEvents
