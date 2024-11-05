@@ -52,7 +52,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <NextTopLoader showSpinner={false} />
           <Header />
           <main className="container">{children}</main>
-          {/* @ts-expect-error React 19 */}
           <Toaster richColors />
           <Spotlight
             ellipseClassName="fill-sky-200/50 dark:fill-white/15"
