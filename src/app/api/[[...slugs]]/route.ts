@@ -13,6 +13,17 @@ const app = new OpenAPIHono().basePath('/api');
 
 app.notFound((c) => c.json({ success: false, error: 'not_found' }, 404));
 
+app.onError((err, c) => {
+  console.error(err);
+  return c.json(
+    {
+      success: false,
+      error: 'internal_server_error'
+    },
+    500
+  );
+});
+
 app.route('/cron', cronRoutes);
 app.route('/callback', callbackRoutes);
 
