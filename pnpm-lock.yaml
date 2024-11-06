@@ -74,7 +74,7 @@ importers:
         version: 0.5.158(hono@4.6.9)
       '@sinclair/typebox':
         specifier: ^0.33.17
-        version: 0.33.17
+        version: 0.33.18
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.6.3)(zod@3.23.8)
@@ -131,7 +131,7 @@ importers:
         version: 3.12.3(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028))(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
       next-safe-action:
         specifier: ^6.2.0
-        version: 6.2.0(@sinclair/typebox@0.33.17)(ajv@8.17.1)(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
+        version: 6.2.0(@sinclair/typebox@0.33.18)(ajv@8.17.1)(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
       next-themes:
         specifier: ^0.4.3
         version: 0.4.3(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
@@ -1599,8 +1599,8 @@ packages:
     resolution: {integrity: sha512-gfJB/e9Rq/vjsiWlNwBkaIAZVb9v5guHQB5uVoVFcU0gdAuXni0KVxFxl3gGTu2zhBdB+DkixjyPcNzpqwksmA==}
     engines: {node: '>=18'}
 
-  '@sinclair/typebox@0.33.17':
-    resolution: {integrity: sha512-75232GRx3wp3P7NP+yc4nRK3XUAnaQShxTAzapgmQrgs0QvSq0/mOJGoZXRpH15cFCKyys+4laCPbBselqJ5Ag==}
+  '@sinclair/typebox@0.33.18':
+    resolution: {integrity: sha512-DcxnW2yy08Gfkd7Igm9ccGpLwxrSpV/+svYjy8XAxc4nvj0YJVuVEXpUu+qmqV9Hb/UrJRrdMCPeYb9M+Ria4g==}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -2751,6 +2751,7 @@ packages:
 
   libsql@0.4.6:
     resolution: {integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3823,9 +3824,9 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@decs/typeschema@0.12.2(@sinclair/typebox@0.33.17)(ajv@8.17.1)(zod@3.23.8)':
+  '@decs/typeschema@0.12.2(@sinclair/typebox@0.33.18)(ajv@8.17.1)(zod@3.23.8)':
     optionalDependencies:
-      '@sinclair/typebox': 0.33.17
+      '@sinclair/typebox': 0.33.18
       ajv: 8.17.1
       zod: 3.23.8
 
@@ -4750,7 +4751,7 @@ snapshots:
       '@scalar/openapi-types': 0.1.4
       '@unhead/schema': 1.11.11
 
-  '@sinclair/typebox@0.33.17': {}
+  '@sinclair/typebox@0.33.18': {}
 
   '@swc/counter@0.1.3': {}
 
@@ -6175,9 +6176,9 @@ snapshots:
       react: 19.0.0-rc-0bc30748-20241028
       react-dom: 19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028)
 
-  next-safe-action@6.2.0(@sinclair/typebox@0.33.17)(ajv@8.17.1)(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028):
+  next-safe-action@6.2.0(@sinclair/typebox@0.33.18)(ajv@8.17.1)(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028):
     dependencies:
-      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.33.17)(ajv@8.17.1)(zod@3.23.8)
+      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.33.18)(ajv@8.17.1)(zod@3.23.8)
       next: 15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
       react: 19.0.0-rc-0bc30748-20241028
     optionalDependencies:
