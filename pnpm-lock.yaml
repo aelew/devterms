@@ -115,8 +115,8 @@ importers:
         specifier: ^2.4.0
         version: 2.4.0
       lucide-react:
-        specifier: ^0.455.0
-        version: 0.455.0(react@19.0.0-rc-0bc30748-20241028)
+        specifier: ^0.456.0
+        version: 0.456.0(react@19.0.0-rc-0bc30748-20241028)
       meilisearch:
         specifier: ^0.44.1
         version: 0.44.1
@@ -2733,8 +2733,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-react@0.455.0:
-    resolution: {integrity: sha512-XQoi58X4COfjy6s1P4TVsXMhU2r1KsfUTRFyds/yJvdzBNOfu0F9RRIas626T8UaNZzEv4llF7ivh4uLkYp3rw==}
+  lucide-react@0.456.0:
+    resolution: {integrity: sha512-DIIGJqTT5X05sbAsQ+OhA8OtJYyD4NsEMCA/HQW/Y6ToPQ7gwbtujIoeAaup4HpHzV35SQOarKAWH8LYglB6eA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
@@ -6000,7 +6000,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-react@0.455.0(react@19.0.0-rc-0bc30748-20241028):
+  lucide-react@0.456.0(react@19.0.0-rc-0bc30748-20241028):
     dependencies:
       react: 19.0.0-rc-0bc30748-20241028
 
