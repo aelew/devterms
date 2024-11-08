@@ -78,7 +78,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@types/node": "^20.17.6",
     "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",
@@ -96,7 +96,7 @@
   "pnpm": {
     "overrides": {
       "@types/react": "npm:types-react@19.0.0-rc.1",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+      "@types/react-dom": "npm:types-react-dom@19.0.0"
     }
   }
 }
