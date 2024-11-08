@@ -18,7 +18,7 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
-    "@hono/zod-openapi": "^0.16.4",
+    "@hono/zod-openapi": "^0.17.0",
     "@hono/zod-validator": "^0.4.1",
     "@hookform/resolvers": "^3.9.1",
     "@icons-pack/react-simple-icons": "^10.1.0",
