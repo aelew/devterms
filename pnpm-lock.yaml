@@ -158,7 +158,7 @@ importers:
         version: 7.53.2(react@19.0.0-rc-0bc30748-20241028)
       react-share:
         specifier: ^5.1.0
-        version: 5.1.0(react@19.0.0-rc-0bc30748-20241028)
+        version: 5.1.1(react@19.0.0-rc-0bc30748-20241028)
       sonner:
         specifier: ^1.7.0
         version: 1.7.0(react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028))(react@19.0.0-rc-0bc30748-20241028)
@@ -2705,6 +2705,7 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3152,8 +3153,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-share@5.1.0:
-    resolution: {integrity: sha512-OvyfMtj/0UzH1wi90OdHhZVJ6WUC/+IeWvBwppeZozwIGyAjQgyR0QXlHOrxVHVECqnGvcpBaFTXVrqouTieaw==}
+  react-share@5.1.1:
+    resolution: {integrity: sha512-9rX6X4FiLwKi/eygTx6TWEKv0EuL15AdP6vnFMw5sA4UwTja0mgV4N3gAbkE9+5n3ry7BsBBeOnhaXbJ+jn9kQ==}
     peerDependencies:
       react: ^17 || ^18
 
@@ -6345,7 +6346,7 @@ snapshots:
     optionalDependencies:
       '@types/react': types-react@19.0.0-rc.1
 
-  react-share@5.1.0(react@19.0.0-rc-0bc30748-20241028):
+  react-share@5.1.1(react@19.0.0-rc-0bc30748-20241028):
     dependencies:
       classnames: 2.5.1
       jsonp: 0.2.1
