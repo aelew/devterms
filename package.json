@@ -18,6 +18,7 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@atproto/api": "^0.13.18",
     "@hono/zod-openapi": "^0.17.1",
     "@hono/zod-validator": "^0.4.1",
     "@hookform/resolvers": "^3.9.1",

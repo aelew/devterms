@@ -1,3 +1,4 @@
+import AtpAgent, { CredentialSession, RichText } from '@atproto/api';
 import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
 import MeiliSearch from 'meilisearch';
@@ -5,10 +6,14 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 import { TwitterApi } from 'twitter-api-v2';
 
 import { env } from '@/env';
-import { getRandomDefinition } from '@/lib/definitions';
+import { getOpenGraphImageUrl, getRandomDefinition } from '@/lib/definitions';
 import { termToSlug, truncateString } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions, wotds } from '@/server/db/schema';
+
+const TERM_PLACEHOLDER = '%TERM_PLACEHOLDER%';
+const X_CHARACTER_LIMIT = 280;
+const BSKY_CHARACTER_LIMIT = 300;
 
 export const cronRoutes = new Hono()
   .use(async (c, next) => {
@@ -79,23 +84,19 @@ export const cronRoutes = new Hono()
         accessSecret: env.TWITTER_ACCESS_TOKEN_SECRET
       });
 
-      const definitionPlaceholder = '%TERM_DEFINITION%';
-
       const statusTemplate =
-        `Today's word of the day is ${definition.term}! 💡\n\n` +
-        `${definition.term}: ${definitionPlaceholder}\n\n` +
+        `💡 Today's word of the day is ${definition.term}!\n\n` +
+        `${definition.term}: ${TERM_PLACEHOLDER}\n\n` +
         `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}\n\n` +
         '#buildinpublic #developers';
 
-      const CHARACTER_LIMIT = 280;
-
       const truncatedDefinition = truncateString(
         definition.definition,
-        CHARACTER_LIMIT - statusTemplate.length - definitionPlaceholder.length
+        X_CHARACTER_LIMIT - statusTemplate.length - TERM_PLACEHOLDER.length
       );
 
       const status = statusTemplate.replace(
-        definitionPlaceholder,
+        TERM_PLACEHOLDER,
         truncatedDefinition
       );
 
@@ -103,6 +104,67 @@ export const cronRoutes = new Hono()
         await twitter.v2.tweet(status);
       } catch (err) {
         console.error('Twitter error:', err);
+
+        return c.json(
+          {
+            success: false,
+            error: 'internal_server_error'
+          },
+          500
+        );
+      }
+    }
+
+    // Post on Bluesky
+    if (env.BLUESKY_USERNAME && env.BLUESKY_PASSWORD) {
+      const messageTemplate =
+        `💡 Today's word of the day is ${definition.term}!\n\n` +
+        `${definition.term}: ${TERM_PLACEHOLDER}\n\n` +
+        '#coding #developers #buildinpublic';
+
+      const truncatedDefinition = truncateString(
+        definition.definition,
+        BSKY_CHARACTER_LIMIT - messageTemplate.length - TERM_PLACEHOLDER.length
+      );
+
+      const message = messageTemplate.replace(
+        TERM_PLACEHOLDER,
+        truncatedDefinition
+      );
+
+      const session = new CredentialSession(new URL('https://bsky.social'));
+      const agent = new AtpAgent(session);
+
+      const rt = new RichText({ text: message });
+      await rt.detectFacets(agent);
+
+      try {
+        await agent.login({
+          identifier: env.BLUESKY_USERNAME,
+          password: env.BLUESKY_PASSWORD
+        });
+
+        const ogUrl = getOpenGraphImageUrl(termToSlug(definition.term));
+        const ogResponse = await fetch(ogUrl);
+        const ogBlob = await ogResponse.blob();
+
+        const { data } = await agent.uploadBlob(ogBlob);
+
+        await agent.post({
+          text: rt.text,
+          facets: rt.facets,
+          embed: {
+            $type: 'app.bsky.embed.external',
+            external: {
+              uri: `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}`,
+              title: `What is ${definition.term}?`,
+              description: definition.definition,
+              thumb: data.blob
+            }
+          }
+        });
+      } catch (err) {
+        console.error('Bluesky error:', err);
 
         return c.json(
           {
