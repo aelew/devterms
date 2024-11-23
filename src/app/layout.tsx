@@ -5,7 +5,6 @@ import NextTopLoader from 'nextjs-toploader';
 import type { PropsWithChildren } from 'react';
 import { Toaster } from 'sonner';
 
-import { Canny } from '@/components/canny';
 import { Spotlight } from '@/components/spotlight';
 import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
@@ -23,7 +22,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <MetaTags />
         <Canonical />
-        <Canny />
         <PlausibleProvider
           customDomain="https://nom.aelew.dev"
           domain="devterms.io"

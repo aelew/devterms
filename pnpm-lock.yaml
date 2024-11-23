@@ -147,9 +147,6 @@ importers:
       react:
         specifier: 19.0.0-rc-0bc30748-20241028
         version: 19.0.0-rc-0bc30748-20241028
-      react-canny:
-        specifier: ^0.0.7
-        version: 0.0.7(react@19.0.0-rc-0bc30748-20241028)
       react-dom:
         specifier: 19.0.0-rc-0bc30748-20241028
         version: 19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028)
@@ -2717,7 +2714,6 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -3125,11 +3121,6 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
-
-  react-canny@0.0.7:
-    resolution: {integrity: sha512-qwdJUZ8kO9DldDcKMbamY9oLLC2l8B9tOPS+qfRyDAI89K+xYoNOe2GYPN8oOhbfAa/Q4Zu0R1M5r21iIgzKKA==}
-    peerDependencies:
-      react: '>=16.8.x'
 
   react-dom@19.0.0-rc-0bc30748-20241028:
     resolution: {integrity: sha512-XA21AFPKqpI2uIgXcxNIlDsl3nfPTDeSEkpa9WnYRQpf0CEglhZGuRT1NygpTH7b1o/A/A57XK5vximVohEexQ==}
@@ -6331,10 +6322,6 @@ snapshots:
   qs@6.9.7: {}
 
   queue-microtask@1.2.3: {}
-
-  react-canny@0.0.7(react@19.0.0-rc-0bc30748-20241028):
-    dependencies:
-      react: 19.0.0-rc-0bc30748-20241028
 
   react-dom@19.0.0-rc-0bc30748-20241028(react@19.0.0-rc-0bc30748-20241028):
     dependencies:

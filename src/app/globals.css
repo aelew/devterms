@@ -107,7 +107,3 @@
 .react-share__ShareButton {
   @apply transition-color-transform hover:opacity-80 active:scale-90;
 }
-
-.Canny_BadgeContainer .Canny_Badge {
-  @apply border-none bg-sky-500 !important;
-}

@@ -2,12 +2,6 @@ import type { InferSelectModel } from 'drizzle-orm';
 
 import type { definitions } from './server/db/schema';
 
-declare global {
-  interface Window {
-    Canny: (action: string, options?: Record<string, any>) => void;
-  }
-}
-
 export type Timestamp = Date | number | string;
 
 export type Definition = InferSelectModel<typeof definitions>;
