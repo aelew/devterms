@@ -61,7 +61,7 @@ export function ClientAside({ children }: PropsWithChildren) {
               variant: 'outline'
             })}
           >
-            <PlusIcon className="mr-2 size-4" />
+            <PlusIcon className="mr-1 size-4" />
             Submit a definition
           </Link>
           <div className="flex w-full gap-2">
