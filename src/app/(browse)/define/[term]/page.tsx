@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 
 import { DefinitionCardSkeleton } from '@/components/definition-card/skeleton';
 import { env } from '@/env';
+import { getOpenGraphImageUrl } from '@/lib/definitions';
 import { getPageMetadata } from '@/lib/seo';
 import { slugToTerm } from '@/lib/utils';
 import { DefineResultCards, getDefinitions } from './_components/result-cards';
@@ -21,12 +22,7 @@ export async function generateMetadata(props: DefinitionPageProps) {
   }
 
   const firstResult = results[0]!;
-
-  const hmac = createHmac('sha256', env.OG_HMAC_SECRET);
-  hmac.update(JSON.stringify({ slug: params.term }));
-
-  const ogToken = hmac.digest('hex');
-  const ogUrl = `${env.NEXT_PUBLIC_BASE_URL}/api/og/${params.term}?t=${ogToken}`;
+  const ogUrl = getOpenGraphImageUrl(params.term);
 
   return getPageMetadata({
     title: `What is ${firstResult.term}?`,

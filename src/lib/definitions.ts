@@ -1,7 +1,14 @@
+import { createHmac } from 'crypto';
 import MeiliSearch from 'meilisearch';
 
 import { env } from '@/env';
 import type { DefinitionHit } from '@/types';
+
+export function getOpenGraphImageUrl(slug: string) {
+  const hmac = createHmac('sha256', env.OG_HMAC_SECRET);
+  hmac.update(JSON.stringify({ slug: slug }));
+  return `${env.NEXT_PUBLIC_BASE_URL}/api/og/${slug}?t=${hmac.digest('hex')}`;
+}
 
 export async function getRandomDefinition() {
   const meili = new MeiliSearch({

@@ -17,6 +17,8 @@ export const env = createEnv({
     MEILISEARCH_MASTER_KEY: z.string(),
     UPSTASH_REDIS_REST_URL: z.string().url(),
     UPSTASH_REDIS_REST_TOKEN: z.string(),
+    BLUESKY_USERNAME: z.string().optional(),
+    BLUESKY_PASSWORD: z.string().optional(),
     TWITTER_CONSUMER_KEY: z.string().optional(),
     TWITTER_CONSUMER_SECRET: z.string().optional(),
     TWITTER_ACCESS_TOKEN: z.string().optional(),
