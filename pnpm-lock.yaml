@@ -111,9 +111,6 @@ importers:
       hono:
         specifier: ^4.6.11
         version: 4.6.11
-      jiti:
-        specifier: ^2.4.0
-        version: 2.4.0
       lucide-react:
         specifier: ^0.456.0
         version: 0.456.0(react@19.0.0-rc-0bc30748-20241028)
@@ -2654,10 +2651,6 @@ packages:
 
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
-    hasBin: true
-
-  jiti@2.4.0:
-    resolution: {integrity: sha512-H5UpaUI+aHOqZXlYOaFP/8AzKsg+guWu+Pr3Y8i7+Y3zr1aXAvCvTAQ1RxSc6oVD8R8c7brgNtTVP91E7upH/g==}
     hasBin: true
 
   js-base64@3.7.7:
@@ -5925,8 +5918,6 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
-
-  jiti@2.4.0: {}
 
   js-base64@3.7.7: {}
 
