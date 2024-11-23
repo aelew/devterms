@@ -1,8 +1,6 @@
-import { createJiti } from 'jiti';
 import type { NextConfig } from 'next';
 
-const jiti = createJiti(new URL(import.meta.url).pathname);
-jiti.import('./src/env');
+import '@/env';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
