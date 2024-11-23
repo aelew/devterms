@@ -24,7 +24,6 @@ import {
   getCurrentSession,
   invalidateSession
 } from '@/lib/auth';
-import { ChangelogButton } from './changelog-button';
 import { SearchBar } from './search-bar';
 
 export async function Header() {
@@ -80,7 +79,6 @@ export async function Header() {
           </ul>
         </div>
         <div className="flex items-center gap-2">
-          <ChangelogButton />
           <Link
             className={buttonVariants({ variant: 'outline', size: 'icon' })}
             href="https://github.com/aelew/devterms"

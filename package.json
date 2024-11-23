@@ -63,7 +63,6 @@
     "p-debounce": "^4.0.0",
     "qrcode.react": "^4.1.0",
     "react": "19.0.0-rc-0bc30748-20241028",
-    "react-canny": "^0.0.7",
     "react-dom": "19.0.0-rc-0bc30748-20241028",
     "react-hook-form": "^7.53.2",
     "react-share": "^5.1.1",

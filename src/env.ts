@@ -32,7 +32,6 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
-    NEXT_PUBLIC_CANNY_APP_ID: z.string(),
     NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY: z.string(),
     NEXT_PUBLIC_MEILISEARCH_HOST: z.string().url()
   },
@@ -42,7 +41,6 @@ export const env = createEnv({
    */
   experimental__runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-    NEXT_PUBLIC_CANNY_APP_ID: process.env.NEXT_PUBLIC_CANNY_APP_ID,
     NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY:
       process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY,
     NEXT_PUBLIC_MEILISEARCH_HOST: process.env.NEXT_PUBLIC_MEILISEARCH_HOST
