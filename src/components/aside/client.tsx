@@ -1,6 +1,6 @@
 'use client';
 
-import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
+import { SiBluesky, SiGithub, SiX } from '@icons-pack/react-simple-icons';
 import { GeistMono } from 'geist/font/mono';
 import {
   ChevronDownIcon,
@@ -64,28 +64,41 @@ export function ClientAside({ children }: PropsWithChildren) {
               I&apos;m feeling lucky
             </Button>
           </form>
-          <Link
-            target="_blank"
-            href="https://github.com/aelew/devterms"
-            className={buttonVariants({
-              className: 'w-full',
-              variant: 'outline'
-            })}
-          >
-            <SiGithub className="mr-2 size-4" />
-            Star on GitHub
-          </Link>
-          <Link
-            target="_blank"
-            href="https://twitter.com/devtermsio"
-            className={buttonVariants({
-              className: 'w-full',
-              variant: 'outline'
-            })}
-          >
-            <SiX className="mr-2 size-4" />
-            Follow on X
-          </Link>
+          <div className="flex w-full gap-2">
+            <Link
+              target="_blank"
+              href="https://github.com/aelew/devterms"
+              className={buttonVariants({
+                className: 'w-full',
+                variant: 'outline'
+              })}
+            >
+              <SiGithub className="mr-2 size-4" />
+              Star on GitHub
+            </Link>
+            <Link
+              target="_blank"
+              href="https://twitter.com/devtermsio"
+              className={buttonVariants({
+                size: 'icon',
+                variant: 'outline',
+                className: 'shrink-0'
+              })}
+            >
+              <SiX className="size-4" />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://bsky.app/profile/devterms.io"
+              className={buttonVariants({
+                size: 'icon',
+                variant: 'outline',
+                className: 'shrink-0'
+              })}
+            >
+              <SiBluesky className="size-4" />
+            </Link>
+          </div>
         </CardFooter>
       </Card>
       {pathname !== '/browse' && (
@@ -148,6 +161,13 @@ export function ClientAside({ children }: PropsWithChildren) {
           target="_blank"
         >
           X
+        </Link>
+        <Link
+          className="hover:underline hover:underline-offset-4"
+          href="https://bsky.app/profile/devterms.io"
+          target="_blank"
+        >
+          Bluesky
         </Link>
         <Link
           className="hover:underline hover:underline-offset-4"
