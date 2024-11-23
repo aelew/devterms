@@ -44,16 +44,6 @@ export function ClientAside({ children }: PropsWithChildren) {
         </CardHeader>
         <CardContent className="pb-4">{children}</CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <Link
-            href="/submit"
-            className={buttonVariants({
-              className: 'w-full',
-              variant: 'outline'
-            })}
-          >
-            <PlusIcon className="mr-2 size-4" />
-            Submit a definition
-          </Link>
           <form action={showRandomDefinition} className="contents">
             <Button
               onClick={() => plausible("I'm feeling lucky")}
@@ -64,6 +54,16 @@ export function ClientAside({ children }: PropsWithChildren) {
               I&apos;m feeling lucky
             </Button>
           </form>
+          <Link
+            href="/submit"
+            className={buttonVariants({
+              className: 'w-full',
+              variant: 'outline'
+            })}
+          >
+            <PlusIcon className="mr-2 size-4" />
+            Submit a definition
+          </Link>
           <div className="flex w-full gap-2">
             <Link
               target="_blank"
