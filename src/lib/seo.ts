@@ -4,7 +4,7 @@ import { env } from '@/env';
 
 export const APP_NAME = 'DevTerms';
 export const APP_DESCRIPTION =
-  'A crowdsourced dictionary for developers. Find definitions for all sorts of technical terms, programming jargon, and more!';
+  'The crowdsourced dictionary for developers. Find definitions for technical terms, programming jargon, and more!';
 
 export const baseMetadata = {
   applicationName: APP_NAME,
