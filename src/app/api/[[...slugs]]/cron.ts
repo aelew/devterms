@@ -11,7 +11,7 @@ import { termToSlug, truncateString } from '@/lib/utils';
 import { db } from '@/server/db';
 import { definitions, wotds } from '@/server/db/schema';
 
-const TERM_PLACEHOLDER = '%TERM_PLACEHOLDER%';
+const DEFINITION_PLACEHOLDER = '%DEFINITION_PLACEHOLDER%';
 const X_CHARACTER_LIMIT = 280;
 const BSKY_CHARACTER_LIMIT = 300;
 
@@ -86,17 +86,19 @@ export const cronRoutes = new Hono()
 
       const statusTemplate =
         `💡 Today's word of the day is ${definition.term}!\n\n` +
-        `${definition.term}: ${TERM_PLACEHOLDER}\n\n` +
+        `${DEFINITION_PLACEHOLDER}\n\n` +
         `${env.NEXT_PUBLIC_BASE_URL}/define/${termToSlug(definition.term)}\n\n` +
         '#buildinpublic #developers';
 
       const truncatedDefinition = truncateString(
         definition.definition,
-        X_CHARACTER_LIMIT - statusTemplate.length - TERM_PLACEHOLDER.length
+        X_CHARACTER_LIMIT -
+          statusTemplate.length -
+          DEFINITION_PLACEHOLDER.length
       );
 
       const status = statusTemplate.replace(
-        TERM_PLACEHOLDER,
+        DEFINITION_PLACEHOLDER,
         truncatedDefinition
       );
 
@@ -119,16 +121,18 @@ export const cronRoutes = new Hono()
     if (env.BLUESKY_USERNAME && env.BLUESKY_PASSWORD) {
       const messageTemplate =
         `💡 Today's word of the day is ${definition.term}!\n\n` +
-        `${definition.term}: ${TERM_PLACEHOLDER}\n\n` +
+        `${DEFINITION_PLACEHOLDER}\n\n` +
         '#coding #developers #buildinpublic';
 
       const truncatedDefinition = truncateString(
         definition.definition,
-        BSKY_CHARACTER_LIMIT - messageTemplate.length - TERM_PLACEHOLDER.length
+        BSKY_CHARACTER_LIMIT -
+          messageTemplate.length -
+          DEFINITION_PLACEHOLDER.length
       );
 
       const message = messageTemplate.replace(
-        TERM_PLACEHOLDER,
+        DEFINITION_PLACEHOLDER,
         truncatedDefinition
       );
 
