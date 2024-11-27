@@ -10,7 +10,6 @@ import { baseMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 import { Canonical } from './_components/canonical';
 import { Header } from './_components/header';
-import { MetaTags } from './_components/metatags';
 
 import './globals.css';
 
@@ -20,7 +19,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        <MetaTags />
+        <meta name="apple-mobile-web-app-title" content="DevTerms" />
+        {/* prettier-ignore */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+        {/* prettier-ignore */}
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=2" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+        <link rel="shortcut icon" href="/favicon.ico?v=2" />
+        <link rel="manifest" href="/site.webmanifest?v=2" />
         <Canonical />
         <PlausibleProvider
           customDomain="https://nom.aelew.dev"
