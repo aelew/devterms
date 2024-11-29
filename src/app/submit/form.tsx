@@ -125,6 +125,7 @@ export function SubmitDefinitionForm({
                 <Textarea
                   placeholder="Bob the Builder decided to stop pursuing a developer position because the job market was atrociously competitive."
                   disabled={!isAuthenticated}
+                  rows={3}
                   {...field}
                 />
               </FormControl>
