@@ -5,6 +5,7 @@ import { GeistMono } from 'geist/font/mono';
 import {
   ChevronDownIcon,
   ChevronUpIcon,
+  HeartIcon,
   PlusIcon,
   ShuffleIcon
 } from 'lucide-react';
@@ -148,34 +149,64 @@ export function ClientAside({ children }: PropsWithChildren) {
           </Card>
         </Collapsible>
       )}
-      <div className="hidden justify-center gap-4 text-center text-sm text-muted-foreground md:flex">
-        <Link
-          className="hover:underline hover:underline-offset-4"
-          href="/about"
-        >
-          About
-        </Link>
-        <Link
-          className="hover:underline hover:underline-offset-4"
-          href="https://twitter.com/devtermsio"
-          target="_blank"
-        >
-          X
-        </Link>
-        <Link
-          className="hover:underline hover:underline-offset-4"
-          href="https://bsky.app/profile/devterms.io"
-          target="_blank"
-        >
-          Bluesky
-        </Link>
-        <Link
-          className="hover:underline hover:underline-offset-4"
-          href="https://github.com/aelew/devterms"
-          target="_blank"
-        >
-          GitHub
-        </Link>
+      <div className="hidden items-center gap-1 text-center text-muted-foreground md:flex md:flex-col">
+        <div className="flex gap-4 text-sm">
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="/about"
+          >
+            About
+          </Link>
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="https://twitter.com/devtermsio"
+            target="_blank"
+          >
+            X
+          </Link>
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="https://bsky.app/profile/devterms.io"
+            target="_blank"
+          >
+            Bluesky
+          </Link>
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="https://github.com/aelew/devterms"
+            target="_blank"
+          >
+            GitHub
+          </Link>
+        </div>
+        <p className="flex items-center gap-1 text-xs">
+          Made with <HeartIcon className="size-3.5 fill-muted-foreground/40" />{' '}
+          by{' '}
+          <Link
+            className="underline decoration-muted-foreground/50 decoration-wavy underline-offset-2 transition-colors hover:text-muted-foreground/80 hover:decoration-muted-foreground/40"
+            href="https://aelew.com"
+            target="_blank"
+          >
+            Andre Lew
+          </Link>
+        </p>
+        <div className="flex gap-2 text-xs">
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="https://iconkit.ai"
+            target="_blank"
+          >
+            IconKit
+          </Link>
+          <span>|</span>
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="https://lookup.tools"
+            target="_blank"
+          >
+            Lookup Tools
+          </Link>
+        </div>
       </div>
     </aside>
   );
