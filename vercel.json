@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/cron/wotd",
-      "schedule": "0 4 * * *"
+      "schedule": "30 4 * * *"
     },
     {
       "path": "/api/cron/meilisearch",
