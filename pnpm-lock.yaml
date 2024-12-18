@@ -72,8 +72,8 @@ importers:
         specifier: ^0.5.165
         version: 0.5.165(hono@4.6.14)
       '@sinclair/typebox':
-        specifier: ^0.33.22
-        version: 0.33.22
+        specifier: ^0.34.0
+        version: 0.34.11
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.7.2)(zod@3.24.1)
@@ -127,7 +127,7 @@ importers:
         version: 3.12.4(next@15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-safe-action:
         specifier: ^6.2.0
-        version: 6.2.0(@sinclair/typebox@0.33.22)(ajv@8.17.1)(next@15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 6.2.0(@sinclair/typebox@0.34.11)(ajv@8.17.1)(next@15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       next-themes:
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1564,8 +1564,8 @@ packages:
     resolution: {integrity: sha512-sGnOFnfiSn4o23rklU/jrg81hO+630bsFIdHg8MZ/w2Nc6IoUwARA2hbe4d4Fg+D0KBu40Tan/L+WAYDXkTJQg==}
     engines: {node: '>=18'}
 
-  '@sinclair/typebox@0.33.22':
-    resolution: {integrity: sha512-auUj4k+f4pyrIVf4GW5UKquSZFHJWri06QgARy9C0t9ZTjJLIuNIrr1yl9bWcJWJ1Gz1vOvYN1D+QPaIlNMVkQ==}
+  '@sinclair/typebox@0.34.11':
+    resolution: {integrity: sha512-zE9pWGVSG82z+sFO+oUmqmqRVm8Wg5sVhmljYi1fDhLOSphBBy939QmC/qXcKFWqTiRJ6keyG4y75bIoTPRBAw==}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -2722,6 +2722,7 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@3.1.3:
@@ -3786,9 +3787,9 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@decs/typeschema@0.12.2(@sinclair/typebox@0.33.22)(ajv@8.17.1)(zod@3.24.1)':
+  '@decs/typeschema@0.12.2(@sinclair/typebox@0.34.11)(ajv@8.17.1)(zod@3.24.1)':
     optionalDependencies:
-      '@sinclair/typebox': 0.33.22
+      '@sinclair/typebox': 0.34.11
       ajv: 8.17.1
       zod: 3.24.1
 
@@ -4707,7 +4708,7 @@ snapshots:
       '@scalar/openapi-types': 0.1.5
       '@unhead/schema': 1.11.14
 
-  '@sinclair/typebox@0.33.22': {}
+  '@sinclair/typebox@0.34.11': {}
 
   '@swc/counter@0.1.3': {}
 
@@ -6163,9 +6164,9 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  next-safe-action@6.2.0(@sinclair/typebox@0.33.22)(ajv@8.17.1)(next@15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
+  next-safe-action@6.2.0(@sinclair/typebox@0.34.11)(ajv@8.17.1)(next@15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
     dependencies:
-      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.33.22)(ajv@8.17.1)(zod@3.24.1)
+      '@decs/typeschema': 0.12.2(@sinclair/typebox@0.34.11)(ajv@8.17.1)(zod@3.24.1)
       next: 15.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
     optionalDependencies:
