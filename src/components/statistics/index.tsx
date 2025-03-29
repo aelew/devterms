@@ -27,10 +27,12 @@ export async function Statistics() {
     getCachedDefinitionCount(),
     getCachedUserCount()
   ]);
+
   const stats = [
     { label: 'Definitions', value: definitionCount },
-    { label: 'Posters', value: userCount }
+    { label: 'Contributors', value: userCount }
   ];
+
   return (
     <dl className="grid grid-cols-2 divide-x text-center">
       {stats.map(({ label, value }) => (

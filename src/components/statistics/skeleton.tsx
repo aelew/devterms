@@ -3,7 +3,7 @@ import { Skeleton } from '../ui/skeleton';
 export function StatisticsSkeleton() {
   return (
     <dl className="grid grid-cols-2 divide-x text-center">
-      {['Definitions', 'Posters'].map((label, i) => (
+      {['Definitions', 'Contributors'].map((label, i) => (
         <div key={i}>
           <dt className="mb-1.5 text-xs font-semibold uppercase text-muted-foreground">
             {label}
