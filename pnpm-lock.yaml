@@ -30,8 +30,8 @@ importers:
         specifier: ^0.18.1
         version: 0.18.1
       '@number-flow/react':
-        specifier: ^0.3.5
-        version: 0.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.5.0
+        version: 0.5.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@oslojs/crypto':
         specifier: ^1.0.1
         version: 1.0.1
@@ -1172,11 +1172,11 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@number-flow/react@0.3.5':
-    resolution: {integrity: sha512-jkN4hqdYVbmxlEHD8sPF98f3AmQ3wGhHRJHYfgX9p9TsO3UyEky687qX8HSnTsk0ja6ZULzuHTA8MWoWqqTOQA==}
+  '@number-flow/react@0.5.8':
+    resolution: {integrity: sha512-ZHjih9W/kD5srBn7XjcASOEssRbU3vn8VcqXbngVaUeTJNBSn9358QwIg4/WFT6GJXyFAnNQsZeLSCAi6xrMfg==}
     peerDependencies:
-      react: ^18 || ^19.0.0-rc-915b914b3a-20240515
-      react-dom: ^18
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
 
   '@oslojs/asn1@1.0.0':
     resolution: {integrity: sha512-zw/wn0sj0j0QKbIXfIlnEcTviaCzYOY3V5rAyjR6YtOByFtJiT574+8p9Wlach0lZH9fddD4yb9laEAIl4vXQA==}
@@ -3008,8 +3008,8 @@ packages:
   nprogress@0.2.0:
     resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
 
-  number-flow@0.3.10:
-    resolution: {integrity: sha512-BpNMhQnRAHOFbi0giD+dMnDoaPibVW22Vl2CWfZZIlpgTtixmbPm+Cv7a7F7FrEc/dTOECMS/T8V5rltIGI0tw==}
+  number-flow@0.5.6:
+    resolution: {integrity: sha512-3K4lWNn+zWYeWEgaJMbFIjqy6WnvIETXTVIybKnaPU0XmhsqQmdXfxXf7tmB4MybzHwrl5GN4oFT34EU/B2yhg==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -4460,10 +4460,10 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@number-flow/react@0.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@number-flow/react@0.5.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       esm-env: 1.2.2
-      number-flow: 0.3.10
+      number-flow: 0.5.6
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
@@ -6471,7 +6471,7 @@ snapshots:
 
   nprogress@0.2.0: {}
 
-  number-flow@0.3.10:
+  number-flow@0.5.6:
     dependencies:
       esm-env: 1.2.2
 
