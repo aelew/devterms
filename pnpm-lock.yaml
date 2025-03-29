@@ -27,8 +27,8 @@ importers:
         specifier: ^0.14.0
         version: 0.14.0
       '@meilisearch/instant-meilisearch':
-        specifier: ^0.18.1
-        version: 0.18.1
+        specifier: ^0.25.0
+        version: 0.25.0
       '@number-flow/react':
         specifier: ^0.3.5
         version: 0.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1093,8 +1093,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@meilisearch/instant-meilisearch@0.18.1':
-    resolution: {integrity: sha512-KxBoEaI1+CQQaSbSZZEllIUwsNofALH0RG+/bFMkNhavuzJn982zOTC7xYtYmXC6nsj32MmAe+rDBtazycDJQQ==}
+  '@meilisearch/instant-meilisearch@0.25.0':
+    resolution: {integrity: sha512-+usN3k3xStd7I8gdzgkF1Jbx/8L3/NLYNi5nU12kKmQdGhrL+imLS68xsmDDLNWIw5V3MyTMMS9S8X6rRH6FsA==}
 
   '@napi-rs/wasm-runtime@0.2.7':
     resolution: {integrity: sha512-5yximcFK5FNompXfJFoWanu5l8v1hNGqNHh9du1xETp9HWk/B/PzvchX55WYOPaIeNglG8++68AAiauBAtbnzw==}
@@ -2024,9 +2024,6 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  cross-fetch@3.2.0:
-    resolution: {integrity: sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==}
-
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -2863,11 +2860,11 @@ packages:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
-  meilisearch@0.40.0:
-    resolution: {integrity: sha512-BoRhQMr2mBFLEeCfsvPluksGb01IaOiWvV3Deu3iEY+yYJ4jdGTu+IQi5FCjKlNQ7/TMWSN2XUToSgvH1tj0BQ==}
-
   meilisearch@0.44.1:
     resolution: {integrity: sha512-ZTZYBmomtRwjaWbvU8U8ct04g/YnrNOlvchogJOPgHcQIQBfjdbAvMJ8mLhuZEzpioYXIT6Cv+FcE150pc2+nw==}
+
+  meilisearch@0.49.0:
+    resolution: {integrity: sha512-oMJ/e6Or6cz2+owcEKeB11p2OWiWW9NmssqOZC/KIwQB0sBGKLJ7RCpYzf+GhUIZIZ9FRYZ419ox3RGebVQX5g==}
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -2976,15 +2973,6 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
-
-  node-fetch@2.7.0:
-    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
 
   node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
@@ -3565,9 +3553,6 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
-  tr46@0.0.3:
-    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
-
   ts-api-utils@2.1.0:
     resolution: {integrity: sha512-CUgTZL1irw8u29bzrOD/nH85jqyc74D6SshFgujOIA7osm2Rz7dYH77agkx7H4FBNxDq7Cjf+IjaX/8zwFW+ZQ==}
     engines: {node: '>=18.12'}
@@ -3671,12 +3656,6 @@ packages:
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
-
-  webidl-conversions@3.0.1:
-    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-
-  whatwg-url@5.0.0:
-    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -4401,11 +4380,9 @@ snapshots:
   '@libsql/win32-x64-msvc@0.4.7':
     optional: true
 
-  '@meilisearch/instant-meilisearch@0.18.1':
+  '@meilisearch/instant-meilisearch@0.25.0':
     dependencies:
-      meilisearch: 0.40.0
-    transitivePeerDependencies:
-      - encoding
+      meilisearch: 0.49.0
 
   '@napi-rs/wasm-runtime@0.2.7':
     dependencies:
@@ -5343,12 +5320,6 @@ snapshots:
   commander@4.1.1: {}
 
   concat-map@0.0.1: {}
-
-  cross-fetch@3.2.0:
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
 
   cross-spawn@7.0.6:
     dependencies:
@@ -6326,13 +6297,9 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
-  meilisearch@0.40.0:
-    dependencies:
-      cross-fetch: 3.2.0
-    transitivePeerDependencies:
-      - encoding
-
   meilisearch@0.44.1: {}
+
+  meilisearch@0.49.0: {}
 
   merge2@1.4.1: {}
 
@@ -6448,10 +6415,6 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   node-domexception@1.0.0: {}
-
-  node-fetch@2.7.0:
-    dependencies:
-      whatwg-url: 5.0.0
 
   node-fetch@3.3.2:
     dependencies:
@@ -7046,8 +7009,6 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  tr46@0.0.3: {}
-
   ts-api-utils@2.1.0(typescript@5.8.2):
     dependencies:
       typescript: 5.8.2
@@ -7174,13 +7135,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   web-streams-polyfill@3.3.3: {}
-
-  webidl-conversions@3.0.1: {}
-
-  whatwg-url@5.0.0:
-    dependencies:
-      tr46: 0.0.3
-      webidl-conversions: 3.0.1
 
   which-boxed-primitive@1.1.1:
     dependencies:
