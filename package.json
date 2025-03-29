@@ -82,7 +82,7 @@
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.25.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.0.0",
     "eslint-config-next": "^15.2.4",
     "instantsearch.js": "^4.78.1",
     "postcss": "^8.5.3",
