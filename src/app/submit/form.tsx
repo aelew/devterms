@@ -141,7 +141,13 @@ export function SubmitDefinitionForm({
             Submit my definition
           </Button>
         ) : (
-          <Link className={buttonVariants()} href="/login">
+          <Link
+            href="/login"
+            className={buttonVariants({
+              className:
+                'bg-gradient-to-r from-blue-500 to-blue-700 text-white transition-opacity hover:opacity-80'
+            })}
+          >
             Sign in to submit
           </Link>
         )}
