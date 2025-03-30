@@ -20,11 +20,13 @@ export const metadata = getPageMetadata({
 export default function SignInPage() {
   return (
     <Card className="mx-auto mt-24 max-w-sm">
-      <CardHeader className="items-center">
+      <CardHeader className="items-center space-y-0">
         <Link className="my-2" href="/">
-          <Image src="/logo.png" alt="Logo" width={36} height={36} />
+          <Image src="/logo.png" alt="Logo" width={48} height={48} />
         </Link>
-        <CardTitle>Sign in to DevTerms</CardTitle>
+        <CardTitle className="text-xl/6" asChild>
+          <h1>Sign in to DevTerms</h1>
+        </CardTitle>
         <CardDescription>The developer dictionary</CardDescription>
       </CardHeader>
       <CardContent>

@@ -13,10 +13,10 @@ export function GitHubButton() {
     <form action={login}>
       <Button
         onClick={() => plausible('Login')}
-        className="relative w-full"
+        className="w-full gap-2"
         variant="outline"
       >
-        <SiGithub className="absolute left-[0.875rem] size-4" />
+        <SiGithub className="size-4" />
         <span>Continue with GitHub</span>
       </Button>
     </form>

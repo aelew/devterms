@@ -41,8 +41,11 @@ export function DefinitionCard({
             className="contents transition-color-transform active:scale-[0.98]"
             href={`/define/${termToSlug(definition.term)}#${definition.id}`}
           >
-            <CardTitle className="text-gradient text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-95">
-              {definition.term}
+            <CardTitle
+              className="text-gradient text-3xl transition-opacity hover:opacity-70 dark:hover:opacity-85"
+              asChild
+            >
+              <h2>{definition.term}</h2>
             </CardTitle>
           </Link>
         </div>

@@ -40,7 +40,9 @@ export function ClientAside({ children }: PropsWithChildren) {
     <aside className="h-fit space-y-[15px] md:w-1/3">
       <Card>
         <CardHeader className="space-y-4 pb-4">
-          <CardTitle>{APP_NAME}</CardTitle>
+          <CardTitle asChild>
+            <h1>{APP_NAME}</h1>
+          </CardTitle>
           <p className="text-sm text-muted-foreground">{APP_DESCRIPTION}</p>
         </CardHeader>
         <CardContent className="pb-4">{children}</CardContent>
@@ -108,7 +110,9 @@ export function ClientAside({ children }: PropsWithChildren) {
             <CardHeader>
               <CollapsibleTrigger>
                 <div className="flex items-center justify-between">
-                  <CardTitle>Browse definitions</CardTitle>
+                  <CardTitle asChild>
+                    <h2>Browse definitions</h2>
+                  </CardTitle>
                   <Button
                     className="size-5"
                     variant="ghost"
