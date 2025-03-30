@@ -83,7 +83,7 @@ export async function GET(req: NextRequest, props: OpenGraphDefinitionProps) {
   ).then((res) => res.arrayBuffer());
 
   const logoImage = await fetch(
-    new URL('../../../logo.png', import.meta.url)
+    new URL('../../../../../public/logo.png', import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const backgroundImage = await fetch(
@@ -107,8 +107,8 @@ export async function GET(req: NextRequest, props: OpenGraphDefinitionProps) {
         <img
           // @ts-ignore-error ArrayBuffers accepted
           src={logoImage}
-          height="96"
-          width="96"
+          height="128"
+          width="128"
           tw="mb-4"
           alt=""
         />
