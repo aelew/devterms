@@ -29,7 +29,7 @@ export const baseMetadata = {
     description: APP_DESCRIPTION,
     images: [
       {
-        url: `${env.NEXT_PUBLIC_BASE_URL}/media/og.jpg`,
+        url: `${env.NEXT_PUBLIC_BASE_URL}/og.jpg`,
         alt: APP_NAME,
         width: 1200,
         height: 630
@@ -41,7 +41,7 @@ export const baseMetadata = {
     creator: '@aelew_',
     card: 'summary_large_image',
     description: APP_DESCRIPTION,
-    images: [`${env.NEXT_PUBLIC_BASE_URL}/media/og.jpg`]
+    images: [`${env.NEXT_PUBLIC_BASE_URL}/og.jpg`]
   }
 } satisfies Metadata;
 

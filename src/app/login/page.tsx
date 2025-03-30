@@ -22,7 +22,7 @@ export default function SignInPage() {
     <Card className="mx-auto mt-24 max-w-sm">
       <CardHeader className="items-center">
         <Link className="my-2" href="/">
-          <Image src="/icon.png" alt="Logo" width={36} height={36} />
+          <Image src="/logo.png" alt="Logo" width={36} height={36} />
         </Link>
         <CardTitle>Sign in to DevTerms</CardTitle>
         <CardDescription>The developer dictionary</CardDescription>

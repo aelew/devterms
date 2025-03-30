@@ -48,8 +48,11 @@ export async function Header() {
     <header className="container mb-4 flex flex-col">
       <div className="flex h-14 justify-between">
         <div className="flex items-center gap-4">
-          <Link className="flex items-center gap-2" href="/">
-            <Image src="/icon.png" alt="Logo" width={24} height={24} />
+          <Link
+            className="flex items-center gap-1.5 transition-opacity hover:opacity-80"
+            href="/"
+          >
+            <Image src="/logo.png" alt="Logo" width={28} height={28} />
             <span className="text-xl font-semibold tracking-tighter">
               DevTerms
             </span>

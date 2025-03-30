@@ -25,19 +25,6 @@ export default function AboutPage() {
             </Link>
             .
           </CardDescription>
-          <CardDescription className="mx-auto max-w-lg">
-            The DevTerms logo is adapted from the{' '}
-            <Link
-              className="font-medium hover:underline hover:underline-offset-4"
-              href="https://github.com/twitter/twemoji"
-              target="_blank"
-            >
-              Twemoji
-            </Link>{' '}
-            icons <span className="font-mono">hammer-and-wrench</span> and{' '}
-            <span className="font-mono">blue-book</span> under the Attribution
-            4.0 International (CC-BY 4.0) license.
-          </CardDescription>
         </CardHeader>
       </Card>
     </div>

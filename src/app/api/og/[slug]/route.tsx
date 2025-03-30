@@ -83,7 +83,7 @@ export async function GET(req: NextRequest, props: OpenGraphDefinitionProps) {
   ).then((res) => res.arrayBuffer());
 
   const logoImage = await fetch(
-    new URL('../../../icon.png', import.meta.url)
+    new URL('../../../logo.png', import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const backgroundImage = await fetch(

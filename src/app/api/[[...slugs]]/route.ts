@@ -45,7 +45,7 @@ app
     '/docs',
     apiReference({
       theme: 'deepSpace',
-      favicon: '/icon.png',
+      favicon: '/logo.png',
       spec: { url: '/api/v1/openapi.json' },
       customCss: '.download-button { opacity: 0.75; }'
     })
