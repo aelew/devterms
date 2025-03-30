@@ -93,7 +93,10 @@ export async function Header() {
           <ThemeSwitcher />
           {user ? (
             <DropdownMenu>
-              <DropdownMenuTrigger className="rounded-full transition-opacity hover:opacity-80">
+              <DropdownMenuTrigger
+                className="rounded-full transition-opacity hover:opacity-80"
+                aria-label="User menu"
+              >
                 <Avatar>
                   <AvatarImage src={user.avatar + '&s=64'} />
                   <AvatarFallback>

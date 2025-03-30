@@ -12,8 +12,8 @@ export default function BrowsePage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-gradient text-3xl">
-          Browse definitions
+        <CardTitle className="text-gradient text-3xl" asChild>
+          <h1>Browse definitions</h1>
         </CardTitle>
       </CardHeader>
       <CardContent
