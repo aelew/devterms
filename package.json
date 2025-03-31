@@ -21,7 +21,7 @@
     "@atproto/api": "^0.13.35",
     "@hono/zod-openapi": "^0.17.1",
     "@hono/zod-validator": "^0.4.3",
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^4.0.0",
     "@icons-pack/react-simple-icons": "^10.2.0",
     "@libsql/client": "^0.14.0",
     "@meilisearch/instant-meilisearch": "^0.18.1",
