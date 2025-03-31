@@ -21,8 +21,8 @@ importers:
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.55.0(react@19.1.0))
       '@icons-pack/react-simple-icons':
-        specifier: ^10.2.0
-        version: 10.2.0(react@19.1.0)
+        specifier: ^12.0.0
+        version: 12.3.0(react@19.1.0)
       '@libsql/client':
         specifier: ^0.14.0
         version: 0.14.0
@@ -907,8 +907,8 @@ packages:
       '@vue/compiler-sfc':
         optional: true
 
-  '@icons-pack/react-simple-icons@10.2.0':
-    resolution: {integrity: sha512-QDUxup8D3GdIIzwGpxQs6bjeFV5mJes25qqf4aqP/PaBYQNCar7AiyD8C14636TosCG0A/QqAUwm/Hviep4d4g==}
+  '@icons-pack/react-simple-icons@12.3.0':
+    resolution: {integrity: sha512-71KKdd2tg36Pctg5pQTAmPRIdFrtxsLccoSexkZLztn46eV6Ek6ov69o0Ph4t4ZPs6n4+Fw4sBnIzEsKssnXxg==}
     peerDependencies:
       react: ^16.13 || ^17 || ^18 || ^19
 
@@ -4227,7 +4227,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@icons-pack/react-simple-icons@10.2.0(react@19.1.0)':
+  '@icons-pack/react-simple-icons@12.3.0(react@19.1.0)':
     dependencies:
       react: 19.1.0
 

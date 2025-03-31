@@ -22,7 +22,7 @@
     "@hono/zod-openapi": "^0.17.1",
     "@hono/zod-validator": "^0.4.3",
     "@hookform/resolvers": "^3.10.0",
-    "@icons-pack/react-simple-icons": "^10.2.0",
+    "@icons-pack/react-simple-icons": "^12.0.0",
     "@libsql/client": "^0.14.0",
     "@meilisearch/instant-meilisearch": "^0.18.1",
     "@number-flow/react": "^0.3.5",
