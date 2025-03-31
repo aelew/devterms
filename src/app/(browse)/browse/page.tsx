@@ -1,8 +1,8 @@
 import { GeistMono } from 'geist/font/mono';
-import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from '@/components/ui/link';
 import { getPageMetadata } from '@/lib/seo';
 import { CATEGORIES, cn } from '@/lib/utils';
 

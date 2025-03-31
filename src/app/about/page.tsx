@@ -1,6 +1,5 @@
-import Link from 'next/link';
-
 import { Card, CardDescription, CardHeader } from '@/components/ui/card';
+import { Link } from '@/components/ui/link';
 import { getPageMetadata } from '@/lib/seo';
 
 export const metadata = getPageMetadata({ title: 'About' });

@@ -3,7 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { usePlausible } from 'next-plausible';
 import { useAction } from 'next-safe-action/hooks';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -21,6 +20,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Link } from '@/components/ui/link';
 import { Textarea } from '@/components/ui/textarea';
 import { getActionErrorMessage, slugToTerm } from '@/lib/utils';
 import type { Events } from '@/types';

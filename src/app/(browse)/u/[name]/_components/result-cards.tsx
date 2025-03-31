@@ -2,7 +2,6 @@ import { SiGithub } from '@icons-pack/react-simple-icons';
 import { desc, eq, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 
@@ -10,6 +9,7 @@ import { DefinitionCard } from '@/components/definition-card';
 import { Time } from '@/components/time';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardDescription } from '@/components/ui/card';
+import { Link } from '@/components/ui/link';
 import { db } from '@/server/db';
 import { definitions, users } from '@/server/db/schema';
 

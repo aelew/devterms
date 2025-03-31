@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { Badge } from '@/components/ui/badge';
 import {
   Card,
@@ -8,6 +6,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { Link } from '@/components/ui/link';
 import { termToSlug } from '@/lib/utils';
 import type { Definition } from '@/types';
 import { Time } from '../time';

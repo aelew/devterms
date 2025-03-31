@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import {
   Card,
@@ -8,6 +7,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { Link } from '@/components/ui/link';
 import { getPageMetadata } from '@/lib/seo';
 import { GitHubButton } from './github-button';
 
