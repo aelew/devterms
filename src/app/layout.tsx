@@ -1,7 +1,6 @@
 import { GeistSans } from 'geist/font/sans';
 import PlausibleProvider from 'next-plausible';
 import { ThemeProvider } from 'next-themes';
-import NextTopLoader from 'nextjs-toploader';
 import type { PropsWithChildren } from 'react';
 import { Toaster } from 'sonner';
 

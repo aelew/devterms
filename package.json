@@ -59,7 +59,6 @@
     "next-plausible": "^3.12.4",
     "next-safe-action": "^6.2.0",
     "next-themes": "^0.4.6",
-    "nextjs-toploader": "^3.8.16",
     "p-debounce": "^4.0.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
