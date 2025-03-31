@@ -1,11 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["lucide-react"],
-      "matchCurrentVersion": "/^0/",
-      "automerge": true
-    }
-  ]
+  "extends": ["config:recommended"]
 }
