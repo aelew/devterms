@@ -55,7 +55,7 @@
     "lucide-react": "^0.486.0",
     "meilisearch": "^0.44.1",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "^15.2.4",
+    "next": "^15.4.7",
     "next-plausible": "^3.12.4",
     "next-safe-action": "^6.2.0",
     "next-themes": "^0.4.6",
