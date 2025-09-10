@@ -6,6 +6,10 @@ import { getSessionToken, SESSION_COOKIE_NAME } from './lib/auth';
 
 // see https://lucia-auth.com/sessions/cookies/nextjs
 export async function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname.startsWith('/api/og/')) {
+    return NextResponse.next();
+  }
+
   if (req.method === 'GET') {
     const response = NextResponse.next();
 
