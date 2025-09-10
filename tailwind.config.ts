@@ -2,7 +2,6 @@ import type { Config } from 'tailwindcss';
 
 const svgToDataUri = require('mini-svg-data-uri');
 
-const colors = require('tailwindcss/colors');
 const {
   default: flattenColorPalette
 } = require('tailwindcss/lib/util/flattenColorPalette');
@@ -92,7 +91,10 @@ const config = {
             return { backgroundImage: `url("${dataUri}")` };
           }
         },
-        { values: flattenColorPalette(theme('backgroundColor')), type: 'color' }
+        {
+          type: 'color',
+          values: flattenColorPalette(theme('backgroundColor'))
+        }
       );
     }
   ]
