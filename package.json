@@ -52,7 +52,7 @@
     "drizzle-orm": "^0.34.1",
     "framer-motion": "^11.18.2",
     "geist": "^1.5.1",
-    "hono": "^4.9.6",
+    "hono": "^4.9.7",
     "jiti": "^2.5.1",
     "lucide-react": "^0.543.0",
     "meilisearch": "^0.44.1",
