@@ -92,7 +92,7 @@ export function ClientAside({ children }: PropsWithChildren) {
             </Link>
             <Link
               target="_blank"
-              href="https://bsky.app/profile/devterms.io"
+              href="https://bsky.app/profile/devterms.com"
               className={buttonVariants({
                 size: 'icon',
                 variant: 'outline',
@@ -170,7 +170,7 @@ export function ClientAside({ children }: PropsWithChildren) {
           </Link>
           <Link
             className="hover:underline hover:underline-offset-4"
-            href="https://bsky.app/profile/devterms.io"
+            href="https://bsky.app/profile/devterms.com"
             target="_blank"
           >
             Bluesky

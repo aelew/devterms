@@ -1,8 +1,8 @@
 # 📚 DevTerms
 
-A crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more. DevTerms has [X (Twitter)](https://twitter.com/devtermsio) and [Bluesky](https://bsky.app/profile/devterms.io) accounts you can follow for daily developer wisdom and to stay in the loop with the latest tech lingo!
+A crowdsourced dictionary website for developers to look up technical terms, programming jargon, and more. DevTerms has [X (Twitter)](https://twitter.com/devtermsio) and [Bluesky](https://bsky.app/profile/devterms.com) accounts you can follow for daily developer wisdom and to stay in the loop with the latest tech lingo!
 
-Check out DevTerms in action at https://devterms.io!
+Check out DevTerms in action at https://devterms.com!
 
 ## Built with
 
