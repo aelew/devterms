@@ -68,7 +68,7 @@
     "react-hook-form": "^7.62.0",
     "react-share": "^5.2.2",
     "sonner": "^1.7.4",
-    "tailwind-merge": "^2.6.0",
+    "tailwind-merge": "^3.0.0",
     "tailwindcss-animate": "^1.0.7",
     "ts-pattern": "^5.8.0",
     "twitter-api-v2": "^1.27.0",
