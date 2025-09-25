@@ -50,7 +50,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "drizzle-orm": "^0.34.1",
-    "framer-motion": "^11.18.2",
+    "framer-motion": "^12.0.0",
     "geist": "^1.5.1",
     "hono": "^4.9.6",
     "jiti": "^2.5.1",
