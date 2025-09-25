@@ -67,7 +67,7 @@
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.62.0",
     "react-share": "^5.2.2",
-    "sonner": "^1.7.4",
+    "sonner": "^2.0.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "ts-pattern": "^5.8.0",
