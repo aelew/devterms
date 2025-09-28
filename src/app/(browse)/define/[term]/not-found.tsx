@@ -1,9 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from '@/components/ui/link';
 import { slugToTerm, termToSlug } from '@/lib/utils';
 
 export default function NotFound() {

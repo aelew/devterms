@@ -6,6 +6,7 @@ import {
   UserIcon
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -18,7 +19,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Link } from '@/components/ui/link';
 import {
   deleteSessionCookie,
   getCurrentSession,

@@ -2,12 +2,12 @@
 
 import type { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDownIcon } from 'lucide-react';
+import Link from 'next/link';
 import { match } from 'ts-pattern';
 
 import { Time } from '@/components/time';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Link } from '@/components/ui/link';
 import { termToSlug } from '@/lib/utils';
 import type { Timestamp } from '@/types';
 

@@ -1,10 +1,10 @@
 'use client';
 
 import { BookMarkedIcon, ClockIcon, FlagIcon } from 'lucide-react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { buttonVariants } from '@/components/ui/button';
-import { Link } from '@/components/ui/link';
 import { cn } from '@/lib/utils';
 
 interface DashboardNavigationProps {

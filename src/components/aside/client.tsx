@@ -10,6 +10,7 @@ import {
   ShuffleIcon
 } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, type PropsWithChildren } from 'react';
 
@@ -21,7 +22,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { Link } from '@/components/ui/link';
 import { APP_DESCRIPTION, APP_NAME } from '@/lib/seo';
 import { CATEGORIES, cn } from '@/lib/utils';
 import type { Events } from '@/types';
