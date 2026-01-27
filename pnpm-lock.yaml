@@ -13,10 +13,10 @@ importers:
         version: 0.13.35
       '@hono/zod-openapi':
         specifier: ^0.17.1
-        version: 0.17.1(hono@4.9.6)(zod@3.25.76)
+        version: 0.17.1(hono@4.11.7)(zod@3.25.76)
       '@hono/zod-validator':
         specifier: ^0.4.3
-        version: 0.4.3(hono@4.9.6)(zod@3.25.76)
+        version: 0.4.3(hono@4.11.7)(zod@3.25.76)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.62.0(react@19.1.1))
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@scalar/hono-api-reference':
         specifier: ^0.5.184
-        version: 0.5.184(hono@4.9.6)
+        version: 0.5.184(hono@4.11.7)
       '@sinclair/typebox':
         specifier: ^0.34.41
         version: 0.34.41
@@ -108,8 +108,8 @@ importers:
         specifier: ^1.5.1
         version: 1.5.1(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       hono:
-        specifier: ^4.9.6
-        version: 4.9.6
+        specifier: ^4.11.7
+        version: 4.11.7
       jiti:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2700,8 +2700,8 @@ packages:
     resolution: {integrity: sha512-RqGs4wavGYJWE07t35JQccByczmNUXQT0E12ZYV1VKYu5UiAU9lsos/yBAcf840+zrUQQxgVduCR5/B8nNtibg==}
     hasBin: true
 
-  hono@4.9.6:
-    resolution: {integrity: sha512-doVjXhSFvYZ7y0dNokjwwSahcrAfdz+/BCLvAMa/vHLzjj8+CFyV5xteThGUsKdkaasgN+gF2mUxao+SGLpUeA==}
+  hono@4.11.7:
+    resolution: {integrity: sha512-l7qMiNee7t82bH3SeyUCt9UF15EVmaBvsppY2zQtrbIhl/yzBTny+YUxsVjSjQ6gaqaeVtZmGocom8TzBlA4Yw==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -4331,21 +4331,21 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@hono/zod-openapi@0.17.1(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-openapi@0.17.1(hono@4.11.7)(zod@3.25.76)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.3.4(zod@3.25.76)
-      '@hono/zod-validator': 0.3.0(hono@4.9.6)(zod@3.25.76)
-      hono: 4.9.6
+      '@hono/zod-validator': 0.3.0(hono@4.11.7)(zod@3.25.76)
+      hono: 4.11.7
       zod: 3.25.76
 
-  '@hono/zod-validator@0.3.0(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-validator@0.3.0(hono@4.11.7)(zod@3.25.76)':
     dependencies:
-      hono: 4.9.6
+      hono: 4.11.7
       zod: 3.25.76
 
-  '@hono/zod-validator@0.4.3(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-validator@0.4.3(hono@4.11.7)(zod@3.25.76)':
     dependencies:
-      hono: 4.9.6
+      hono: 4.11.7
       zod: 3.25.76
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.62.0(react@19.1.1))':
@@ -5005,10 +5005,10 @@ snapshots:
     dependencies:
       '@scalar/types': 0.0.40
 
-  '@scalar/hono-api-reference@0.5.184(hono@4.9.6)':
+  '@scalar/hono-api-reference@0.5.184(hono@4.11.7)':
     dependencies:
       '@scalar/core': 0.1.1
-      hono: 4.9.6
+      hono: 4.11.7
 
   '@scalar/openapi-types@0.1.9': {}
 
@@ -6240,7 +6240,7 @@ snapshots:
       mkdirp: 0.3.0
       nopt: 1.0.10
 
-  hono@4.9.6: {}
+  hono@4.11.7: {}
 
   hookable@5.5.3: {}
 
