@@ -20,13 +20,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <meta name="apple-mobile-web-app-title" content="DevTerms" />
         <Canonical />
-        <PlausibleProvider
-          customDomain="https://nom.aelew.dev"
-          domain="devterms.com"
-          trackOutboundLinks
-          taggedEvents
-          selfHosted
-        />
       </head>
       <body
         suppressHydrationWarning
@@ -35,24 +28,26 @@ export default function RootLayout({ children }: PropsWithChildren) {
           'relative flex min-h-screen flex-col pb-8 antialiased'
         )}
       >
-        <ThemeProvider
-          enableSystem
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-        >
-          {/* Grid background */}
-          <div className="absolute -z-10 size-full bg-grid-black/[0.08] dark:bg-black dark:bg-grid-white/[0.15]">
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
-          </div>
-          <Header />
-          <main className="container">{children}</main>
-          <Toaster richColors />
-          <Spotlight
-            ellipseClassName="fill-sky-200/50 dark:fill-white/15"
-            className="-top-40 left-0 md:-top-20 md:left-60"
-          />
-        </ThemeProvider>
+        <PlausibleProvider src="https://pa.aelew.dev/js/pa-75u8DVNeTg36m7lesPtTt.js">
+          <ThemeProvider
+            enableSystem
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+          >
+            {/* Grid background */}
+            <div className="absolute -z-10 size-full bg-grid-black/[0.08] dark:bg-black dark:bg-grid-white/[0.15]">
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
+            </div>
+            <Header />
+            <main className="container">{children}</main>
+            <Toaster richColors />
+            <Spotlight
+              ellipseClassName="fill-sky-200/50 dark:fill-white/15"
+              className="-top-40 left-0 md:-top-20 md:left-60"
+            />
+          </ThemeProvider>
+        </PlausibleProvider>
       </body>
     </html>
   );
