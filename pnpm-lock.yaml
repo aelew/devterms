@@ -13,10 +13,10 @@ importers:
         version: 0.13.35
       '@hono/zod-openapi':
         specifier: ^0.17.1
-        version: 0.17.1(hono@4.9.6)(zod@3.25.76)
+        version: 0.17.1(hono@4.12.12)(zod@3.25.76)
       '@hono/zod-validator':
         specifier: ^0.4.3
-        version: 0.4.3(hono@4.9.6)(zod@3.25.76)
+        version: 0.4.3(hono@4.12.12)(zod@3.25.76)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.62.0(react@19.1.1))
@@ -70,7 +70,7 @@ importers:
         version: 1.2.3(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@scalar/hono-api-reference':
         specifier: ^0.5.184
-        version: 0.5.184(hono@4.9.6)
+        version: 0.5.184(hono@4.12.12)
       '@sinclair/typebox':
         specifier: ^0.34.41
         version: 0.34.41
@@ -108,8 +108,8 @@ importers:
         specifier: ^1.5.1
         version: 1.5.1(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       hono:
-        specifier: ^4.9.6
-        version: 4.9.6
+        specifier: ^4.12.12
+        version: 4.12.12
       jiti:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2644,11 +2644,12 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   globals@13.24.0:
     resolution: {integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==}
@@ -2700,8 +2701,8 @@ packages:
     resolution: {integrity: sha512-RqGs4wavGYJWE07t35JQccByczmNUXQT0E12ZYV1VKYu5UiAU9lsos/yBAcf840+zrUQQxgVduCR5/B8nNtibg==}
     hasBin: true
 
-  hono@4.9.6:
-    resolution: {integrity: sha512-doVjXhSFvYZ7y0dNokjwwSahcrAfdz+/BCLvAMa/vHLzjj8+CFyV5xteThGUsKdkaasgN+gF2mUxao+SGLpUeA==}
+  hono@4.12.12:
+    resolution: {integrity: sha512-p1JfQMKaceuCbpJKAPKVqyqviZdS0eUxH9v82oWo1kb9xjQ5wA6iP3FNVAPDFlz5/p7d45lO+BpSk1tuSZMF4Q==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -4331,21 +4332,21 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@hono/zod-openapi@0.17.1(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-openapi@0.17.1(hono@4.12.12)(zod@3.25.76)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.3.4(zod@3.25.76)
-      '@hono/zod-validator': 0.3.0(hono@4.9.6)(zod@3.25.76)
-      hono: 4.9.6
+      '@hono/zod-validator': 0.3.0(hono@4.12.12)(zod@3.25.76)
+      hono: 4.12.12
       zod: 3.25.76
 
-  '@hono/zod-validator@0.3.0(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-validator@0.3.0(hono@4.12.12)(zod@3.25.76)':
     dependencies:
-      hono: 4.9.6
+      hono: 4.12.12
       zod: 3.25.76
 
-  '@hono/zod-validator@0.4.3(hono@4.9.6)(zod@3.25.76)':
+  '@hono/zod-validator@0.4.3(hono@4.12.12)(zod@3.25.76)':
     dependencies:
-      hono: 4.9.6
+      hono: 4.12.12
       zod: 3.25.76
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.62.0(react@19.1.1))':
@@ -5005,10 +5006,10 @@ snapshots:
     dependencies:
       '@scalar/types': 0.0.40
 
-  '@scalar/hono-api-reference@0.5.184(hono@4.9.6)':
+  '@scalar/hono-api-reference@0.5.184(hono@4.12.12)':
     dependencies:
       '@scalar/core': 0.1.1
-      hono: 4.9.6
+      hono: 4.12.12
 
   '@scalar/openapi-types@0.1.9': {}
 
@@ -6240,7 +6241,7 @@ snapshots:
       mkdirp: 0.3.0
       nopt: 1.0.10
 
-  hono@4.9.6: {}
+  hono@4.12.12: {}
 
   hookable@5.5.3: {}
 
